@@ -27,7 +27,9 @@ as soon as it breaks some constraint provided in the problem, take a step back a
 	- DFS + not visiting node twice => Dynamic Programming. [let's ignore tabular for now]
 
 ## Template
-``` Golang
+```Golang
+package Backtracking
+
 type container struct{} // Something can hold values, like []int
 type element struct{}
 

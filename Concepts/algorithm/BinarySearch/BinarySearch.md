@@ -15,7 +15,7 @@ Binary Search should be considered every time you need to search for an index or
 Situation: Array => Sorted Array => Binary Search (or more generally, 2 pointers)
 
 ## Examples
-``` Golang
+```Golang
 package BinarySearch
 
 import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions/Medium"

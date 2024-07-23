@@ -21,7 +21,8 @@ Ref:
 **Recursive Case**: An instance of a problem that "shrinks" the size of the input toward the base case 
 
 ## Examples
-``` Golang
+```Golang
+package algorithm
 /*
 Write a function `factorial` that take a number as an argument and returns the factorial of that number
 
@@ -47,7 +48,7 @@ func sum(nums []int) int {
         return 0
     }
 
-    return nums[0] + sum(num[1:])
+    return nums[0] + sum(nums[1:])
 }
 
 // Improvement for other language
@@ -75,7 +76,6 @@ func fib(n int) int {
         return 1
     }
 
-    reutrn fib(n-1) + fib(n-2)
-
+    return fib(n-1) + fib(n-2)
 }
 ```

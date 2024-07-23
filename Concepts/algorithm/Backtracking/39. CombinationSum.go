@@ -1,7 +1,5 @@
 package Backtracking
 
-import "slices"
-
 // https://leetcode.com/problems/combination-sum/description/
 /*
 Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
@@ -13,22 +11,23 @@ The test cases are generated such that the number of unique combinations that su
 */
 func combinationSum(candidates []int, target int) [][]int {
 	// Reference: Sorting Strings In Go(https://words.aead.dev/sortstr.html)
-	slices.Sort(candidates)
 	return backtrackCombinationsSum(candidates, target)
 
 	// result := make([][]int, 0)
-	// combinationsSumHelper(&result, make([]int, 0), candidates, target, 0)
+	// combinationsSumHelper(&result, candidates, make([]int, 0), target, 0)
 	// return result
 }
 
 func backtrackCombinationsSum(candidates []int, target int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int, start, remain int)
-	localRecursiveFunc = func(processor []int, start, remain int) {
+	var localRecursiveFunc func(processor []int, remain, start int)
+	localRecursiveFunc = func(processor []int, remain, start int) {
 		if remain < 0 {
 			return
-		} else if remain == 0 {
+		}
+
+		if remain == 0 {
 			result = append(result, processor)
 		} else {
 			for i := start; i < len(candidates); i++ {
@@ -42,21 +41,23 @@ func backtrackCombinationsSum(candidates []int, target int) [][]int {
 		}
 	}
 
-	localRecursiveFunc([]int{}, 0, target)
+	localRecursiveFunc([]int{}, target, 0)
 	return result
 }
 
-func combinationsSumHelper(result *[][]int, sources, processor []int, start, remain int) {
+func combinationsSumHelper(result *[][]int, sources, processor []int, remain, start int) {
 	if remain < 0 {
 		return
-	} else if remain == 0 {
+	}
+
+	if remain == 0 {
 		*result = append(*result, processor)
 	} else {
 		for i := start; i < len(sources); i++ {
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			combinationsSumHelper(result, sources, p, i, remain-sources[i])
+			combinationsSumHelper(result, sources, p, remain-sources[i], i)
 			processor = processor[:len(processor)-1]
 		}
 	}

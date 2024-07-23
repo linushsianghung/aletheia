@@ -12,9 +12,8 @@ func Subsets(nums []int) [][]int {
 	return backtrackSubsets(nums)
 
 	// result := make([][]int, 0)
-	// subsetsHelper(&result, []int{}, nums, 0)
+	// subsetsHelper(&result, nums, []int{}, 0)
 	// return result
-
 }
 
 func backtrackSubsets(sources []int) [][]int {

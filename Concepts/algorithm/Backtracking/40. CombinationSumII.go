@@ -15,15 +15,15 @@ func combinationSum2(candidates []int, target int) [][]int {
 	return backtrackCombinationsSum2(candidates, target)
 
 	// result := make([][]int, 0)
-	// combinationsSum2Helper(&result, make([]int, 0), candidates, target, 0)
+	// combinationsSum2Helper(&result, candidates, make([]int, 0), target, 0)
 	// return result
 }
 
 func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor, candidates []int, start, remain int)
-	localRecursiveFunc = func(processor, candidates []int, start, remain int) {
+	var localRecursiveFunc func(processor []int, remain, start int)
+	localRecursiveFunc = func(processor []int, remain, start int) {
 		if remain < 0 {
 			return
 		} else if remain == 0 {
@@ -38,18 +38,18 @@ func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 				processor = append(processor, candidates[i])
 				p := make([]int, len(processor))
 				copy(p, processor)
-				localRecursiveFunc(candidates, p, i+1, remain-candidates[i])
+				localRecursiveFunc(p, remain-candidates[i], i+1)
 				processor = processor[:len(processor)-1]
 			}
 		}
 	}
 
-	localRecursiveFunc(candidates, []int{}, target, 0)
+	localRecursiveFunc([]int{}, target, 0)
 
 	return result
 }
 
-func combinationsSum2Helper(result *[][]int, sources, processor []int, start, remain int) {
+func combinationsSum2Helper(result *[][]int, sources, processor []int, remain, start int) {
 	if remain < 0 {
 		return
 	} else if remain == 0 {
@@ -64,7 +64,7 @@ func combinationsSum2Helper(result *[][]int, sources, processor []int, start, re
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			combinationsSum2Helper(result, sources, p, i+1, remain-sources[i])
+			combinationsSum2Helper(result, sources, p, remain-sources[i], i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}

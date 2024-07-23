@@ -7,11 +7,10 @@ import "slices"
 Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
 */
 func Permute(nums []int) [][]int {
-	slices.Sort(nums)
 	return backtrackPermute(nums)
 
 	// result := make([][]int, 0)
-	// permuteHelper(&result, make([]int, 0), nums)
+	// permuteHelper(&result, nums, make([]int, 0))
 	// return result
 }
 

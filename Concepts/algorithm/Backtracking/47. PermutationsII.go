@@ -9,7 +9,7 @@ func permuteUnique(nums []int) [][]int {
 	return backtrackPermuteUnique(nums)
 
 	// result := make([][]int, 0)
-	// permuteUniqueHelper(&result, make([]int, 0), nums, make([]bool, len(nums)))
+	// permuteUniqueHelper(&result, nums, make([]int, 0), make([]bool, len(nums)))
 	// return result
 }
 
@@ -39,7 +39,7 @@ func backtrackPermuteUnique(sources []int) [][]int {
 		}
 	}
 
-	localRecursiveFunc([]int{}, make([]bool, len(nums)))
+	localRecursiveFunc([]int{}, make([]bool, len(sources)))
 	return result
 }
 
