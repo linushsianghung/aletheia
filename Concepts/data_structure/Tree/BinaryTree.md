@@ -1,11 +1,4 @@
-package Tree
-
-import (
-	"github.com/linushung/aletheia/Concepts/algorithm/TreeTraversal"
-	"github.com/linushung/aletheia/leetcode"
-)
-
-/*
+# Binary Tree
 Ref:
 - Binary Tree Algorithms for Technical Interviews: https://www.youtube.com/watch?v=fAAZixBzIAI
 - Binary Tree Bootcamp: https://www.youtube.com/watch?v=BHB0B1jFKQc
@@ -68,7 +61,14 @@ we don't visit them twice:
 	- Depth First Search (DFS) Explained: https://www.youtube.com/watch?v=PMMc4VsIacU
 	- Traverse a Tree - Introduction: https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/992/
 	- https://stackoverflow.com/questions/23576746/what-is-the-difference-between-breadth-first-searching-and-level-order-traversal
-*/
+
+``` Golang
+package Tree
+
+import (
+	"github.com/linushung/aletheia/Concepts/algorithm/TreeTraversal"
+	"github.com/linushung/aletheia/leetcode"
+)
 
 func InorderTraversal(root *leetcode.TreeNode) {
 	TreeTraversal.InorderTraversal(root)
@@ -81,3 +81,4 @@ func preorderTraversal(root *leetcode.TreeNode) {
 func PostorderTraversal(root *leetcode.TreeNode) {
 	TreeTraversal.PostorderTraversal(root)
 }
+```

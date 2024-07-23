@@ -15,47 +15,47 @@ func Permute(nums []int) [][]int {
 	// return result
 }
 
-func backtrackPermute(nums []int) [][]int {
+func backtrackPermute(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(nums, processor []int)
-	localRecursiveFunc = func(nums, processor []int) {
-		if len(processor) == len(nums) {
+	var localRecursiveFunc func(processor []int)
+	localRecursiveFunc = func(processor []int) {
+		if len(processor) == len(sources) {
 			result = append(result, processor)
 			return
 		}
 
-		for i := 0; i < len(nums); i++ {
+		for i := 0; i < len(sources); i++ {
 			// Skip current processed number
-			if slices.Contains(processor, nums[i]) {
+			if slices.Contains(processor, sources[i]) {
 				continue
 			}
-			processor = append(processor, nums[i])
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(nums, p)
+			localRecursiveFunc(p)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc(nums, []int{})
+	localRecursiveFunc([]int{})
 	return result
 }
 
-func permuteHelper(result *[][]int, nums, processor []int) {
-	if len(processor) == len(nums) {
+func permuteHelper(result *[][]int, sources, processor []int) {
+	if len(processor) == len(sources) {
 		*result = append(*result, processor)
 		return
 	}
 
-	for i := 0; i < len(nums); i++ {
-		if slices.Contains(processor, nums[i]) {
+	for i := 0; i < len(sources); i++ {
+		if slices.Contains(processor, sources[i]) {
 			continue
 		}
-		processor = append(processor, nums[i])
+		processor = append(processor, sources[i])
 		p := make([]int, len(processor))
 		copy(p, processor)
-		permuteHelper(result, nums, p)
+		permuteHelper(result, sources, p)
 		processor = processor[:len(processor)-1]
 	}
 }

@@ -19,14 +19,15 @@ func maxProfitSimpleThrough(prices []int) int {
 
 	for i := 1; i < len(prices); i++ {
 		// Find out the lowest price
-		if lowest > prices[i] {
+		if prices[i] < lowest {
 			lowest = prices[i]
 		}
 
 		// Then check current profit
-		if prices[i]-lowest > profit {
-			profit = prices[i] - lowest
-		}
+		// if prices[i]-lowest > profit {
+		// 	profit = prices[i] - lowest
+		// }
+		profit = max(prices[i]-lowest, profit)
 	}
 
 	return profit

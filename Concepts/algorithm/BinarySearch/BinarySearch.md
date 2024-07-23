@@ -1,14 +1,11 @@
-package BinarySearch
-
-import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions/Medium"
-
-/*
 # Binary Search
 Ref:
 - LeetCode Explore: https://leetcode.com/explore/learn/card/binary-search/
 - NeetCode: https://www.youtube.com/playlist?list=PLot-Xpze53leNZQd0iINpD-MAhMOMzWvO
 - mycodeschool: https://www.youtube.com/playlist?list=PL2_aWCzGMAwL3ldWlrii6YeLszojgH77j
 
+
+## Concepts
 Binary Search operates on a contiguous sequence with a specified left and right index. This is called the Search Space. Binary Search maintains the left, right,
 and middle indices of the search space and compares the search target or applies the search condition to the middle value of the collection; if the condition is
 unsatisfied or values unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful.
@@ -16,9 +13,12 @@ If the search ends with an empty half, the condition cannot be fulfilled and the
 
 Binary Search should be considered every time you need to search for an index or element in a collection. If the collection is unordered, we can always sort it first before applying Binary Search.
 Situation: Array => Sorted Array => Binary Search (or more generally, 2 pointers)
-*/
 
-// Examples:
+## Examples
+``` Golang
+package BinarySearch
+
+import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions/Medium"
 /*
 704. Binary Search: https://leetcode.com/problems/binary-search/description/
 
@@ -61,3 +61,4 @@ Analysis:
 func successfulPairs(spells []int, potions []int, success int64) []int {
 	return nil
 }
+```

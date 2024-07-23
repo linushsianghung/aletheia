@@ -50,26 +50,7 @@ func mergeTwoListsIteratively(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *lee
 }
 
 func mergeTwoListsIterativelyExercise(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
-	var dummy *leetcode.ListNode
-	runner := dummy
-	for l1 != nil && l2 != nil {
-		if l1.Val <= l2.Val {
-			runner.Next = l1
-			l1 = l1.Next
-		} else {
-			runner.Next = l2
-			l2 = l2.Next
-		}
-		runner = runner.Next
-	}
-
-	if l1 == nil {
-		runner.Next = l2
-	} else {
-		runner.Next = l1
-	}
-
-	return dummy.Next
+	return nil
 }
 
 func mergeTwoListsRecursively(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {

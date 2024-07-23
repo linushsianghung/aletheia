@@ -13,53 +13,53 @@ func permuteUnique(nums []int) [][]int {
 	// return result
 }
 
-func backtrackPermuteUnique(nums []int) [][]int {
+func backtrackPermuteUnique(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(nums, processor []int, used []bool)
-	localRecursiveFunc = func(nums, processor []int, used []bool) {
-		if len(processor) == len(nums) {
+	var localRecursiveFunc func(processor []int, used []bool)
+	localRecursiveFunc = func(processor []int, used []bool) {
+		if len(processor) == len(sources) {
 			result = append(result, processor)
 			return
 		}
 
-		for i := 0; i < len(nums); i++ {
+		for i := 0; i < len(sources); i++ {
 			// TODO: Cannot understand the meaning of this condition
-			if used[i] || (i > 0 && nums[i] == nums[i-1] && !used[i-1]) {
+			if used[i] || (i > 0 && sources[i] == sources[i-1] && !used[i-1]) {
 				continue
 			}
 
-			processor = append(processor, nums[i])
+			processor = append(processor, sources[i])
 			used[i] = true
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(nums, p, used)
+			localRecursiveFunc(p, used)
 			processor = processor[:len(processor)-1]
 			used[i] = false
 		}
 	}
 
-	localRecursiveFunc(nums, []int{}, make([]bool, len(nums)))
+	localRecursiveFunc([]int{}, make([]bool, len(nums)))
 	return result
 }
 
-func permuteUniqueHelper(result *[][]int, nums, processor []int, used []bool) {
-	if len(processor) == len(nums) {
+func permuteUniqueHelper(result *[][]int, sources, processor []int, used []bool) {
+	if len(processor) == len(sources) {
 		*result = append(*result, processor)
 		return
 	}
 
-	for i := 0; i < len(nums); i++ {
+	for i := 0; i < len(sources); i++ {
 		// TODO: Cannot understand the meaning of this condition
-		if used[i] || (i > 0 && nums[i] == nums[i-1] && !used[i-1]) {
+		if used[i] || (i > 0 && sources[i] == sources[i-1] && !used[i-1]) {
 			continue
 		}
 
-		processor = append(processor, nums[i])
+		processor = append(processor, sources[i])
 		used[i] = true
 		p := make([]int, len(processor))
 		copy(p, processor)
-		permuteUniqueHelper(result, nums, p, used)
+		permuteUniqueHelper(result, sources, p, used)
 		processor = processor[:len(processor)-1]
 		used[i] = false
 	}

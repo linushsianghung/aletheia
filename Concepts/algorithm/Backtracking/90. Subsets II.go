@@ -35,42 +35,42 @@ func subsetsWithDup(nums []int) [][]int {
 	// return result
 }
 
-func backtrackSubsetsWithDup(nums []int) [][]int {
+func backtrackSubsetsWithDup(sources []int) [][]int {
 	result := make([][]int, 0)
-	var localRecursiveFunc func(nums, processor []int, start int)
-	localRecursiveFunc = func(nums, processor []int, start int) {
+	var localRecursiveFunc func(processor []int, start int)
+	localRecursiveFunc = func(processor []int, start int) {
 		result = append(result, processor)
 
-		for i := start; i < len(nums); i++ {
+		for i := start; i < len(sources); i++ {
 			// Constraints: Under the same processed number, skip the element when this element is the same as the previous one
-			if i > start && nums[i] == nums[i-1] {
+			if i > start && sources[i] == sources[i-1] {
 				continue
 			}
 
-			processor = append(processor, nums[i])
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(nums, p, i+1)
+			localRecursiveFunc(p, i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{}, nums, 0)
+	localRecursiveFunc([]int{}, 0)
 	return result
 }
 
-func subsetsWithDupHelper(result *[][]int, nums, processor []int, start int) {
+func subsetsWithDupHelper(result *[][]int, sources, processor []int, start int) {
 	*result = append(*result, processor)
 
-	for i := start; i < len(nums); i++ {
-		if i > start && nums[i] == nums[i-1] {
+	for i := start; i < len(sources); i++ {
+		if i > start && sources[i] == sources[i-1] {
 			continue
 		}
 
-		processor = append(processor, nums[i])
+		processor = append(processor, sources[i])
 		p := make([]int, len(processor))
 		copy(p, processor)
-		subsetsWithDupHelper(result, nums, p, i+1)
+		subsetsWithDupHelper(result, sources, p, i+1)
 		processor = processor[:len(processor)-1]
 	}
 }

@@ -1,6 +1,8 @@
 package tree
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // https://leetcode.com/problems/maximum-depth-of-binary-tree/
 // Ref:

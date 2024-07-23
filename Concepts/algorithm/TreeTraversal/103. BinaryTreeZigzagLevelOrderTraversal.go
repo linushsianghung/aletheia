@@ -27,13 +27,14 @@ func zigzagLevelOrderIteratively(root *leetcode.TreeNode) [][]int {
 		nodes := make([]int, length)
 		for i := 0; i < length; i++ {
 			current := queue[0]
-			// Rather than using "level = append(level, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]
+			queue = queue[1:]
+
 			if level%2 == 0 {
 				nodes[i] = current.Val
 			} else {
+				// Put value from the end of the slice
 				nodes[len(nodes)-1-i] = current.Val
 			}
-			queue = queue[1:]
 			if current.Left != nil {
 				queue = append(queue, current.Left)
 			}

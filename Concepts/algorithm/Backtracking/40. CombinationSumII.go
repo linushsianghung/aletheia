@@ -49,22 +49,22 @@ func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 	return result
 }
 
-func combinationsSum2Helper(result *[][]int, candidates, processor []int, start, remain int) {
+func combinationsSum2Helper(result *[][]int, sources, processor []int, start, remain int) {
 	if remain < 0 {
 		return
 	} else if remain == 0 {
 		*result = append(*result, processor)
 	} else {
-		for i := start; i < len(candidates); i++ {
+		for i := start; i < len(sources); i++ {
 			// Constraints
-			if i > start && candidates[i] == candidates[i-1] {
+			if i > start && sources[i] == sources[i-1] {
 				continue
 			}
 
-			processor = append(processor, candidates[i])
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			combinationsSum2Helper(result, candidates, p, i+1, remain-candidates[i])
+			combinationsSum2Helper(result, sources, p, i+1, remain-sources[i])
 			processor = processor[:len(processor)-1]
 		}
 	}
