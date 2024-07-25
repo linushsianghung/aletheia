@@ -21,14 +21,14 @@ and check the difference between current number and target (target-n) already in
 calculation.
 */
 func mapImpl(nums []int, target int) []int {
-	pairs := make(map[int]int) // number, index
+	note := make(map[int]int) // number, index
 
 	for i, num := range nums {
-		if j, ok := pairs[target-num]; ok {
+		if j, ok := note[target-num]; ok {
 			return []int{i, j}
 		}
 
-		pairs[num] = i
+		note[num] = i
 	}
 
 	return nil

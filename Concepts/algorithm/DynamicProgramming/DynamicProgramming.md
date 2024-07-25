@@ -36,11 +36,29 @@ we need to go through a logical ordering of solving sub-problems.
 
 Asymptotically, both of these approaches guarantee the same time complexity, except in unusual circumstances where the top-down approach does not actually
 recurse to examine all possible sub-problems.
+```
 
-### How to Tackle Question:
-1. Start with backtracking (top-down)
-2. Add memoization table if possible (top-down)
-3. Convert the memoization table into DP table if possible (bottom-up)
-4. Go from DP table to DP array (or several) if possible (bottom-up)
-5. Keep an eye on greedy solutions along the way as they are almost always better
+![Fibonacci sequence with DP - Memorisation](./pics/fib.png)
+> Using the node value as the state and edge as the transition (value change)
+```Golang
+// Time Complexity: O(2^n) -> O(n)
+// Space Complexity: O(n) -> O(n): The space usage mainly comes from recursive call stack
+package DynamicProgramming
+
+func fib(n int) int {
+    return fibHelper(n, make(map[int]int))
+}
+
+func fibHelper(n int, memo map[int]int) {
+    if result, ok := memo[n]; ok {
+        return result
+    }
+    
+    if n <= 2 {
+        return 1
+    }
+
+    memo[n] = fib(n-1, memo) + fib(n-2, memo)
+    return memo[n]
+}
 ```

@@ -23,16 +23,16 @@ Complexity Analysis:
 - Space Complexity: O(N) to store such hashmap.
 */
 func intersectMap(nums1 []int, nums2 []int) []int {
-	pairs := make(map[int]int)
+	note := make(map[int]int)
 	for _, num := range nums1 {
-		pairs[num]++
+		note[num]++
 	}
 
 	result := make([]int, 0)
 	for _, num := range nums2 {
-		if i, ok := pairs[num]; ok && i > 0 {
+		if i, ok := note[num]; ok && i > 0 {
 			result = append(result, num)
-			pairs[num]--
+			note[num]--
 		}
 	}
 

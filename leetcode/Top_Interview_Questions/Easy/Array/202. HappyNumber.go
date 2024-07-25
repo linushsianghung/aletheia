@@ -20,7 +20,7 @@ Algorithm:
 Using a map to know if the digit has appeared before. If it is true, this will go in to an infinite cycle which means this number would not be happy
 */
 func isHappyMath(n int) bool {
-	pairs := make(map[int]bool)
+	note := make(map[int]bool)
 
 	for {
 		sum := compute(n)
@@ -28,11 +28,11 @@ func isHappyMath(n int) bool {
 		if sum == 1 {
 			return true
 		}
-		if ok := pairs[sum]; ok {
+		if _, ok := note[sum]; ok {
 			return false
 		}
 
-		pairs[sum] = true
+		note[sum] = true
 		n = sum
 	}
 }

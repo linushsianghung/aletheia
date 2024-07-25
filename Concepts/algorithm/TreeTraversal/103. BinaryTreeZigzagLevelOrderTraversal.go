@@ -23,9 +23,9 @@ func zigzagLevelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	level := 0
 
 	for len(queue) > 0 {
-		length := len(queue)
-		nodes := make([]int, length)
-		for i := 0; i < length; i++ {
+		levelSize := len(queue)
+		nodes := make([]int, levelSize)
+		for i := 0; i < levelSize; i++ {
 			current := queue[0]
 			queue = queue[1:]
 

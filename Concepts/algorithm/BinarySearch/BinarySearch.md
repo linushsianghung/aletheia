@@ -4,7 +4,6 @@ Ref:
 - NeetCode: https://www.youtube.com/playlist?list=PLot-Xpze53leNZQd0iINpD-MAhMOMzWvO
 - mycodeschool: https://www.youtube.com/playlist?list=PL2_aWCzGMAwL3ldWlrii6YeLszojgH77j
 
-
 ## Concepts
 Binary Search operates on a contiguous sequence with a specified left and right index. This is called the Search Space. Binary Search maintains the left, right,
 and middle indices of the search space and compares the search target or applies the search condition to the middle value of the collection; if the condition is

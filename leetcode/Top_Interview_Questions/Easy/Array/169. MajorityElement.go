@@ -44,12 +44,12 @@ Algorithm:
 The intuition behind using a hash map is to count the occurrences of each element in the array and then identify the element that occurs more than n/2 times.
 */
 func majorityElementHashMap(nums []int) int {
-	pairs := make(map[int]int)
+	note := make(map[int]int)
 
 	for _, num := range nums {
-		pairs[num]++
+		note[num]++
 
-		if pairs[num] > len(nums)/2 {
+		if note[num] > len(nums)/2 {
 			return num
 		}
 	}
