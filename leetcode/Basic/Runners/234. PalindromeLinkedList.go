@@ -41,22 +41,6 @@ func isPalindromeIteratively(head *leetcode.ListNode) bool {
 }
 
 func isPalindromeIterativelyExercise(head *leetcode.ListNode) bool {
-	slow, fast := head, head
-
-	for fast != nil && fast.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
-	}
-
-	runner := Basic.ReverseList(slow)
-
-	for runner != head && runner.Next != head.Next {
-		if runner.Val != head.Val {
-			return false
-		}
-		runner = runner.Next
-		head = head.Next
-	}
 
 	return false
 }

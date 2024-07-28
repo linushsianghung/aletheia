@@ -38,6 +38,7 @@ func isPalindromeImpl1(x int) bool {
 }
 
 func isPalindromeImpl1Exercise(x int) bool {
+
 	return false
 }
 

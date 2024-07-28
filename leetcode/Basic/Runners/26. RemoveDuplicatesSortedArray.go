@@ -11,8 +11,10 @@ The remaining elements of nums are not important as well as the size of nums.
 - Return k.
 
 Analysis:
-Sample1: {1, 2, 2, 6, 9, 10, 10, 14, 17, 19, 23, 23, 26}
-Sample2: {1, 1, 2, 6, 9, 10, 10, 14, 17, 19, 23, 23, 26}
+Sample1: {1, 2, 3, 5, 6, 9}
+Sample2: {1, 2, 2, 2, 6, 9}
+
+Keep slow index to point to the duplicated element
 */
 func RemoveDuplicates(nums []int) int {
 	slow := 0

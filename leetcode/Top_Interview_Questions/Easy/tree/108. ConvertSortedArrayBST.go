@@ -14,12 +14,6 @@ func sortedArrayToBST(nums []int) *leetcode.TreeNode {
 		return nil
 	}
 
-	// i := len(nums) / 2
-	// root := &leetcode.TreeNode{Val: nums[i]}
-	// root.Left = sortedArrayToBST(nums[:i])
-	// root.Right = sortedArrayToBST(nums[i + 1:])
-	// return root
-
 	return constructSubBST(nums, 0, len(nums)-1)
 }
 
@@ -34,6 +28,11 @@ func constructSubBST(nums []int, left, right int) *leetcode.TreeNode {
 	node.Right = constructSubBST(nums, mid+1, right)
 
 	return node
+}
+
+func constructSubBSTExercise(nums []int, left, right int) *leetcode.TreeNode {
+
+	return nil
 }
 
 // Related Topic: 704 - Binary Search https://leetcode.com/problems/binary-search/description/

@@ -11,10 +11,10 @@ nums are not important as well as the size of nums.
 - Return k.
 
 Analysis:
-Sample1: {1, 14, 17, 2, 23, 6, 10, 19, 26, 9}
-Sample2: {14, 1, 17, 2, 23, 6, 10, 19, 26, 9}
+Sample1: {1, 14, 17, 2, 23}  val = 17
+Sample2: {14, 1, 17, 2, 23}  val = 14
 
-Keep slow index to point to the target val and use not target val to rewrite this element
+Keep slow index to point to the target val and use later element to overwrite this element
 */
 func removeElement(nums []int, val int) int {
 	slow := 0

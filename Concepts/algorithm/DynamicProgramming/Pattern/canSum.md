@@ -2,16 +2,16 @@
 > Write a function "canSum(targetSum, numbers)" taht take in a targetSum and an array of numbers as arguments.
 > The function should return a boolean indicating whether or not it is possible to generate the targetSum using numbers from the array.
 > 
-> - You may use an element of the array as many time as needed.
-> - You may assume that all input numbers are nonnegative.
+> You may use an element of the array as many time as needed.
+> You may assume that all input numbers are nonnegative.
 >
 > Analysis:
-> - Time Complexity: O(n^m) => O(m * n)
+> - Time Complexity: O(n^m) => O(n * m)
 > - Space Complexity: O(m) => O(m)
 > where m is the targetSum and n is the length of the numbers
 
 ## Memorisation
-![Grid Traveler - Calculate](../pics/canSum.png)
+![Can Sum - Memorisation](../pics/canSum-Memorisation.png)
 ```Golang
 package Pattern
 
@@ -40,6 +40,11 @@ func canSumMemoHelper(targetSum, numbers int, memo map[int]bool) bool {
     }
 
     memo[targetSum] = false
+    return false
+}
+
+// Related Topic: 112. Path Sum: https://leetcode.com/problems/path-sum/
+func hasPathSum(root *TreeNode, targetSum int) bool {
     return false
 }
 ```

@@ -8,14 +8,14 @@
 > Analysis:
 > - Time Complexity: O(n^m * m) => (n * m^2)
 > > + Based on the tree structure, there should be exponential number of nodes which will be the branching factor to the height power
-> > + The additional operation of adding new element to the result should result in extra m time complexity in worst cases
+> > + The additional operation of adding new element to the result should cause extra m time complexity in worst cases
 > > + PS: Golang append(): The amortized cost is O(1), but the worst-case cost is O(N).
 > - Space Complexity: O(m) => O(m^2)
 > > The space usage originally comes from recursive call stack; after memorisation the usage mainly comes from memo object which includes keys and array
 > where m is the targetSum and n is the length of the numbers
 
 ## Memorisation
-![Grid Traveler - Calculate](../pics/howSum.png)
+![How Sum - Memorisation](../pics/howSum-Memorisation.png)
 ```Golang
 package Pattern
 

@@ -1,9 +1,9 @@
 # Binary Tree
 Ref:
-- Binary Tree Algorithms for Technical Interviews: https://www.youtube.com/watch?v=fAAZixBzIAI
-- Binary Tree Bootcamp: https://www.youtube.com/watch?v=BHB0B1jFKQc
-- NeetCode: https://www.youtube.com/playlist?list=PLot-Xpze53ldg4pN6PfzoJY7KsKcxF1jg
-- Binary Tree — Traversal: https://medium.com/coding-hot-pot/binary-tree-traversal-622caed2fad5
+- [Binary Tree Algorithms for Technical Interviews](https://www.youtube.com/watch?v=fAAZixBzIAI)
+- [Binary Tree Bootcamp](https://www.youtube.com/watch?v=BHB0B1jFKQc)
+- [NeetCode](https://www.youtube.com/playlist?list=PLot-Xpze53ldg4pN6PfzoJY7KsKcxF1jg)
+- [Binary Tree — Traversal](https://medium.com/coding-hot-pot/binary-tree-traversal-622caed2fad5)
 
 # Tree
 A tree is a frequently used data structure to simulate a hierarchical tree structure.

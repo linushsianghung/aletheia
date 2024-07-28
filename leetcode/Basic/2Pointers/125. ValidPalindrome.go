@@ -22,6 +22,7 @@ func isPalindrome(s string) bool {
 	r := []rune(s)
 
 	for left < right {
+		// In case of there are conti... non-digit and non-letter characters, it has to use if-else if to loop through all of them.
 		if !unicode.IsLetter(r[left]) && !unicode.IsDigit(r[left]) {
 			left++
 		} else if !unicode.IsLetter(r[right]) && !unicode.IsDigit(r[right]) {

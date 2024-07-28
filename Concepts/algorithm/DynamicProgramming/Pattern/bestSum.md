@@ -12,7 +12,7 @@
 > where m is the targetSum and n is the length of the numbers
 
 ## Memorisation
-![Grid Traveler - Calculate](../pics/bestSum.png)
+![Best Sum - Memorisation](../pics/bestSum-Memorisation.png)
 ```Golang
 package Pattern
 
