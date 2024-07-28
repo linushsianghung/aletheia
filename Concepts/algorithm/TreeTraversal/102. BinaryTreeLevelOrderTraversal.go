@@ -41,11 +41,33 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 }
 
 // Related Topic: 116. Populating Next Right Pointers in Each Node: https://leetcode.com/problems/populating-next-right-pointers-in-each-node
-func connect(root *leetcode.ListNode) *leetcode.ListNode {
+func connect(root *leetcode.TreeNode) *leetcode.TreeNode {
 	if root == nil {
 		return root
 	}
 
+	queue := []*leetcode.TreeNode{root}
+	for len(queue) > 0 {
+		levelSize := len(queue)
+
+		var previous *leetcode.TreeNode
+		for i := 0; i < levelSize; i++ {
+			current := queue[0]
+			queue = queue[1:]
+
+			if previous != nil {
+				previous.Next = current
+			}
+			previous = current
+
+			if current.Left != nil {
+				queue = append(queue, current.Left)
+			}
+			if current.Right != nil {
+				queue = append(queue, current.Right)
+			}
+		}
+	}
 	return root
 }
 
