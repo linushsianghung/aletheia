@@ -12,8 +12,8 @@ import (
 Given the root of a binary tree, determine if it is a valid binary search tree (BST).
 
 A valid BST is defined as follows:
-- The left subtree of a node contains only nodes with keys less than the node's key.
-- The right subtree of a node contains only nodes with keys greater than the node's key.
+- The left subtree of a current contains only currents with keys less than the current's key.
+- The right subtree of a current contains only currents with keys greater than the current's key.
 - Both the left and right subtrees must also be binary search trees.
 */
 func isValidBST(root *leetcode.TreeNode) bool {
@@ -36,19 +36,21 @@ func isValidInOrderTraversal(root *leetcode.TreeNode) bool {
 
 	prev := math.MinInt
 	stack := make([]*leetcode.TreeNode, 0)
+	current := root
 
-	for root != nil || len(stack) > 0 {
-		if root != nil {
-			stack = append(stack, root)
-			root = root.Left
+	for current != nil || len(stack) > 0 {
+		if current != nil {
+			stack = append(stack, current)
+			current = current.Left
 		} else {
-			node := stack[len(stack)-1]
-			if node.Val <= prev {
+			current = stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+
+			if current.Val <= prev {
 				return false
 			}
-			prev = node.Val
-			stack = stack[:len(stack)-1]
-			root = node.Right
+			prev = current.Val
+			root = current.Right
 		}
 	}
 

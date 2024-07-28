@@ -1,8 +1,12 @@
 package Medium
 
-import "github.com/linushung/aletheia/leetcode/TopInterview150"
+import (
+	"fmt"
 
-// https://leetcode.com/problems/unique-paths/description/
+	"github.com/linushung/aletheia/leetcode/TopInterview150"
+)
+
+// UniquePaths https://leetcode.com/problems/unique-paths/description/
 // Ref: https://leetcode.com/problems/unique-paths/solutions/22954/c-dp/
 /*
 There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]).
@@ -11,11 +15,27 @@ Given the two integers m and n, return the number of possible unique paths that 
 
 The test cases are generated so that the answer will be less than or equal to 2 * 109.
 */
-func uniquePaths(m int, n int) int {
-	// return uniquePathsBF(m, n)
-	// return uniquePathsRecursively(m, n)
+func UniquePaths(m int, n int) int {
+
+	// return uniquePathsMemorisation(m, n)
 	// return uniquePaths2Slice(m, n)
 	return uniquePathsSmartSlice(m, n)
+}
+
+func UniquePathsMemorisation(m, n int, memo map[string]int) int {
+	key := fmt.Sprint(m, ',', n)
+	if value, ok := memo[key]; ok {
+		return value
+	}
+	if m == 1 && n == 1 {
+		return 1
+	}
+	if m == 0 || n == 0 {
+		return 0
+	}
+
+	memo[key] = UniquePathsMemorisation(m-1, n, memo) + UniquePathsMemorisation(m, n-1, memo)
+	return memo[key]
 }
 
 /*
@@ -65,14 +85,6 @@ func uniquePaths2Slice(m int, n int) int {
 	}
 
 	return pre[n-1]
-}
-
-// Result in Time Limit Exceeded
-func uniquePathsRecursively(m int, n int) int {
-	if m == 1 || n == 1 {
-		return 1
-	}
-	return uniquePathsRecursively(m-1, n) + uniquePathsRecursively(m, n-1)
 }
 
 func uniquePathsBF(m int, n int) int {
