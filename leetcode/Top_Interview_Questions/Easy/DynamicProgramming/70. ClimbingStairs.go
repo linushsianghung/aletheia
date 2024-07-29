@@ -1,4 +1,4 @@
-package Dynamic_Programming
+package DynamicProgramming
 
 // https://leetcode.com/problems/climbing-stairs/
 // Ref: https://leetcode.com/problems/climbing-stairs/solutions/25299/basically-it-s-a-fibonacci/

@@ -1,6 +1,8 @@
 package Backtracking
 
-import "slices"
+import (
+	"slices"
+)
 
 // Permute https://leetcode.com/problems/permutations/description/
 /*
@@ -39,6 +41,11 @@ func backtrackPermute(sources []int) [][]int {
 
 	localRecursiveFunc([]int{})
 	return result
+}
+
+func backtrackPermuteExercise(sources []int) [][]int {
+
+	return nil
 }
 
 func permuteHelper(result *[][]int, sources, processor []int) {

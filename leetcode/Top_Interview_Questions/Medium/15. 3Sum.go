@@ -62,6 +62,11 @@ func threeSumSort(nums []int) [][]int {
 	return result
 }
 
+func threeSumSortExercise(nums []int) [][]int {
+
+	return nil
+}
+
 func threeSumExhaustion(nums []int) [][]int {
 	result := make([][]int, 0)
 

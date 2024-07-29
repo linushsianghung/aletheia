@@ -42,7 +42,7 @@ func backtrackSubsetsWithDup(sources []int) [][]int {
 		result = append(result, processor)
 
 		for i := start; i < len(sources); i++ {
-			// Constraints: Under the same processed number, skip the element when this element is the same as the previous one
+			// Constraints: Under the same processed (previous level) number, skip the element when this element is the same as the previous one
 			if i > start && sources[i] == sources[i-1] {
 				continue
 			}

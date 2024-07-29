@@ -1,6 +1,6 @@
 package Backtracking
 
-import "slices"
+import "sort"
 
 // https://leetcode.com/problems/combination-sum-ii/description/
 /*
@@ -11,7 +11,8 @@ Each number in candidates may only be used once in the combination.
 Note: The solution set must not contain duplicate combinations.
 */
 func combinationSum2(candidates []int, target int) [][]int {
-	slices.Sort(candidates)
+	sort.Ints(candidates)
+	// slices.Sort(candidates)
 	return backtrackCombinationsSum2(candidates, target)
 
 	// result := make([][]int, 0)
@@ -26,26 +27,27 @@ func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 	localRecursiveFunc = func(processor []int, remain, start int) {
 		if remain < 0 {
 			return
-		} else if remain == 0 {
+		}
+		if remain == 0 {
 			result = append(result, processor)
-		} else {
-			for i := start; i < len(candidates); i++ {
-				// Constraints
-				if i > start && candidates[i] == candidates[i-1] {
-					continue
-				}
+			return
+		}
 
-				processor = append(processor, candidates[i])
-				p := make([]int, len(processor))
-				copy(p, processor)
-				localRecursiveFunc(p, remain-candidates[i], i+1)
-				processor = processor[:len(processor)-1]
+		for i := start; i < len(candidates); i++ {
+			// Constraints: Under the same processed (previous level) number, skip the element when this element is the same as the previous one
+			if i > start && candidates[i] == candidates[i-1] {
+				continue
 			}
+
+			processor = append(processor, candidates[i])
+			p := make([]int, len(processor))
+			copy(p, processor)
+			localRecursiveFunc(p, remain-candidates[i], i+1)
+			processor = processor[:len(processor)-1]
 		}
 	}
 
 	localRecursiveFunc([]int{}, target, 0)
-
 	return result
 }
 

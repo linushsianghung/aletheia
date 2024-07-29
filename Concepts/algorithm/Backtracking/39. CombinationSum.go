@@ -26,6 +26,33 @@ func backtrackCombinationsSum(candidates []int, target int) [][]int {
 		if remain < 0 {
 			return
 		}
+		if remain == 0 {
+			result = append(result, processor)
+			return
+		}
+
+		for i := start; i < len(candidates); i++ {
+			processor = append(processor, candidates[i])
+			p := make([]int, len(processor))
+			copy(p, processor)
+			// the "start" is still i because it's allowed to use the same element as many as we want
+			localRecursiveFunc(p, remain-candidates[i], i)
+			processor = processor[:len(processor)-1]
+		}
+	}
+
+	localRecursiveFunc([]int{}, target, 0)
+	return result
+}
+
+func backtrackCombinationsSumExercise(candidates []int, target int) [][]int {
+	result := make([][]int, 0)
+
+	var localFunc func(processor []int, remain, start int)
+	localFunc = func(processor []int, remain, start int) {
+		if remain < 0 {
+			return
+		}
 
 		if remain == 0 {
 			result = append(result, processor)
@@ -34,15 +61,15 @@ func backtrackCombinationsSum(candidates []int, target int) [][]int {
 				processor = append(processor, candidates[i])
 				p := make([]int, len(processor))
 				copy(p, processor)
-				// the "start" is still i because it's allowed to use the same element as many as we want
-				localRecursiveFunc(p, remain-candidates[i], i)
+				localFunc(p, remain-candidates[i], i)
 				processor = processor[:len(processor)-1]
 			}
 		}
+
 	}
 
-	localRecursiveFunc([]int{}, target, 0)
-	return result
+	localFunc(make([]int, 0), target, 0)
+	return nil
 }
 
 func combinationsSumHelper(result *[][]int, sources, processor []int, remain, start int) {

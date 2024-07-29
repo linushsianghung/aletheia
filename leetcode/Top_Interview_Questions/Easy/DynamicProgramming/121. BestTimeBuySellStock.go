@@ -1,4 +1,4 @@
-package Dynamic_Programming
+package DynamicProgramming
 
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description
 /*

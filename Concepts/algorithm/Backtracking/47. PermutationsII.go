@@ -1,11 +1,11 @@
 package Backtracking
 
-import "slices"
+import "sort"
 
 // https://leetcode.com/problems/permutations-ii/description/
 /* Given a collection of numbers, nums, that might contain duplicates, return all possible unique permutations in any order. */
 func permuteUnique(nums []int) [][]int {
-	slices.Sort(nums)
+	sort.Ints(nums)
 	return backtrackPermuteUnique(nums)
 
 	// result := make([][]int, 0)
@@ -24,8 +24,9 @@ func backtrackPermuteUnique(sources []int) [][]int {
 		}
 
 		for i := 0; i < len(sources); i++ {
-			// TODO: Cannot understand the meaning of this condition
-			if used[i] || (i > 0 && sources[i] == sources[i-1] && !used[i-1]) {
+			// Constraints: Skip the current processed number or
+			// under the same processed (previous level) number, skip the element when this element is the same as the previous one which is already used???
+			if used[i] || (i > 0 && sources[i] == sources[i-1] && used[i-1]) {
 				continue
 			}
 

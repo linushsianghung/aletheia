@@ -5,8 +5,8 @@ import "github.com/linushung/aletheia/leetcode"
 // https://leetcode.com/problems/remove-nth-node-from-end-of-list/description
 /* Given the head of a linked list, remove the nth node from the end of the list and return its head. */
 func removeNthFromEnd(head *leetcode.ListNode, n int) *leetcode.ListNode {
-	dummy := &leetcode.ListNode{Next: head}
 	// 2 pointers have to start from the dummy node in case of removing the first node
+	dummy := &leetcode.ListNode{Next: head}
 	slow, fast := dummy, dummy
 
 	// First, move fast so that the gap between slow and fast becomes n
