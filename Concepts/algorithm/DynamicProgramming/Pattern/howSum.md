@@ -19,7 +19,7 @@
 ```Golang
 package Pattern
 
-func howSum(targetSum, numbers int) []int] {
+func howSum(targetSum, numbers int) []int {
     return howSumMemoHelper(targetSum, numbers, make(map[int][]int))
 }
 
@@ -51,3 +51,30 @@ func howSumMemoHelper(targetSum, numbers int, memo map[int][]int) []int {
 ```
 
 ## Tabulation
+![How Sum - Tabulation](../pics/howSum-Tabulation.png)
+> Analysis:
+> - Time Complexity: O(m * n * m)
+> - Space Complexity: O(m^2)
+> where m is the targetSum and n is the length of the numbers
+```Golang
+package Pattern
+
+func howSum(targetSum, numbers int) []int {
+    table := make([][]int, targetSum+1)
+
+    table[0] = make([]int, 0)
+    for i := 0; i < targetSum; i++ {
+        if table[i] != nil {
+            for _, num := range numbers {
+                if i+num <= targetSum {
+                    p := make([]int, len(table[i])+1)
+                    copy(p, table[i])
+                    table[i+num] = append(p, num)
+                } 
+            }
+        }
+    }
+
+    return table[targetSum]
+}
+```

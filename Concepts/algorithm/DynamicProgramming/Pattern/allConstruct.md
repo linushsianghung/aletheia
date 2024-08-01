@@ -4,6 +4,8 @@
 > 
 > You may reuse elements of 'wordBank' as many time as needed.
 >
+> Related Topic: 113. Path Sum II: https://leetcode.com/problems/path-sum-ii/
+>
 > Analysis:
 > - Time Complexity: O(n^m)
 > - Space Complexity: O(m)
@@ -18,14 +20,29 @@ func allConstruct(target, wordBank string) [][]string {
     return allConstructHelper(target, wordBank, make(map[string][][]string))
 }
 
-func allConstructHelper(target, wordBank string, memo map[string][][]string) [][]string {
-
-    return nil
-}
-
-// Related Topic: 113. Path Sum II: https://leetcode.com/problems/path-sum-ii/
-func pathSum(root *TreeNode, targetSum int) [][]int {
+func allConstructHelper(target string, wordBank []string, memo map[string][][]string) [][]string {
+    if value, ok := memo[target] {
+        return value
+    }
     
-}
+    if len(target) == 0 {
+        return make([][]string, 0)
+    }
 
+    result := make([][]string, 0)
+    for _, word := range wordBank {
+        if strings.HasPrefix(target, word) {
+            target = target[len(word):]
+            elements = allConstructHelper(target, wordBank, memo)
+            for _, element := range elements {
+                element = append(element, word)
+            }
+
+            result = append(result, element...)
+        }
+    }
+
+    memo[target] = result
+    return result
+}
 ```

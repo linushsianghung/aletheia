@@ -4,6 +4,8 @@
 > 
 > You may reuse elements of 'wordBank' as many time as needed.
 >
+> Related Topic: 437. Path Sum III: https://leetcode.com/problems/path-sum-iii/
+>
 > Analysis:
 > - Time Complexity: O(n^m) => O(n * m)
 > - Space Complexity: O(m) => O(m)
@@ -37,10 +39,4 @@ func countConstructHelper(target, wordBank string, memo map[string]int) int {
     memo[target] = count
     return count
 }
-
-// Related Topic: 437. Path Sum III: https://leetcode.com/problems/path-sum-iii/
-func pathSum(root *TreeNode, targetSum int) int {
-    return 0
-}
-
 ```

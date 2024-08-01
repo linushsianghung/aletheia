@@ -31,7 +31,7 @@ func canConstructHelper(target, wordBank string, memo map[string]bool) bool {
 
     for _, word := wordBank {
         if strings.HasPrefix(target, word) {
-            if canConstruct(target[len(word:)], wordBank, memo) {
+            if canConstruct(target[len(word):], wordBank, memo) {
                 memo[target] = true
                 return true
             }

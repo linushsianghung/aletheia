@@ -38,11 +38,12 @@ Asymptotically, both of these approaches guarantee the same time complexity, exc
 recurse to examine all possible sub-problems.
 ```
 
-![Fibonacci sequence with DP - Memorisation](./pics/fib.png)
+![Fibonacci sequence with DP - Memorisation](./pics/fib-Memorisation.png)
 > Using the node value as the state and edge as the transition (value change)
+> Analysis:
+> - Time Complexity: O(2^n) -> O(n)
+> - Space Complexity: O(n) -> O(n): The space usage mainly comes from recursive call stack
 ```Golang
-// Time Complexity: O(2^n) -> O(n)
-// Space Complexity: O(n) -> O(n): The space usage mainly comes from recursive call stack
 package DynamicProgramming
 
 func fib(n int) int {
@@ -62,3 +63,31 @@ func fibHelper(n int, memo map[int]int) {
     return memo[n]
 }
 ```
+![Fibonacci sequence with DP - Tabulation](./pics/fib-Tabulation.png)
+> Analysis:
+> - Time Complexity: O(n)
+> - Space Complexity: O(n)
+```Golang
+package DynamicProgramming
+
+func fib(n int) int {
+    // Create 1 elment longer array for easier mapping
+    table := make([]int, n+1)
+
+    // Initialise the default value and seed the base value (depending on the problem) to the table
+    table[0] = 0   // It's actually already set by default
+    table[1] = 1
+
+    for i:= 0; i < n; i++ {
+        if i+1 <=n {
+            table[i+1] += table[i]
+        }
+        if i+2 <=n {
+            table[i+2] += table[i]
+        }
+    }
+
+    return table[n]
+}
+```
+

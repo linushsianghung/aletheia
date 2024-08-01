@@ -5,13 +5,15 @@
 > You may use an element of the array as many time as needed.
 > You may assume that all input numbers are nonnegative.
 >
-> Analysis:
-> - Time Complexity: O(n^m) => O(n * m)
-> - Space Complexity: O(m) => O(m)
-> where m is the targetSum and n is the length of the numbers
+> Related Topic: 112. Path Sum: https://leetcode.com/problems/path-sum/
+
 
 ## Memorisation
 ![Can Sum - Memorisation](../pics/canSum-Memorisation.png)
+> Analysis:
+> - Time Complexity: O(n^m) => O(m * n)
+> - Space Complexity: O(m) => O(m)
+> where m is the targetSum and n is the length of the numbers
 ```Golang
 package Pattern
 
@@ -42,11 +44,31 @@ func canSumMemoHelper(targetSum, numbers int, memo map[int]bool) bool {
     memo[targetSum] = false
     return false
 }
-
-// Related Topic: 112. Path Sum: https://leetcode.com/problems/path-sum/
-func hasPathSum(root *TreeNode, targetSum int) bool {
-    return false
-}
 ```
 
 ## Tebulation
+![Can Sum - Tabulation](../pics/canSum-Tabulation.png)
+> Analysis:
+> - Time Complexity: O(m * n)
+> - Space Complexity: O(m * n)
+> where m is the targetSum and n is the length of the numbers
+```Golang
+package Pattern
+
+func canSum(targetSum, numbers int) bool {
+    table := make([]bool, targetSum+1)
+
+    table[0] = false
+    for i := 0; i < targetSum; i++ {
+        if table[i] {
+            for _, num := range numbers {
+                if i+num <= targetSum {
+                    table[i+num] = true
+                } 
+            }
+        }
+    }
+
+    return table[targetSum]
+}
+```

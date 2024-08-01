@@ -1,6 +1,8 @@
 package TreeTraversal
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // LevelOrder https://leetcode.com/problems/binary-tree-level-order-traversal/description/
 /* Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level). */
@@ -25,7 +27,7 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 		for i := 0; i < levelSize; i++ {
 			current := queue[0]
 			queue = queue[1:]
-			// Rather than using "level = append(level, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]
+			// Rather than using "nodes = append(nodes, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]
 			nodes[i] = current.Val
 			if current.Left != nil {
 				queue = append(queue, current.Left)
@@ -38,6 +40,11 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	}
 
 	return result
+}
+
+func levelOrderIterativelyExercise(root *leetcode.TreeNode) [][]int {
+
+	return nil
 }
 
 // Related Topic: 116. Populating Next Right Pointers in Each Node: https://leetcode.com/problems/populating-next-right-pointers-in-each-node

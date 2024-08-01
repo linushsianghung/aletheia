@@ -37,21 +37,32 @@ func binarySearchLeft(nums []int, target int) int {
 	return idx
 }
 
+func binarySearchLeftExercise(nums []int, target int) int {
+
+	return 0
+}
+
 func binarySearchRight(nums []int, target int) int {
 	left, right, idx := 0, len(nums)-1, -1
 
 	for left <= right {
 		mid := left + (right-left)/2
-		if nums[mid] <= target {
+		if nums[mid] < target {
 			left = mid + 1
-		} else {
+		} else if nums[mid] > target {
 			right = mid - 1
-		}
-
-		if nums[mid] == target {
+		} else if nums[mid] < nums[mid+1] {
+			return mid
+		} else {
 			idx = mid
+			left = mid + 1
 		}
 	}
 
 	return idx
+}
+
+func binarySearchRightExercise(nums []int, target int) int {
+
+	return 0
 }
