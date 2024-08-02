@@ -4,7 +4,9 @@
 > If there is no combination that add up to the targetSum, then return null.
 > 
 > If there are multiple combinations possible, you may return any single one.
->
+
+## Memorisation
+![How Sum - Memorisation](../pics/howSum-Memorisation.png)
 > Analysis:
 > - Time Complexity: O(n^m * m) => (n * m^2)
 > > + Based on the tree structure, there should be exponential number of nodes which will be the branching factor to the height power
@@ -13,9 +15,6 @@
 > - Space Complexity: O(m) => O(m^2)
 > > The space usage originally comes from recursive call stack; after memorisation the usage mainly comes from memo object which includes keys and array
 > where m is the targetSum and n is the length of the numbers
-
-## Memorisation
-![How Sum - Memorisation](../pics/howSum-Memorisation.png)
 ```Golang
 package Pattern
 

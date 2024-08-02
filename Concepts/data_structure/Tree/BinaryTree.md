@@ -5,17 +5,14 @@ Ref:
 - [NeetCode](https://www.youtube.com/playlist?list=PLot-Xpze53ldg4pN6PfzoJY7KsKcxF1jg)
 - [Binary Tree — Traversal](https://medium.com/coding-hot-pot/binary-tree-traversal-622caed2fad5)
 
-# Tree
+## Definition
 A tree is a frequently used data structure to simulate a hierarchical tree structure.
 Each node of the tree will have a root value and a list of references to other nodes which are called child nodes. From the graph view,
 a tree can also be defined as a directed acyclic graph which has `N` nodes and `N-1` edges.
 > - There is only one root
 > - There is only one unique path between two nodes
 
-## Tree Type:
-### Binary Tree
-A Binary Tree is one of the most typical tree structures. As the name suggests, a binary tree is a tree data structure in which
-`Each node has at most two children, which are referred to as the left child and the right child.`
+**Binary Tree** is one of the most typical tree structures. As the name suggests, a binary tree is a data structure in which `Each node has at most two children, which are referred to as the left child and the right child.`
 ```Golang
 type TreeNode struct {
 	Val		int
@@ -24,9 +21,7 @@ type TreeNode struct {
 }
 ```
 
-### Binary Search Tree
-A Binary Search Tree is a special form of a binary tree.
-The value in each node must be greater than (or equal to) any values in its left subtree but less than (or equal to) any values in its right subtree.
+**Binary Search Tree** is a special form of a binary tree. The value in each node must be greater than (or equal to) any values in its left subtree but less than (or equal to) any values in its right subtree.
 
 ## Tree Traversal:
 ### Breadth First Search - think of Queue:

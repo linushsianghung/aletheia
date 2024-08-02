@@ -8,7 +8,7 @@
 ![Best Sum - Memorisation](../pics/bestSum-Memorisation.png)
 > Analysis:
 > - Time Complexity: O(n^m * m) => (n * m^2)
-> - Space Complexity: O(m^2) => O(m^2)
+> - Space Complexity: O(m^2)
 > > - In additional to call stacks, every recursive call will have its own bestResult slice which will result in O(m) space complexity
 > > - After memorisation the usage mainly comes from memo object which includes keys and and array
 > where m is the targetSum and n is the length of the numbers

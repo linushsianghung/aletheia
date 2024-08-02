@@ -5,14 +5,13 @@
 > You may reuse elements of 'wordBank' as many time as needed.
 >
 > Related Topic: 437. Path Sum III: https://leetcode.com/problems/path-sum-iii/
->
-> Analysis:
-> - Time Complexity: O(n^m) => O(n * m)
-> - Space Complexity: O(m) => O(m)
-> where m & n is the length of the target and wordBank
 
 ## Memorisation
 ![Count Construct - Memorisation](../pics/countConstruct-Memorisation.png)
+> Analysis:
+> - Time Complexity: O(n^m) => O(n * m)
+> - Space Complexity: O(m)
+> where m & n is the length of the target and wordBank
 ```Golang
 package Pattern
 
@@ -38,5 +37,31 @@ func countConstructHelper(target, wordBank string, memo map[string]int) int {
 
     memo[target] = count
     return count
+}
+```
+
+## Tabulation
+![Count Construct - Tabulation](../pics/countConstruct-Tabulation.png)
+> Analysis:
+> - Time Complexity: O(m^2*n) => O(n * m)
+> - Space Complexity: O(m)
+> where m & n is the length of the target and wordBank
+```Golang
+package Pattern
+
+func countConstruct(target, wordBank string) int {
+    table := make([]int, len(target)+1)
+    talbe[0] = 1
+
+    for i := 0; i < len(table); i++ {
+        current := target[i:]
+        for _, word := range wordBank {
+            if strings.HasPrefix(current, word) {
+                table[i + len(word)] += table[i]
+            }
+        }
+    }
+
+    return table[len(target)]
 }
 ```

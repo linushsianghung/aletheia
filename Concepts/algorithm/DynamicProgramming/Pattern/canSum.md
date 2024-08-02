@@ -12,7 +12,7 @@
 ![Can Sum - Memorisation](../pics/canSum-Memorisation.png)
 > Analysis:
 > - Time Complexity: O(n^m) => O(m * n)
-> - Space Complexity: O(m) => O(m)
+> - Space Complexity: O(m)
 > where m is the targetSum and n is the length of the numbers
 ```Golang
 package Pattern
