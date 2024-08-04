@@ -17,16 +17,19 @@ A valid BST is defined as follows:
 - Both the left and right subtrees must also be binary search trees.
 */
 func isValidBST(root *leetcode.TreeNode) bool {
-	// return isValidRecursively(root, math.MinInt, math.MaxInt)
-	return isValidInOrderTraversal(root)
+	return isValidRecursively(root, math.MinInt, math.MaxInt)
+	//return isValidInOrderTraversal(root)
 }
 
 func isValidRecursively(root *leetcode.TreeNode, min, max int) bool {
 	if root == nil {
 		return true
 	}
+	if root.Val >= max || root.Val <= min {
+		return false
+	}
 
-	return root.Val > min && root.Val < max && isValidRecursively(root.Left, min, root.Val) && isValidRecursively(root.Right, root.Val, max)
+	return isValidRecursively(root.Left, root.Val, min) && isValidRecursively(root.Right, max, root.Val)
 }
 
 func isValidInOrderTraversal(root *leetcode.TreeNode) bool {

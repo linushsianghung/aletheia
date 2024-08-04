@@ -18,7 +18,7 @@ func combinationSum(candidates []int, target int) [][]int {
 	// return result
 }
 
-func backtrackCombinationsSum(candidates []int, target int) [][]int {
+func backtrackCombinationsSum(source []int, target int) [][]int {
 	result := make([][]int, 0)
 
 	var localRecursiveFunc func(processor []int, remain, start int)
@@ -31,12 +31,11 @@ func backtrackCombinationsSum(candidates []int, target int) [][]int {
 			return
 		}
 
-		for i := start; i < len(candidates); i++ {
-			processor = append(processor, candidates[i])
+		for i := start; i < len(source); i++ {
+			processor = append(processor, source[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			// the "start" is still i because it's allowed to use the same element as many as we want
-			localRecursiveFunc(p, remain-candidates[i], i)
+			localRecursiveFunc(p, remain-source[i], i)
 			processor = processor[:len(processor)-1]
 		}
 	}

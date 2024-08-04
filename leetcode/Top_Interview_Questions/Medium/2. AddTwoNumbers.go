@@ -9,7 +9,7 @@ and each of their nodes contains a single digit. Add the two numbers and return 
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 */
-
+// Time Complexity: O(n)
 func addTwoNumbers(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
 	if l1 == nil {
 		return l2
@@ -18,35 +18,31 @@ func addTwoNumbers(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListN
 		return l1
 	}
 
-	dummy := &leetcode.ListNode{}
-	runner := dummy
-	curry := 0
+	head := &leetcode.ListNode{}
+	runner := head
+	carry := 0
 
-	for l1 != nil || l2 != nil || curry != 0 {
+	for l1 != nil || l2 != nil || carry != 0 {
 		d1, d2 := 0, 0
-		if l1 == nil {
-			d1 = 0
-		} else {
+
+		if l1 != nil {
 			d1 = l1.Val
 			l1 = l1.Next
 		}
-
-		if l2 == nil {
-			d2 = 0
-		} else {
+		if l2 != nil {
 			d2 = l2.Val
 			l2 = l2.Next
 		}
 
-		sum := d1 + d2 + curry
+		sum := d1 + d2 + carry
 		digit := sum % 10
-		curry = sum / 10
+		carry = sum / 10
 
 		runner.Next = &leetcode.ListNode{Val: digit}
 		runner = runner.Next
 	}
 
-	return dummy.Next
+	return head.Next
 }
 
 func addTwoNumbersExercise(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {

@@ -11,7 +11,7 @@ Open brackets must be closed in the correct order.
 Every close bracket has a corresponding open bracket of the same type.
 */
 func IsValid(s string) bool {
-	stack := make([]rune, 0, len(s))
+	stack := make([]rune, 0)
 
 	for _, c := range s {
 		switch c {

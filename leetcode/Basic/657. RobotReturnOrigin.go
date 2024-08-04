@@ -33,12 +33,12 @@ func judgeCircle(moves string) bool {
 }
 
 func judgeCircleHashMap(moves string) bool {
-	move := make(map[rune]int)
-	for _, m := range moves {
-		move[m]++
+	note := make(map[rune]int)
+	for _, c := range moves {
+		note[c]++
 	}
 
-	if move['R'] != move['L'] || move['U'] != move['D'] {
+	if note['U'] != note['D'] || note['R'] != note['L'] {
 		return false
 	}
 	return true

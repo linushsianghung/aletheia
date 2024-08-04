@@ -15,7 +15,7 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 		The basic idea is "Pointer1 = Pointer2" which means that: Make Pointer1 points to the Node of Pointer2
 	*/
 	var previous *leetcode.ListNode
-	// Depending on the problem whihc might need to keep the pointer of the original head
+	// Depending on the problem which might need to keep the pointer of the original head
 	current := head
 	for current != nil {
 		temp := current.Next

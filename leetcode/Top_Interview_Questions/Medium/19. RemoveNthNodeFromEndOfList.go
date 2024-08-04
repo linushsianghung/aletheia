@@ -22,7 +22,6 @@ func removeNthFromEnd(head *leetcode.ListNode, n int) *leetcode.ListNode {
 
 	// Skip the target node
 	slow.Next = slow.Next.Next
-
 	return dummy.Next
 }
 

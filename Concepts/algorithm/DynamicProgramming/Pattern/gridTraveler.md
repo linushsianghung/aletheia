@@ -14,6 +14,8 @@
 ```Golang
 package Pattern
 
+import "fmt"
+
 func gridTraveler(m, n int) int {
 	return gridTravelerMemoHelper(m, n, make(map[string]int))
 }
