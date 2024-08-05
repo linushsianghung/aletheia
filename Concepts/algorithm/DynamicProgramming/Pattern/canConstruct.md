@@ -53,14 +53,16 @@ func canConstructHelper(target, wordBank string, memo map[string]bool) bool {
 package Pattern
 
 func canConstruct(target, wordBank string) bool {
-    table := make([]int, len(target)+1)
-    talbe[0] = 1
+    table := make([]bool, len(target)+1)
+    talbe[0] = true
 
     for i := 0; i < len(table); i++ {
-        current := target[i:]
-        for _, word := range wordBank {
-            if strings.HasPrefix(current, word) {
-                table[i + len(word)] = true
+        if table[i] {
+            current := target[i:]
+            for _, word := range wordBank {
+                if strings.HasPrefix(current, word) {
+                    table[i + len(word)] = true
+                }
             }
         }
     }

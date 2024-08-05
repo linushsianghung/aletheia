@@ -23,8 +23,8 @@ func combinationSum2(candidates []int, target int) [][]int {
 func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int, remain, start int)
-	localRecursiveFunc = func(processor []int, remain, start int) {
+	var localRecursiveFunc func(processor []int, start, remain int)
+	localRecursiveFunc = func(processor []int, start, remain int) {
 		if remain < 0 {
 			return
 		}
