@@ -34,7 +34,7 @@ func howSumMemoHelper(targetSum, numbers int, memo map[int][]int) []int {
         return []int{}
     }
 
-    for _, num := range numger {
+    for _, num := range numbers {
         remainder := targetSum - num
         result := howSumMemoHelper(remainder, numbers, memo)
         if result != nil {

@@ -2,6 +2,7 @@ package tree
 
 import (
 	"github.com/linushung/aletheia/leetcode"
+	"github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
 )
 
 // https://leetcode.com/problems/maximum-depth-of-binary-tree/
@@ -34,7 +35,7 @@ func maxDepthDFSRecursively(root *leetcode.TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	return 1 + max(maxDepthDFSRecursively(root.Left), maxDepthDFSRecursively(root.Right))
+	return 1 + Top_Interview_Questions.Max(maxDepthDFSRecursively(root.Left), maxDepthDFSRecursively(root.Right))
 }
 
 func maxDepthDFSRecursivelyExercise(root *leetcode.TreeNode) int {
@@ -69,11 +70,4 @@ func maxDepthBFSIteratively(root *leetcode.TreeNode) int {
 func maxDepthBFSIterativelyExercise(root *leetcode.TreeNode) int {
 
 	return 0
-}
-
-func max(x, y int) int {
-	if x < y {
-		return y
-	}
-	return x
 }

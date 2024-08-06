@@ -1,5 +1,7 @@
 package Medium
 
+import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
+
 // https://leetcode.com/problems/container-with-most-water/description/
 /*
 You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
@@ -54,8 +56,8 @@ func maxArea(height []int) int {
 	maxArea := 0
 
 	for left != right {
-		currentArea := min(height[right], height[left]) * (right - left)
-		maxArea = max(currentArea, maxArea)
+		currentArea := Top_Interview_Questions.Min(height[right], height[left]) * (right - left)
+		maxArea = Top_Interview_Questions.Max(currentArea, maxArea)
 
 		if height[left] <= height[right] {
 			left++
@@ -70,19 +72,4 @@ func maxArea(height []int) int {
 func maxAreaExercise(height []int) int {
 
 	return 0
-}
-
-func max(x, y int) int {
-	if x >= y {
-		return x
-	} else {
-		return y
-	}
-}
-func min(x, y int) int {
-	if x >= y {
-		return y
-	} else {
-		return x
-	}
 }

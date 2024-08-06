@@ -1,5 +1,7 @@
 package DynamicProgramming
 
+import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
+
 // https://leetcode.com/problems/longest-common-subsequence/description/
 // Ref:
 // - Back to Back SWE: https://www.youtube.com/watch?v=ASoaQq66foQ
@@ -13,9 +15,6 @@ For example, "ace" is a subsequence of "abcde".
 
 A common subsequence of two strings is a subsequence that is common to both strings.
 
-Example:
-Input: text1 = "abcde", text2 = "ace"
-
 ## Identify sub-problems:
 func lcs("abcde", "ace")
 => 1 + lcs("abcd", "ac")
@@ -25,20 +24,15 @@ func lcs("abcde", "ace")
 			lcs("abc", "a") => ......
 	)
 	lcs("abcd", "a") => max(
-			lcs("abc", "a") => ......
+			lcs("abc", "a") => return 1 + max(......)
 			lcs("abcd", "") => return 0
 	)
 )
 
-## DP Table:
-Top-Down:
-   a  b  c  d  e
-a  3  2  2  1  1  0
-c  2  2  2  1  1  0
-e  1  1  1  1  1  0
-   0  0  0  0  0  0
+## Transfer to DP Table
+- When using DP Table, always add 1 more row and column
+- Set default value 0 (in this case) for the 1st row and column
 
-Bottom-Up:
    0  a  b  c  d  e
 0  0  0  0  0  0  0
 a  0  1  1  1  1  1
@@ -47,5 +41,45 @@ e  0  1  1  2  2  3
 
 */
 func longestCommonSubsequence(text1 string, text2 string) int {
-	return 0
+	return lcsDPTableHelper(text1, text2)
+}
+
+/*
+Time Complexity: O(mn)
+Space Complexity: O(mn)
+where m & n is the length of the 2 strings
+*/
+// Time Limit Exceeded in quite longer strings
+func lcsDPTableHelper(t1, t2 string) int {
+	table := make([][]int, len(t1)+1)
+	for i := range table {
+		table[i] = make([]int, len(t2)+1)
+	}
+
+	for i := 0; i < len(t1); i++ {
+		for j := 0; j < len(t2); j++ {
+			r1, r2 := []rune(t1), []rune(t2)
+			if r1[i] == r2[j] {
+				table[i+1][j+1] = 1 + table[i][j]
+			} else {
+				table[i+1][j+1] = Top_Interview_Questions.Max(table[i][j+1], table[i+1][j])
+			}
+		}
+	}
+
+	return table[len(t1)-1][len(t2)-1]
+}
+
+// Time Limit Exceeded in longer strings
+func lcsRecursiveHelper(t1, t2 string) int {
+	len1, len2 := len(t1), len(t2)
+
+	if len1 == 0 || len2 == 0 {
+		return 0
+	}
+	if t1[len1-1] == t2[len2-1] {
+		return 1 + lcsRecursiveHelper(t1[:len1-1], t2[:len2-1])
+	}
+
+	return Top_Interview_Questions.Max(lcsRecursiveHelper(t1[:len1-1], t2), lcsRecursiveHelper(t1, t2[:len2-1]))
 }

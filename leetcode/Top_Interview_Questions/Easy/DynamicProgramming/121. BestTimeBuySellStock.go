@@ -1,5 +1,7 @@
 package DynamicProgramming
 
+import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
+
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description
 /*
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
@@ -27,7 +29,7 @@ func maxProfitSimpleThrough(prices []int) int {
 		// if prices[i]-lowest > profit {
 		// 	profit = prices[i] - lowest
 		// }
-		profit = max(prices[i]-lowest, profit)
+		profit = Top_Interview_Questions.Max(prices[i]-lowest, profit)
 	}
 
 	return profit
@@ -39,18 +41,11 @@ func maxProfitExercise(prices []int) int {
 
 // Ref: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/solutions/1735550/python-javascript-easy-solution-with-very-clear-explanation/
 func maxProfit2Pointer(prices []int) int {
-	max := func(x, y int) int {
-		if x < y {
-			return y
-		}
-		return x
-	}
-
 	buy, profit := 0, 0
 	for sell := 1; sell < len(prices); sell++ {
 		currentProfit := prices[sell] - prices[buy]
 		if currentProfit > 0 {
-			profit = max(currentProfit, profit)
+			profit = Top_Interview_Questions.Max(currentProfit, profit)
 		} else {
 			buy = sell
 		}

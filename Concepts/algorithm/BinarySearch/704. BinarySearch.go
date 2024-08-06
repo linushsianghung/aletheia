@@ -13,30 +13,11 @@ func Search(nums []int, target int) int {
 	return searchRecursively(nums, left, right, target)
 }
 
-func searchRecursively(nums []int, left int, right int, target int) int {
-	if left > right {
-		return -1
-	}
-
-	// calculate mid := left + (right-left)/2 rather than (right-left)/2 to prevent overflow.
-	mid := left + (right-left)/2
-	if nums[mid] < target {
-		return searchRecursively(nums, mid+1, right, target)
-	} else if nums[mid] > target {
-		return searchRecursively(nums, left, mid-1, target)
-	} else {
-		return mid
-	}
-}
-
-func searchRecursivelyExercise(nums []int, left int, right int, target int) int {
-	return 0
-}
-
 func searchIteratively(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 
 	for left <= right {
+		// calculate mid := left + (right-left)/2 rather than (right-left)/2 to prevent overflow.
 		mid := left + (right-left)/2
 
 		if nums[mid] < target {
@@ -52,5 +33,24 @@ func searchIteratively(nums []int, target int) int {
 }
 
 func searchIterativelyExercise(nums []int, target int) int {
+	return 0
+}
+
+func searchRecursively(nums []int, left int, right int, target int) int {
+	if left > right {
+		return -1
+	}
+
+	mid := left + (right-left)/2
+	if nums[mid] < target {
+		return searchRecursively(nums, mid+1, right, target)
+	} else if nums[mid] > target {
+		return searchRecursively(nums, left, mid-1, target)
+	} else {
+		return mid
+	}
+}
+
+func searchRecursivelyExercise(nums []int, left int, right int, target int) int {
 	return 0
 }

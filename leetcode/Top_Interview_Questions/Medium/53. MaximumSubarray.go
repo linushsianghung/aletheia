@@ -1,5 +1,7 @@
 package Medium
 
+import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
+
 // https://leetcode.com/problems/maximum-subarray/
 /*
 Given an integer array nums, find the subarray with the largest sum, and return its sum.
@@ -17,16 +19,8 @@ func maxSubArray(nums []int) int {
 			currentSum += nums[i]
 		}
 
-		maxSum = max(maxSum, currentSum)
+		maxSum = Top_Interview_Questions.Max(maxSum, currentSum)
 	}
 
 	return maxSum
-}
-
-func maxF(x, y int) int {
-	if x > y {
-		return x
-	}
-
-	return y
 }

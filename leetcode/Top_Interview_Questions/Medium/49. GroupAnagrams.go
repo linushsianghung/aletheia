@@ -9,7 +9,6 @@ Given an array of strings strs, group the anagrams together. You can return the 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 */
 func groupAnagrams(strs []string) [][]string {
-
 	result, note := make([][]string, 0), make(map[string][]string)
 
 	for _, str := range strs {
@@ -23,6 +22,10 @@ func groupAnagrams(strs []string) [][]string {
 		} else {
 			note[string(sortedRune)] = []string{str}
 		}
+	}
+
+	for _, v := range note {
+		result = append(result, v)
 	}
 
 	return result
