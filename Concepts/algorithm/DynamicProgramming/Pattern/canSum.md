@@ -33,7 +33,7 @@ func canSumMemoHelper(targetSum, numbers int, memo map[int]bool) bool {
         return true
     }
 
-    for _, num := range numger {
+    for _, num := range numbers {
         remainder := targetSum - num
         if canSumMemoHelper(remainder, numbers, memo) {
             memo[targetSum] = true
