@@ -46,7 +46,7 @@ func canSumMemoHelper(targetSum, numbers int, memo map[int]bool) bool {
 }
 ```
 
-## Tebulation
+## Tabulation
 ![Can Sum - Tabulation](../pics/canSum-Tabulation.png)
 > Analysis:
 > - Time Complexity: O(m * n)

@@ -16,12 +16,14 @@
 ```Golang
 package Pattern
 
-func allConstruct(target, wordBank string) [][]string {
+import "strings"
+
+func allConstruct(target string, wordBank []string) [][]string {
     return allConstructHelper(target, wordBank, make(map[string][][]string))
 }
 
 func allConstructHelper(target string, wordBank []string, memo map[string][][]string) [][]string {
-    if value, ok := memo[target] {
+    if value, ok := memo[target]; ok {
         return value
     }
     
@@ -33,12 +35,12 @@ func allConstructHelper(target string, wordBank []string, memo map[string][][]st
     for _, word := range wordBank {
         if strings.HasPrefix(target, word) {
             target = target[len(word):]
-            elements = allConstructHelper(target, wordBank, memo)
+            elements := allConstructHelper(target, wordBank, memo)
             for _, element := range elements {
                 element = append(element, word)
             }
 
-            result = append(result, element...)
+            result = append(result, elements...)
         }
     }
 

@@ -24,7 +24,7 @@ func gridTraveler(m, n int) int {
 // - Find the same pattern
 // - gridTraveler(a, b) == gridTraveler(b, a)
 func gridTravelerMemoHelper(m, n int, memo map[string]int) int {
-	key := fmt.Sprint(m, ',', n)
+	key := fmt.Sprint(m, '-', n)
 	if result, ok := memo[key]; ok {
 		return result
 	}

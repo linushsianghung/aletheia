@@ -18,17 +18,6 @@ func InorderTraversal(root *leetcode.TreeNode) []int {
 	return inorderTraversalRecursively(root)
 }
 
-func recursiveTraversal(root *leetcode.TreeNode, result *[]int) {
-	/* Basic init check for LinkedList and Tree */
-	if root == nil {
-		return
-	}
-
-	recursiveTraversal(root.Left, result)
-	*result = append(*result, root.Val)
-	recursiveTraversal(root.Right, result)
-}
-
 func inorderTraversalRecursively(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
@@ -51,6 +40,17 @@ func inorderTraversalRecursively(root *leetcode.TreeNode) []int {
 
 func inorderTraversalRecursivelyExercise(root *leetcode.TreeNode) []int {
 	return nil
+}
+
+func recursiveTraversal(root *leetcode.TreeNode, result *[]int) {
+	/* Basic init check for LinkedList and Tree */
+	if root == nil {
+		return
+	}
+
+	recursiveTraversal(root.Left, result)
+	*result = append(*result, root.Val)
+	recursiveTraversal(root.Right, result)
 }
 
 func inorderTraversalIteratively(root *leetcode.TreeNode) []int {

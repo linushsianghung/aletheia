@@ -24,9 +24,8 @@ func backtrackPermuteUnique(sources []int) [][]int {
 		}
 
 		for i := 0; i < len(sources); i++ {
-			// Constraints: Skip the current processed number or
-			// under the same processed (previous level) number, skip the element when this element is the same as the previous one which is already used???
-			if used[i] || (i > 0 && sources[i] == sources[i-1] && used[i-1]) {
+			// Constraints: Skip the current used number, or skip the element when this element is the same as the previous one
+			if used[i] || (i > 0 && sources[i] == sources[i-1] && !used[i-1]) {
 				continue
 			}
 

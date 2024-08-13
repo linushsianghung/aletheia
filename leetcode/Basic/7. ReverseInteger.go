@@ -22,6 +22,5 @@ func Reverse(x int) int {
 }
 
 func reverseExercise(x int) int {
-
 	return 0
 }

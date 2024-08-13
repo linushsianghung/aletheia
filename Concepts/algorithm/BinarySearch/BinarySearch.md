@@ -14,10 +14,12 @@ Binary Search should be considered every time you need to search for an index or
 Situation: Array => Sorted Array => Binary Search (or more generally, 2 pointers)
 
 ## Examples
+
 ```Golang
 package BinarySearch
 
 import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions/Medium"
+
 /*
 704. Binary Search: https://leetcode.com/problems/binary-search/description/
 
@@ -26,8 +28,8 @@ If target exists, then return its index. Otherwise, return -1.
 
 You must write an algorithm with O(log n) runtime complexity.
 */
-func search(nums []int, target int) int {
-	return Search(nums, target)
+func binarySearch(nums []int, target int) int {
+	return search(nums, target)
 }
 
 /*

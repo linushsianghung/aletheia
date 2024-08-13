@@ -23,7 +23,7 @@ func UniquePaths(m int, n int) int {
 }
 
 func UniquePathsMemorisation(m, n int, memo map[string]int) int {
-	key := fmt.Sprint(m, ',', n)
+	key := fmt.Sprint(m, '-', n)
 	if value, ok := memo[key]; ok {
 		return value
 	}

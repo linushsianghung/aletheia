@@ -12,7 +12,6 @@ Note: The solution set must not contain duplicate combinations.
 */
 func combinationSum2(candidates []int, target int) [][]int {
 	sort.Ints(candidates)
-	// slices.Sort(candidates)
 	return backtrackCombinationsSum2(candidates, target)
 
 	// result := make([][]int, 0)

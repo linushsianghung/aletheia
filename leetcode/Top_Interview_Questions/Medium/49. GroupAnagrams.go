@@ -1,6 +1,8 @@
 package Medium
 
-import "sort"
+import (
+	"sort"
+)
 
 // https://leetcode.com/problems/group-anagrams/
 /*
@@ -29,4 +31,9 @@ func groupAnagrams(strs []string) [][]string {
 	}
 
 	return result
+}
+
+func groupAnagramsExercise(strs []string) [][]string {
+
+	return nil
 }

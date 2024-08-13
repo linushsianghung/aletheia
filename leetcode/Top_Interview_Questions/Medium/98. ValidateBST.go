@@ -32,6 +32,11 @@ func isValidRecursively(root *leetcode.TreeNode, min, max int) bool {
 	return isValidRecursively(root.Left, root.Val, min) && isValidRecursively(root.Right, max, root.Val)
 }
 
+func isValidRecursivelyExercise(root *leetcode.TreeNode, min, max int) bool {
+
+	return false
+}
+
 func isValidInOrderTraversal(root *leetcode.TreeNode) bool {
 	if root == nil {
 		return true

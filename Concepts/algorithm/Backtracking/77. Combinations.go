@@ -19,8 +19,32 @@ func combine(n int, k int) [][]int {
 		Given an empty array, the task is to add numbers between 1 to n to the array up to the size of k.
 		We could model the step to add a number as a recursion function (i.e. backtrack() function).
 	*/
+	return combineRecursively(n, k)
+	//result := make([][]int, 0)
+	//backtrackCombinations(&result, make([]int, 0), 1, n, k)
+	//return result
+}
+
+func combineRecursively(n, k int) [][]int {
 	result := make([][]int, 0)
-	backtrackCombinations(&result, make([]int, 0), 1, n, k)
+
+	var localRecursiveFunc func(processor []int, start int)
+	localRecursiveFunc = func(processor []int, start int) {
+		if len(processor) == k {
+			result = append(result, processor)
+			return
+		}
+
+		for i := start; i <= n; i++ {
+			processor = append(processor, i)
+			p := make([]int, len(processor))
+			copy(p, processor)
+			localRecursiveFunc(p, i+1)
+			processor = processor[:len(processor)-1]
+		}
+	}
+
+	localRecursiveFunc([]int{}, 1)
 	return result
 }
 
@@ -28,10 +52,6 @@ func backtrackCombinations(result *[][]int, processor []int, start, n, k int) {
 	/* The backtracking would be triggered at the points where the decision space is completed i.e., start is 9 or when the size of becomes k. */
 	// Base Case => Every problem of backtracking has some base case which tells us at which point we have to stop with the recursion process.
 	if len(processor) == k {
-		// Create a new copy of processor slice to prevent from using the same underlying array,
-		// so that the result won't be modified after removing and appending a new element from/to process slice
-		p := make([]int, k)
-		copy(p, processor)
 		*result = append(*result, p)
 		return
 	}
@@ -43,11 +63,12 @@ func backtrackCombinations(result *[][]int, processor []int, start, n, k int) {
 	*/
 	// Iterate through all possible candidates
 	for i := start; i <= n; i++ {
-		/* Then, among all the suitable candidates, we add different numbers using append(i). Later we can revert our decision by re-slicing, so that we could try out the other candidates. */
+		/* Then, among all the suitable candidates, we add different numbers using append(i).Later we can revert our decision by re-slicing, so that we could try out the other candidates. */
 		processor = append(processor, i)
-		// Or create new copy before passing processor slice to next level of backtrack function
-		// p := make([]int, len(processor))
-		// copy(p, processor)
+		// Create new copy before passing processor slice to next level of backtrack function
+		// so that the result won't be modified after removing and appending a new element from/to process slice
+		p := make([]int, len(processor))
+		copy(p, processor)
 		backtrackCombinations(result, processor, i+1, n, k)
 		processor = processor[:len(processor)-1]
 	}

@@ -9,11 +9,14 @@ func numOfSubarrays(arr []int, k int, threshold int) int {
 
 	for right := 0; right < len(arr); right++ {
 		sum += arr[right]
-		if right >= k-1 && sum/k > threshold {
-			result++
+		if right >= k-1 {
+			if sum/k >= threshold {
+				result++
+			}
+
+			sum -= arr[left]
+			left++
 		}
-		sum -= arr[left]
-		left++
 	}
 
 	return result
