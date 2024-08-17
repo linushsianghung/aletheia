@@ -2,7 +2,7 @@ package Medium
 
 import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
 
-// https://leetcode.com/problems/container-with-most-water/description/
+// MaxArea https://leetcode.com/problems/container-with-most-water/description/
 /*
 You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
 Find two lines that together with the x-axis form a container, such that the container contains the most water.
@@ -12,7 +12,7 @@ Notice that you may not slant the container.
 */
 
 /*
-Solution:
+MaxArea Solution:
 
 The general idea to find max is to go through all cases where max value can possibly occur and keep updating the max value. The efficiency of the scan depends on
 the number of cases you plan to scan. To increase efficiency, all we need to do is to find a smart way of scan to cut off the useless cases, and meanwhile, 100%
@@ -51,7 +51,7 @@ Idea / Proof:
 
 7. Return the maxArea, which represents the maximum area encountered among all the containers.
 */
-func maxArea(height []int) int {
+func MaxArea(height []int) int {
 	left, right := 0, len(height)-1
 	maxArea := 0
 

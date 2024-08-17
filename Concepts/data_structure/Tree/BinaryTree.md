@@ -55,7 +55,7 @@ we don't visit them twice:
 
 ### Depth First Search - think of Stack and Backtracking (Implicitly Stack) :
 - Pre-Order Traversal
-- In-Order Traversal => Binary Search Tree
+- In-Order Traversal of Binary Search Tree <=> Ascending Array
 - Post-Order Traversal
 - Ref:
 	- Binary tree traversal - BFS & DFS: https://www.youtube.com/watch?v=9RHO6jU--GU

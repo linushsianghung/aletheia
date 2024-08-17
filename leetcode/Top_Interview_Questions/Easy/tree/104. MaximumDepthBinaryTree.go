@@ -5,7 +5,7 @@ import (
 	"github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
 )
 
-// https://leetcode.com/problems/maximum-depth-of-binary-tree/
+// MaxDepth https://leetcode.com/problems/maximum-depth-of-binary-tree/
 // Ref:
 // - https://www.youtube.com/watch?v=hTM3phVI6YQ
 // - https://leetcode.com/problems/maximum-depth-of-binary-tree/solutions/1770060/c-recursive-dfs-example-dry-run-well-explained/?envType=featured-list&envId=top-interview-questions?envType=featured-list&envId=top-interview-questions
@@ -23,7 +23,7 @@ int maxDepthRight = maxDepth(root->right);
 return max(maxDepthLeft, maxDepthRight) + 1;
 ```
 */
-func maxDepth(root *leetcode.TreeNode) int {
+func MaxDepth(root *leetcode.TreeNode) int {
 	if root == nil {
 		return 0
 	}
