@@ -12,7 +12,8 @@ func strStr(haystack string, needle string) int {
 		return 0
 	}
 
-	for i := 0; i <= len(haystack)-len(needle); i++ {
+	haystackLen := len(haystack)
+	for i := 0; i <= haystackLen-len(needle); i++ {
 		if strings.HasPrefix(haystack, needle) {
 			return i
 		}

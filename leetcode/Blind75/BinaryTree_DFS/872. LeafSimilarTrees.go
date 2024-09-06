@@ -1,6 +1,8 @@
 package BinaryTree_DFS
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // https://leetcode.com/problems/leaf-similar-trees/?envId=leetcode-75
 /*
@@ -39,6 +41,7 @@ func leafSimilar(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) bool {
 func leafSimilarHelper(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
+	// Post-Order Traversal
 	var localRecursiveFunc func(root *leetcode.TreeNode) int
 	localRecursiveFunc = func(root *leetcode.TreeNode) int {
 		if root == nil {

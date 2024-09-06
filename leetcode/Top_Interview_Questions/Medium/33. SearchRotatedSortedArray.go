@@ -19,13 +19,43 @@ func search(nums []int, target int) int {
 
 	for left <= right {
 		mid := left + (right-left)/2
+		var comparator int
+
+		// Checking if both target and nums[mid] are on the same side.
+		if (target < nums[0] && nums[mid] < nums[0]) || (target >= nums[0] && nums[mid] >= nums[0]) {
+			comparator = nums[mid]
+		} else {
+			// Trying to figure out where nums[mid] is and making comparator as -INF or INF
+			if target < nums[0] {
+				comparator = math.MinInt
+			} else {
+				comparator = math.MaxInt
+			}
+		}
+
+		if comparator > target {
+			right = mid - 1
+		} else if comparator < target {
+			left = mid + 1
+		} else {
+			return mid
+		}
+	}
+
+	return -1
+}
+
+func searchAlt(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+
+	for left <= right {
+		mid := left + (right-left)/2
 
 		// Here I am using more straightforward conditions checking (if target and mid at different side, modify the element to Max or Min, otherwise keep going)
 		// The downside is that it seems not dealing with the edge cases that well.
 		// I need extra conditions checking as below to satisfy the requirements which makes the solution not quite easy to understand
-		// 1. Add equal comparison to "target >= nums[0]" and "nums[mid] >= nums[0]"
-		// 2. Add "else { return 0 }" conditions checking when modifying the left or right edge
-		if (target >= nums[0] && nums[mid] < nums[0]) || (target < nums[0] && nums[mid] >= nums[0]) {
+		// => Add "else { return 0 }" conditions checking when modifying the left or right edge
+		if (target > nums[0] && nums[mid] < nums[0]) || (target <= nums[0] && nums[mid] >= nums[0]) {
 			if target > nums[0] {
 				nums[mid] = math.MaxInt
 			} else if target < nums[0] {
@@ -38,38 +68,6 @@ func search(nums []int, target int) int {
 		if nums[mid] > target {
 			right = mid - 1
 		} else if nums[mid] < target {
-			left = mid + 1
-		} else {
-			return mid
-		}
-	}
-
-	return -1
-}
-
-func searchSuggestion(nums []int, target int) int {
-	left, right := 0, len(nums)-1
-
-	for left <= right {
-		mid := left + (right-left)/2
-		comparator := nums[mid]
-
-		// Checking if both target and nums[mid] are on the same side.
-		if (target < nums[0] && nums[mid] < nums[0]) || (target >= nums[0] && nums[mid] >= nums[0]) {
-			comparator = nums[mid]
-		} else {
-			// Trying to figure out where nums[mid] is and making comparator as -INF or INF
-			if target < nums[0] {
-				comparator = math.MinInt
-			} else {
-				comparator = math.MaxInt
-			}
-
-		}
-
-		if comparator > target {
-			right = mid - 1
-		} else if comparator < target {
 			left = mid + 1
 		} else {
 			return mid

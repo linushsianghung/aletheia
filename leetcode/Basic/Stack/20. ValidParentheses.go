@@ -1,4 +1,4 @@
-package Basic
+package Stack
 
 // IsValid https://leetcode.com/problems/valid-parentheses/
 /*

@@ -17,7 +17,6 @@ func longestCommonPrefix(strs []string) string {
 
 // Horizontal Scanning which is quicker for big number of words
 func longestCommonPrefixHorizon(strs []string) string {
-
 	prefix := strs[0]
 	for i := 1; i < len(strs); i++ {
 		for !strings.HasPrefix(strs[i], prefix) {

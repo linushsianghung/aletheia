@@ -28,15 +28,15 @@ func longestPalindrome(s string) string {
 		}
 	}
 
-	rs := []rune(s)
-	return string(rs[start : end+1])
+	sRune := []rune(s)
+	return string(sRune[start : end+1])
 }
 
 func divergeCheck(s string, left, right int) int {
 	for left >= 0 && right < len(s) {
-		rs := []rune(s)
+		sRune := []rune(s)
 
-		if rs[left] == rs[right] {
+		if sRune[left] == sRune[right] {
 			left--
 			right++
 		} else {

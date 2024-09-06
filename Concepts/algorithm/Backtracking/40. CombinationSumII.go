@@ -33,7 +33,14 @@ func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 		}
 
 		for i := start; i < len(candidates); i++ {
-			// Constraints: Under the same processed (previous level) number, skip the element when this element is the same as the previous one
+			/*
+				Constraints: Under the current processed (previous level) number, skip the element when this element is the same as the previous one to prevent duplicated solutions.
+				For example, let's say the array is [1,6,1,2,1,6,1] and the sum is 8.
+				Whenever we prevent arising of duplicate solutions, we usually first sort the array in this case.
+				So our array becomes [1,1,1,1,2,6,6].
+				If that condition was not in place, for the combination [1,1,6] we would have got 4C2 * 2C1 = 12 times. ( i.e picking any two 1s out of four possible 1s and one 6 out of two sixes.
+				But we do not need [1,1,6] 12 times. not [2,6] 2 times. We just need the solution without any possible duplicate combination. which is [[1,1,6],[2,6]].
+			*/
 			if i > start && candidates[i] == candidates[i-1] {
 				continue
 			}

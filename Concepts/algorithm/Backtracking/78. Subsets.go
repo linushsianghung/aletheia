@@ -22,6 +22,9 @@ func backtrackSubsets(sources []int) [][]int {
 	var localRecursiveFunc func(processor []int, start int)
 	localRecursiveFunc = func(processor []int, start int) {
 		result = append(result, processor)
+		if len(processor) == len(sources) {
+			return
+		}
 
 		for i := start; i < len(sources); i++ {
 			processor = append(processor, sources[i])

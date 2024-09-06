@@ -30,7 +30,7 @@ func intersectMap(nums1 []int, nums2 []int) []int {
 
 	result := make([]int, 0)
 	for _, num := range nums2 {
-		if i, ok := note[num]; ok && i > 0 {
+		if v, ok := note[num]; ok && v > 0 {
 			result = append(result, num)
 			note[num]--
 		}
