@@ -1,6 +1,8 @@
 package Medium
 
-import "sort"
+import (
+	"sort"
+)
 
 // https://leetcode.com/problems/3sum/description/
 // Ref:
@@ -17,9 +19,14 @@ func threeSum(nums []int) [][]int {
 }
 
 func threeSumSort(nums []int) [][]int {
+	// It should not happen because the constraint 3 <= nums.length <= 3000
+	if len(nums) < 3 {
+		return nil
+	}
+
 	sort.Ints(nums)
 	// Base cases
-	if len(nums) < 3 || nums[0] > 0 {
+	if nums[0] > 0 {
 		return nil
 	}
 
@@ -63,7 +70,6 @@ func threeSumSort(nums []int) [][]int {
 }
 
 func threeSumSortExercise(nums []int) [][]int {
-
 	return nil
 }
 

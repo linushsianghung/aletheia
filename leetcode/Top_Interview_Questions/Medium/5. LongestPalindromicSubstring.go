@@ -1,7 +1,5 @@
 package Medium
 
-import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
-
 // https://leetcode.com/problems/longest-palindromic-substring/
 // Ref: [Longest palindrome substring](https://www.youtube.com/watch?v=DK5OKKbF6GI)
 /*
@@ -10,39 +8,77 @@ Given a string s, return the longest palindromic substring in s.
 Analysis:
 - racecar
 - xxaabbaayy
+
+_ _ _ _ i _ _ _
+0 1 2 3 4 5 6 7
+current i = 4
+
+if length = 5 => (s, i, i)
+start = 2 = 4 - (5-1)/2
+end = 6 = 4 + length/2
+
+if length = 6 => (s, i, i+1)
+start = 2 = 4 - (6-1)/2
+end = 7 = 4 + 6/2
+
 */
 func longestPalindrome(s string) string {
 	if len(s) < 2 {
 		return s
 	}
 
-	start, end := 0, 0
+	var result string
 	for i := 0; i < len(s); i++ {
-		len1 := divergeCheck(s, i, i)
-		len2 := divergeCheck(s, i, i+1)
+		palindrome1 := outwardComparison(s, i, i)
+		palindrome2 := outwardComparison(s, i, i+1)
 
-		length := Top_Interview_Questions.Max(len1, len2)
-		if length > end-start {
-			start = i - (length-1)/2
-			end = i + length/2
+		if len(palindrome1) > len(palindrome2) {
+			if len(palindrome1) > len(result) {
+				result = palindrome1
+			}
+		} else {
+			if len(palindrome2) > len(result) {
+				result = palindrome2
+			}
 		}
 	}
 
-	sRune := []rune(s)
-	return string(sRune[start : end+1])
+	return result
 }
 
-func divergeCheck(s string, left, right int) int {
-	for left >= 0 && right < len(s) {
-		sRune := []rune(s)
+func longestPalindromeExercise(s string) string {
+	return ""
+}
 
-		if sRune[left] == sRune[right] {
-			left--
-			right++
-		} else {
+func outwardComparison(s string, left, right int) string {
+	var result string
+
+	for left >= 0 && right < len(s) {
+		// Based on the constraints, s consist of only digits and English letters. So it can just use "s" for iteration directly
+		if s[left] != s[right] {
 			break
 		}
+
+		result = s[left : right+1]
+		left--
+		right++
 	}
 
-	return right - left + 1
+	return result
+}
+
+func outwardComparisonAlt(s string, left, right int) int {
+	length, sRune := 0, []rune(s)
+
+	for left >= 0 && right < len(s) {
+		if sRune[left] != sRune[right] {
+			return length
+		}
+
+		length = right - left + 1
+		left--
+		right++
+	}
+
+	return length
 }

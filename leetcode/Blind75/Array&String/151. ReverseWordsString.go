@@ -1,7 +1,6 @@
 package Array_String
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -18,13 +17,12 @@ Note that s may contain leading or trailing spaces or multiple spaces between tw
 The returned string should only have a single space separating the words. Do not include any extra spaces.
 */
 func reverseWords(s string) string {
+	// Using Fields function to break down the string into smaller substrings wherever one or more whitespace characters appear.
 	words := strings.Fields(s)
 
 	for i, j := 0, len(words)-1; i < j; i, j = i+1, j-1 {
-		fmt.Printf("words[i]: %s\n", words[i])
-		fmt.Printf("words[j]: %s\n", words[j])
-		strings.Trim(words[i], " ")
-		strings.Trim(words[j], " ")
+		//strings.Trim(words[i], " ")
+		//strings.Trim(words[j], " ")
 		words[i], words[j] = words[j], words[i]
 	}
 

@@ -1,11 +1,9 @@
-package BigONotation
 
-/*
 # Big O Notation
-
-Ref:
-- The Complete Guide to Big O Notation & Complexity Analysis for Algorithms: Part 1: https://www.youtube.com/watch?v=HfIH3czXc-8
-- The Complete Guide to Big O Notation & Complexity Analysis for Algorithms: Part 2: https://www.youtube.com/watch?v=zo7YFqw5hNw
+## Reference:
+- [The Complete Guide to Big O Notation & Complexity Analysis for Algorithms: Part 1](https://www.youtube.com/watch?v=HfIH3czXc-8)
+- [The Complete Guide to Big O Notation & Complexity Analysis for Algorithms: Part 2](https://www.youtube.com/watch?v=zo7YFqw5hNw)
+- [Big O Cheat Sheet – Time Complexity Chart](https://www.freecodecamp.org/news/big-o-cheat-sheet-time-complexity-chart/)
 
 ## Simplifying Big O
 - **Product Rule**: If the Big O is the product of multiple terms, drop the constant terms
@@ -27,4 +25,4 @@ Ref:
 	- n is the size of the input & c is some constants
 	- Include O(2^n) & O(3^n), etc
 - Factorial O(n!)
-*/
+

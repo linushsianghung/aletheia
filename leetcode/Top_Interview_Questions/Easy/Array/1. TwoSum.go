@@ -35,7 +35,6 @@ func mapImpl(nums []int, target int) []int {
 }
 
 func mapImplExercise(nums []int, target int) []int {
-
 	return nil
 }
 

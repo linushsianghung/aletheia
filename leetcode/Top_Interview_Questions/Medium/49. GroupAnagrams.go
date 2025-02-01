@@ -34,6 +34,5 @@ func groupAnagrams(strs []string) [][]string {
 }
 
 func groupAnagramsExercise(strs []string) [][]string {
-
 	return nil
 }

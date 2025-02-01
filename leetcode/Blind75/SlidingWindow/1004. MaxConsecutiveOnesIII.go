@@ -1,29 +1,31 @@
 package SlidingWindow
 
-import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
-
 // https://leetcode.com/problems/max-consecutive-ones-iii/description/?envId=leetcode-75
+// Reference: https://leetcode.com/problems/max-consecutive-ones-iii/solutions/247564/java-c-python-sliding-window/
 
 /*
 Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 */
 func longestOnes(nums []int, k int) int {
-	left, zeroCount, result := 0, 0, 0
+	winStart, zeroCount, maxNum := 0, 0, 0
 
-	for right := 0; right < len(nums); right++ {
-		if nums[right] == 0 {
+	for winEnd, num := range nums {
+		if num == 0 {
 			zeroCount++
 		}
-
+		// Dynamic-Size Sliding Window (Double For Loop): Try to find 0 at the most left hand side
 		for zeroCount > k {
-			if nums[left] == 0 {
+			if nums[winStart] == 0 {
 				zeroCount--
 			}
-			left++
+
+			winStart++
 		}
 
-		result = Top_Interview_Questions.Max(result, right-left+1)
+		if maxNum < winEnd-winStart+1 {
+			maxNum = winEnd - winStart + 1
+		}
 	}
 
-	return result
+	return maxNum
 }

@@ -13,21 +13,6 @@ func removeDuplicates(s string) string {
 	return removeDuplicates2Pointers(s)
 }
 
-func removeDuplicates2Pointers(s string) string {
-	anchor := 0
-	sRune := []rune(s)
-
-	for _, r := range sRune {
-		sRune[anchor] = r
-		if anchor > 0 && sRune[anchor-1] == r {
-			anchor -= 2
-		}
-		anchor++
-	}
-
-	return string(sRune[:anchor])
-}
-
 func removeDuplicatesStack(s string) string {
 	stack := make([]rune, 0)
 
@@ -41,4 +26,23 @@ func removeDuplicatesStack(s string) string {
 	}
 
 	return string(stack)
+}
+
+func removeDuplicatesStackExercise(s string) string {
+	return ""
+}
+
+// The idea is the same by using a rune slice as a stack and manipulate it in place
+func removeDuplicates2Pointers(s string) string {
+	anchor, sRune := 0, []rune(s)
+
+	for _, r := range sRune {
+		sRune[anchor] = r
+		if anchor > 0 && sRune[anchor-1] == r {
+			anchor -= 2
+		}
+		anchor++
+	}
+
+	return string(sRune[:anchor])
 }

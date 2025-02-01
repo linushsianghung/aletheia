@@ -6,13 +6,14 @@ import "github.com/linushung/aletheia/leetcode"
 // Ref: https://www.youtube.com/watch?v=OnSn2XEQ4MY (Depth First Search)
 /* Given the root of a binary tree, invert the tree, and return its root. */
 func invertTree(root *leetcode.TreeNode) *leetcode.TreeNode {
-	return invertTreeLevelOrderTraversal(root)
+	invertTreeLevelOrderTraversal(root)
+	return root
 }
 
-func invertTreeLevelOrderTraversal(root *leetcode.TreeNode) *leetcode.TreeNode {
+func invertTreeLevelOrderTraversal(root *leetcode.TreeNode) {
 	/* Basic init check for LinkedList and Tree */
 	if root == nil {
-		return root
+		return
 	}
 
 	// Swap the left and right subtrees of root
@@ -22,14 +23,9 @@ func invertTreeLevelOrderTraversal(root *leetcode.TreeNode) *leetcode.TreeNode {
 
 	invertTreeLevelOrderTraversal(root.Left)
 	invertTreeLevelOrderTraversal(root.Right)
-
-	return root
 }
 
 func invertTreeLevelOrderTraversalExercise(root *leetcode.TreeNode) *leetcode.TreeNode {
-	if root == nil {
-		return nil
-	}
 
 	return nil
 }

@@ -22,9 +22,12 @@ func titleToNumber(columnTitle string) int {
 
 	sum := 0
 	for _, s := range columnTitle {
-		sum *= 26
-		sum += int(s) - 'A' + 1
+		sum = sum*26 + (int(s) - 'A' + 1)
 	}
 
 	return sum
+}
+
+func titleToNumberExercise(columnTitle string) int {
+	return 0
 }

@@ -24,6 +24,5 @@ func plusOne(digits []int) []int {
 }
 
 func plusOneExercise(digits []int) []int {
-
 	return nil
 }

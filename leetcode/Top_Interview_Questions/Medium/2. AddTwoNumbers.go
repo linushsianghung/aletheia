@@ -46,6 +46,5 @@ func addTwoNumbers(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListN
 }
 
 func addTwoNumbersExercise(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
-
 	return nil
 }

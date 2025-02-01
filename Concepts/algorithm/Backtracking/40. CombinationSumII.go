@@ -19,11 +19,11 @@ func combinationSum2(candidates []int, target int) [][]int {
 	// return result
 }
 
-func backtrackCombinationsSum2(candidates []int, target int) [][]int {
+func backtrackCombinationsSum2(sources []int, target int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int, start, remain int)
-	localRecursiveFunc = func(processor []int, start, remain int) {
+	var nestedFunc func(processor []int, start, remain int)
+	nestedFunc = func(processor []int, start, remain int) {
 		if remain < 0 {
 			return
 		}
@@ -32,29 +32,32 @@ func backtrackCombinationsSum2(candidates []int, target int) [][]int {
 			return
 		}
 
-		for i := start; i < len(candidates); i++ {
+		for i := start; i < len(sources); i++ {
 			/*
 				Constraints: Under the current processed (previous level) number, skip the element when this element is the same as the previous one to prevent duplicated solutions.
 				For example, let's say the array is [1,6,1,2,1,6,1] and the sum is 8.
-				Whenever we prevent arising of duplicate solutions, we usually first sort the array in this case.
-				So our array becomes [1,1,1,1,2,6,6].
-				If that condition was not in place, for the combination [1,1,6] we would have got 4C2 * 2C1 = 12 times. ( i.e picking any two 1s out of four possible 1s and one 6 out of two sixes.
+				Whenever we prevent arising of duplicate solutions, we usually first sort the array in this case. So our array becomes [1,1,1,1,2,6,6].
+				If that condition was not in place, for the combination [1,1,6] we would have got 4C2 * 2C1 = 12 times. (i.e. picking any two 1s out of four possible 1s and one 6 out of two sixes.)
 				But we do not need [1,1,6] 12 times. not [2,6] 2 times. We just need the solution without any possible duplicate combination. which is [[1,1,6],[2,6]].
 			*/
-			if i > start && candidates[i] == candidates[i-1] {
+			if i > start && sources[i] == sources[i-1] {
 				continue
 			}
 
-			processor = append(processor, candidates[i])
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(p, remain-candidates[i], i+1)
+			nestedFunc(p, i+1, remain-sources[i])
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{}, target, 0)
+	nestedFunc([]int{}, 0, target)
 	return result
+}
+
+func backtrackCombinationsSum2Exercise(sources []int, target int) [][]int {
+	return nil
 }
 
 func combinationsSum2Helper(result *[][]int, sources, processor []int, remain, start int) {

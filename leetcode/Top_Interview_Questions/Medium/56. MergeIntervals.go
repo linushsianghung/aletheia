@@ -1,9 +1,6 @@
 package Medium
 
-import (
-	"github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
-	"sort"
-)
+import "sort"
 
 // https://leetcode.com/problems/merge-intervals/
 /*
@@ -30,16 +27,20 @@ func merge(intervals [][]int) [][]int {
 		intervals = intervals[1:]
 
 		// Step 4. Process both elements based on the scenario
-		// A.end < B.start => Non-Overlapping
 		if intervalA[1] < intervalB[0] {
+			// A.end < B.start => Non-Overlapping
 			resultStack = append(resultStack, intervalA)
 			resultStack = append(resultStack, intervalB)
-			// A.end >= B.start => Create a new interval for merging
 		} else {
-			newInterval := []int{intervalA[0], Top_Interview_Questions.Max(intervalA[1], intervalB[1])}
+			// A.end >= B.start => Create a new interval for merging
+			newInterval := []int{intervalA[0], max(intervalA[1], intervalB[1])}
 			resultStack = append(resultStack, newInterval)
 		}
 	}
 
 	return resultStack
+}
+
+func mergeExercise(intervals [][]int) [][]int {
+	return nil
 }

@@ -1,20 +1,31 @@
 package BinarySearch
 
-// https://leetcode.com/problems/search-insert-position/
+// SearchInsert https://leetcode.com/problems/search-insert-position/
 // Ref: https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/?orderBy=most_votes
 /*
 Given a sorted array of distinct integers and a target value, return the index if the target is found.
 If not, return the index where it would be if it were inserted in order.
 
 You must write an algorithm with O(log n) runtime complexity.
-*/
-/* Analysis:
-Sample: {1, 2, 4, 6, 9, 10, 14, 17, 19, 23, 26}
-left = 0 & right = 10
-target = 11
 
+Analysis:
+Sample1: [1, 3, 5, 8, 10], target=4
+left, right := 0, 4: mid = (0 + 4) / 2 = 2 => nums[2] > 4 => right = 2 - 1
+left, right := 0, 1: mid = (0 + 1) / 2 = 0 => nums[2] < 4 => left = 0 + 1
+left, right := 1, 1: mid = (1 + 1) / 2 = 1 => nums[1] < 4 => left = 1 + 1
+
+left = 2, right = 1
+
+Sample2: [1, 3, 5, 8, 10], target=9
+left, right := 0, 4: mid = (0 + 4) / 2 = 2 => nums[2] < 9 => left = 0 + 1
+left, right := 1, 4: mid = (1 + 4) / 2 = 2.5 => nums[2] < 9 => left = 1 + 1
+left, right := 2, 4: mid = (2 + 4) / 2 = 3 => nums[3] < 9 => left = 2 + 1
+left, right := 3, 4: mid = (3 + 4) / 2 = 3.5 => nums[3] < 9 => left = 3 + 1
+left, right := 4, 4: mid = (4 + 4) / 2 = 4 => nums[4] > 9 => right = 4 - 1
+
+left = 4, right = 3
 */
-func searchInsert(nums []int, target int) int {
+func SearchInsert(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 
 	for left <= right {

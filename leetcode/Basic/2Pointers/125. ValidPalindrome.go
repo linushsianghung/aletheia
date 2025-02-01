@@ -19,30 +19,28 @@ func isPalindrome(s string) bool {
 
 	left, right := 0, len(s)-1
 	s = strings.ToLower(s)
-	r := []rune(s)
+	sRune := []rune(s)
 
 	for left < right {
-		// In case of there are contiguous, non-digit and non-letter characters, it has to use if-else if to loop through all of them.
-		if !unicode.IsLetter(r[left]) && !unicode.IsDigit(r[left]) {
+		if !unicode.IsLetter(sRune[left]) && !unicode.IsDigit(sRune[left]) {
 			left++
-		} else if !unicode.IsLetter(r[right]) && !unicode.IsDigit(r[right]) {
-			right--
-		} else {
-			if r[left] != r[right] {
-				return false
-			}
-			left++
-			right--
+			continue
 		}
+		if !unicode.IsLetter(sRune[right]) && !unicode.IsDigit(sRune[right]) {
+			right--
+			continue
+		}
+
+		if sRune[left] != sRune[right] {
+			return false
+		}
+		left++
+		right--
 	}
 
 	return true
 }
 
 func isPalindromeExercise(s string) bool {
-	if len(s) == 0 {
-		return true
-	}
-
 	return false
 }

@@ -19,28 +19,27 @@ func Subsets(nums []int) [][]int {
 func backtrackSubsets(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int, start int)
-	localRecursiveFunc = func(processor []int, start int) {
+	var nestedFunc func(processor []int, start int)
+	nestedFunc = func(processor []int, start int) {
 		result = append(result, processor)
-		if len(processor) == len(sources) {
-			return
-		}
+		//if len(processor) == len(sources) {
+		//	return
+		//}
 
 		for i := start; i < len(sources); i++ {
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(p, i+1)
+			nestedFunc(p, i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{}, 0)
+	nestedFunc([]int{}, 0)
 	return result
 }
 
 func backtrackSubsetsExercise(sources []int) [][]int {
-
 	return nil
 }
 

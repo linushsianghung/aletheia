@@ -10,7 +10,7 @@ A happy number is a number defined by the following process:
 - Those numbers for which this process ends in 1 are happy.
 Return true if n is a happy number, and false if not.
 */
-func IsHappy(n int) bool {
+func isHappy(n int) bool {
 	return isHappyMath(n)
 	// return isHappyFloydCycle(n)
 }
@@ -23,18 +23,27 @@ func isHappyMath(n int) bool {
 	note := make(map[int]bool)
 
 	for {
-		sum := compute(n)
+		n := compute(n)
 
-		if sum == 1 {
+		if n == 1 {
 			return true
 		}
-		if _, ok := note[sum]; ok {
+		if _, ok := note[n]; ok {
 			return false
 		}
 
-		note[sum] = true
-		n = sum
+		note[n] = true
 	}
+
+	//for n != 1 {
+	//	n = compute(n)
+	//	if _, ok := note[n]; ok {
+	//		return false
+	//	}
+	//	note[n] = true
+	//}
+	//
+	//return true
 }
 
 /*
@@ -68,4 +77,9 @@ func compute(n int) int {
 		n /= 10
 	}
 	return sum
+}
+
+func computeExercise(n int) int {
+
+	return 0
 }

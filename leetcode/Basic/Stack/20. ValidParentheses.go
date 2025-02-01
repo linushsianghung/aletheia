@@ -13,8 +13,8 @@ Every close bracket has a corresponding open bracket of the same type.
 func IsValid(s string) bool {
 	stack := make([]rune, 0)
 
-	for _, c := range s {
-		switch c {
+	for _, r := range s {
+		switch r {
 		case '{':
 			stack = append(stack, '}')
 		case '[':
@@ -22,7 +22,7 @@ func IsValid(s string) bool {
 		case '(':
 			stack = append(stack, ')')
 		default:
-			if len(stack) == 0 || c != stack[len(stack)-1] {
+			if len(stack) == 0 || stack[len(stack)-1] != r {
 				return false
 			}
 			stack = stack[:len(stack)-1]
@@ -33,6 +33,5 @@ func IsValid(s string) bool {
 }
 
 func isValidExercise(s string) bool {
-
 	return false
 }

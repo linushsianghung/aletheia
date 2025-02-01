@@ -45,10 +45,8 @@ The intuition behind using a hash map is to count the occurrences of each elemen
 */
 func majorityElementHashMap(nums []int) int {
 	note := make(map[int]int)
-
 	for _, num := range nums {
 		note[num]++
-
 		if note[num] > len(nums)/2 {
 			return num
 		}

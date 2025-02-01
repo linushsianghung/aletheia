@@ -14,20 +14,22 @@ func GenerateParenthesis(n int) []string {
 func buildParenthesisRecursively(pair int) []string {
 	result := make([]string, 0)
 
-	var localRecursiveFunc func(processor string, open, close, n int)
-	localRecursiveFunc = func(processor string, open, close, n int) {
-		if len(processor) == n*2 {
-			result = append(result, string(processor))
+	var nestedFunc func(parenthesis string, open, close int)
+	nestedFunc = func(parenthesis string, open, close int) {
+		if len(parenthesis) == pair*2 {
+			result = append(result, parenthesis)
+			return
 		}
 
-		if open < n {
-			localRecursiveFunc(processor+"(", open+1, close, n)
+		if open < pair {
+			nestedFunc(parenthesis+"(", open+1, close)
 		}
 		if close < open {
-			localRecursiveFunc(processor+")", open, close+1, n)
+			nestedFunc(parenthesis+")", open, close+1)
 		}
 	}
-	localRecursiveFunc("", 0, 0, pair)
+
+	nestedFunc("", 0, 0)
 	return result
 }
 

@@ -26,18 +26,18 @@ func allConstructHelper(target string, wordBank []string, memo map[string][][]st
     if value, ok := memo[target]; ok {
         return value
     }
-    
-    if len(target) == 0 {
-        return make([][]string, 0)
-    }
 
-    result := make([][]string, 0)
+	result := make([][]string, 0)
+	if len(target) == 0 {
+		return result
+	}
+
     for _, word := range wordBank {
         if strings.HasPrefix(target, word) {
             target = target[len(word):]
             elements := allConstructHelper(target, wordBank, memo)
             for _, element := range elements {
-                element = append(element, word)
+                element = append([]string{word}, element...)
             }
 
             result = append(result, elements...)

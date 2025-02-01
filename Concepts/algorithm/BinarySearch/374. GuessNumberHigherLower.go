@@ -37,8 +37,6 @@ func guessNumber(n int) int {
 			return mid
 		}
 	}
-
-	return -1
 }
 
 func guess(n int) int {

@@ -3,7 +3,7 @@ Ref:
 - [Sliding window technique](https://www.youtube.com/watch?v=p-ss2JNynmw)
 - [Cracking Common Interview Algorithm Patterns: Sliding Window](https://www.youtube.com/watch?v=BM0mhAlvyQc)
 - [Leetcode Pattern 2 | Sliding Windows for Strings](https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b)
-- [NeetCode](https://www.youtube.com/playlist?list=PLot-Xpze53leOBgcVsJBEGrHPd_7x_koV)
+- [NeetCode: Sliding Window](https://www.youtube.com/playlist?list=PLot-Xpze53leOBgcVsJBEGrHPd_7x_koV)
 
 ## Concepts:
 - Sliding Window is an extension of the two-pointer approach where we use two pointers (left and right) to create a “window”. The problem will ask us to return the maximum or minimum sub-range that satisfies a given condition.

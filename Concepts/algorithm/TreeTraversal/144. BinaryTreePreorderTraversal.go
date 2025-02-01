@@ -18,18 +18,18 @@ func PreorderTraversal(root *leetcode.TreeNode) []int {
 func preorderTraversalRecursively(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
-	var localRecursiveFunc func(root *leetcode.TreeNode)
-	localRecursiveFunc = func(root *leetcode.TreeNode) {
-		if root == nil {
+	var nestedFunc func(node *leetcode.TreeNode)
+	nestedFunc = func(node *leetcode.TreeNode) {
+		if node == nil {
 			return
 		}
 
-		result = append(result, root.Val)
-		localRecursiveFunc(root.Left)
-		localRecursiveFunc(root.Right)
+		result = append(result, node.Val)
+		nestedFunc(node.Left)
+		nestedFunc(node.Right)
 	}
 
-	localRecursiveFunc(root)
+	nestedFunc(root)
 	return result
 }
 
@@ -54,6 +54,10 @@ func preorderTraversalIteratively(root *leetcode.TreeNode) []int {
 	}
 
 	return result
+}
+
+func preorderTraversalIterativelyExercise(root *leetcode.TreeNode) []int {
+	return nil
 }
 
 func preorderTraversalIterativelyAlt(root *leetcode.TreeNode) []int {

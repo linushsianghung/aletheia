@@ -46,6 +46,5 @@ func getIntersectionNode(headA, headB *leetcode.ListNode) *leetcode.ListNode {
 }
 
 func getIntersectionNodeExercise(headA, headB *leetcode.ListNode) *leetcode.ListNode {
-
 	return nil
 }

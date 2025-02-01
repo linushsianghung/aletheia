@@ -1,8 +1,8 @@
 # Can Construct
 > Write a function "canConstruct(target, wordBank)" that accepts a target string and an array of strings.
-> The function should return a boolean indicating whether or not the 'target' can be constructed by concatnating elements of the 'wordBank' array.
+> The function should return a boolean indicating whether the 'target' can be constructed by concatnating elements of the 'wordBank' array.
 > 
-> You may reuse elements of 'wordBank' as many time as needed.
+> You may reuse elements of 'wordBank' as many times as needed.
 
 ## Memorisation
 ![Can Construct - Memorisation](../pics/canConstruct-Memorisation.png)
@@ -15,12 +15,14 @@
 ```Golang
 package Pattern
 
-func canConstruct(target, wordBank string) bool {
+import "strings"
+
+func canConstruct(target string, wordBank []string) bool {
     return canConstructHelper(target, wordBank, make(map[string]bool))
 }
 
-func canConstructHelper(target, wordBank string, memo map[string]bool) bool {
-    if result. ok := memo[target]; ok {
+func canConstructHelper(target string, wordBank []string, memo map[string]bool) bool {
+    if result, ok := memo[target]; ok {
         return result
     }
     
@@ -28,9 +30,9 @@ func canConstructHelper(target, wordBank string, memo map[string]bool) bool {
         return true
     }
 
-    for _, word := wordBank {
+    for _, word := range wordBank {
         if strings.HasPrefix(target, word) {
-            if canConstruct(target[len(word):], wordBank, memo) {
+            if canConstructHelper(target[len(word):], wordBank, memo) {
                 memo[target] = true
                 return true
             }
@@ -52,9 +54,11 @@ func canConstructHelper(target, wordBank string, memo map[string]bool) bool {
 ```Golang
 package Pattern
 
-func canConstruct(target, wordBank string) bool {
+import "strings"
+
+func canConstruct(target string, wordBank []string) bool {
     table := make([]bool, len(target)+1)
-    talbe[0] = true
+	table[0] = true
 
     for i := 0; i < len(table); i++ {
         if table[i] {

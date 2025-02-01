@@ -5,19 +5,24 @@ package SlidingWindow
 Given an array of integers arr and two integers k and threshold, return the number of sub-arrays of size k and average greater than or equal to threshold.
 */
 func numOfSubarrays(arr []int, k int, threshold int) int {
-	left, sum, result := 0, 0, 0
+	winStart, sum, count := 0, 0, 0
 
-	for right := 0; right < len(arr); right++ {
-		sum += arr[right]
-		if right >= k-1 {
+	for winEnd, num := range arr {
+		sum += num
+		if winEnd >= k-1 {
 			if sum/k >= threshold {
-				result++
+				count++
 			}
 
-			sum -= arr[left]
-			left++
+			sum -= arr[winStart]
+			winStart++
 		}
 	}
 
-	return result
+	return count
+}
+
+func numOfSubarraysExercise(arr []int, k int, threshold int) int {
+
+	return 0
 }

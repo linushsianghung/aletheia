@@ -28,8 +28,8 @@ func goodNodesHelper(root *leetcode.TreeNode) int {
 	minVal := math.MinInt
 
 	// Pre-Order Traversal
-	var localRecursiveFunc func(root *leetcode.TreeNode, minVal int)
-	localRecursiveFunc = func(root *leetcode.TreeNode, minVal int) {
+	var nestedFunc func(root *leetcode.TreeNode, minVal int)
+	nestedFunc = func(root *leetcode.TreeNode, minVal int) {
 		if root == nil {
 			return
 		}
@@ -38,10 +38,10 @@ func goodNodesHelper(root *leetcode.TreeNode) int {
 			result = append(result, root.Val)
 			minVal = root.Val
 		}
-		localRecursiveFunc(root.Left, minVal)
-		localRecursiveFunc(root.Right, minVal)
+		nestedFunc(root.Left, minVal)
+		nestedFunc(root.Right, minVal)
 	}
-	localRecursiveFunc(root, minVal)
+	nestedFunc(root, minVal)
 
 	return len(result)
 }

@@ -8,23 +8,22 @@ A subsequence of a string is a new string that is formed from the original strin
 without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 */
 func isSubsequence(s string, t string) bool {
-	if len(s) == 0 {
-		return true
-	}
 	if len(s) > len(t) {
 		return false
 	}
+	if len(s) == 0 {
+		return true
+	}
 
-	sIdx := 0
-	sRune, tRune := []rune(s), []rune(t)
-	for _, r := range tRune {
-		if r == sRune[sIdx] {
-			sIdx++
-			if sIdx == len(sRune) {
-				return true
-			}
+	idx := 0
+	for i := range t {
+		if t[i] == s[idx] {
+			idx++
+		}
+		if idx == len(s) {
+			return true
 		}
 	}
 
-	return sIdx == len(sRune)
+	return idx == len(s)
 }

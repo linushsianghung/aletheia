@@ -30,6 +30,5 @@ func RemoveDuplicates(nums []int) int {
 }
 
 func removeDuplicatesExercise(nums []int) int {
-
 	return 0
 }

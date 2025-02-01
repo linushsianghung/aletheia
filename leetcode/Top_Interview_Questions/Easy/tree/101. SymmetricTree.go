@@ -24,11 +24,10 @@ func LevelOrderCompare(left, right *leetcode.TreeNode) bool {
 }
 
 func LevelOrderCompareExercise(left, right *leetcode.TreeNode) bool {
-
 	return false
 }
 
-// Related Topic: 100 - Same Tree: https://leetcode.com/problems/same-tree/
+// Related Topic: 100. Same Tree: https://leetcode.com/problems/same-tree/
 func isSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 	return Tree.IsSameTree(p, q)
 }

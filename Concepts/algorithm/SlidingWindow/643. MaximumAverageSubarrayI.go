@@ -9,20 +9,25 @@ Any answer with a calculation error less than 10-5 will be accepted.
 */
 func FindMaxAverage(nums []int, k int) float64 {
 	maxAve := float64(-10_000)
-	left, sum := 0, 0
+	winStart, sum := 0, 0
 
-	for right := 0; right < len(nums); right++ {
-		sum += nums[right]
-		if right >= k-1 {
+	for winEnd, num := range nums {
+		sum += num
+		if winEnd >= k-1 {
 			currentAve := float64(sum) / float64(k)
 			if currentAve > maxAve {
 				maxAve = currentAve
 			}
 
-			sum -= nums[left]
-			left++
+			sum -= nums[winStart]
+			winStart++
 		}
 	}
 
 	return maxAve
+}
+
+func FindMaxAverageExercise(nums []int, k int) float64 {
+
+	return 0
 }

@@ -10,9 +10,11 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 		return nil
 	}
 
+	// Depending on the problem which might need to keep the pointer of the original head
 	/*
 		By using 2 temp pointers (previous & next) to change the pointer direction.
 		The basic idea is "Pointer1 = Pointer2" which means that: Make Pointer1 points to the Node of Pointer2
+		var previous *leetcode.ListNode
 	*/
 	var previous *leetcode.ListNode
 	// Depending on the problem which might need to keep the pointer of the original head
@@ -30,8 +32,19 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 }
 
 func reverseListExercise(head *leetcode.ListNode) *leetcode.ListNode {
+	if head == nil {
+		return head
+	}
 
-	return nil
+	var dummy *leetcode.ListNode
+	for head != nil {
+		temp := head.Next
+		head.Next = dummy
+		dummy = head
+		head = temp
+	}
+
+	return dummy
 }
 
 func reverseListRecursively(head, previous *leetcode.ListNode) *leetcode.ListNode {

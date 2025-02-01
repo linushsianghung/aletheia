@@ -61,8 +61,8 @@ func backtrack(source []element) [][]element {
 	
 	result := make([][]element, 0)
 
-	var localRecursiveFunc func(processor []element, factor ...interface{})
-	localRecursiveFunc = func(processor []element, factor ...interface{}) {
+	var nestedFunc func(processor []element, factor ...interface{})
+	nestedFunc = func(processor []element, factor ...interface{}) {
 		// Goal, i.e. Base Case
 		if goalIsMatch {
 			// Add up the current processor to the result or not, then backtrack
@@ -82,12 +82,12 @@ func backtrack(source []element) [][]element {
 			so that the result won't be modified after removing and appending a new element from/to process slice */
 			p := make([]element, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(source, p, 0, factor) // Considering & Exploring based on the current candidate further
+			nestedFunc(source, p, 0, factor) // Considering & Exploring based on the current candidate further
 			processor = processor[:len(processor)-1] // Remove the current candidate => Backtrack
 		}
 	}
 
-	localRecursiveFunc(source, []element{}, 0)
+	nestedFunc(source, []element{}, 0)
 	return result
 }
 

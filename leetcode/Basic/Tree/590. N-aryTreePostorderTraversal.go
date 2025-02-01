@@ -18,25 +18,32 @@ func postorder(root *leetcode.Node) []int {
 	// return postorderIteratively(root)
 }
 
-func postorderRecursively(node *leetcode.Node) []int {
+func postorderRecursively(root *leetcode.Node) []int {
 	result := make([]int, 0)
 
-	var localRecursiveFunc func(node *leetcode.Node) []int
-	localRecursiveFunc = func(node *leetcode.Node) []int {
-		for _, node := range node.Children {
-			localRecursiveFunc(node)
+	var nestedFunc func(node *leetcode.Node)
+	nestedFunc = func(node *leetcode.Node) {
+		if node == nil {
+			return
 		}
 
+		for _, child := range node.Children {
+			nestedFunc(child)
+		}
 		result = append(result, node.Val)
-		return result
 	}
-
-	return localRecursiveFunc(node)
+	nestedFunc(root)
+	return result
 }
 
-func postorderIteratively(node *leetcode.Node) []int {
+func postorderRecursivelyExercise(root *leetcode.Node) []int {
+
+	return nil
+}
+
+func postorderIteratively(root *leetcode.Node) []int {
 	result := make([]int, 0)
-	stack := []*leetcode.Node{node}
+	stack := []*leetcode.Node{root}
 
 	for len(stack) != 0 {
 		current := stack[len(stack)-1]
@@ -49,7 +56,7 @@ func postorderIteratively(node *leetcode.Node) []int {
 	return result
 }
 
-func postorderIterativelyExercise(node *leetcode.Node) []int {
+func postorderIterativelyExercise(root *leetcode.Node) []int {
 
 	return nil
 }

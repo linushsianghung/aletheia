@@ -15,12 +15,14 @@
 ```Golang
 package Pattern
 
-func countConstruct(target, wordBank string) int {
-    return canConstructHelper(target, wordBank, make(map[string]int))
+import "strings"
+
+func countConstruct(target string, wordBank []string) int {
+    return countConstructHelper(target, wordBank, make(map[string]int))
 }
 
-func countConstructHelper(target, wordBank string, memo map[string]int) int {
-    if result. ok := memo[target]; ok {
+func countConstructHelper(target string, wordBank []string, memo map[string]int) int {
+    if result, ok := memo[target]; ok {
         return result
     }
     
@@ -29,9 +31,9 @@ func countConstructHelper(target, wordBank string, memo map[string]int) int {
     }
 
     count := 0
-    for _, word := wordBank {
+    for _, word := range wordBank {
         if strings.HasPrefix(target, word) {
-            count += countConstructHelper(target[len(word:)], wordBank, memo)
+            count += countConstructHelper(target[len(word):], wordBank, memo)
         }
     }
 
@@ -49,9 +51,11 @@ func countConstructHelper(target, wordBank string, memo map[string]int) int {
 ```Golang
 package Pattern
 
-func countConstruct(target, wordBank string) int {
+import "strings"
+
+func countConstruct(target string, wordBank []string) int {
     table := make([]int, len(target)+1)
-    talbe[0] = 1
+	table[0] = 1
 
     for i := 0; i < len(table); i++ {
         current := target[i:]

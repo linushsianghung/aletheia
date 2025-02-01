@@ -2,19 +2,24 @@ package Medium
 
 // https://leetcode.com/problems/jump-game/
 /*
-You are given an integer array nums. You are initially positioned at the array's first index, 
+You are given an integer array nums. You are initially positioned at the array's first index,
 and each element in the array represents your maximum jump length at that position.
 
 Return true if you can reach the last index, or false otherwise.
 */
 func canJump(nums []int) bool {
-	tail := len(nums)-1
-
-	for i := tail-1; i >= 0; i-- {
-		if i + nums[i] >= tail {
-			tail = i
+	anchor := len(nums) - 1
+	for i := len(nums) - 2; i >= 0; i-- {
+		// if nums[i] is larger than the gap between position i and anchor, it means the anchor position can be reached.
+		// Then we move anchor backward to position i and check if this new anchor position can be reached as well
+		if nums[i] >= anchor-i {
+			anchor = i
 		}
 	}
 
-	return tail == 0
+	return anchor == 0
+}
+
+func canJumpExercise(nums []int) bool {
+	return false
 }

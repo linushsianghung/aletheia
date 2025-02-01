@@ -11,8 +11,9 @@ Given 2 intervals, a and b, there will be 6 different ways the 2 intervals to re
 
 ![6 Interval Scenarios](./pics/IntervalScenarios.png)
 ### Approach
-1. **Sort** the intervals by start time
+1. **Sort** the intervals by start time. `Reference: [Sorting in Go — From Slices to Structs](https://medium.com/@talktopj/sorting-in-go-from-slices-to-structs-d31862339044)`
 2. If reducing the scenario such that `a.Start < b.Start`, there are only 4 scenario left:
-
 ![Reduce Scenarios](./pics/ReduceScenarios.png)
-3. In scenarios B, C, and D, we merge according to different rule.
+3. In scenarios B, C, and D, we merge them into a new interval according to different rule:
+> C.start = A.start
+> C.end = max(A.end, B.end)

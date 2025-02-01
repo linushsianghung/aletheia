@@ -1,11 +1,10 @@
 package Medium
 
-import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
-
 // https://leetcode.com/problems/maximum-subarray/
 // Ref:
 // - Back To Back SWE: [Max Contiguous Subarray Sum - Cubic Time To Kadane's Algorithm](https://www.youtube.com/watch?v=2MmGzdiKR9Y)
 // - NeetCode: [Maximum Subarray](https://www.youtube.com/watch?v=5WZl3MMT0Eg)
+// - https://leetcode.com/problems/maximum-subarray/solutions/1595195/c-python-7-simple-solutions-w-explanation-brute-force-dp-kadane-divide-conquer/
 /*
 Given an integer array nums, find the sub-array with the largest sum, and return its sum.
 
@@ -20,6 +19,37 @@ Key Word => Contiguous
 		- choice 1: ms(i) is index i itself
 		- choice 2: ms(i) is the sum of ms(i-1) + i
 	- Then max(choice 1, choice 2)
+
+
+- O(N^3):
+Brute-Force for calculate every single sub-array to find out the maximum sum
+	  2 -1 -3 4 1 -2 5 1 -3 2
+sum:  2~> 1
+	  2~~> -2
+	  2~~~> 2
+	  .........
+		   -3~> 7
+		   -3~~> 8
+		   -3~~~> 6
+			..........
+- O(N^2):
+Just add new element to the currentSum to eliminate duplicated calculation. It also provides another perspective of the problem, that is,
+at any element i, the maximum sum should be the sum of one of the previous sub-array ending at element i-1 plus current element (like below image),
+which is supposed to be the max one
+	  2 -1 -3 4 1 -2 5 1 -3 2
+sum:	  -1<~~
+         0<~~~~
+	   2<~~~~~~
+	 ..........
+
+- O(N):
+How can we know which previous sub-array ending at element i-1 is the max one? Basically it's not that easy to figure it out. But if we can find out
+the best sum at element i-1, definitely we can get better choice of current element i, namely currentSum = max(nums[i], currentSum + nums[i])
+			 			 2 -1 -3 4 1 -2 5 1 -3 2
+evaluation:  max(-1, 1)  ~~> 1
+	  		 max(-3, -2) ~~~> -2
+		  	 max(4, 2)   ~~~~> 4
+			 ..........
 */
 func maxSubArray(nums []int) int {
 	if len(nums) == 0 {
@@ -27,21 +57,20 @@ func maxSubArray(nums []int) int {
 	}
 
 	maxSum, currentSum := nums[0], nums[0]
-	for i := 1; i < len(nums); i++ {
+	for _, num := range nums {
 		/* Kadane's Algorithm (Dynamic Programming):
 		   For each element [i], the value of element [i-1] is the best solution of subarray ending at that point.
 		   So just consider using the value of element [i] itself or includes the previous best value from element [i-1]
 
-		   currentSum = max(nums[i], currentSum+nums[i])
+		   currentSum = max(nums[i], currentSum + nums[i])
 		*/
-		if currentSum < 0 {
-			currentSum = nums[i]
-		} else {
-			currentSum += nums[i]
-		}
-
-		maxSum = Top_Interview_Questions.Max(maxSum, currentSum)
+		currentSum = max(num, currentSum+num)
+		maxSum = max(maxSum, currentSum)
 	}
 
 	return maxSum
+}
+
+func maxSubArrayExercise(nums []int) int {
+	return 0
 }

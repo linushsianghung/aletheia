@@ -18,18 +18,18 @@ func PostorderTraversal(root *leetcode.TreeNode) []int {
 func postorderTraversalRecursively(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
-	var localRecursiveFunc func(root *leetcode.TreeNode)
-	localRecursiveFunc = func(root *leetcode.TreeNode) {
-		if root == nil {
+	var nestedFunc func(node *leetcode.TreeNode)
+	nestedFunc = func(node *leetcode.TreeNode) {
+		if node == nil {
 			return
 		}
 
-		localRecursiveFunc(root.Left)
-		localRecursiveFunc(root.Right)
-		result = append(result, root.Val)
+		nestedFunc(node.Left)
+		nestedFunc(node.Right)
+		result = append(result, node.Val)
 	}
 
-	localRecursiveFunc(root)
+	nestedFunc(root)
 	return result
 }
 
@@ -55,4 +55,8 @@ func postorderTraversalIteratively(root *leetcode.TreeNode) []int {
 	}
 
 	return result
+}
+
+func postorderTraversalIterativelyExercise(root *leetcode.TreeNode) []int {
+	return nil
 }

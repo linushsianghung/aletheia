@@ -19,11 +19,11 @@ func combinationSum(candidates []int, target int) [][]int {
 	// return result
 }
 
-func backtrackCombinationsSum(source []int, target int) [][]int {
+func backtrackCombinationsSum(sources []int, target int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int, start, remain int)
-	localRecursiveFunc = func(processor []int, start, remain int) {
+	var nestedFunc func(processor []int, start, remain int)
+	nestedFunc = func(processor []int, start, remain int) {
 		if remain < 0 {
 			return
 		}
@@ -32,43 +32,20 @@ func backtrackCombinationsSum(source []int, target int) [][]int {
 			return
 		}
 
-		for i := start; i < len(source); i++ {
-			processor = append(processor, source[i])
+		for i := start; i < len(sources); i++ {
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(p, remain-source[i], i)
+			nestedFunc(p, i, remain-sources[i])
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{}, target, 0)
+	nestedFunc(make([]int, 0), 0, target)
 	return result
 }
 
-func backtrackCombinationsSumExercise(candidates []int, target int) [][]int {
-	result := make([][]int, 0)
-
-	var localFunc func(processor []int, remain, start int)
-	localFunc = func(processor []int, remain, start int) {
-		if remain < 0 {
-			return
-		}
-
-		if remain == 0 {
-			result = append(result, processor)
-		} else {
-			for i := start; i < len(candidates); i++ {
-				processor = append(processor, candidates[i])
-				p := make([]int, len(processor))
-				copy(p, processor)
-				localFunc(p, remain-candidates[i], i)
-				processor = processor[:len(processor)-1]
-			}
-		}
-
-	}
-
-	localFunc(make([]int, 0), target, 0)
+func backtrackCombinationsSumExercise(source []int, target int) [][]int {
 	return nil
 }
 

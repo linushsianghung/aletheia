@@ -18,16 +18,19 @@ func pivotIndex(nums []int) int {
 		sumRight += num
 	}
 
-	for i := range nums {
-		current := nums[i]
-		sumRight -= current
+	for i, num := range nums {
+		sumRight -= num
 
 		if sumLeft == sumRight {
 			return i
 		}
 
-		sumLeft += current
+		sumLeft += num
 	}
 
 	return -1
+}
+
+func pivotIndexExercise(nums []int) int {
+	return 0
 }

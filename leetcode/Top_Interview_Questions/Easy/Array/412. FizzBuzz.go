@@ -12,24 +12,25 @@ Given an integer n, return a string array answer (1-indexed) where:
 */
 
 func fizzBuzz(n int) []string {
-	result := make([]string, 0)
+	answer := make([]string, 0)
 
+	// for num := range n: Cannot use range n because Go will iterate from 0 to one less than n
 	for i := 1; i <= n; i++ {
-		if i%15 == 0 {
-			result = append(result, "FizzBuzz")
-		} else if i%3 == 0 {
-			result = append(result, "Fizz")
-		} else if i%5 == 0 {
-			result = append(result, "Buzz")
-		} else {
-			result = append(result, strconv.Itoa(i))
+		switch {
+		case i%15 == 0:
+			answer = append(answer, "FizzBuzz")
+		case i%5 == 0:
+			answer = append(answer, "Buzz")
+		case i%3 == 0:
+			answer = append(answer, "Fizz")
+		default:
+			answer = append(answer, strconv.Itoa(i))
 		}
 	}
 
-	return result
+	return answer
 }
 
 func fizzBuzzExercise(n int) []string {
-
 	return nil
 }

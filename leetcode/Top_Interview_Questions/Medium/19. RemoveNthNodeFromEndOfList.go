@@ -27,6 +27,5 @@ func removeNthFromEnd(head *leetcode.ListNode, n int) *leetcode.ListNode {
 }
 
 func removeNthFromEndExercise(head *leetcode.ListNode, n int) *leetcode.ListNode {
-
 	return nil
 }

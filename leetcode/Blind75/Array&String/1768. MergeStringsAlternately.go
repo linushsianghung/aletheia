@@ -8,25 +8,24 @@ If a string is longer than the other, append the additional letters onto the end
 Return the merged string.
 */
 func mergeAlternately(word1 string, word2 string) string {
+	result := make([]rune, 0)
 	runner1, runner2 := 0, 0
-	r1 := []rune(word1)
-	r2 := []rune(word2)
-	word := make([]rune, 0)
+	rune1, rune2 := []rune(word1), []rune(word2)
 
 	for runner1 < len(word1) && runner2 < len(word2) {
-		word = append(word, r1[runner1])
-		word = append(word, r2[runner2])
+		result = append(result, rune1[runner1])
+		result = append(result, rune2[runner2])
+
 		runner1++
 		runner2++
 	}
 
 	if runner1 < len(word1) {
-		word = append(word, r1[runner1:]...)
+		result = append(result, rune1[runner1:]...)
 	}
-
 	if runner2 < len(word2) {
-		word = append(word, r2[runner2:]...)
+		result = append(result, rune2[runner2:]...)
 	}
 
-	return string(word)
+	return string(result)
 }

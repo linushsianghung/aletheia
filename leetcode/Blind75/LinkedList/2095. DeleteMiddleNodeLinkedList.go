@@ -14,13 +14,12 @@ func deleteMiddle(head *leetcode.ListNode) *leetcode.ListNode {
 		return nil
 	}
 
-	slow, fast, previous := head, head, &leetcode.ListNode{Next: head}
+	slow, fast := &leetcode.ListNode{Next: head}, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
-		previous = previous.Next
 	}
 
-	previous.Next = previous.Next.Next
+	slow.Next = slow.Next.Next
 	return head
 }

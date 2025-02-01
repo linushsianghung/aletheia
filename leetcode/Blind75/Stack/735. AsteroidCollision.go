@@ -1,7 +1,5 @@
 package Stack
 
-import "math"
-
 // https://leetcode.com/problems/asteroid-collision/description/?envId=leetcode-75
 /*
 We are given an array asteroids of integers representing asteroids in a row.
@@ -27,20 +25,20 @@ func asteroidCollision(asteroids []int) []int {
 		// 3. + -
 		// 4. - +
 		current := stack[len(stack)-1]
-		if current < 0 || (current > 0 && asteroids[i] > 0) {
+		if current < 0 || asteroids[i] > 0 {
 			stack = append(stack, asteroids[i])
 			i++
 			continue
 		}
 
 		// Handling scenario 3
-		if math.Abs(float64(current)) > math.Abs(float64(asteroids[i])) {
+		if current > -asteroids[i] {
 			i++
-		} else if math.Abs(float64(current)) < math.Abs(float64(asteroids[i])) {
+		} else if current < -asteroids[i] {
 			stack = stack[:len(stack)-1]
 		} else {
-			stack = stack[:len(stack)-1]
 			i++
+			stack = stack[:len(stack)-1]
 		}
 	}
 

@@ -1,24 +1,28 @@
 package SlidingWindow
 
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
-// Ref: https://leetcode.com/problems/longest-substring-without-repeating-characters/solutions/2694302/js-98-sliding-window-with-exlanation/
 /* Given a string s, find the length of the longest substring without repeating characters. */
 func lengthOfLongestSubstring(s string) int {
-	left, length := 0, 0
+	winStart, maxLen := 0, 0
+	sRune := []rune(s)
 	note := make(map[rune]int)
-	chars := []rune(s)
 
-	for right := 0; right < len(s); right++ {
-		if i, ok := note[chars[right]]; ok {
-			if left <= i {
-				left = i + 1
-			}
+	for winEnd := 0; winEnd < len(sRune); winEnd++ {
+		// Dynamic-Size Sliding Window (Double For Loop): skip to the next character of the repeating one
+		if i, ok := note[sRune[winEnd]]; ok && winStart <= i {
+			winStart = i + 1
 		}
-		note[chars[right]] = right
-		if length < right-left+1 {
-			length = right - left + 1
+
+		currentLen := winEnd - winStart + 1
+		if currentLen > maxLen {
+			maxLen = currentLen
 		}
+		note[sRune[winEnd]] = winEnd
 	}
 
-	return length
+	return maxLen
+}
+
+func lengthOfLongestSubstringExercise(s string) int {
+	return 0
 }

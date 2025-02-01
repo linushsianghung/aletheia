@@ -4,7 +4,7 @@ Ref:
 - [Dynamic Programming with Java – Learn to Solve Algorithmic Problems & Coding Challenges](youtube.com/watch?v=oFkDldu3C_4)
 - [Mastering Dynamic Programming - How to solve any interview problem (Part 1)](https://www.youtube.com/watch?v=Hdr64lKQ3e4)
 - [Mastering Dynamic Programming - A Real-Life Problem (Part 2)](https://www.youtube.com/watch?v=rE5h11FwiVw)
-- [NeetCode](https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NsRHlNO)
+- [NeetCode: Dynamic Programming](https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NsRHlNO)
 
 ## Definition:
 Dynamic Programming (DP) is a programming paradigm that can systematically and efficiently explore all possible solutions to a problem. As such, it is capable of
@@ -13,10 +13,10 @@ solving a wide variety of problems that often have the following characteristics
 2. The problem has an "optimal substructure" - an optimal solution can be formed from optimal solutions to the overlapping sub-problems of the original problem.
 
 ## Top-Down (Memoization) approach v.s. Bottom-Up (Tabulation) approach
-Ref: https://www.enjoyalgorithms.com/blog/top-down-memoization-vs-bottom-up-tabulation
+Ref: [Top-down v.s. Bottom-up approach in Dynamic Programming](https://www.enjoyalgorithms.com/blog/top-down-memoization-vs-bottom-up-tabulation)
 ### Top-Down: implementation of naturally using recursion but modify it to save the solution of each sub-problem in an array or hash table,
 then check whether it has previously solved the sub-problem
-> Visualise the probelm as a tree
+> Visualise the problem as a tree
 > Implement the tree using recursion
 > Work in inefficient way
 > Add a memo object (Array or Map)

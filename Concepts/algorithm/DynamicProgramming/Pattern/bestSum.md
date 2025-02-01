@@ -32,7 +32,7 @@ func bestSumMemoHelper(targetSum, numbers int, memo map[int][]int) []int {
     }
 
     bestResult := make([]int, 0)
-    for _, num := range numbers {
+    for num := range numbers {
         remainder := targetSum - num
         result := bestSumMemoHelper(remainder, numbers, memo)
 
@@ -61,7 +61,7 @@ func bestSum(targetSum, numbers int) []int {
     table[0] = make([]int, 0)
     for i := 0; i < targetSum; i++ {
         if table[i] != nil {
-            for _, num := range numbers {
+            for num := range numbers {
                 if  i+num <= targetSum && (table[i+num] == nil || len(table[i])+1 < len(table[i+num])) {
                     p := make([]int, len(table[i])+1)
                     copy(p, table[i])

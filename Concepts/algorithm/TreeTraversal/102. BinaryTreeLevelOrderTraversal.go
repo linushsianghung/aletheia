@@ -43,7 +43,6 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 }
 
 func levelOrderIterativelyExercise(root *leetcode.TreeNode) [][]int {
-
 	return nil
 }
 
@@ -83,8 +82,8 @@ func connect(root *leetcode.TreeNode) *leetcode.TreeNode {
 func levelOrderRecursively(root *leetcode.TreeNode) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(root *leetcode.TreeNode, level int)
-	localRecursiveFunc = func(root *leetcode.TreeNode, level int) {
+	var nestedFunc func(root *leetcode.TreeNode, level int)
+	nestedFunc = func(root *leetcode.TreeNode, level int) {
 		if root == nil {
 			return
 		}
@@ -94,10 +93,10 @@ func levelOrderRecursively(root *leetcode.TreeNode) [][]int {
 		}
 
 		result[level] = append(result[level], root.Val)
-		localRecursiveFunc(root.Left, level+1)
-		localRecursiveFunc(root.Right, level+1)
+		nestedFunc(root.Left, level+1)
+		nestedFunc(root.Right, level+1)
 	}
 
-	localRecursiveFunc(root, 0)
+	nestedFunc(root, 0)
 	return result
 }

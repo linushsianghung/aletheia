@@ -37,12 +37,15 @@ func subsetsWithDup(nums []int) [][]int {
 
 func backtrackSubsetsWithDup(sources []int) [][]int {
 	result := make([][]int, 0)
-	var localRecursiveFunc func(processor []int, start int)
-	localRecursiveFunc = func(processor []int, start int) {
+	var nestedFunc func(processor []int, start int)
+	nestedFunc = func(processor []int, start int) {
 		result = append(result, processor)
+		//if len(processor) == len(sources) {
+		//	return
+		//}
 
 		for i := start; i < len(sources); i++ {
-			// Constraints: Under the same processed (previous level) number, skip the element when this element is the same as the previous one
+			// Constraints: Skip the element when this is the same as the previous one in each backtrack level in order to prevent duplicate subsets,
 			if i > start && sources[i] == sources[i-1] {
 				continue
 			}
@@ -50,13 +53,17 @@ func backtrackSubsetsWithDup(sources []int) [][]int {
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(p, i+1)
+			nestedFunc(p, i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{}, 0)
+	nestedFunc([]int{}, 0)
 	return result
+}
+
+func backtrackSubsetsWithDupExercise(sources []int) [][]int {
+	return nil
 }
 
 func subsetsWithDupHelper(result *[][]int, sources, processor []int, start int) {

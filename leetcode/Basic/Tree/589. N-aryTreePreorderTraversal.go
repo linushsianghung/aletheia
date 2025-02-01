@@ -1,6 +1,8 @@
 package Tree
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // https://leetcode.com/problems/n-ary-tree-preorder-traversal/
 /*
@@ -21,20 +23,26 @@ func preorder(root *leetcode.Node) []int {
 func preorderRecursively(root *leetcode.Node) []int {
 	result := make([]int, 0)
 
-	var localRecursiveFunc func(root *leetcode.Node)
-	localRecursiveFunc = func(root *leetcode.Node) {
+	var nestedFunc func(root *leetcode.Node)
+	nestedFunc = func(root *leetcode.Node) {
 		if root == nil {
 			return
 		}
 
 		result = append(result, root.Val)
+
 		for _, child := range root.Children {
-			localRecursiveFunc(child)
+			nestedFunc(child)
 		}
 	}
 
-	localRecursiveFunc(root)
+	nestedFunc(root)
 	return result
+}
+
+func preorderRecursivelyExercise(root *leetcode.Node) []int {
+
+	return nil
 }
 
 func preorderIteratively(root *leetcode.Node) []int {
@@ -46,7 +54,7 @@ func preorderIteratively(root *leetcode.Node) []int {
 		stack = stack[:len(stack)-1]
 		result = append(result, current.Val)
 
-		// Based on the LeetCode example, the Left subtree has to be processed first, so reverse the children nodes
+		// Based on the example, the Left subtree has to be processed first, so reverse the children nodes
 		reverse(current.Children)
 		for _, child := range current.Children {
 			stack = append(stack, child)

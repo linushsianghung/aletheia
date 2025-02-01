@@ -12,12 +12,12 @@ func strStr(haystack string, needle string) int {
 		return 0
 	}
 
+	// It has to be cached to prevent the length shrinking during the operation
 	haystackLen := len(haystack)
 	for i := 0; i <= haystackLen-len(needle); i++ {
 		if strings.HasPrefix(haystack, needle) {
 			return i
 		}
-
 		haystack = haystack[1:]
 	}
 
@@ -25,6 +25,5 @@ func strStr(haystack string, needle string) int {
 }
 
 func strStrExercise(haystack string, needle string) int {
-
 	return 0
 }

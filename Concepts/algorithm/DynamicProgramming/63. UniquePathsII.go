@@ -1,4 +1,4 @@
-package TopInterview150
+package DynamicProgramming
 
 // UniquePathsWithObstacles https://leetcode.com/problems/unique-paths-ii/description/
 /*

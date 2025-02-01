@@ -30,11 +30,7 @@ func isPalindromeImpl1(x int) bool {
 		x /= 10
 	}
 
-	if rev == x || rev/10 == x {
-		return true
-	}
-
-	return false
+	return x == rev || x == rev/10
 }
 
 func isPalindromeImpl1Exercise(x int) bool {

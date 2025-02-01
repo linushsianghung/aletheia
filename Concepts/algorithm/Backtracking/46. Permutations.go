@@ -14,35 +14,58 @@ func Permute(nums []int) [][]int {
 	// return result
 }
 
-func backtrackPermute(source []int) [][]int {
+func backtrackPermute(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int)
-	localRecursiveFunc = func(processor []int) {
-		if len(processor) == len(source) {
+	var nestedFunc func(processor []int, used []bool)
+	nestedFunc = func(processor []int, used []bool) {
+
+		if len(processor) == len(sources) {
 			result = append(result, processor)
 			return
 		}
 
-		for i := 0; i < len(source); i++ {
-			// Skip current processed number
-			if slices.Contains(processor, source[i]) {
+		for i := 0; i < len(sources); i++ {
+			if used[i] {
 				continue
 			}
-			processor = append(processor, source[i])
+
+			processor = append(processor, sources[i])
+			used[i] = true
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(p)
+			nestedFunc(p, used)
+			processor = processor[:len(processor)-1]
+			used[i] = false
+		}
+	}
+
+	// It might be easier to understand but cannot align to the template with Permutations II
+	var nestedAltFunc func(processor []int)
+	nestedAltFunc = func(processor []int) {
+		if len(processor) == len(sources) {
+			result = append(result, processor)
+			return
+		}
+
+		for i := 0; i < len(sources); i++ {
+			// Skip current processed number
+			if slices.Contains(processor, sources[i]) {
+				continue
+			}
+			processor = append(processor, sources[i])
+			p := make([]int, len(processor))
+			copy(p, processor)
+			nestedAltFunc(p)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{})
+	nestedFunc(make([]int, 0), make([]bool, len(sources)))
 	return result
 }
 
-func backtrackPermuteExercise(source []int) [][]int {
-
+func backtrackPermuteExercise(sources []int) [][]int {
 	return nil
 }
 

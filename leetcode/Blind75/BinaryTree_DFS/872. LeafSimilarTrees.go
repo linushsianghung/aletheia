@@ -42,20 +42,20 @@ func leafSimilarHelper(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
 	// Post-Order Traversal
-	var localRecursiveFunc func(root *leetcode.TreeNode) int
-	localRecursiveFunc = func(root *leetcode.TreeNode) int {
+	var nestedFunc func(root *leetcode.TreeNode) int
+	nestedFunc = func(root *leetcode.TreeNode) int {
 		if root == nil {
 			return -1
 		}
 
-		left := localRecursiveFunc(root.Left)
-		right := localRecursiveFunc(root.Right)
+		left := nestedFunc(root.Left)
+		right := nestedFunc(root.Right)
 		if left == -1 && right == -1 {
 			result = append(result, root.Val)
 		}
 		return 0
 	}
 
-	localRecursiveFunc(root)
+	nestedFunc(root)
 	return result
 }

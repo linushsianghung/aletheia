@@ -9,13 +9,10 @@ Return the answer in any order.
 A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
 */
 func letterCombinations(digits string) []string {
-	result := make([]string, 0)
-
 	if digits == "" {
-		return result
+		return nil
 	}
 
-	curStr := ""
 	// It's too difficult to convert unicode (derived from the element of string slice) to integer
 	// digitMapping := []string{"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"}
 	digitMapping := map[rune]string{
@@ -29,17 +26,35 @@ func letterCombinations(digits string) []string {
 		'9': "wxyz",
 	}
 
-	backtrackLetterCombination(&result, digits, curStr, 0, digitMapping)
+	return backtrackLetterCombination(digits, digitMapping)
+}
+
+func backtrackLetterCombination(digits string, mapping map[rune]string) []string {
+	result := make([]string, 0)
+
+	var nestedFunc func(curStr string, index int)
+	nestedFunc = func(curStr string, index int) {
+		if len(curStr) == len(digits) {
+			result = append(result, curStr)
+			return
+		}
+
+		for _, c := range mapping[rune(digits[index])] {
+			nestedFunc(curStr+string(c), index+1)
+		}
+	}
+
+	nestedFunc("", 0)
 	return result
 }
 
-func backtrackLetterCombination(result *[]string, digits string, curStr string, index int, mapping map[rune]string) {
+func backtrackLetterCombinationAlt(result *[]string, digits, curStr string, index int, mapping map[rune]string) {
 	if len(curStr) == len(digits) {
 		*result = append(*result, curStr)
 		return
 	}
 
 	for _, c := range mapping[rune(digits[index])] {
-		backtrackLetterCombination(result, digits, curStr+string(c), index+1, mapping)
+		backtrackLetterCombinationAlt(result, digits, curStr+string(c), index+1, mapping)
 	}
 }

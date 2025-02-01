@@ -2,14 +2,15 @@ package Medium
 
 import (
 	"fmt"
-
-	"github.com/linushung/aletheia/leetcode/TopInterview150"
+	"github.com/linushung/aletheia/Concepts/algorithm/DynamicProgramming"
 )
 
 // UniquePaths https://leetcode.com/problems/unique-paths/description/
-// Ref: https://leetcode.com/problems/unique-paths/solutions/22954/c-dp/
+// Ref:
+// - https://leetcode.com/problems/unique-paths/solutions/22954/c-dp/
+// - https://leetcode.com/problems/unique-paths/solutions/1581998/c-python-5-simple-solutions-w-explanation-optimization-from-brute-force-to-dp-to-math/
 /*
-There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]).
+There is a robot on an m x n grid. The robot is initially located in the top-left corner (i.e., grid[0][0]).
 The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
 Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
 
@@ -27,7 +28,8 @@ func UniquePathsMemorisation(m, n int, memo map[string]int) int {
 	if value, ok := memo[key]; ok {
 		return value
 	}
-	if m == 1 && n == 1 {
+	// Here the "or" operator can do the job for improvement because whenever reaching the edge, there is definitely one way to arrive the end point
+	if m == 1 || n == 1 {
 		return 1
 	}
 	if m == 0 || n == 0 {
@@ -36,6 +38,31 @@ func UniquePathsMemorisation(m, n int, memo map[string]int) int {
 
 	memo[key] = UniquePathsMemorisation(m-1, n, memo) + UniquePathsMemorisation(m, n-1, memo)
 	return memo[key]
+}
+
+// Using Backtracking strategy as practice and as expect it will get "Memory Limit Exceeded" error message when the grid become larger
+func uniquePathsBacktracking(m, n int) int {
+	result := make([][]string, 0)
+
+	var nestedFunc func(processor []string, m, n int)
+	nestedFunc = func(processor []string, m, n int) {
+		if m == 0 || n == 0 {
+			return
+		}
+
+		if m == 1 && n == 1 {
+			result = append(result, processor)
+		}
+
+		if m > 0 {
+			nestedFunc(append(processor, "down"), m-1, n)
+		}
+		if n > 0 {
+			nestedFunc(append(processor, "right"), m, n-1)
+		}
+	}
+	nestedFunc(make([]string, 0), m, n)
+	return len(result)
 }
 
 /*
@@ -49,6 +76,7 @@ Further observation that for each new iteration, pre[j] is just the cur[j] befor
 */
 func uniquePathsSmartSlice(m int, n int) int {
 	cur := make([]int, n)
+	// Initialise table
 	for i := 0; i < n; i++ {
 		cur[i] = 1
 	}
@@ -69,6 +97,7 @@ func uniquePathsSmartSlice(m int, n int) int {
 */
 func uniquePaths2Slice(m int, n int) int {
 	pre, cur := make([]int, n), make([]int, n)
+	// Initialise table
 	for i := 0; i < n; i++ {
 		pre[i] = 1
 		cur[i] = 1
@@ -115,5 +144,5 @@ func uniquePathsBF(m int, n int) int {
 
 // Related Topic: 63. Unique Paths II: https://leetcode.com/problems/unique-paths-ii/description/
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
-	return TopInterview150.UniquePathsWithObstacles(obstacleGrid)
+	return DynamicProgramming.UniquePathsWithObstacles(obstacleGrid)
 }

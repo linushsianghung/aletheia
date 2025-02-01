@@ -1,14 +1,14 @@
 package tree
 
-import (
-	TwoPointers "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
-	"github.com/linushung/aletheia/leetcode"
-)
+import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
 // Ref:
 // - https://www.youtube.com/watch?v=0K0uCMYq5ng
 // - https://www.youtube.com/watch?v=12omz-VAyRk
+/*
+Given an integer array nums where the elements are sorted in ascending order, convert it to a height-balanced binary search tree.
+*/
 func sortedArrayToBST(nums []int) *leetcode.TreeNode {
 	if len(nums) == 0 {
 		return nil
@@ -31,11 +31,5 @@ func constructSubBST(nums []int, left, right int) *leetcode.TreeNode {
 }
 
 func constructSubBSTExercise(nums []int, left, right int) *leetcode.TreeNode {
-
 	return nil
-}
-
-// Related Topic: 704 - Binary Search https://leetcode.com/problems/binary-search/description/
-func search(nums []int, target int) int {
-	return TwoPointers.Search(nums, target)
 }

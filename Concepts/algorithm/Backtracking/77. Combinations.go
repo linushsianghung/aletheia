@@ -28,8 +28,8 @@ func combine(n int, k int) [][]int {
 func combineRecursively(n, k int) [][]int {
 	result := make([][]int, 0)
 
-	var localRecursiveFunc func(processor []int, start int)
-	localRecursiveFunc = func(processor []int, start int) {
+	var nestedFunc func(processor []int, start int)
+	nestedFunc = func(processor []int, start int) {
 		if len(processor) == k {
 			result = append(result, processor)
 			return
@@ -39,12 +39,12 @@ func combineRecursively(n, k int) [][]int {
 			processor = append(processor, i)
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localRecursiveFunc(p, i+1)
+			nestedFunc(p, i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localRecursiveFunc([]int{}, 1)
+	nestedFunc([]int{}, 1)
 	return result
 }
 
@@ -52,7 +52,7 @@ func backtrackCombinations(result *[][]int, processor []int, start, n, k int) {
 	/* The backtracking would be triggered at the points where the decision space is completed i.e., start is 9 or when the size of becomes k. */
 	// Base Case => Every problem of backtracking has some base case which tells us at which point we have to stop with the recursion process.
 	if len(processor) == k {
-		*result = append(*result, p)
+		*result = append(*result, processor)
 		return
 	}
 

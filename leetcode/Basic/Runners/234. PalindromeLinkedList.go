@@ -49,7 +49,7 @@ func isPalindromeRecursively(head *leetcode.ListNode) bool {
 	return false
 }
 
-// Related Topic: 876 - Middle of the Linked List: https://leetcode.com/problems/middle-of-the-linked-list/
+// Related Topic: 876. Middle of the Linked List: https://leetcode.com/problems/middle-of-the-linked-list/
 func findMiddleNode(head *leetcode.ListNode) *leetcode.ListNode {
 	return middleNode(head)
 }

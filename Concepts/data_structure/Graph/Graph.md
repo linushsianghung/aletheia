@@ -11,7 +11,7 @@ Tree is a special kind of graph which has only 1 root and 1 unique path between 
 - ![Directed / Undirected Graphs](./pics/DirectedUndirectedGraphs.png)
 > In an **Undirected Graph**, when there is a connection between nodes, it goes both way
 > Facebook and its users and the relationship between the users can be modeled as an undirected graph
-> In an **Directed Graph**, connection between nodes have direction
+> In a **Directed Graph**, connection between nodes have direction
 > The **degree** of a node is the number of the edges connected to the node
 > In a Directed Graph, nodes have an **indegree** or edges pointing to it and an **outdegree** or edges point from it
 - Weighted / Unweighted Graphs
@@ -22,6 +22,8 @@ Tree is a special kind of graph which has only 1 root and 1 unique path between 
 > An **Acyclic Graph**, means the graph contains no cycle, aka no node can be traversed back to itself
 
 ### Traversal
+Reference: [Depth First Search (DFS) Explained](https://www.youtube.com/watch?v=PMMc4VsIacU)
+
 ![BFS vs. DFS Traversal](./pics/BFSvsDFS.png)
 
 ## Graph Representation & Implementation

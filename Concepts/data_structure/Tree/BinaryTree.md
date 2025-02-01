@@ -1,6 +1,7 @@
 # Binary Tree
 Ref:
 - [Binary Tree Algorithms for Technical Interviews](https://www.youtube.com/watch?v=fAAZixBzIAI)
+- [Trees Tutorial](https://www.youtube.com/playlist?list=PLxQ8cCJ6LyOZcCW4omAoUzUFFhQ2ud3tD)
 - [Binary Tree Bootcamp](https://www.youtube.com/watch?v=BHB0B1jFKQc)
 - [NeetCode](https://www.youtube.com/playlist?list=PLot-Xpze53ldg4pN6PfzoJY7KsKcxF1jg)
 - [Binary Tree — Traversal](https://medium.com/coding-hot-pot/binary-tree-traversal-622caed2fad5)
@@ -20,7 +21,6 @@ type TreeNode struct {
 	Right	TreeNode
 }
 ```
-
 **Binary Search Tree** is a special form of a binary tree. The value in each node must be greater than (or equal to) any values in its left subtree but less than (or equal to) any values in its right subtree.
 
 ## Tree Traversal:
@@ -58,13 +58,13 @@ we don't visit them twice:
 - In-Order Traversal of Binary Search Tree <=> Ascending Array
 - Post-Order Traversal
 - Ref:
-	- Binary tree traversal - BFS & DFS: https://www.youtube.com/watch?v=9RHO6jU--GU
-	- Binary tree traversal - Preorder, Inorder, Postorder: https://www.youtube.com/watch?v=gm8DUJJhmY4
-	- Depth First Search (DFS) Explained: https://www.youtube.com/watch?v=PMMc4VsIacU
-	- Traverse a Tree - Introduction: https://leetcode.com/explore/learn/card/data-structure-tree/134/traverse-a-tree/992/
+	- [Back To Back SWE - Binary Tree Bootcamp: Full, Complete, & Perfect Trees. Preorder, Inorder, & Postorder Traversal](https://www.youtube.com/watch?v=BHB0B1jFKQc)
+    - [Back To Back SWE - Binary Tree Level Order Traversal](https://www.youtube.com/watch?v=gcR28Hc2TNQ)
+    - [Binary tree traversal - BFS & DFS](https://www.youtube.com/watch?v=9RHO6jU--GU)
+	- [Binary tree traversal - Preorder, Inorder, Postorder](https://www.youtube.com/watch?v=gm8DUJJhmY4)
 	- https://stackoverflow.com/questions/23576746/what-is-the-difference-between-breadth-first-searching-and-level-order-traversal
 
-``` Golang
+```Golang
 package Tree
 
 import (

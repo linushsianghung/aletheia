@@ -32,7 +32,7 @@ func isValidSudoku(board [][]byte) bool {
 				return false
 			}
 			subBox := fmt.Sprintf("%d-%d", i/3, j/3)
-			numInSubBox := fmt.Sprintf("Subbod %s has %d", subBox, board[i][j])
+			numInSubBox := fmt.Sprintf("SubBox %s has %d", subBox, board[i][j])
 			if _, ok := note[numInSubBox]; ok {
 				return false
 			}
@@ -44,4 +44,8 @@ func isValidSudoku(board [][]byte) bool {
 	}
 
 	return true
+}
+
+func isValidSudokuExercise(board [][]byte) bool {
+	return false
 }

@@ -13,23 +13,21 @@ func MoveZeroes(nums []int) {
 
 /*
 Algorithm:
-Using a pointer (tracer) to keep the index of (the first) zero. Then exchange with tracer when meeting a non-zero number
+Using a pointer (anchor) to keep the index of (the first) zero. Then exchange with tracer when meeting a non-zero number
 */
 func moveZeroesShift(nums []int) {
-	tracer := 0
-
+	anchor := 0
 	for i, num := range nums {
 		if num != 0 {
 			// It has to be done first in case of tracer and the i are the same index
 			nums[i] = 0
-			nums[tracer] = num
-			tracer++
+			nums[anchor] = num
+			anchor++
 		}
 	}
 }
 
 func moveZeroesShiftExercise(nums []int) {
-
 }
 
 // Ref: https://leetcode.com/problems/move-zeroes/solutions/172432/the-easiest-but-unusual-snowball-java-solution-beats-100-o-n-clear-explanation/

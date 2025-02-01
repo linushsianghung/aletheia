@@ -16,15 +16,6 @@ func arrangeCoins(n int) int {
 }
 
 func arrangeCoinsBS(n int) int {
-
-	max := func(x, y int) int {
-		if x >= y {
-			return x
-		} else {
-			return y
-		}
-	}
-
 	left, right := 1, n
 	result := 0
 

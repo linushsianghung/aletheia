@@ -29,6 +29,5 @@ func removeElement(nums []int, val int) int {
 }
 
 func removeElementExercise(nums []int, val int) int {
-
 	return 0
 }
