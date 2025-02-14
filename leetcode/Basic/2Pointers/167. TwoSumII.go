@@ -27,6 +27,5 @@ func TwoSumII(numbers []int, target int) []int {
 }
 
 func twoSumIIExercise(numbers []int, target int) []int {
-
 	return nil
 }

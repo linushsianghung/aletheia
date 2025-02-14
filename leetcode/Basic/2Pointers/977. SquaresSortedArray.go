@@ -22,6 +22,5 @@ func sortedSquares(nums []int) []int {
 }
 
 func sortedSquaresExercise(nums []int) []int {
-
 	return nil
 }

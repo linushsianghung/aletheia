@@ -40,6 +40,5 @@ func middleNodeExercise(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
 		return nil
 	}
-
 	return nil
 }

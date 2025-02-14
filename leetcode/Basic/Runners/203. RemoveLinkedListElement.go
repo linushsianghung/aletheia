@@ -29,6 +29,5 @@ func removeElements(head *leetcode.ListNode, val int) *leetcode.ListNode {
 }
 
 func removeElementsExercise(head *leetcode.ListNode, val int) *leetcode.ListNode {
-
 	return nil
 }

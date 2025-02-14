@@ -33,6 +33,6 @@ func makeGoodExercise(s string) string {
 }
 
 // Related Topic: 1047. Remove All Adjacent Duplicates In String: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string
-func removeDuplicatesFrom1544(s string) {
+func removeDuplicatesFrom1047(s string) {
 	removeDuplicates(s)
 }

@@ -41,7 +41,6 @@ func isPalindromeIteratively(head *leetcode.ListNode) bool {
 }
 
 func isPalindromeIterativelyExercise(head *leetcode.ListNode) bool {
-
 	return false
 }
 
