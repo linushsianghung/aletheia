@@ -17,8 +17,8 @@ func Permute(nums []int) [][]int {
 func backtrackPermute(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var nestedFunc func(processor []int, used []bool)
-	nestedFunc = func(processor []int, used []bool) {
+	var permuteFunc func(processor []int, used []bool)
+	permuteFunc = func(processor []int, used []bool) {
 
 		if len(processor) == len(sources) {
 			result = append(result, processor)
@@ -30,38 +30,41 @@ func backtrackPermute(sources []int) [][]int {
 				continue
 			}
 
-			processor = append(processor, sources[i])
 			used[i] = true
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			nestedFunc(p, used)
+			permuteFunc(p, used)
 			processor = processor[:len(processor)-1]
 			used[i] = false
 		}
 	}
+	permuteFunc(make([]int, 0), make([]bool, len(sources)))
 
-	// It might be easier to understand but cannot align to the template with Permutations II
-	var nestedAltFunc func(processor []int)
-	nestedAltFunc = func(processor []int) {
-		if len(processor) == len(sources) {
-			result = append(result, processor)
-			return
-		}
-
-		for i := 0; i < len(sources); i++ {
-			// Skip current processed number
-			if slices.Contains(processor, sources[i]) {
-				continue
+	// Alternative template
+	{
+		var permuteAltFunc func(processor []int)
+		permuteAltFunc = func(processor []int) {
+			if len(processor) == len(sources) {
+				result = append(result, processor)
+				return
 			}
-			processor = append(processor, sources[i])
-			p := make([]int, len(processor))
-			copy(p, processor)
-			nestedAltFunc(p)
-			processor = processor[:len(processor)-1]
+
+			for i := 0; i < len(sources); i++ {
+				// Skip current processed number; It might be easier to understand but cannot align to the template with Permutations II
+				if slices.Contains(processor, sources[i]) {
+					continue
+				}
+				processor = append(processor, sources[i])
+				p := make([]int, len(processor))
+				copy(p, processor)
+				permuteAltFunc(p)
+				processor = processor[:len(processor)-1]
+			}
 		}
+		permuteAltFunc(make([]int, 0))
 	}
 
-	nestedFunc(make([]int, 0), make([]bool, len(sources)))
 	return result
 }
 

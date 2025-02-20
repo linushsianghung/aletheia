@@ -54,9 +54,9 @@ func threeSumSort(nums []int) [][]int {
 				continue
 			}
 
-			if nums[left]+nums[right] < -num {
+			if nums[left]+nums[right]+num < 0 {
 				left++
-			} else if nums[left]+nums[right] > -num {
+			} else if nums[left]+nums[right]+num > 0 {
 				right--
 			} else {
 				result = append(result, []int{nums[left], nums[right], num})

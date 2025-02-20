@@ -15,7 +15,6 @@ func reverseString(s []byte) {
 }
 
 func reverseStringExercise(s []byte) {
-
 }
 
 // Unsolved...

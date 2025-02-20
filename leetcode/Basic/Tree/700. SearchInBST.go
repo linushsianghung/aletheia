@@ -25,7 +25,6 @@ func searchBSTRecursively(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
 }
 
 func searchBSTRecursivelyExercise(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
-
 	return nil
 }
 

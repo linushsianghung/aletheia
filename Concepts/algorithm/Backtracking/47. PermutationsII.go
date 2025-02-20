@@ -19,8 +19,8 @@ func permuteUnique(nums []int) [][]int {
 func backtrackPermuteUnique(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var nestedFunc func(processor []int, used []bool)
-	nestedFunc = func(processor []int, used []bool) {
+	var permuteFunc func(processor []int, used []bool)
+	permuteFunc = func(processor []int, used []bool) {
 		if len(processor) == len(sources) {
 			result = append(result, processor)
 			return
@@ -29,8 +29,8 @@ func backtrackPermuteUnique(sources []int) [][]int {
 		for i := 0; i < len(sources); i++ {
 			/*
 				1. The problem is how to handle the duplicates, like [1a, 1b, 2], the results would be [1a, 1b, 2], [1b, 1a, 2]...,
-				One way is to make sure 1a goes before 1b to avoid duplicates by using nums[i-1] == nums[i] && !used[i-1]
-				2. Both !use[i - 1] and use[i - 1] are valid, but the !use[i - 1] is more efficient.
+				One way to avoid duplicates is to make sure "1a goes before 1b" by using nums[i-1] == nums[i] && !used[i-1]
+				2. Both !use[i - 1] and use[i - 1] are valid, but !use[i - 1] is more efficient.
 			*/
 			if used[i] || (i > 0 && sources[i-1] == sources[i] && !used[i-1]) {
 				continue
@@ -40,13 +40,13 @@ func backtrackPermuteUnique(sources []int) [][]int {
 			used[i] = true
 			p := make([]int, len(processor))
 			copy(p, processor)
-			nestedFunc(p, used)
+			permuteFunc(p, used)
 			processor = processor[:len(processor)-1]
 			used[i] = false
 		}
 	}
 
-	nestedFunc([]int{}, make([]bool, len(sources)))
+	permuteFunc([]int{}, make([]bool, len(sources)))
 	return result
 }
 
@@ -57,7 +57,6 @@ func permuteUniqueHelper(result *[][]int, sources, processor []int, used []bool)
 	}
 
 	for i := 0; i < len(sources); i++ {
-		// TODO: Cannot understand the meaning of this condition
 		if used[i] || (i > 0 && sources[i] == sources[i-1] && !used[i-1]) {
 			continue
 		}

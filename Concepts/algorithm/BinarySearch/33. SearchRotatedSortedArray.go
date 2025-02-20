@@ -47,6 +47,10 @@ func SearchRotate(nums []int, target int) int {
 	return -1
 }
 
+func SearchRotateExercise(nums []int, target int) int {
+	return 0
+}
+
 func SearchRotateComparator(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 

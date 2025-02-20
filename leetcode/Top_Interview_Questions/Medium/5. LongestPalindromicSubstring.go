@@ -28,16 +28,14 @@ func longestPalindrome(s string) string {
 	}
 
 	var result string
-	for i := 0; i < len(s); i++ {
+	for i := 0; i < len(s)-1; i++ {
 		palindrome1 := outwardComparison(s, i, i)
 		palindrome2 := outwardComparison(s, i, i+1)
 
-		if len(palindrome1) > len(palindrome2) {
-			if len(palindrome1) > len(result) {
+		if len(palindrome1) > len(result) || len(palindrome2) > len(result) {
+			if len(palindrome1) > len(palindrome2) {
 				result = palindrome1
-			}
-		} else {
-			if len(palindrome2) > len(result) {
+			} else {
 				result = palindrome2
 			}
 		}
@@ -65,6 +63,10 @@ func outwardComparison(s string, left, right int) string {
 	}
 
 	return result
+}
+
+func outwardComparisonExercise(s string, left, right int) string {
+	return ""
 }
 
 func outwardComparisonAlt(s string, left, right int) int {

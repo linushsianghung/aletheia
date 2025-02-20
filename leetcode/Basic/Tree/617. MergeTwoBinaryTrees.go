@@ -21,14 +21,14 @@ func mergeTrees(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) *leetcode.Tr
 		return root1
 	}
 
-	root1.Val += root2.Val
+	node := &leetcode.TreeNode{Val: root1.Val + root2.Val}
 	/* Standard step for Tree algorithm: traverse Tree recursively */
-	root1.Left = mergeTrees(root1.Left, root2.Left)
-	root1.Right = mergeTrees(root1.Right, root2.Right)
-	return root1
+	node.Left = mergeTrees(root1.Left, root2.Left)
+	node.Right = mergeTrees(root1.Right, root2.Right)
+
+	return node
 }
 
 func mergeTreesExercise(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) *leetcode.TreeNode {
-
 	return nil
 }

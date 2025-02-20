@@ -26,6 +26,5 @@ func invertTreeLevelOrderTraversal(root *leetcode.TreeNode) {
 }
 
 func invertTreeLevelOrderTraversalExercise(root *leetcode.TreeNode) *leetcode.TreeNode {
-
 	return nil
 }

@@ -46,5 +46,26 @@ func addTwoNumbers(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListN
 }
 
 func addTwoNumbersExercise(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
-	return nil
+
+	dummy := &leetcode.ListNode{}
+	runner := dummy
+	carry := 0
+
+	for l1 != nil || l2 != nil || carry > 0 {
+		d1, d2 := 0, 0
+
+		if l1 != nil {
+			d1 = l1.Val
+		}
+		if l2 != nil {
+			d2 = l2.Val
+		}
+
+		sum := d1 + d2 + carry
+		carry = sum / 10
+		runner.Next = &leetcode.ListNode{Val: sum % 10}
+		runner = runner.Next
+	}
+
+	return dummy.Next
 }

@@ -32,19 +32,7 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 }
 
 func reverseListExercise(head *leetcode.ListNode) *leetcode.ListNode {
-	if head == nil {
-		return head
-	}
-
-	var dummy *leetcode.ListNode
-	for head != nil {
-		temp := head.Next
-		head.Next = dummy
-		dummy = head
-		head = temp
-	}
-
-	return dummy
+	return nil
 }
 
 func reverseListRecursively(head, previous *leetcode.ListNode) *leetcode.ListNode {

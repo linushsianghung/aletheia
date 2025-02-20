@@ -16,6 +16,5 @@ func containsDuplicate(nums []int) bool {
 }
 
 func containsDuplicateExercise(nums []int) bool {
-
 	return false
 }

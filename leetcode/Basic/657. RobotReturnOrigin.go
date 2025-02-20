@@ -10,11 +10,10 @@ Note: The way that the robot is "facing" is irrelevant. 'R' will always make the
 Also, assume that the magnitude of the robot's movement is the same for each move.
 */
 func judgeCircle(moves string) bool {
-	x := 0
-	y := 0
+	x, y := 0, 0
 
-	for _, m := range moves {
-		switch m {
+	for _, r := range moves {
+		switch r {
 		case 'U':
 			y++
 		case 'D':
@@ -26,10 +25,11 @@ func judgeCircle(moves string) bool {
 		}
 	}
 
-	if x != 0 || y != 0 {
-		return false
-	}
-	return true
+	return x == 0 && y == 0
+}
+
+func judgeCircleExercise(moves string) bool {
+	return false
 }
 
 func judgeCircleHashMap(moves string) bool {
@@ -42,9 +42,4 @@ func judgeCircleHashMap(moves string) bool {
 		return false
 	}
 	return true
-}
-
-func judgeCircleExercise(moves string) bool {
-
-	return false
 }

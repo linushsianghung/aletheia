@@ -19,8 +19,8 @@ func Subsets(nums []int) [][]int {
 func backtrackSubsets(sources []int) [][]int {
 	result := make([][]int, 0)
 
-	var nestedFunc func(processor []int, start int)
-	nestedFunc = func(processor []int, start int) {
+	var subsetsFunc func(processor []int, start int)
+	subsetsFunc = func(processor []int, start int) {
 		result = append(result, processor)
 		//if len(processor) == len(sources) {
 		//	return
@@ -30,12 +30,12 @@ func backtrackSubsets(sources []int) [][]int {
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			nestedFunc(p, i+1)
+			subsetsFunc(p, i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	nestedFunc([]int{}, 0)
+	subsetsFunc([]int{}, 0)
 	return result
 }
 

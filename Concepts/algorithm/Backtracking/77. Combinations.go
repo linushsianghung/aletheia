@@ -44,8 +44,12 @@ func combineRecursively(n, k int) [][]int {
 		}
 	}
 
-	nestedFunc([]int{}, 1)
+	nestedFunc(make([]int, 0), 1)
 	return result
+}
+
+func combineRecursivelyExercise(n, k int) [][]int {
+	return nil
 }
 
 func backtrackCombinations(result *[][]int, processor []int, start, n, k int) {

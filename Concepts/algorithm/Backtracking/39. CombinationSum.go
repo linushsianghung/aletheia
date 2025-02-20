@@ -22,8 +22,8 @@ func combinationSum(candidates []int, target int) [][]int {
 func backtrackCombinationsSum(sources []int, target int) [][]int {
 	result := make([][]int, 0)
 
-	var nestedFunc func(processor []int, start, remain int)
-	nestedFunc = func(processor []int, start, remain int) {
+	var combinationsFunc func(processor []int, start, remain int)
+	combinationsFunc = func(processor []int, start, remain int) {
 		if remain < 0 {
 			return
 		}
@@ -36,12 +36,12 @@ func backtrackCombinationsSum(sources []int, target int) [][]int {
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			nestedFunc(p, i, remain-sources[i])
+			combinationsFunc(p, i, remain-sources[i])
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	nestedFunc(make([]int, 0), 0, target)
+	combinationsFunc(make([]int, 0), 0, target)
 	return result
 }
 

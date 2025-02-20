@@ -17,7 +17,7 @@ func searchIteratively(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 
 	for left <= right {
-		// calculate mid := left + (right-left)/2 rather than (right-left)/2 to prevent overflow.
+		// calculate this way rather than (right-left)/2 to prevent overflow.
 		mid := left + (right-left)/2
 
 		if nums[mid] < target {

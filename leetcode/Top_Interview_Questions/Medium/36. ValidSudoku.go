@@ -23,11 +23,11 @@ func isValidSudoku(board [][]byte) bool {
 				continue
 			}
 
-			numInRow := fmt.Sprintf("Row %d has %d", i, board[i][j])
+			numInRow := fmt.Sprintf("Row %d has %d", j, board[i][j])
 			if _, ok := note[numInRow]; ok {
 				return false
 			}
-			numInColumn := fmt.Sprintf("Column %d has %d", j, board[i][j])
+			numInColumn := fmt.Sprintf("Column %d has %d", i, board[i][j])
 			if _, ok := note[numInColumn]; ok {
 				return false
 			}
@@ -47,5 +47,30 @@ func isValidSudoku(board [][]byte) bool {
 }
 
 func isValidSudokuExercise(board [][]byte) bool {
-	return false
+	note := make(map[string]bool)
+
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board); j++ {
+			if board[i][j] == ',' {
+				continue
+			}
+
+			row := fmt.Sprintf("Row %d has value %d", j, board[i][j])
+			if ok := note[row]; ok {
+				return false
+			}
+			column := fmt.Sprintf("Column %d has value %d", i, board[i][j])
+			if ok := note[column]; ok {
+				return false
+			}
+			block := fmt.Sprintf("Block %d - %d has value %d", i/3, j/3, board[i][j])
+			if ok := note[block]; ok {
+				return false
+			}
+			note[row] = true
+			note[column] = true
+			note[block] = true
+		}
+	}
+	return true
 }
