@@ -11,20 +11,21 @@ they will have the greatest number of candies among all the kids, or false other
 Note that multiple kids can have the greatest number of candies.
 */
 func kidsWithCandies(candies []int, extraCandies int) []bool {
-	maxNum := 0
-
-	for _, num := range candies {
-		if maxNum < num {
-			maxNum = num
-		}
+	maxCandies := 0
+	for _, candy := range candies {
+		maxCandies = max(maxCandies, candy)
 	}
 
 	result := make([]bool, len(candies))
-	for i, num := range candies {
-		if num+extraCandies >= maxNum {
+	for i, candy := range candies {
+		if candy+extraCandies >= maxCandies {
 			result[i] = true
 		}
 	}
 
 	return result
+}
+
+func kidsWithCandiesExercise(candies []int, extraCandies int) []bool {
+	return nil
 }

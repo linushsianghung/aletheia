@@ -11,14 +11,12 @@ If there is no such subarray, return 0 instead.
 func minSubArrayLen(target int, nums []int) int {
 	winStart, sum, minLen := 0, 0, math.MaxInt
 
-	for winEnd := 0; winEnd < len(nums); winEnd++ {
-		sum += nums[winEnd]
+	for winEnd, num := range nums {
+		sum += num
 		// Dynamic-Size Sliding Window (Double For Loop)
 		for sum >= target {
 			currrentLen := winEnd - winStart + 1
-			if currrentLen < minLen {
-				minLen = currrentLen
-			}
+			minLen = min(currrentLen, minLen)
 
 			sum -= nums[winStart]
 			winStart++

@@ -19,8 +19,8 @@ func groupAnagrams(strs []string) [][]string {
 			return sortedRune[i] < sortedRune[j]
 		})
 
-		if strs, ok := note[string(sortedRune)]; ok {
-			note[string(sortedRune)] = append(strs, str)
+		if s, ok := note[string(sortedRune)]; ok {
+			note[string(sortedRune)] = append(s, str)
 		} else {
 			note[string(sortedRune)] = []string{str}
 		}

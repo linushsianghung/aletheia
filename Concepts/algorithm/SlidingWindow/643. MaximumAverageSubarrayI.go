@@ -15,9 +15,7 @@ func FindMaxAverage(nums []int, k int) float64 {
 		sum += num
 		if winEnd >= k-1 {
 			currentAve := float64(sum) / float64(k)
-			if currentAve > maxAve {
-				maxAve = currentAve
-			}
+			maxAve = max(currentAve, maxAve)
 
 			sum -= nums[winStart]
 			winStart++
@@ -28,6 +26,5 @@ func FindMaxAverage(nums []int, k int) float64 {
 }
 
 func FindMaxAverageExercise(nums []int, k int) float64 {
-
 	return 0
 }

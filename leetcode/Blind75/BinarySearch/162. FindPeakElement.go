@@ -10,10 +10,10 @@ You may imagine that nums[-1] = nums[n] = -∞. In other words, an element is al
 You must write an algorithm that runs in O(log n) time.
 
 Analysis:
-For a mid element, there could be three possible cases :
-Case 1 : mid is equal to the peak element ( Observation : mid element is greater than its neighbors )
-Case 2 : mid lies on the right of our result peak ( Observation : Our peak element search space is left side )
-Case 3 : mid lies on the left. ( Observation : Our peak element search space is right side )
+For a mid-element, there could be three possible cases :
+Case 1 : mid-element is equal to the peak element ( Observation : mid-element is greater than its neighbors )
+Case 2 : mid-element lies on the right of our result peak ( Observation : Our peak element search space is left side )
+Case 3 : mid-element lies on the left. ( Observation : Our peak element search space is right side )
 
 For example:
 4 is in the middle of _ _ _ 5 4 6 _ _ _. So, whichever side we move in this case, we are guaranteed to find a peak.

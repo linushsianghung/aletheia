@@ -1,14 +1,12 @@
 package DynamicProgramming
 
-import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions"
-
-// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description
+// MaxProfit https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description
 /*
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
 You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
 Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 */
-func maxProfit(prices []int) int {
+func MaxProfit(prices []int) int {
 
 	// return maxProfitSimpleThrough(prices)
 	return maxProfit2Pointer(prices)
@@ -29,7 +27,7 @@ func maxProfitSimpleThrough(prices []int) int {
 		// if prices[i]-lowest > profit {
 		// 	profit = prices[i] - lowest
 		// }
-		profit = Top_Interview_Questions.Max(prices[i]-lowest, profit)
+		profit = max(prices[i]-lowest, profit)
 	}
 
 	return profit
@@ -45,7 +43,7 @@ func maxProfit2Pointer(prices []int) int {
 	for sell := 1; sell < len(prices); sell++ {
 		currentProfit := prices[sell] - prices[buy]
 		if currentProfit > 0 {
-			profit = Top_Interview_Questions.Max(currentProfit, profit)
+			profit = max(currentProfit, profit)
 		} else {
 			buy = sell
 		}

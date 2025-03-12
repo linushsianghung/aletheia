@@ -17,34 +17,35 @@ func arrangeCoins(n int) int {
 
 func arrangeCoinsBS(n int) int {
 	left, right := 1, n
-	result := 0
 
 	for left <= right {
 		mid := left + (right-left)/2
+		// Formula for counting coins by staircases
 		coins := (mid + 1) * mid / 2
 
 		if coins > n {
 			right = mid - 1
-		} else {
+		} else if coins < n {
 			left = mid + 1
-			result = max(mid, result)
+		} else {
+			return mid
 		}
 	}
 
-	return result
+	return right
 }
 
 func arrangeCoinsBF(n int) int {
-	row := 1
+	row := 0
 
 	for coin := n; coin > 0; {
+		row++
 		coin -= row
+
 		if coin == 0 {
 			return row
 		}
-		if coin > 0 {
-			row++
-		}
 	}
+
 	return row - 1
 }

@@ -19,7 +19,7 @@ func asteroidCollision(asteroids []int) []int {
 			i++
 			continue
 		}
-		// There are totally 4 scenarios will happen and only 3 needs to be handle, for other scenarios just pushes asteroids (back) to the stack
+		// There are totally 4 scenarios will happen and only 3 needs to be handled, for other scenarios just pushes asteroids (back) to the stack
 		// 1. + +
 		// 2. - -
 		// 3. + -
@@ -37,8 +37,8 @@ func asteroidCollision(asteroids []int) []int {
 		} else if current < -asteroids[i] {
 			stack = stack[:len(stack)-1]
 		} else {
-			i++
 			stack = stack[:len(stack)-1]
+			i++
 		}
 	}
 

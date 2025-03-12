@@ -21,18 +21,18 @@ func isValidBST(root *leetcode.TreeNode) bool {
 	//return isValidInOrderTraversal(root)
 }
 
-func isValidRecursively(root *leetcode.TreeNode, min, max int) bool {
-	if root == nil {
+func isValidRecursively(node *leetcode.TreeNode, min, max int) bool {
+	if node == nil {
 		return true
 	}
-	if root.Val >= max || root.Val <= min {
+	if node.Val >= max || node.Val <= min {
 		return false
 	}
 
-	return isValidRecursively(root.Left, min, root.Val) && isValidRecursively(root.Right, root.Val, max)
+	return isValidRecursively(node.Left, min, node.Val) && isValidRecursively(node.Right, node.Val, max)
 }
 
-func isValidRecursivelyExercise(root *leetcode.TreeNode, min, max int) bool {
+func isValidRecursivelyExercise(node *leetcode.TreeNode, min, max int) bool {
 	return false
 }
 

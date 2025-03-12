@@ -36,8 +36,8 @@ func backtrackPermuteUnique(sources []int) [][]int {
 				continue
 			}
 
-			processor = append(processor, sources[i])
 			used[i] = true
+			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
 			permuteFunc(p, used)
@@ -48,6 +48,10 @@ func backtrackPermuteUnique(sources []int) [][]int {
 
 	permuteFunc([]int{}, make([]bool, len(sources)))
 	return result
+}
+
+func backtrackPermuteUniqueExercise(sources []int) [][]int {
+	return nil
 }
 
 func permuteUniqueHelper(result *[][]int, sources, processor []int, used []bool) {

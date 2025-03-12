@@ -32,13 +32,12 @@ func solve(board [][]byte) {
 			}
 			// It's required to create its own note
 			exploreBorderDFS(board, i, j, '*', make(map[string]bool))
-
 		}
 	}
 
 	// Step2. Now board contains three elements,#,O and X. 'O' are left over elements which are not connected to any boundary O, so flip them to 'X'
-	for i := 0; i < len(board); i++ {
-		for j := 0; j < len(board[0]); j++ {
+	for i := 1; i < len(board)-1; i++ {
+		for j := 1; j < len(board[0])-1; j++ {
 			if board[i][j] == 'O' {
 				board[i][j] = 'X'
 			}
@@ -59,6 +58,15 @@ func solve(board [][]byte) {
 }
 
 func solveExercise(board [][]byte) {
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board); j++ {
+			if i > 0 && i < len(board)-2 && j > 0 && j < len(board)-2 {
+				continue
+			}
+
+		}
+	}
+
 }
 
 func exploreBorderDFS(board [][]byte, r, c int, marker byte, visited map[string]bool) {
@@ -74,8 +82,8 @@ func exploreBorderDFS(board [][]byte, r, c int, marker byte, visited map[string]
 		return
 	}
 	visited[position] = true
-	board[r][c] = marker
 
+	board[r][c] = marker
 	exploreBorderDFS(board, r-1, c, marker, visited)
 	exploreBorderDFS(board, r+1, c, marker, visited)
 	exploreBorderDFS(board, r, c-1, marker, visited)

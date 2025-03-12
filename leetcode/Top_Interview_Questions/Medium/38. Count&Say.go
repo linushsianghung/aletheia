@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-// https://leetcode.com/problems/count-and-say/de、scription/
+// https://leetcode.com/problems/count-and-say/description/
 // Ref: A Comprehensive Guide for Golang String Concatenation https://medium.com/@teamcode20233/a-comprehensive-guide-for-golang-string-concatenation-df1a02210492
 /*
 The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
@@ -43,4 +43,8 @@ func buildCountAndSay(countAndSay string) string {
 	buffer.WriteString(strconv.Itoa(count))
 	buffer.WriteString(string(say))
 	return buffer.String()
+}
+
+func buildCountAndSayExercise(countAndSay string) string {
+	return ""
 }

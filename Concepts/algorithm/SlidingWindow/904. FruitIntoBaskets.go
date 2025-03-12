@@ -15,8 +15,9 @@ Given the integer array fruits, return the maximum number of fruits you can pick
 func totalFruit(fruits []int) int {
 	winStart, note, maxCount := 0, make(map[int]int), 0
 
-	for winEnd := 0; winEnd < len(fruits); winEnd++ {
-		note[fruits[winEnd]]++
+	for winEnd, fruit := range fruits {
+		note[fruit]++
+
 		// Dynamic-Size Sliding Window (Double For Loop)
 		for len(note) > 2 {
 			note[fruits[winStart]]--
@@ -27,10 +28,12 @@ func totalFruit(fruits []int) int {
 		}
 
 		currentCount := winEnd - winStart + 1
-		if currentCount > maxCount {
-			maxCount = currentCount
-		}
+		maxCount = max(currentCount, maxCount)
 	}
 
 	return maxCount
+}
+
+func totalFruitExercise(fruits []int) int {
+	return 0
 }

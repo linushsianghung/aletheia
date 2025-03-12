@@ -16,25 +16,32 @@ func successfulPairs(spells []int, potions []int, success int64) []int {
 }
 
 func successfulPairsBS(spells []int, potions []int, success int64) []int {
-	pairs := make([]int, len(spells))
 	sort.Ints(potions)
 
+	pairs := make([]int, len(spells))
 	for i, spell := range spells {
 		left, right := 0, len(potions)-1
 
 		for left <= right {
 			mid := left + (right-left)/2
-			// The "equal to" should be put here
+			// There might be repeat numbers of potions, so it's necessary to find the first index of that number!
+			// Related Topic: 34. Find First and Last Position of Element in Sorted Array: http://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
 			if int64(spell*potions[mid]) >= success {
 				right = mid - 1
 			} else {
 				left = mid + 1
 			}
 		}
-		pairs[i] = len(potions) - left
+
+		// Compare to "len(potions) - left", this might be more straight forward because it not mix the concept of 0-index and length
+		pairs[i] = len(potions[left:])
 	}
 
 	return pairs
+}
+
+func successfulPairsBSExercise(spells []int, potions []int, success int64) []int {
+	return nil
 }
 
 // Time Limit Exceeded

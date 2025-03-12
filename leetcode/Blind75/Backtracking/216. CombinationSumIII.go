@@ -9,10 +9,6 @@ Find all valid combinations of k numbers that sum up to n such that the followin
 Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
 */
 func combinationSum3(k int, n int) [][]int {
-	return backtrackCombinationSum3(k, n)
-}
-
-func backtrackCombinationSum3(k int, n int) [][]int {
 	result := make([][]int, 0)
 
 	var localFunc func(processor []int, remain, start int)
@@ -37,4 +33,8 @@ func backtrackCombinationSum3(k int, n int) [][]int {
 
 	localFunc(make([]int, 0), n, 1)
 	return result
+}
+
+func backtrackCombinationSum3Exercise(k int, n int) [][]int {
+	return nil
 }

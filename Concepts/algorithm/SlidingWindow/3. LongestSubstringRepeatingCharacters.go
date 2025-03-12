@@ -7,17 +7,15 @@ func lengthOfLongestSubstring(s string) int {
 	sRune := []rune(s)
 	note := make(map[rune]int)
 
-	for winEnd := 0; winEnd < len(sRune); winEnd++ {
-		// Dynamic-Size Sliding Window (Double For Loop): skip to the next character of the repeating one
-		if i, ok := note[sRune[winEnd]]; ok && winStart <= i {
+	for winEnd, num := range sRune {
+		// Dynamic-Size Sliding Window: skip to the next character of the repeating one
+		if i, ok := note[num]; ok && winStart <= i {
 			winStart = i + 1
 		}
 
 		currentLen := winEnd - winStart + 1
-		if currentLen > maxLen {
-			maxLen = currentLen
-		}
-		note[sRune[winEnd]] = winEnd
+		maxLen = max(currentLen, maxLen)
+		note[num] = winEnd
 	}
 
 	return maxLen

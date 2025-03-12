@@ -2,7 +2,7 @@ package DynamicProgramming
 
 import "fmt"
 
-// https://leetcode.com/problems/longest-common-subsequence/description/
+// LongestCommonSubsequence https://leetcode.com/problems/longest-common-subsequence/description/
 // Ref:
 // - Back to Back SWE: https://www.youtube.com/watch?v=ASoaQq66foQ
 // - Abdul Bari: https://www.youtube.com/watch?v=sSno9rV8Rhg
@@ -39,7 +39,7 @@ c  0  1  1  2  2  2
 e  0  1  1  2  2  3
 
 */
-func longestCommonSubsequence(text1 string, text2 string) int {
+func LongestCommonSubsequence(text1 string, text2 string) int {
 	return lcsDPTabulationHelper(text1, text2)
 	//return lcsDPMemorisationHelper(text1, text1, make(map[string]int))
 }

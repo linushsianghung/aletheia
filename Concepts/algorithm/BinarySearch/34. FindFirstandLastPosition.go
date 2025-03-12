@@ -26,6 +26,7 @@ func binarySearchLeft(nums []int, target int) int {
 		if nums[mid] < target {
 			left = mid + 1
 		} else {
+			// It's necessary to use anchor to store the possible value to handle some edge cases, like "not found", [0], [1], etc,
 			if nums[mid] == target {
 				anchor = mid
 			}

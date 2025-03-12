@@ -28,3 +28,7 @@ func reverseWords(s string) string {
 
 	return strings.Join(words, " ")
 }
+
+func reverseWordsExercise(s string) string {
+	return ""
+}

@@ -32,6 +32,10 @@ func productExceptSelf(nums []int) []int {
 	return result
 }
 
+func productExceptSelfExercise(nums []int) []int {
+	return nil
+}
+
 func productExceptSelfAlt(nums []int) []int {
 	preProduct, sufProduct := make([]int, len(nums)), make([]int, len(nums))
 
@@ -58,3 +62,4 @@ func productExceptSelfAlt(nums []int) []int {
 	}
 	return result
 }
+｀
