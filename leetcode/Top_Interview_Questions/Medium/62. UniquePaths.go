@@ -18,9 +18,9 @@ The test cases are generated so that the answer will be less than or equal to 2 
 */
 func UniquePaths(m int, n int) int {
 
-	// return uniquePathsMemorisation(m, n)
+	return UniquePathsMemorisation(m, n, make(map[string]int))
 	// return uniquePaths2Slice(m, n)
-	return uniquePathsSmartSlice(m, n)
+	//return uniquePathsSmartSlice(m, n)
 }
 
 func UniquePathsMemorisation(m, n int, memo map[string]int) int {
@@ -97,20 +97,21 @@ func uniquePathsSmartSlice(m int, n int) int {
 */
 func uniquePaths2Slice(m int, n int) int {
 	pre, cur := make([]int, n), make([]int, n)
-	// Initialise table
+	// Initialise slice
 	for i := 0; i < n; i++ {
 		pre[i] = 1
-		cur[i] = 1
 	}
+	// As long as we initialise the first element as 1, it doesn't matter what number are for the rest of number in slice
+	cur[0] = 1
 
+	// Using cur slice for calculating the result and then store the result to pre slice
 	for i := 1; i < m; i++ {
 		for j := 1; j < n; j++ {
 			cur[j] = pre[j] + cur[j-1]
 		}
-		// Shift pre-slice to latest one and set cur slice as default (1, 1, ...)
-		temp := pre
+
+		// Store the result so we can calculate for next iteration by using cur slice again
 		pre = cur
-		cur = temp
 	}
 
 	return pre[n-1]

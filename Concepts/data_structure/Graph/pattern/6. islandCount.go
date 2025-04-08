@@ -27,7 +27,6 @@ func exploreIsland(grid [][]string, r, c int, visited map[string]bool) bool {
 	if r < 0 || r >= len(grid[0]) || c < 0 || c >= len(grid) {
 		return false
 	}
-
 	if grid[r][c] == "W" {
 		return false
 	}

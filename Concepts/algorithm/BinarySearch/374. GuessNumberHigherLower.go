@@ -28,6 +28,7 @@ func guessNumber(n int) int {
 
 	for {
 		mid := left + (right-left)/2
+
 		result := guess(mid)
 		if result > 0 {
 			left = mid + 1

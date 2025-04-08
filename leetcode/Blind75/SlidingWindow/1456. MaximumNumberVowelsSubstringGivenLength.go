@@ -13,14 +13,12 @@ func maxVowels(s string, k int) int {
 	sRune := []rune(s)
 	vowels := []rune{'a', 'e', 'i', 'o', 'u'}
 
-	for windowEnd := 0; windowEnd < len(s); windowEnd++ {
+	for windowEnd := range s {
 		if slices.Contains(vowels, sRune[windowEnd]) {
 			count++
 		}
-		if windowEnd >= k-1 {
-			if count > maxCount {
-				maxCount = count
-			}
+		if windowEnd-windowStart == k-1 {
+			maxCount = max(maxCount, count)
 
 			if slices.Contains(vowels, sRune[windowStart]) {
 				count--

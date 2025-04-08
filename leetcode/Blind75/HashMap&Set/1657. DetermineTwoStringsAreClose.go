@@ -4,7 +4,7 @@ import "sort"
 
 // https://leetcode.com/problems/determine-if-two-strings-are-close/description/?envId=leetcode-75
 // Reference:
-// - https://leetcode.com/problems/determine-if-two-strings-are-close/solutions/2868036/python-c-o-n-one-liner-proof-explained/?envType=study-plan-v2&envId=leetcode-75
+// - https://leetcode.com/problems/determine-if-two-strings-are-close/solutions/2868036/python-c-o-n-one-liner-proof-explained
 // - https://leetcode.com/problems/determine-if-two-strings-are-close/solutions/4561554/beats-100-c-java-python-js-explained-with-video-hash-sort-count/
 /*
 Two strings are considered close if you can attain one from the other using the following operations:
@@ -30,26 +30,30 @@ This leads to a simple solution that consists in
 func closeStrings(word1 string, word2 string) bool {
 	frequency1 := make([]int, 26)
 	frequency2 := make([]int, 26)
-	for _, r := range word1 {
-		frequency1[r-'a']++
-	}
-	for _, r := range word2 {
-		frequency2[r-'a']++
-	}
 
-	for i := 0; i < 26; i++ {
-		if (frequency1[i] == 0 && frequency2[i] > 0) || (frequency1[i] > 0 && frequency2[i] == 0) {
+	for _, c := range word1 {
+		frequency1[c-'a']++
+	}
+	for _, c := range word2 {
+		frequency2[c-'a']++
+	}
+	for i := range 26 {
+		if (frequency1[i] == 0 && frequency2[i] != 0) || (frequency1[i] != 0 && frequency2[i] == 0) {
 			return false
 		}
 	}
 
 	sort.Ints(frequency1)
 	sort.Ints(frequency2)
-	for i := 0; i < 26; i++ {
+	for i := range 26 {
 		if frequency1[i] != frequency2[i] {
 			return false
 		}
 	}
 
 	return true
+}
+
+func closeStringsExercise(word1 string, word2 string) bool {
+	return false
 }

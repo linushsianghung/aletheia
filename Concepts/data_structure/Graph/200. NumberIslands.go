@@ -1,8 +1,6 @@
 package Graph
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // https://leetcode.com/problems/number-of-islands/
 /*
@@ -29,7 +27,6 @@ func exploreIsland(grid [][]byte, r, c int, visited map[string]bool) bool {
 	if r < 0 || r >= len(grid) || c < 0 || c >= len(grid[0]) {
 		return false
 	}
-
 	if grid[r][c] == byte('0') {
 		return false
 	}

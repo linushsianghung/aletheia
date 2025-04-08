@@ -29,8 +29,8 @@ func leafSimilar(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) bool {
 		return false
 	}
 
-	for i, num := range result1 {
-		if num != result2[i] {
+	for i := range result1 {
+		if result1[i] != result2[i] {
 			return false
 		}
 	}
@@ -42,20 +42,24 @@ func leafSimilarHelper(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
 	// Post-Order Traversal
-	var nestedFunc func(root *leetcode.TreeNode) int
-	nestedFunc = func(root *leetcode.TreeNode) int {
-		if root == nil {
+	var nestedFunc func(node *leetcode.TreeNode) int
+	nestedFunc = func(node *leetcode.TreeNode) int {
+		if node == nil {
 			return -1
 		}
 
-		left := nestedFunc(root.Left)
-		right := nestedFunc(root.Right)
+		left := nestedFunc(node.Left)
+		right := nestedFunc(node.Right)
 		if left == -1 && right == -1 {
-			result = append(result, root.Val)
+			result = append(result, node.Val)
 		}
 		return 0
 	}
 
 	nestedFunc(root)
 	return result
+}
+
+func leafSimilarHelperExercise(root *leetcode.TreeNode) []int {
+	return nil
 }

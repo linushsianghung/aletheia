@@ -1,5 +1,6 @@
 # Graph
 Ref:
+- [Graph Algorithms for Technical Interviews](https://www.youtube.com/watch?v=tWVWeAqZ0WU)
 - [Graph Data Structure with 3 Javascript Implementations](https://www.youtube.com/watch?v=e4RezPkq3UI)
 - [Graph Theory Tutorial from a Google Engineer](https://www.youtube.com/watch?v=09_LlHjoEiY)
 
@@ -47,12 +48,12 @@ var(
 )
 
 func breadthFirstTraversal(start string) []string {
-	result, queue := make([]string, 0), []string{start}]
+	result, queue := make([]string, 0), []string{start}
 
 	for len(queue) > 0 {
 		current := queue[0]
 		queue = queue[1:]
-		result = append(current)
+		result = append(result, current)
 
 		for _, neighbor := range graph[start] {
 			queue = append(queue, neighbor)
@@ -63,12 +64,12 @@ func breadthFirstTraversal(start string) []string {
 }
 
 func depthFirstTraversal(start string) []string {
-	result, stack := make([]string, 0), []string{start}]
+	result, stack := make([]string, 0), []string{start}
 
 	for len(stack) > 0 {
 		current := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		result = append(current)
+		result = append(result, current)
 
 		for _, neighbor := range graph[start] {
 			stack = append(stack, neighbor)

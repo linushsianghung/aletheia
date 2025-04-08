@@ -13,7 +13,7 @@ func uniqueOccurrences(arr []int) bool {
 	}
 
 	for _, v := range note {
-		if _, ok := result[v]; ok {
+		if ok := result[v]; ok {
 			return false
 		}
 		result[v] = true

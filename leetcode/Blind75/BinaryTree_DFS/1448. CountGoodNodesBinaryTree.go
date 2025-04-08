@@ -20,12 +20,36 @@ Return the number of good nodes in the binary tree.
  * }
  */
 func goodNodes(root *leetcode.TreeNode) int {
-	return goodNodesHelper(root)
+	return goodNodesRecursively(root)
 }
 
-func goodNodesHelper(root *leetcode.TreeNode) int {
+func goodNodesRecursively(root *leetcode.TreeNode) int {
+	count := 0
+
+	var nestedFunc func(node *leetcode.TreeNode, minVal int)
+	nestedFunc = func(node *leetcode.TreeNode, minVal int) {
+		if node == nil {
+			return
+		}
+
+		if node.Val >= minVal {
+			count++
+			minVal = node.Val
+		}
+		nestedFunc(node.Left, minVal)
+		nestedFunc(node.Right, minVal)
+	}
+	nestedFunc(root, math.MinInt)
+
+	return count
+}
+
+func goodNodesRecursivelyExercise(root *leetcode.TreeNode) int {
+	return 0
+}
+
+func goodNodesPreOrderTemplate(root *leetcode.TreeNode) int {
 	result := make([]int, 0)
-	minVal := math.MinInt
 
 	// Pre-Order Traversal
 	var nestedFunc func(root *leetcode.TreeNode, minVal int)
@@ -41,7 +65,7 @@ func goodNodesHelper(root *leetcode.TreeNode) int {
 		nestedFunc(root.Left, minVal)
 		nestedFunc(root.Right, minVal)
 	}
-	nestedFunc(root, minVal)
 
+	nestedFunc(root, math.MinInt)
 	return len(result)
 }

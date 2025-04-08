@@ -40,6 +40,6 @@ func removeDuplicatesII2PointersExercise(s string, k int) string {
 }
 
 // Related Topic: 1047. Remove All Adjacent Duplicates In String: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string
-func removeDuplicatesFrom1209(s string) {
+func removeDuplicates1047(s string) {
 	removeDuplicates(s)
 }

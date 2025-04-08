@@ -1,8 +1,6 @@
 package HashMap_Set
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // https://leetcode.com/problems/equal-row-and-column-pairs/description/?envId=leetcode-75
 /*

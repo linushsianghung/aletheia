@@ -3,7 +3,7 @@ package BinarySearchTree
 import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/delete-node-in-a-bst/description/?envId=leetcode-75
-// Reference: https://leetcode.com/problems/delete-node-in-a-bst/solutions/821420/python-o-h-solution-explained/?envType=study-plan-v2&envId=leetcode-75
+// Reference: https://leetcode.com/problems/delete-node-in-a-bst/solutions/821420/python-o-h-solution-explained
 /*
 Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference (possibly updated) of the BST.
 Basically, the deletion can be divided into two stages:

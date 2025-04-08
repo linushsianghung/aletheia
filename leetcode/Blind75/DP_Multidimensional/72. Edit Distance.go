@@ -12,7 +12,7 @@ Insert a character
 Delete a character
 Replace a character
 
-Analhsis:
+Analysis:
 
 base case: word1 = "" or word2 = "" => return length of other string
 recursive case: word1[0] == word2[0] => recurse on word1[1:] and word2[1:]
@@ -26,7 +26,6 @@ func minDistanceHelper(word1, word2 string, index1, index2 int, memo map[string]
 	if len(word1[index1:]) == 0 {
 		return len(word2[index2:])
 	}
-
 	if len(word2[index2:]) == 0 {
 		return len(word1[index1:])
 	}

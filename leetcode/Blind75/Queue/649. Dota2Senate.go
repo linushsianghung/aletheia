@@ -1,7 +1,7 @@
 package Queue
 
 // https://leetcode.com/problems/dota2-senate/description/?envId=leetcode-75
-// Reference: https://leetcode.com/problems/dota2-senate/solutions/3483399/simple-diagram-explanation/?envType=study-plan-v2&envId=leetcode-75
+// Reference: https://leetcode.com/problems/dota2-senate/solutions/3483399/simple-diagram-explanation
 /*
 In the world of Dota2, there are two parties: the Radiant and the Dire.
 

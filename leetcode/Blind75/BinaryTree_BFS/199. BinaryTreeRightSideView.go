@@ -18,7 +18,7 @@ func rightSideView(root *leetcode.TreeNode) []int {
 	for len(queue) > 0 {
 		size := len(queue)
 
-		for i := 0; i < size; i++ {
+		for i := range size {
 			current := queue[0]
 			queue = queue[1:]
 
@@ -36,4 +36,8 @@ func rightSideView(root *leetcode.TreeNode) []int {
 	}
 
 	return result
+}
+
+func rightSideViewExercise(root *leetcode.TreeNode) []int {
+	return nil
 }

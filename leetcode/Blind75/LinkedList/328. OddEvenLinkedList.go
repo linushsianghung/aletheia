@@ -3,7 +3,7 @@ package LinkedList
 import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/odd-even-linked-list/description/?envId=leetcode-75
-// Reference: https://leetcode.com/problems/odd-even-linked-list/solutions/1606963/c-simplest-solution-w-explanation-one-pass/?envType=study-plan-v2&envId=leetcode-75
+// Reference: https://leetcode.com/problems/odd-even-linked-list/solutions/1606963/c-simplest-solution-w-explanation-one-pass
 /*
 Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
 The first node is considered odd, and the second node is even, and so on.

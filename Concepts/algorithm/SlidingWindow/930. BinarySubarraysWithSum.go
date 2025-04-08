@@ -1,7 +1,6 @@
 package SlidingWindow
 
 // https://leetcode.com/problems/binary-subarrays-with-sum/description/
-// Reference: https://leetcode.com/problems/binary-subarrays-with-sum/solutions/4872343/binary-subarrays-with-sum/
 /*
 Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum goal.
 
@@ -14,6 +13,7 @@ func numSubarraysWithSum(nums []int, goal int) int {
 }
 
 /*
+Reference: https://leetcode.com/problems/binary-subarrays-with-sum/editorial/#approach-2-sliding-window
 Analysis:
 In a standard sliding window approach, once the sum reaches the target goal, the typical strategy involves simply moving the left pointer of the window forward to
 potentially find more subarrays. However, this approach has a critical limitation when applied to binary arrays.
@@ -24,7 +24,7 @@ with elements encountered later to reach the target sum.
 func numSubarraysWithSumHelper(nums []int, goal int) int {
 	winStart, sum, count := 0, 0, 0
 
-	for winEnd := 0; winEnd < len(nums); winEnd++ {
+	for winEnd := range nums {
 		sum += nums[winEnd]
 
 		for sum > goal && winStart <= winEnd {

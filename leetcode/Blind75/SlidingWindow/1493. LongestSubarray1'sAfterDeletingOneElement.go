@@ -1,7 +1,7 @@
 package SlidingWindow
 
 // https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/description/?envId=leetcode-75
-// Reference: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/solutions/708112/java-c-python-sliding-window-at-most-one-0/?envType=study-plan-v2&envId=leetcode-75
+// Reference: https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/solutions/708112/java-c-python-sliding-window-at-most-one-0
 /*
 Given a binary array nums, you should delete one element from it.
 Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.
@@ -9,26 +9,24 @@ Return the size of the longest non-empty subarray containing only 1's in the res
 Related Topic: 1004. Max Consecutive Ones III: https://leetcode.com/problems/max-consecutive-ones-iii/description/
 */
 func longestSubarray(nums []int) int {
-	// Using buffer = 0 to be consistent with template
-	winStart, buffer, maxLen := 0, 0, 0
+	// Using zeroCount = 0 to be consistent with template
+	winStart, zeroCount, maxLen := 0, 0, 0
 
-	for winEnd := 0; winEnd < len(nums); winEnd++ {
+	for winEnd := range nums {
 		if nums[winEnd] == 0 {
-			buffer++
+			zeroCount++
 		}
 		// Dynamic-Size Sliding Window (Double For Loop): skip to the next character of the repeating one
-		for buffer > 1 {
+		for zeroCount > 1 {
 			if nums[winStart] == 0 {
-				buffer--
+				zeroCount--
 			}
 
 			winStart++
 		}
 
 		// Because the element will be deleted, it's unnecessary to plus 1 back
-		if winEnd-winStart > maxLen {
-			maxLen = winEnd - winStart
-		}
+		maxLen = max(maxLen, winEnd-winStart)
 	}
 	return maxLen
 }
@@ -36,7 +34,7 @@ func longestSubarray(nums []int) int {
 func longestSubarrayAlternate(nums []int) int {
 	winStart, tune, maxLen := 0, 0, 1
 
-	for winEnd := 0; winEnd < len(nums); winEnd++ {
+	for winEnd := range nums {
 		if nums[winEnd] == 0 {
 			tune--
 		}
@@ -51,10 +49,7 @@ func longestSubarrayAlternate(nums []int) int {
 		}
 
 		// Because the element will be deleted, it's unnecessary to plus 1 back
-		length := winEnd - winStart
-		if length > maxLen {
-			maxLen = length
-		}
+		maxLen = max(maxLen, winEnd-winStart)
 	}
 	return maxLen
 }

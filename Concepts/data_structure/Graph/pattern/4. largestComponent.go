@@ -4,13 +4,12 @@ package pattern
 Write a function, largestComponent, that takes in the adjacency list of an undirected graph.
 The function should return the size of the largest connected component in the graph.
 
-Largest Component: [file://./pics/LargestComponent.png]
+Largest Component: file://./pics/LargestComponent.png
 */
-
-func largestComponent(graph map[string][]string) int {
+func largestComponent(graph map[int][]int) int {
 	maxSize := 0
 	for node := range graph {
-		size := exploreSize(graph, node, make(map[string]bool))
+		size := exploreSize(graph, node, make(map[int]bool))
 		if maxSize < size {
 			maxSize = size
 		}
@@ -19,7 +18,7 @@ func largestComponent(graph map[string][]string) int {
 	return maxSize
 }
 
-func exploreSize(graph map[string][]string, node string, visited map[string]bool) int {
+func exploreSize(graph map[int][]int, node int, visited map[int]bool) int {
 	if visited[node] {
 		return 0
 	}

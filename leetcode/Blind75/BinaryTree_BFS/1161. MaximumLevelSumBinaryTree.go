@@ -12,14 +12,14 @@ Given the root of a binary tree, the level of its root is 1, the level of its ch
 Return the smallest level x such that the sum of all the values of nodes at level x is maximal.
 */
 func maxLevelSum(root *leetcode.TreeNode) int {
-	level, maxLevel, maxSum := 0, 0, math.MinInt32
+	level, minLevel, maxSum := 0, 0, math.MinInt32
 	queue := []*leetcode.TreeNode{root}
 
 	for len(queue) > 0 {
 		level++
 		size, sum := len(queue), 0
 
-		for i := 0; i < size; i++ {
+		for range size {
 			current := queue[0]
 			queue = queue[1:]
 
@@ -34,9 +34,13 @@ func maxLevelSum(root *leetcode.TreeNode) int {
 
 		if sum > maxSum {
 			maxSum = sum
-			maxLevel = level
+			minLevel = level
 		}
 	}
 
-	return maxLevel
+	return minLevel
+}
+
+func maxLevelSumExercise(root *leetcode.TreeNode) int {
+	return 0
 }

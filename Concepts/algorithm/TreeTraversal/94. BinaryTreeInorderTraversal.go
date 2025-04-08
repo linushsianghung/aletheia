@@ -43,9 +43,9 @@ func inorderTraversalIteratively(root *leetcode.TreeNode) []int {
 		return nil
 	}
 
-	current := root
-	stack, result := make([]*leetcode.TreeNode, 0), make([]int, 0)
-
+	result := make([]int, 0)
+	stack, current := make([]*leetcode.TreeNode, 0), root
+	
 	for current != nil || len(stack) > 0 {
 		// Continue go deeper into the left side of the tree until null
 		if current != nil {

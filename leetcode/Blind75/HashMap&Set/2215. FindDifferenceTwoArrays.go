@@ -1,5 +1,7 @@
 package HashMap_Set
 
+import "slices"
+
 // https://leetcode.com/problems/find-the-difference-of-two-arrays/description/?envId=leetcode-75
 /*
 Given two 0-indexed integer arrays nums1 and nums2, return a list answer of size 2 where:
@@ -9,30 +11,34 @@ answer[1] is a list of all distinct integers in nums2 which are not present in n
 Note that the integers in the lists may be returned in any order.
 */
 func findDifference(nums1 []int, nums2 []int) [][]int {
-	map1, map2 := make(map[int]bool), make(map[int]bool)
-
+	note1, note2 := make(map[int]bool), make(map[int]bool)
 	for _, num := range nums1 {
-		map1[num] = true
+		note1[num] = true
 	}
 	for _, num := range nums2 {
-		map2[num] = true
+		note2[num] = true
 	}
 
-	result := make([][]int, 2)
-	result[0] = make([]int, 0)
-	result[1] = make([]int, 0)
-	for num := range map1 {
-		if _, ok := map2[num]; ok {
+	answer := make([][]int, 2)
+	answer[0] = make([]int, 0)
+	answer[1] = make([]int, 0)
+
+	for _, num := range nums1 {
+		if ok := note2[num]; ok || slices.Contains(answer[0], num) {
 			continue
 		}
-		result[0] = append(result[0], num)
+		answer[0] = append(answer[0], num)
 	}
-	for num := range map2 {
-		if _, ok := map1[num]; ok {
+	for _, num := range nums2 {
+		if ok := note1[num]; ok || slices.Contains(answer[1], num) {
 			continue
 		}
-		result[1] = append(result[1], num)
+		answer[1] = append(answer[1], num)
 	}
 
-	return result
+	return answer
+}
+
+func findDifferenceExercise(nums1 []int, nums2 []int) [][]int {
+	return nil
 }

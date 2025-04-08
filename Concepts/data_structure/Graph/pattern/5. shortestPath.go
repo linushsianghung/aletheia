@@ -8,10 +8,8 @@ The function should return the length of the shortest path between A and B. Cons
 If there is no path between A and B, then return -1. You can assume that A and B exist as nodes in the graph.
 */
 func shortestPath(edge [][]string, nodeA, nodeB string) int {
-	graph := Graph.buildGraph(edge)
-
-	level := 0
-	queue := []string{nodeA}
+	graph := Graph.BuildGraph(edge)
+	level, queue, note := 0, []string{nodeA}, make(map[string]bool)
 
 	for len(queue) > 0 {
 		levelSize := len(queue)
@@ -19,16 +17,20 @@ func shortestPath(edge [][]string, nodeA, nodeB string) int {
 		for i := 0; i < levelSize; i++ {
 			current := queue[0]
 			queue = queue[1:]
-
 			if current == nodeB {
 				return level
 			}
 
-			queue = append(queue, graph[current]...)
+			note[current] = true
+			for _, node := range graph[current] {
+				if !note[node] {
+					queue = append(queue, node)
+				}
+			}
 		}
 
 		level++
 	}
 
-	return -1
+	return level
 }

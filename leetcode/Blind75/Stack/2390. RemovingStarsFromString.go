@@ -14,23 +14,8 @@ The input will be generated such that the operation is always possible.
 It can be shown that the resulting string will always be unique.
 */
 func removeStars(s string) string {
-	//return removeStarsStack(s)
-	return removeStars2Pointers(s)
-}
-
-func removeStars2Pointers(s string) string {
-	var slow int
-	strRune := []rune(s)
-	for fast := 0; fast < len(s); fast++ {
-		if strRune[fast] == '*' {
-			slow--
-		} else {
-			strRune[slow] = strRune[fast]
-			slow++
-		}
-	}
-
-	return string(strRune[:slow])
+	//return removeStars2Pointers(s)
+	return removeStarsStack(s)
 }
 
 func removeStarsStack(s string) string {
@@ -46,4 +31,20 @@ func removeStarsStack(s string) string {
 
 	result := string(stack)
 	return result
+}
+
+func removeStars2Pointers(s string) string {
+	slow, strRune := 0, []rune(s)
+
+	for fast := 0; fast < len(s); fast++ {
+		if strRune[fast] == '*' {
+			slow--
+			continue
+		}
+
+		strRune[slow] = strRune[fast]
+		slow++
+	}
+
+	return string(strRune[:slow])
 }

@@ -13,10 +13,11 @@ func minSubArrayLen(target int, nums []int) int {
 
 	for winEnd, num := range nums {
 		sum += num
+
 		// Dynamic-Size Sliding Window (Double For Loop)
 		for sum >= target {
-			currrentLen := winEnd - winStart + 1
-			minLen = min(currrentLen, minLen)
+			currentLen := winEnd - winStart + 1
+			minLen = min(currentLen, minLen)
 
 			sum -= nums[winStart]
 			winStart++

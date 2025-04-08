@@ -3,8 +3,9 @@ package BinaryTree_DFS
 import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/description/?envId=leetcode-75
+// Reference: https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/solutions/534418/java-c-dfs-solution-with-comment-o-n-clean-code/
 /*
-You are given the root of a binary tree. A ZigZag path for a binary tree is defined as follow:
+You are given the root of a binary tree. A ZigZag path for a binary tree is defined as follows:
 
 - Choose any node in the binary tree and a direction (right or left).
 - If the current direction is right, move to the right child of the current node; otherwise, move to the left child.
@@ -20,9 +21,7 @@ func longestZigZag(root *leetcode.TreeNode) int {
 	var nestedFunc func(node *leetcode.TreeNode, path int, fromLeft bool)
 	nestedFunc = func(node *leetcode.TreeNode, path int, fromLeft bool) {
 		if node == nil {
-			if path > maxLen {
-				maxLen = path
-			}
+			maxLen = max(maxLen, path)
 			return
 		}
 
@@ -34,6 +33,7 @@ func longestZigZag(root *leetcode.TreeNode) int {
 			nestedFunc(node.Right, 0, false)    // Start a new zigzag path from right
 		}
 	}
+
 	nestedFunc(root, -1, true)
 	return maxLen
 }

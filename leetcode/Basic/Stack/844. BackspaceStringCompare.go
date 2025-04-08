@@ -1,7 +1,6 @@
 package Stack
 
 // https://leetcode.com/problems/backspace-string-compare
-// Reference: https://leetcode.com/problems/backspace-string-compare/solutions/570511/c-simple-and-easy-explanation-100-memory-and-100-speed-0ms-o-1-space-o-n-time/
 /*
 Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
 

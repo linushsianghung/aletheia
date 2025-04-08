@@ -26,14 +26,14 @@ func lowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 	left := lowestCommonAncestor(root.Left, p, q)
 	right := lowestCommonAncestor(root.Right, p, q)
 
-	// There are 4 scenarios:
 	if left == nil && right == nil {
+		// Cannot fine p || q in this branch, just return nil
 		return nil
 	} else if left != nil && right != nil {
-		// If left != nil && right != nil, it means p & q locate on different side and the lca is root itself
+		// If left != nil && right != nil, it means p & q locate on different side and the lca is current root
 		return root
 	} else {
-		// If both p & q locate on 1 side (either left == nil || right == nil), the lca is p || q which ever is not nil
+		// If one side is nil, it means cannot find p || q on that side, just return the side whichever is not nil
 		if left == nil {
 			return right
 		}

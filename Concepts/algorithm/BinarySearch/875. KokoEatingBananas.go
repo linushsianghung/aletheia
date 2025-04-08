@@ -21,6 +21,8 @@ func MinEatingSpeed(piles []int, h int) int {
 
 	for left <= right {
 		mid := left + (right-left)/2
+
+		// If it true,continue to try further to find minimum k
 		if canEatPilesInTime(piles, h, mid) {
 			right = mid - 1
 		} else {
@@ -31,14 +33,15 @@ func MinEatingSpeed(piles []int, h int) int {
 	return left
 }
 
+// Binary Search Processor: Koko can eat 'k bananas' per hour in 'h' hours or not
+// if velocity > h, that indicates k is too small, try to eat faster, so left = mid + 1
+// if velocity < h, that indicates k is too large, try to eat slower, so right = mid - 1
+// if velocity == h, we can try a smaller k further, then right = mid - 1
 func canEatPilesInTime(piles []int, h, k int) bool {
-	var hours float64
+	var velocity float64
 	for _, pile := range piles {
-		hours += math.Ceil(float64(pile) / float64(k))
+		velocity += math.Ceil(float64(pile) / float64(k))
 	}
 
-	//if hours > h, that indicates k is too small, then left = mid + 1
-	//if hours < h, that indicates k is too large, then right = mid - 1
-	//if hours == h, we can try a smaller k, then also right = mid - 1
-	return int(hours) <= h
+	return int(velocity) <= h
 }

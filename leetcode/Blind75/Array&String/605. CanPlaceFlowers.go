@@ -1,7 +1,7 @@
 package Array_String
 
 // https://leetcode.com/problems/can-place-flowers/description/?envId=leetcode-75
-// Reference: https://leetcode.com/problems/can-place-flowers/solutions/103883/java-very-easy-solution/
+// Reference: https://leetcode.com/problems/can-place-flowers/solutions/103883/java-very-easy-solution/comments/137406/
 /*
 You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.
 

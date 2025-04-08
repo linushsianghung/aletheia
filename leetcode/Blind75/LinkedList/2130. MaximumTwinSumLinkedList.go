@@ -27,9 +27,7 @@ func pairSum(head *leetcode.ListNode) int {
 	maxSum := 0
 	for runner != nil {
 		sum := head.Val + runner.Val
-		if maxSum < sum {
-			maxSum = sum
-		}
+		maxSum = max(maxSum, sum)
 
 		head = head.Next
 		runner = runner.Next

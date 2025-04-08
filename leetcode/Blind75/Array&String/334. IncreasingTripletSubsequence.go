@@ -10,15 +10,17 @@ Given an integer array nums, return true if there exists a triple of indices (i,
 If no such indices exists, return false.
 
 Analysis:
+- Reference: https://leetcode.com/problems/increasing-triplet-subsequence/solutions/78993/clean-and-short-with-comments-c/comments/191930/
 Triple2 is only set when there is a triple1 before it which is smaller. It's impossible for triple2 to be set to a certain number and not have a number before it be smaller.
 So there must be a subsequence, even though {triple1, triple2, triple3} is not necessarily the correct subsequence.
 
+- Reference: https://leetcode.com/problems/increasing-triplet-subsequence/solutions/78993/clean-and-short-with-comments-c/comments/83820/
 The solution seems to fail for the input where the smallest element's index surpasses the second-smallest one's, but actually it doesn't matter that triple1 is the smallest index or not.
 Consider [2, 6, 1, 8] as example. triple1 here would get updated to 1, triple2 to 6 and the 3rd element is 8.
 Even though second largest and largest elements are correct, the correct order of subsequence should be 2, 6, 8 and not 6, 1, 8.
 Thus, if the problem requires us to return the index, then this code would not work.
 */
-// Reference: https://leetcode.com/problems/increasing-triplet-subsequence/solutions/78993/clean-and-short-with-comments-c/?envType=study-plan-v2&envId=leetcode-75
+// Reference: https://leetcode.com/problems/increasing-triplet-subsequence/solutions/78993/clean-and-short-with-comments-c
 func increasingTriplet(nums []int) bool {
 	triplet1, triplet2 := math.MaxInt, math.MaxInt
 

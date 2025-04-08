@@ -12,9 +12,7 @@ Return the least weight capacity of the ship that will result in all the package
 func shipWithinDays(weights []int, days int) int {
 	maxWeight, sumWeight := 0, 0
 	for _, weight := range weights {
-		if weight > maxWeight {
-			maxWeight = weight
-		}
+		maxWeight = max(maxWeight, weight)
 		sumWeight += weight
 	}
 
@@ -22,6 +20,7 @@ func shipWithinDays(weights []int, days int) int {
 	for left <= right {
 		mid := left + (right-left)/2
 
+		// If it true,continue to try further to find the least weight capacity of the ship
 		if capableToShip(weights, days, mid) {
 			right = mid - 1
 		} else {
@@ -32,16 +31,18 @@ func shipWithinDays(weights []int, days int) int {
 	return left
 }
 
+// Binary Search Processor: 'ship capacity' is enough to ship all the packages in 'days' or not
 func capableToShip(weights []int, days, capacity int) bool {
 	sumWeight, count := 0, 1
 	for _, weight := range weights {
 		sumWeight += weight
 		if sumWeight > capacity {
-			sumWeight = weight
 			count++
 			if count > days {
 				return false
 			}
+			// Reset sumWeight to the first weight of next day
+			sumWeight = weight
 		}
 	}
 
