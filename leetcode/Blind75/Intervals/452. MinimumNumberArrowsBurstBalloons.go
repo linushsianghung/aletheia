@@ -36,3 +36,7 @@ func findMinArrowShots(points [][]int) int {
 
 	return len(stack)
 }
+
+func findMinArrowShotsExercise(points [][]int) int {
+	return 0
+}

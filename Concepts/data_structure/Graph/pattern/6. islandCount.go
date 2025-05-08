@@ -41,5 +41,6 @@ func exploreIsland(grid [][]string, r, c int, visited map[string]bool) bool {
 	exploreIsland(grid, r-1, c, visited)
 	exploreIsland(grid, r, c+1, visited)
 	exploreIsland(grid, r, c-1, visited)
+
 	return true
 }

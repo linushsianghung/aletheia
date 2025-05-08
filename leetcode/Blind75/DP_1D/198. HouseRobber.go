@@ -16,19 +16,23 @@ func rob(nums []int) int {
 		note[i] = -1
 	}
 
-	var localFunc func(index int) int
-	localFunc = func(index int) int {
+	var nestedFunc func(index int) int
+	nestedFunc = func(index int) int {
 		if index < 0 {
 			return 0
 		}
 
-		if value := note[index]; value >= 0 {
-			return value
+		if note[index] > -1 {
+			return note[index]
 		}
 
-		note[index] = max(nums[index]+localFunc(index-2), localFunc(index-1))
+		note[index] = max(nums[index]+nestedFunc(index-2), nestedFunc(index-1))
 		return note[index]
 	}
 
-	return localFunc(houses - 1)
+	return nestedFunc(houses - 1)
+}
+
+func robExercise(nums []int) int {
+	return 0
 }

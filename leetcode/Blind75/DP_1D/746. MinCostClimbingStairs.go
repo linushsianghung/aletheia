@@ -16,24 +16,24 @@ func minCostClimbingStairs(cost []int) int {
 		note[i] = -1
 	}
 
-	var localFunc func(index int) int
-	localFunc = func(index int) int {
+	var nestedFunc func(index int) int
+	nestedFunc = func(index int) int {
 		if index < 0 {
 			return 0
 		}
-		if index == 0 || index == 1 {
-			return cost[index]
+		if note[index] > -1 {
+			return note[index]
 		}
 
-		if value := note[index]; value > -1 {
-			return value
-		}
-
-		note[index] = cost[index] + min(localFunc(index-1), localFunc(index-2))
+		note[index] = cost[index] + min(nestedFunc(index-1), nestedFunc(index-2))
 		return note[index]
 	}
 
-	return min(localFunc(len(cost)-1), localFunc(len(cost)-2))
+	return min(nestedFunc(len(cost)-1), nestedFunc(len(cost)-2))
+}
+
+func minCostClimbingStairsExercise(cost []int) int {
+	return 0
 }
 
 func minCostClimbingStairsStraight(cost []int) int {
@@ -42,8 +42,8 @@ func minCostClimbingStairsStraight(cost []int) int {
 		note[i] = -1
 	}
 
-	var localFunc func(index int) int
-	localFunc = func(index int) int {
+	var nestedFunc func(index int) int
+	nestedFunc = func(index int) int {
 		if index >= len(cost) {
 			return 0
 		}
@@ -52,10 +52,10 @@ func minCostClimbingStairsStraight(cost []int) int {
 		}
 
 		// Recursively traverse to the end first, then return current cost with whichever smaller one to get the minimum cost over all
-		note[index] = cost[index] + min(localFunc(index+1), localFunc(index+2))
+		note[index] = cost[index] + min(nestedFunc(index+1), nestedFunc(index+2))
 		return note[index]
 	}
 
 	// As statement, we can either start from the step with index 0, or the step with index 1.
-	return min(localFunc(0), localFunc(1))
+	return min(nestedFunc(0), nestedFunc(1))
 }

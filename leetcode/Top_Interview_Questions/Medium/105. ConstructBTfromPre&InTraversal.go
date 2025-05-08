@@ -1,8 +1,6 @@
 package Medium
 
-import (
-	"github.com/linushung/aletheia/leetcode"
-)
+import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
 /*

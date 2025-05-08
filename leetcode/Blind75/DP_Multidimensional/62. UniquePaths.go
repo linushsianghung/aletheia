@@ -1,8 +1,6 @@
 package DP_Multidimensional
 
-import (
-	"github.com/linushung/aletheia/leetcode/Top_Interview_Questions/Medium"
-)
+import "github.com/linushung/aletheia/leetcode/Top_Interview_Questions/Medium"
 
 // https://leetcode.com/problems/unique-paths/description/?envId=leetcode-75
 /*

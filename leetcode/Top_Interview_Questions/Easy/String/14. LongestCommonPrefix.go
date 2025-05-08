@@ -1,8 +1,6 @@
 package String
 
-import (
-	"strings"
-)
+import "strings"
 
 // https://leetcode.com/problems/longest-common-prefix/
 // Ref: https://www.youtube.com/watch?v=H8A9twm07Vc

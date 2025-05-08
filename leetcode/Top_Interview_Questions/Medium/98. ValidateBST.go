@@ -1,9 +1,8 @@
 package Medium
 
 import (
-	"math"
-
 	"github.com/linushung/aletheia/leetcode"
+	"math"
 )
 
 // https://leetcode.com/problems/validate-binary-search-tree

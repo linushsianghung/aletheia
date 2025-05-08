@@ -13,6 +13,7 @@ If both are the same size, both will explode. Two asteroids moving in the same d
 func asteroidCollision(asteroids []int) []int {
 	stack := []int{asteroids[0]}
 
+	// Using length of asteroids to control how many times of loop
 	for i := 1; i < len(asteroids); {
 		if len(stack) == 0 {
 			stack = append(stack, asteroids[i])
@@ -43,4 +44,8 @@ func asteroidCollision(asteroids []int) []int {
 	}
 
 	return stack
+}
+
+func asteroidCollisionExercise(asteroids []int) []int {
+	return nil
 }

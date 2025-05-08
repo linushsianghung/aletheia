@@ -11,8 +11,8 @@ Return a list of all possible valid combinations. The list must not contain the 
 func combinationSum3(k int, n int) [][]int {
 	result := make([][]int, 0)
 
-	var localFunc func(processor []int, remain, start int)
-	localFunc = func(processor []int, remain, start int) {
+	var nestedFunc func(processor []int, remain, start int)
+	nestedFunc = func(processor []int, remain, start int) {
 		if len(processor) > k {
 			return
 		}
@@ -26,12 +26,12 @@ func combinationSum3(k int, n int) [][]int {
 			processor = append(processor, i)
 			p := make([]int, len(processor))
 			copy(p, processor)
-			localFunc(p, remain-i, i+1)
+			nestedFunc(p, remain-i, i+1)
 			processor = processor[:len(processor)-1]
 		}
 	}
 
-	localFunc(make([]int, 0), n, 1)
+	nestedFunc(make([]int, 0), n, 1)
 	return result
 }
 

@@ -1,6 +1,8 @@
 package TwoPointers
 
-import "sort"
+import (
+	"sort"
+)
 
 // https://leetcode.com/problems/max-number-of-k-sum-pairs/description/?envId=leetcode-75
 /*
@@ -26,6 +28,10 @@ func maxOperationsMap(nums []int, k int) int {
 	}
 
 	return count
+}
+
+func maxOperationsMapExercise(nums []int, k int) int {
+	return 0
 }
 
 func maxOperations2Pointers(nums []int, k int) int {

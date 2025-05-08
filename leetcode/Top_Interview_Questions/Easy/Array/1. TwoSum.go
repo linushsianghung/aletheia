@@ -1,8 +1,6 @@
 package Array
 
-import (
-	TwoPointers "github.com/linushung/aletheia/leetcode/Basic/2Pointers"
-)
+import TwoPointers "github.com/linushung/aletheia/leetcode/Basic/2Pointers"
 
 // https://leetcode.com/problems/two-sum/
 // Ref: https://leetcode.com/problems/two-sum/solutions/737092/sum-megapost-python3-solution-with-a-detailed-explanation/

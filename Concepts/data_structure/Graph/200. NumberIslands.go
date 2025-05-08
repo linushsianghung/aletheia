@@ -23,6 +23,10 @@ func numIslands(grid [][]byte) int {
 	return count
 }
 
+func numIslandsExercise(grid [][]byte) int {
+	return 0
+}
+
 func exploreIsland(grid [][]byte, r, c int, visited map[string]bool) bool {
 	if r < 0 || r >= len(grid) || c < 0 || c >= len(grid[0]) {
 		return false
@@ -43,4 +47,8 @@ func exploreIsland(grid [][]byte, r, c int, visited map[string]bool) bool {
 	exploreIsland(grid, r, c-1, visited)
 
 	return true
+}
+
+func exploreIslandExercise(grid [][]byte, r, c int, visited map[string]bool) bool {
+	return false
 }

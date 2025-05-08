@@ -1,8 +1,6 @@
 package BinaryTree_DFS
 
-import (
-	"github.com/linushung/aletheia/leetcode"
-)
+import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/leaf-similar-trees/?envId=leetcode-75
 /*

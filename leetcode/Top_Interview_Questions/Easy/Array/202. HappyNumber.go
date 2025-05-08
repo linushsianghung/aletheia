@@ -28,7 +28,7 @@ func isHappyMath(n int) bool {
 		if n == 1 {
 			return true
 		}
-		if _, ok := note[n]; ok {
+		if ok := note[n]; ok {
 			return false
 		}
 
@@ -44,6 +44,10 @@ func isHappyMath(n int) bool {
 	//}
 	//
 	//return true
+}
+
+func isHappyMathExercise(n int) bool {
+	return false
 }
 
 /*
@@ -80,6 +84,5 @@ func compute(n int) int {
 }
 
 func computeExercise(n int) int {
-
 	return 0
 }

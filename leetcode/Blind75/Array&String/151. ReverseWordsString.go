@@ -1,8 +1,6 @@
 package Array_String
 
-import (
-	"strings"
-)
+import "strings"
 
 // https://leetcode.com/problems/reverse-words-in-a-string/description/envId=leetcode-75
 // Ref: https://leetcode.com/problems/reverse-words-in-a-string/solutions/47720/clean-java-two-pointers-solution-no-trim-no-split-no-stringbuilder/?envType=study-plan-v2&envId=leetcode-75

@@ -13,9 +13,10 @@ func deleteDuplicates(head *leetcode.ListNode) *leetcode.ListNode {
 	for runner != nil && runner.Next != nil {
 		if runner.Val == runner.Next.Val {
 			runner.Next = runner.Next.Next
-		} else {
-			runner = runner.Next
+			continue
 		}
+
+		runner = runner.Next
 	}
 
 	return head
@@ -25,5 +26,6 @@ func deleteDuplicatesExercise(head *leetcode.ListNode) *leetcode.ListNode {
 	if head == nil {
 		return nil
 	}
+
 	return nil
 }

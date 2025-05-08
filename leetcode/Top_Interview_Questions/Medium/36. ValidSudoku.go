@@ -23,12 +23,12 @@ func isValidSudoku(board [][]byte) bool {
 				continue
 			}
 
-			numInRow := fmt.Sprintf("Row %d has %d", j, board[i][j])
+			numInRow := fmt.Sprintf("Row %d has %d", i, board[i][j])
 			if ok := note[numInRow]; ok {
 				return false
 			}
-			
-			numInColumn := fmt.Sprintf("Column %d has %d", i, board[i][j])
+
+			numInColumn := fmt.Sprintf("Column %d has %d", j, board[i][j])
 			if ok := note[numInColumn]; ok {
 				return false
 			}

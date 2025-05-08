@@ -1,8 +1,6 @@
 package Array_String
 
-import (
-	"strconv"
-)
+import "strconv"
 
 // https://leetcode.com/problems/string-compression/description/?envId=leetcode-75
 /*
@@ -43,6 +41,10 @@ func compress(chars []byte) int {
 	return anchor
 }
 
+func compressExercise(chars []byte) int {
+	return 0
+}
+
 // This intuitive implementation is just going through each element 1 by 1, but it has to handle last element specially which results in duplicate code
 func compressIntuitively(chars []byte) int {
 	anchor, count := 0, 1
@@ -74,8 +76,4 @@ func compressIntuitively(chars []byte) int {
 	}
 
 	return anchor
-}
-
-func compressExercise(chars []byte) int {
-	return 0
 }

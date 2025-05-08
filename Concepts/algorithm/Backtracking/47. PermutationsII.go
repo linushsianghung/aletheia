@@ -27,8 +27,7 @@ func backtrackPermuteUnique(sources []int) [][]int {
 		for i := 0; i < len(sources); i++ {
 			/*
 				// Reference: https://leetcode.com/problems/permutations-ii/solutions/18594/really-easy-java-solution-much-easier-than-the-solutions-with-very-high-vote/comments/324818/
-				1. The problem is how to handle the duplicates, like [1a, 1b, 2], the results would be [1a, 1b, 2], [1b, 1a, 2]...,
-				One way to avoid duplicates is to make sure "1a goes before 1b" by using nums[i-1] == nums[i] && !used[i-1]
+				1. The problem is how to handle the duplicates, like [1a, 1b, 2], the results would be [1a, 1b, 2], [1b, 1a, 2]... One way to avoid duplicates is to make sure "1a goes before 1b"
 				// Reference: https://leetcode.com/problems/permutations-ii/solutions/18594/really-easy-java-solution-much-easier-than-the-solutions-with-very-high-vote/comments/250112/
 				2. Both !use[i - 1] and use[i - 1] are valid, but !use[i - 1] is more efficient.
 			*/

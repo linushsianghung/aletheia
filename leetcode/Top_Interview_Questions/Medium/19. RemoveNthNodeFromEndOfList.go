@@ -11,7 +11,7 @@ func removeNthFromEnd(head *leetcode.ListNode, n int) *leetcode.ListNode {
 	slow, fast := dummy, dummy
 
 	// First, move fast so that the gap between slow and fast becomes n
-	for i := 0; i < n; i++ {
+	for range n {
 		fast = fast.Next
 	}
 

@@ -29,8 +29,11 @@ func removeStarsStack(s string) string {
 		stack = append(stack, r)
 	}
 
-	result := string(stack)
-	return result
+	return string(stack)
+}
+
+func removeStarsStackExercise(s string) string {
+	return ""
 }
 
 func removeStars2Pointers(s string) string {

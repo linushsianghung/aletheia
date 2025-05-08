@@ -6,12 +6,11 @@ Given an array of integers arr, return true if the number of occurrences of each
 */
 func uniqueOccurrences(arr []int) bool {
 	note := make(map[int]int)
-	result := make(map[int]bool)
-
 	for _, num := range arr {
 		note[num]++
 	}
 
+	result := make(map[int]bool)
 	for _, v := range note {
 		if ok := result[v]; ok {
 			return false
@@ -20,4 +19,8 @@ func uniqueOccurrences(arr []int) bool {
 	}
 
 	return true
+}
+
+func uniqueOccurrencesExercise(arr []int) bool {
+	return false
 }

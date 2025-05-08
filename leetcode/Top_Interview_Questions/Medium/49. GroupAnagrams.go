@@ -1,8 +1,6 @@
 package Medium
 
-import (
-	"sort"
-)
+import "sort"
 
 // https://leetcode.com/problems/group-anagrams/
 /*
@@ -11,7 +9,7 @@ Given an array of strings strs, group the anagrams together. You can return the 
 An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
 */
 func groupAnagrams(strs []string) [][]string {
-	result, note := make([][]string, 0), make(map[string][]string)
+	note := make(map[string][]string)
 
 	for _, str := range strs {
 		sortedRune := []rune(str)
@@ -26,6 +24,7 @@ func groupAnagrams(strs []string) [][]string {
 		}
 	}
 
+	result := make([][]string, 0)
 	for _, v := range note {
 		result = append(result, v)
 	}

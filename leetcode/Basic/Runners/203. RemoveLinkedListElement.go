@@ -20,9 +20,10 @@ func removeElements(head *leetcode.ListNode, val int) *leetcode.ListNode {
 	for runner != nil && runner.Next != nil {
 		if runner.Next.Val == val {
 			runner.Next = runner.Next.Next
-		} else {
-			runner = runner.Next
+			continue
 		}
+
+		runner = runner.Next
 	}
 
 	return dummy.Next

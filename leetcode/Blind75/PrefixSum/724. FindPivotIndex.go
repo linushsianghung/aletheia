@@ -20,11 +20,9 @@ func pivotIndex(nums []int) int {
 
 	for i, num := range nums {
 		sumRight -= num
-
 		if sumLeft == sumRight {
 			return i
 		}
-
 		sumLeft += num
 	}
 

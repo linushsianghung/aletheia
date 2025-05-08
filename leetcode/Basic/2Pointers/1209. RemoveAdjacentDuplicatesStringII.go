@@ -1,4 +1,6 @@
-package Stack
+package TwoPointers
+
+import "github.com/linushung/aletheia/leetcode/Basic/Stack"
 
 // https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
 /*
@@ -35,11 +37,10 @@ func removeDuplicatesII2Pointers(s string, k int) string {
 }
 
 func removeDuplicatesII2PointersExercise(s string, k int) string {
-
 	return ""
 }
 
 // Related Topic: 1047. Remove All Adjacent Duplicates In String: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string
 func removeDuplicates1047(s string) {
-	removeDuplicates(s)
+	Stack.RemoveDuplicates(s)
 }

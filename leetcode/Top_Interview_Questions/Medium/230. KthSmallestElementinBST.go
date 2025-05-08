@@ -7,8 +7,8 @@ import "github.com/linushung/aletheia/leetcode"
 Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
 */
 func kthSmallest(root *leetcode.TreeNode, k int) int {
-	current := root
 	result, stack := make([]int, 0), make([]*leetcode.TreeNode, 0)
+	current := root
 
 	for current != nil || len(stack) > 0 {
 		if current != nil {

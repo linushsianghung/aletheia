@@ -27,3 +27,7 @@ func isSubsequence(s string, t string) bool {
 
 	return idx == len(s)
 }
+
+func isSubsequenceExercise(s string, t string) bool {
+	return false
+}

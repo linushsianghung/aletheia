@@ -1,8 +1,6 @@
 package Array_String
 
-import (
-	"math"
-)
+import "math"
 
 // https://leetcode.com/problems/increasing-triplet-subsequence/description/?envId=leetcode-75
 /*
@@ -35,5 +33,9 @@ func increasingTriplet(nums []int) bool {
 		}
 	}
 
+	return false
+}
+
+func increasingTripletExercise(nums []int) bool {
 	return false
 }

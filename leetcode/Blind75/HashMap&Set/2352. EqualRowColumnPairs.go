@@ -12,22 +12,22 @@ func equalPairs(grid [][]int) int {
 	var count int
 	note := make(map[string]int)
 
-	for _, col := range grid {
-		var colStr string
-		for _, r := range col {
-			colStr += fmt.Sprintf("%s,", r)
+	for _, row := range grid {
+		var rowStr string
+		for _, c := range row {
+			rowStr += fmt.Sprintf("%s,", c)
 		}
 
-		note[colStr]++
+		note[rowStr]++
 	}
 
-	for row := 0; row < len(grid); row++ {
-		var rowStr string
-		for col := 0; col < len(grid); col++ {
-			rowStr += fmt.Sprintf("%s,", grid[col][row])
+	for col := 0; col < len(grid); col++ {
+		var colStr string
+		for row := 0; row < len(grid); row++ {
+			colStr += fmt.Sprintf("%s,", grid[row][col])
 		}
 
-		count += note[rowStr]
+		count += note[colStr]
 	}
 
 	return count

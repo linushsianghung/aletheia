@@ -46,7 +46,7 @@ func backspaceCompare2Stack(s string, t string) bool {
 }
 
 func backspaceCompare2StackExercise(s string, t string) bool {
-	return false
+	return true
 }
 
 func backspaceCompare2Pointers(s string, t string) bool {

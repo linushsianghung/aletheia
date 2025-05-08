@@ -26,8 +26,7 @@ func middleNode(head *leetcode.ListNode) *leetcode.ListNode {
 	}
 
 	slow, fast := head, head
-	// For fast.Next != nil && fast.Next.Next != nil
-	// If there are two middle nodes, will return the first one
+	// For fast.Next != nil && fast.Next.Next != nil: If there are two middle nodes, will return the first one
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next /* Basic traversing operation (go to next node) */
 		fast = fast.Next.Next

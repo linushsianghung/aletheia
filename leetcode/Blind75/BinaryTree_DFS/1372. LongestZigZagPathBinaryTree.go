@@ -37,3 +37,7 @@ func longestZigZag(root *leetcode.TreeNode) int {
 	nestedFunc(root, -1, true)
 	return maxLen
 }
+
+func longestZigZagExercise(root *leetcode.TreeNode) int {
+	return 0
+}

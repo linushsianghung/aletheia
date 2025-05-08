@@ -1,8 +1,6 @@
 package Medium
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // https://leetcode.com/problems/surrounded-regions
 // Reference: https://leetcode.com/problems/surrounded-regions/solutions/691675/c-beginner-friendly-boundary-dfs-inplace/

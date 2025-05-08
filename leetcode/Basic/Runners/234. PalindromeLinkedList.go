@@ -22,14 +22,15 @@ func isPalindromeLinkedList(head *leetcode.ListNode) bool {
 
 func isPalindromeIteratively(head *leetcode.ListNode) bool {
 	/* Floyd Cycle Detection Algorithm */
-	slow, fast := head, head
+	count, slow, fast := 0, head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
+		count++
 	}
 
 	runner := Basic.ReverseList(slow)
-	for runner != nil {
+	for range count {
 		if runner.Val != head.Val {
 			return false
 		}
