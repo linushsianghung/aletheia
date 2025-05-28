@@ -16,10 +16,10 @@ func deleteNode(root *leetcode.TreeNode, key int) *leetcode.TreeNode {
 		return nil
 	}
 
-	if root.Val > key {
+	if key < root.Val {
 		// If key value is less than root value, go to left subtree to find the node
 		root.Left = deleteNode(root.Left, key)
-	} else if root.Val < key {
+	} else if key > root.Val {
 		// If key value is greater than root value, go to right subtree to find the node
 		root.Right = deleteNode(root.Right, key)
 	} else {

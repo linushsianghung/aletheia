@@ -58,6 +58,10 @@ func leafSimilarHelper(root *leetcode.TreeNode) []int {
 	return result
 }
 
+func leafSimilarExercise(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) bool {
+	return false
+}
+
 func leafSimilarHelperExercise(root *leetcode.TreeNode) []int {
 	return nil
 }

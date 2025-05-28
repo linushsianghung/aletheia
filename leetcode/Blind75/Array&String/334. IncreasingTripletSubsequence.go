@@ -23,6 +23,7 @@ func increasingTriplet(nums []int) bool {
 	triplet1, triplet2 := math.MaxInt, math.MaxInt
 
 	for _, num := range nums {
+		// It is necessary to be "less and equal to", in case all the numbers are the same
 		if num <= triplet1 {
 			triplet1 = num // triple1 is so far the smallest number which is a candidate for 1st element
 		} else if num <= triplet2 {
@@ -37,5 +38,17 @@ func increasingTriplet(nums []int) bool {
 }
 
 func increasingTripletExercise(nums []int) bool {
+	triple1, triple2 := math.MaxInt32, math.MaxInt32
+
+	for _, num := range nums {
+		if num <= triple1 {
+			triple1 = num
+		} else if num <= triple2 {
+			triple2 = num
+		} else {
+			return true
+		}
+	}
+
 	return false
 }

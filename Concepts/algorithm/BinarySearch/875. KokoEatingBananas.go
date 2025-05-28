@@ -45,3 +45,11 @@ func canEatPilesInTime(piles []int, h, k int) bool {
 
 	return int(velocity) <= h
 }
+
+func MinEatingSpeedExercise(piles []int, h int) int {
+	return 0
+}
+
+func canEatPilesInTimeExercise(piles []int, h int, k int) bool {
+	return false
+}
