@@ -6,7 +6,7 @@ package SlidingWindow
 Given a binary array nums, you should delete one element from it.
 Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.
 
-Related Topic: 1004. Max Consecutive Ones III: https://leetcode.com/problems/max-consecutive-ones-iii/description/
+Related Problem: 1004. Max Consecutive Ones III: https://leetcode.com/problems/max-consecutive-ones-iii/description/
 */
 func longestSubarray(nums []int) int {
 	// Using zeroCount = 0 to be consistent with template

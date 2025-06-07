@@ -25,7 +25,7 @@ func successfulPairsBS(spells []int, potions []int, success int64) []int {
 		for left <= right {
 			mid := left + (right-left)/2
 			// There might be repeat numbers of potions, so it's necessary to find the first index of that number!
-			// Related Topic: 34. Find First and Last Position of Element in Sorted Array: http://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
+			// Related Problem: 34. Find First and Last Position of Element in Sorted Array: http://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array
 			if int64(spell*potions[mid]) >= success {
 				right = mid - 1
 			} else {

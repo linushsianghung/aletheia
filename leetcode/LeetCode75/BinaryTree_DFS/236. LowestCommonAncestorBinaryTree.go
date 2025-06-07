@@ -44,3 +44,5 @@ func lowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 func lowestCommonAncestorExercise(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 	return nil
 }
+
+// Related Problem: 235. Lowest Common Ancestor of a Binary Search Tree: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree

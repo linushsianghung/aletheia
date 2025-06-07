@@ -5,7 +5,7 @@
 > You may use an element of the array as many time as needed.
 > You may assume that all input numbers are nonnegative.
 >
-> Related Topic: 112. Path Sum: https://leetcode.com/problems/path-sum/
+> Related Problem: 112. Path Sum: https://leetcode.com/problems/path-sum/
 
 
 ## Memorisation

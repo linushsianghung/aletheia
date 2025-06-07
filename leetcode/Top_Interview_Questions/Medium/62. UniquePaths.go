@@ -143,7 +143,7 @@ func uniquePathsBF(m int, n int) int {
 	return grid[m-1][n-1]
 }
 
-// Related Topic: 63. Unique Paths II: https://leetcode.com/problems/unique-paths-ii/description/
+// Related Problem: 63. Unique Paths II: https://leetcode.com/problems/unique-paths-ii/description/
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	return DynamicProgramming.UniquePathsWithObstacles(obstacleGrid)
 }

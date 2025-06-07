@@ -44,7 +44,7 @@ func levelOrderIterativelyExercise(root *leetcode.TreeNode) [][]int {
 	return nil
 }
 
-// Related Topic: 116. Populating Next Right Pointers in Each Node: https://leetcode.com/problems/populating-next-right-pointers-in-each-node
+// Related Problem: 116. Populating Next Right Pointers in Each Node: https://leetcode.com/problems/populating-next-right-pointers-in-each-node
 func connect(root *leetcode.TreeNode) *leetcode.TreeNode {
 	if root == nil {
 		return root

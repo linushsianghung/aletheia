@@ -1,13 +1,14 @@
 package pattern
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/linushung/aletheia/Concepts/data_structure/Graph"
+)
 
 // IslandCount
 /*
 Write a function, islandCount, that takes in a grid containing Ws and Ls. W represents water and L represents land.
 The function should return the number of islands on the grid. An island is a vertically or horizontally connected region of land.
-
-Related Topic: 200. Number of Islands: https://leetcode.com/problems/number-of-islands/
 */
 func IslandCount(grid [][]string) int {
 	count, visited := 0, make(map[string]bool)
@@ -43,4 +44,9 @@ func exploreIsland(grid [][]string, r, c int, visited map[string]bool) bool {
 	exploreIsland(grid, r, c-1, visited)
 
 	return true
+}
+
+// Related Problem: 200. Number of Islands: https://leetcode.com/problems/number-of-islands/
+func numIslands(grid [][]byte) int {
+	return Graph.NumIslands(grid)
 }

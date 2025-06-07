@@ -5,7 +5,7 @@ Write a function, connectedComponentsCount, that take in an adjacent list of an 
 The function should return the number of connected components within the graph
 
 Connected Components Count: file://./pics/ConnectedComponentsCount.png
-Related Topic: 2685. Count the Number of Complete Components: https://leetcode.com/problems/count-the-number-of-complete-components/description/
+Related Problem: 2685. Count the Number of Complete Components: https://leetcode.com/problems/count-the-number-of-complete-components/description/
 */
 func connectedComponentsCount(graph map[int][]int) int {
 	count := 0

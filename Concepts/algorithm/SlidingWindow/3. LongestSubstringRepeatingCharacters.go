@@ -4,18 +4,18 @@ package SlidingWindow
 /* Given a string s, find the length of the longest substring without repeating characters. */
 func lengthOfLongestSubstring(s string) int {
 	winStart, maxLen := 0, 0
-	sRune := []rune(s)
 	note := make(map[rune]int)
 
-	for winEnd, num := range sRune {
+	//for winEnd, r := range sRune {
+	for winEnd, r := range s {
 		// Dynamic-Size Sliding Window: skip to the next character of the repeating one
-		if i, ok := note[num]; ok && winStart <= i {
+		if i, ok := note[r]; ok && winStart <= i {
 			winStart = i + 1
 		}
 
 		currentLen := winEnd - winStart + 1
 		maxLen = max(currentLen, maxLen)
-		note[num] = winEnd
+		note[r] = winEnd
 	}
 
 	return maxLen

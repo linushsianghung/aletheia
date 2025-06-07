@@ -4,7 +4,7 @@
 > 
 > You may reuse elements of 'wordBank' as many time as needed.
 >
-> Related Topic: 437. Path Sum III: https://leetcode.com/problems/path-sum-iii/
+> Related Problem: 437. Path Sum III: https://leetcode.com/problems/path-sum-iii/
 
 ## Memorisation
 ![Count Construct - Memorisation](../pics/countConstruct-Memorisation.png)

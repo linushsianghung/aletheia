@@ -15,7 +15,7 @@ If the search ends with an empty half, the condition cannot be fulfilled and the
 - When need to search for an index or element in a space and if the space is unordered, we can always sort it first before applying Binary Search.
 > Situation: Array => Sorted Array => Binary Search (or more general, 2 pointers)
 - If we can discover some kind of **monotonicity**, for example, if condition(k) is True then condition(k + 1) is True (*implicitly sorted space*), then we can consider Binary Search .
-- **Binary search sorted assumption is necessary only when there is only 1 "unique value" in the array. (Refer to [162. Find Peak Element](./../../../leetcode/Blind75/BinarySearch/162.%20FindPeakElement.go))** 
+- **Binary search sorted assumption is necessary only when there is only 1 "unique value" in the array. (Refer to [162. Find Peak Element](../../../leetcode/LeetCode75/BinarySearch/162.%20FindPeakElement.go))** 
 
 ### Template
 ```Golang

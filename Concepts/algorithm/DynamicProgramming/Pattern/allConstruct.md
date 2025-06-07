@@ -4,7 +4,7 @@
 > 
 > You may reuse elements of 'wordBank' as many time as needed.
 >
-> Related Topic: 113. Path Sum II: https://leetcode.com/problems/path-sum-ii/
+> Related Problem: 113. Path Sum II: https://leetcode.com/problems/path-sum-ii/
 >
 > Analysis:
 > - Time Complexity: O(n^m)

@@ -6,7 +6,7 @@ import "github.com/linushung/aletheia/Concepts/data_structure/Graph"
 Write a function, undirectedPath, that take in an array of edges for an undirected graph and 2 nodes (nodeA, NodeB).
 The function should return a boolean indicating whether there exist a path between nodeA and nodeB.
 
-Related Topic: 1971. Find if Path Exists in Graph: https://leetcode.com/problems/find-if-path-exists-in-graph/description/
+Related Problem: 1971. Find if Path Exists in Graph: https://leetcode.com/problems/find-if-path-exists-in-graph/description/
 */
 func undirectedPath(edges [][]string, nodeA, nodeB string) bool {
 	graph := Graph.BuildGraph(edges)
