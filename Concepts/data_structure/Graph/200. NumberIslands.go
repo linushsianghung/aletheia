@@ -12,9 +12,9 @@ You may assume all four edges of the grid are all surrounded by water.
 func NumIslands(grid [][]byte) int {
 	count, visited := 0, make(map[string]bool)
 
-	for i := 0; i < len(grid); i++ {
-		for j := 0; j < len(grid[0]); j++ {
-			if exploreIsland(grid, i, j, visited) {
+	for row := 0; row < len(grid); row++ {
+		for col := 0; col < len(grid[0]); col++ {
+			if exploreIsland(grid, row, col, visited) {
 				count++
 			}
 		}
