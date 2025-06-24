@@ -44,7 +44,7 @@ func intersectMapExercise(nums1 []int, nums2 []int) []int {
 }
 
 // Follow up:
-// What if the given array is already sorted? How would you optimise your algorithm?
+// What if the given array is already sorted? How would you optimise your Algorithm?
 /*
 Complexity Analysis:
 - Time Complexity: O(max(N, M)). Worst case, for example, would be nums1 = {100}, and nums2 = {1, 2, ..., 100 }. We will always iterate the longest array
@@ -72,7 +72,7 @@ func intersect2Pointers(nums1 []int, nums2 []int) []int {
 	return result
 }
 
-// What if nums1's size is small compared to nums2's size? Which algorithm is better?
+// What if nums1's size is small compared to nums2's size? Which Algorithm is better?
 /*
 Complexity Analysis:
 - Time Complexity: O(K(logN) + N). Plus N is worst case scenario which you have to linear scan every element in A. But on average, that shouldn't be the case. so I'd say the Time complexity is O(K(logN) + c)

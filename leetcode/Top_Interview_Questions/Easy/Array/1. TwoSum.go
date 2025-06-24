@@ -2,14 +2,14 @@ package Array
 
 import TwoPointers "github.com/linushung/aletheia/leetcode/Basic/2Pointers"
 
-// https://leetcode.com/problems/two-sum/
+// TwoSum https://leetcode.com/problems/two-sum/
 // Ref: https://leetcode.com/problems/two-sum/solutions/737092/sum-megapost-python3-solution-with-a-detailed-explanation/
 /*
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 You can return the answer in any order.
 */
-func twoSum(nums []int, target int) []int {
+func TwoSum(nums []int, target int) []int {
 	return mapImpl(nums, target)
 }
 

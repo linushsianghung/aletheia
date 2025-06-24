@@ -1,7 +1,7 @@
 package Graphs_DFS
 
 import (
-	"github.com/linushung/aletheia/Concepts/data_structure/Graph"
+	"github.com/linushung/aletheia/Concepts/Data Structure/Graph"
 	"math"
 )
 

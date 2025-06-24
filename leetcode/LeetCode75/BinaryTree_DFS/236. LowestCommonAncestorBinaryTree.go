@@ -1,8 +1,11 @@
 package BinaryTree_DFS
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/Concepts/Data Structure/Tree"
+	"github.com/linushung/aletheia/leetcode"
+)
 
-// https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envId=leetcode-75
+// LowestCommonAncestor https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envId=leetcode-75
 /*
 Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
 
@@ -17,14 +20,14 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
  *     Right *TreeNode
  * }
  */
-func lowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
+func LowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 	// if p or q is exactly the whole tree's root, return the root (because root is the lowest node).
 	if root == p || root == q || root == nil {
 		return root
 	}
 
-	left := lowestCommonAncestor(root.Left, p, q)
-	right := lowestCommonAncestor(root.Right, p, q)
+	left := LowestCommonAncestor(root.Left, p, q)
+	right := LowestCommonAncestor(root.Right, p, q)
 
 	if left == nil && right == nil {
 		// Cannot fine p || q in this branch, just return nil
@@ -46,3 +49,6 @@ func lowestCommonAncestorExercise(root, p, q *leetcode.TreeNode) *leetcode.TreeN
 }
 
 // Related Problem: 235. Lowest Common Ancestor of a Binary Search Tree: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree
+func lowestCommonAncestorBinaryTree(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
+	return Tree.LowestCommonAncestor(root, p, q)
+}

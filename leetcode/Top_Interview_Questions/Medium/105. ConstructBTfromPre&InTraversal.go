@@ -2,7 +2,7 @@ package Medium
 
 import "github.com/linushung/aletheia/leetcode"
 
-// https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
+// BuildTree https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
 /*
 Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree,
 construct and return the binary tree.
@@ -23,7 +23,7 @@ Analysis 2 (How to get the index of the right child):
   children nodes, but you don't know which one is the left child which one is the right, and this is why we need inorder array)
 - numsOnLeft = root - inStart.
 */
-func buildTree(preorder []int, inorder []int) *leetcode.TreeNode {
+func BuildTree(preorder []int, inorder []int) *leetcode.TreeNode {
 
 	return buildTreeRecursively(0, 0, len(inorder)-1, preorder, inorder)
 }

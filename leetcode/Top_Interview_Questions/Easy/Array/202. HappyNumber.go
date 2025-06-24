@@ -2,7 +2,7 @@ package Array
 
 // https://leetcode.com/problems/happy-number/description/
 /*
-Write an algorithm to determine if a number n is happy.
+Write an Algorithm to determine if a number n is happy.
 
 A happy number is a number defined by the following process:
 - Starting with any positive integer, replace the number by the sum of the squares of its digits.
@@ -53,11 +53,11 @@ func isHappyMathExercise(n int) bool {
 /*
 Analysis:
 It was clearly mentioned in the problem statement that if a number ain't happy, then it will lead to a cycle.
-Whenever we hear the word "cycle", the first thing we should think of is "Floyd's cycle-finding algorithm" also known as "Tortoise and the Hare algorithm."
+Whenever we hear the word "cycle", the first thing we should think of is "Floyd's cycle-finding Algorithm" also known as "Tortoise and the Hare Algorithm."
 
 Ref: https://www.youtube.com/watch?v=SJRaMCSgNWQ
 */
-// <editor-fold desc="Floyd's cycle-finding algorithm">
+// <editor-fold desc="Floyd's cycle-finding Algorithm">
 func isHappyFloydCycle(n int) bool {
 	slow, fast := n, n
 	for fast != 1 {

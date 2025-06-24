@@ -1,8 +1,8 @@
 package BinarySearch
 
-import "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
+import "github.com/linushung/aletheia/Concepts/Algorithm/Binary Search"
 
 // https://leetcode.com/problems/koko-eating-bananas/description/
 func minEatingSpeed(piles []int, h int) int {
-	return BinarySearch.MinEatingSpeed(piles, h)
+	return Binary_Search.MinEatingSpeed(piles, h)
 }

@@ -1,6 +1,6 @@
 package Medium
 
-// https://leetcode.com/problems/longest-palindromic-substring/
+// LongestPalindrome https://leetcode.com/problems/longest-palindromic-substring/
 // Ref: [Longest palindrome substring](https://www.youtube.com/watch?v=DK5OKKbF6GI)
 /*
 Given a string s, return the longest palindromic substring in s.
@@ -22,7 +22,7 @@ start = 2 = 4 - (6-1)/2
 end = 7 = 4 + 6/2
 
 */
-func longestPalindrome(s string) string {
+func LongestPalindrome(s string) string {
 	if len(s) < 2 {
 		return s
 	}

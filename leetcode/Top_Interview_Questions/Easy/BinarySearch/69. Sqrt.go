@@ -1,8 +1,8 @@
 package BinarySearch
 
-import "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
+import "github.com/linushung/aletheia/Concepts/Algorithm/Binary Search"
 
 // https://leetcode.com/problems/sqrtx/
 func mySqrt(x int) int {
-	return BinarySearch.MySqrt(x)
+	return Binary_Search.MySqrt(x)
 }

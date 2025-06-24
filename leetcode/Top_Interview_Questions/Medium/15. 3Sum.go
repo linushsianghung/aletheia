@@ -2,7 +2,7 @@ package Medium
 
 import "sort"
 
-// https://leetcode.com/problems/3sum/description/
+// ThreeSum https://leetcode.com/problems/3sum/description/
 // Ref:
 // - https://leetcode.com/problems/3sum/solutions/1462423/c-both-two-pointers-and-hashmap-approach-explained/
 // - https://leetcode.com/problems/3sum/solutions/725950/python-5-easy-steps-beats-97-4-annotated/
@@ -11,7 +11,7 @@ Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
 
 Notice that the solution set must not contain duplicate triplets.
 */
-func threeSum(nums []int) [][]int {
+func ThreeSum(nums []int) [][]int {
 	return threeSumSort(nums)
 	// return threeSumExhaustion(nums)
 }

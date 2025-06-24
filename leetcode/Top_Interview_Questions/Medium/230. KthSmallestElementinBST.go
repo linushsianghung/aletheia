@@ -2,11 +2,9 @@ package Medium
 
 import "github.com/linushung/aletheia/leetcode"
 
-// https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-/*
-Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree.
-*/
-func kthSmallest(root *leetcode.TreeNode, k int) int {
+// KthSmallest https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+/* Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed) of all the values of the nodes in the tree. */
+func KthSmallest(root *leetcode.TreeNode, k int) int {
 	return kthSmallestExercise(root, k)
 }
 

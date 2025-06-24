@@ -1,6 +1,6 @@
 package Medium
 
-// https://leetcode.com/problems/maximum-subarray/
+// MaxSubArray https://leetcode.com/problems/maximum-subarray/
 // Ref:
 // - Back To Back SWE: [Max Contiguous Subarray Sum - Cubic Time To Kadane's Algorithm](https://www.youtube.com/watch?v=2MmGzdiKR9Y)
 // - NeetCode: [Maximum Subarray](https://www.youtube.com/watch?v=5WZl3MMT0Eg)
@@ -51,7 +51,7 @@ evaluation:  max(-1, 1)  ~~> 1
 		  	 max(4, 2)   ~~~~> 4
 			 ..........
 */
-func maxSubArray(nums []int) int {
+func MaxSubArray(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}

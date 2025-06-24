@@ -17,9 +17,9 @@ Now visualise a point on a number line, starting at 0. Each occurrence of one nu
 As you count through the array, no matter which order they are in, the point will end up on the side of the majority.
 
 Proof:
-The reason the algorithm works at all is that "the majority element will occur more than n/2 times".
+The reason the Algorithm works at all is that "the majority element will occur more than n/2 times".
 Therefore, take the count of the majority element occurs and subtract the count of all other elements you will get a positive number.
-Meaning the algorithm keeps a memory of the highest occurrence element guaranteed if you follow the algorithm.
+Meaning the Algorithm keeps a memory of the highest occurrence element guaranteed if you follow the Algorithm.
 No matter the order the last number will be either be positive meaning you already have the majority element or the number will be zero and the last number is the majority element.
 */
 func majorityElement(nums []int) int {

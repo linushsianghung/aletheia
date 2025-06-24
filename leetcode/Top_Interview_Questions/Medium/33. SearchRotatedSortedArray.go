@@ -1,8 +1,8 @@
 package Medium
 
-import "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
+import "github.com/linushung/aletheia/Concepts/Algorithm/Binary Search"
 
 // https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 func search(nums []int, target int) int {
-	return BinarySearch.SearchRotate(nums, target)
+	return Binary_Search.SearchRotate(nums, target)
 }

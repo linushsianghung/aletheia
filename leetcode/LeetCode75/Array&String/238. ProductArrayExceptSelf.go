@@ -1,18 +1,17 @@
 package Array_String
 
-// https://leetcode.com/problems/product-of-array-except-self/description/?envId=leetcode-75
+// ProductExceptSelf https://leetcode.com/problems/product-of-array-except-self/description/?envId=leetcode-75
 // Reference: https://leetcode.com/problems/product-of-array-except-self/solutions/1342916/3-minute-read-mimicking-an-interview
 /*
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 
-You must write an algorithm that runs in O(n) time and without using the division operation.
+You must write an Algorithm that runs in O(n) time and without using the division operation.
 */
 // perProduct = [1, 2, 6, 24]
 // sufProduct = [24, 24, 12, 4]
-
-func productExceptSelf(nums []int) []int {
+func ProductExceptSelf(nums []int) []int {
 	result := make([]int, len(nums))
 	for i := range result {
 		result[i] = 1

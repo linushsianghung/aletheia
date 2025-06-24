@@ -17,6 +17,8 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 		var previous *leetcode.ListNode
 	*/
 	var previous *leetcode.ListNode
+	// Cannot use ListNode literal because it will create redundant node like [5,4,3,2,1,0]
+	// dummy := &leetcode.ListNode{}
 	// Depending on the problem which might need to keep the pointer of the original head
 	current := head
 	for current != nil {

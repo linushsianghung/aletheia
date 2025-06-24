@@ -15,7 +15,7 @@ The Answer is (zeroCount-1)/2.
 The only cases this doesn't apply are when there are zeroes(1 or more)
 - At the beginning of the array.
 - At the end of the array.
-For these 2 cases, the number of 1s that we can place is zeroCount/2. But to generalize the algorithm and to simplify code inside loop,
+For these 2 cases, the number of 1s that we can place is zeroCount/2. But to generalize the Algorithm and to simplify code inside loop,
 zeroCount has been initialized to 1 for the first time and result += (zeroCount-1)/2 effectively becomes result += zeroCount/2 for the case 1.
 For case 2, result is updated outside the loop, again by zeroCount/2 times.
 

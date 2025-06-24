@@ -1,13 +1,13 @@
 package DynamicProgramming
 
-// https://leetcode.com/problems/climbing-stairs/
+// ClimbStairs https://leetcode.com/problems/climbing-stairs/
 // Ref: https://leetcode.com/problems/climbing-stairs/solutions/25299/basically-it-s-a-fibonacci/
 /*
 You are climbing a staircase. It takes n steps to reach the top.
 
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 */
-func climbStairs(n int) int {
+func ClimbStairs(n int) int {
 	return climStairsMemoriseDP(n, make(map[int]int))
 }
 

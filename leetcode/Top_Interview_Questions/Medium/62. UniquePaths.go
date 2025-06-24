@@ -2,7 +2,7 @@ package Medium
 
 import (
 	"fmt"
-	"github.com/linushung/aletheia/Concepts/algorithm/DynamicProgramming"
+	"github.com/linushung/aletheia/Concepts/Algorithm/Dynamic Programming"
 )
 
 // UniquePaths https://leetcode.com/problems/unique-paths/description/
@@ -18,12 +18,12 @@ The test cases are generated so that the answer will be less than or equal to 2 
 */
 func UniquePaths(m int, n int) int {
 
-	return UniquePathsMemorisation(m, n, make(map[string]int))
+	return uniquePathsMemorisation(m, n, make(map[string]int))
 	// return uniquePaths2Slice(m, n)
 	//return uniquePathsSmartSlice(m, n)
 }
 
-func UniquePathsMemorisation(m, n int, memo map[string]int) int {
+func uniquePathsMemorisation(m, n int, memo map[string]int) int {
 	key := fmt.Sprint(m, '-', n)
 	if value, ok := memo[key]; ok {
 		return value
@@ -36,7 +36,7 @@ func UniquePathsMemorisation(m, n int, memo map[string]int) int {
 		return 0
 	}
 
-	memo[key] = UniquePathsMemorisation(m-1, n, memo) + UniquePathsMemorisation(m, n-1, memo)
+	memo[key] = uniquePathsMemorisation(m-1, n, memo) + uniquePathsMemorisation(m, n-1, memo)
 	return memo[key]
 }
 
@@ -145,5 +145,5 @@ func uniquePathsBF(m int, n int) int {
 
 // Related Problem: 63. Unique Paths II: https://leetcode.com/problems/unique-paths-ii/description/
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
-	return DynamicProgramming.UniquePathsWithObstacles(obstacleGrid)
+	return Dynamic_Programming.UniquePathsWithObstacles(obstacleGrid)
 }
