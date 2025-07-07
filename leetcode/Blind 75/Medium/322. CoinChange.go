@@ -62,6 +62,7 @@ func coinChangeDPTabulation(coins []int, amount int) int {
 	// "amount" cannot be used either. It will get problem at scenario coin: [1] and amount = 0
 	table := make([]int, amount+1)
 	for i := range len(table) {
+		// Set default value
 		table[i] = amount + 1
 	}
 	table[0] = 0

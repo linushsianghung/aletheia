@@ -1,6 +1,6 @@
 package Binary_Search
 
-// MySqrt https://leetcode.com/problems/sqrtx/
+// MySqrt https://leetcode.com/problems/sqrtx/description/
 // Ref:
 // - https://www.youtube.com/watch?v=zdMhGxRWutQ
 // - https://leetcode.com/problems/sqrtx/solutions/25198/3-java-solutions-with-explanation/

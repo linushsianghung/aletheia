@@ -36,7 +36,7 @@ func rotate(matrix [][]int) {
 }
 
 func rotateExercise(matrix [][]int) {
-	left, right := 0, len(matrix)
+	left, right := 0, len(matrix)-1
 
 	for left < right {
 		for i := 0; i < right-left; i++ {
@@ -52,5 +52,4 @@ func rotateExercise(matrix [][]int) {
 		left++
 		right--
 	}
-
 }

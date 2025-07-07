@@ -20,14 +20,14 @@ func UniquePaths(m int, n int) int {
 
 	return uniquePathsMemorisation(m, n, make(map[string]int))
 	// return uniquePaths2Slice(m, n)
-	//return uniquePathsSmartSlice(m, n)
+	// return uniquePathsSmartSlice(m, n)
+}
+
+func uniquePathsExercise(m int, n int) int {
+	return 0
 }
 
 func uniquePathsMemorisation(m, n int, memo map[string]int) int {
-	key := fmt.Sprint(m, '-', n)
-	if value, ok := memo[key]; ok {
-		return value
-	}
 	// Here the "or" operator can do the job for improvement because whenever reaching the edge, there is definitely one way to arrive the end point
 	if m == 1 || n == 1 {
 		return 1
@@ -36,8 +36,13 @@ func uniquePathsMemorisation(m, n int, memo map[string]int) int {
 		return 0
 	}
 
-	memo[key] = uniquePathsMemorisation(m-1, n, memo) + uniquePathsMemorisation(m, n-1, memo)
-	return memo[key]
+	position := fmt.Sprint(m, '-', n)
+	if value, ok := memo[position]; ok {
+		return value
+	}
+
+	memo[position] = uniquePathsMemorisation(m-1, n, memo) + uniquePathsMemorisation(m, n-1, memo)
+	return memo[position]
 }
 
 // Using Backtracking strategy as practice and as expect it will get "Memory Limit Exceeded" error message when the grid become larger
@@ -77,7 +82,7 @@ Further observation that for each new iteration, pre[j] is just the cur[j] befor
 func uniquePathsSmartSlice(m int, n int) int {
 	cur := make([]int, n)
 	// Initialise table
-	for i := 0; i < n; i++ {
+	for i := range n {
 		cur[i] = 1
 	}
 
@@ -114,6 +119,7 @@ func uniquePaths2Slice(m int, n int) int {
 		pre = cur
 	}
 
+	// It has to be pre slice in case of there is only one row of grid
 	return pre[n-1]
 }
 
@@ -124,13 +130,13 @@ func uniquePathsBF(m int, n int) int {
 		grid[i] = make([]int, n)
 	}
 
-	// Put 1 to the first row
-	for _, col := range grid {
-		col[0] = 1
+	// Put 1 to the first column
+	for _, row := range grid {
+		row[0] = 1
 	}
 
-	// Put 1 to the first column
-	for i := range grid[0] {
+	// Put 1 to the first row
+	for i := range n {
 		grid[0][i] = 1
 	}
 

@@ -1,9 +1,6 @@
 package BinaryTree_DFS
 
-import (
-	"github.com/linushung/aletheia/Concepts/Data Structure/Tree"
-	"github.com/linushung/aletheia/leetcode"
-)
+import "github.com/linushung/aletheia/leetcode"
 
 // LowestCommonAncestor https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envId=leetcode-75
 /*
@@ -46,9 +43,4 @@ func LowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 
 func lowestCommonAncestorExercise(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 	return nil
-}
-
-// Related Problem: 235. Lowest Common Ancestor of a Binary Search Tree: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree
-func lowestCommonAncestorBinaryTree(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
-	return Tree.LowestCommonAncestor(root, p, q)
 }

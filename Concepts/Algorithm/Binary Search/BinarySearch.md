@@ -23,14 +23,7 @@ package BinarySearch
 
 import "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
 
-/*
-704. Binary Search: https://leetcode.com/problems/binary-search/description/
-
-Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums.
-If target exists, then return its index. Otherwise, return -1.
-
-You must write an Algorithm with O(log n) runtime complexity.
-*/
+/* It's the basic Binary Search template: 704. Binary Search: https://leetcode.com/problems/binary-search/description/ */
 func search(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 
@@ -49,6 +42,24 @@ func search(nums []int, target int) int {
 	}
 
 	return -1
+}
+/* Further variation is: 35. SearchInsertPosition: https://leetcode.com/problems/search-insert-position/description/ */
+func searchVariation(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+
+	for left <= right {
+		mid := left + (right-left)/2
+
+		// "equal" is for handling repeating numbers
+		if nums[mid] <= target {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
+	}
+
+	// "left" is the insert position no matter if there are any repeating numbers
+	return left
 }
 ```
 if you are using lower mid mid = low + (high - low)/2 (the mid is considered as low side), then you NEED to use high = mid & low = mid + 1 to shrink the boundary. 

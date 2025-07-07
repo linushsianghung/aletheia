@@ -1,6 +1,6 @@
 package Binary_Search
 
-// SearchInsert https://leetcode.com/problems/search-insert-position/
+// SearchInsert https://leetcode.com/problems/search-insert-position/description/
 // Ref: https://leetcode.com/problems/search-insert-position/solutions/249092/come-on-forget-the-binary-search-pattern-template-try-understand-it/?orderBy=most_votes
 /*
 Given a sorted array of distinct integers and a target value, return the index if the target is found.

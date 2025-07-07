@@ -1,6 +1,6 @@
 package Binary_Search
 
-// https://leetcode.com/problems/binary-search/
+// https://leetcode.com/problems/binary-search/description/
 // Ref:
 // - https://leetcode.com/problems/binary-search/solutions/423162/binary-search-101/
 // - https://leetcode.com/discuss/study-guide/1233854/a-noobs-guide-to-the-binary-search-algorithm

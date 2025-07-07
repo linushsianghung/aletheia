@@ -1,5 +1,7 @@
 package Medium
 
+import "math"
+
 // MaxSubArray https://leetcode.com/problems/maximum-subarray/
 // Ref:
 // - Back To Back SWE: [Max Contiguous Subarray Sum - Cubic Time To Kadane's Algorithm](https://www.youtube.com/watch?v=2MmGzdiKR9Y)
@@ -56,7 +58,7 @@ func MaxSubArray(nums []int) int {
 		return 0
 	}
 
-	maxSum, currentSum := nums[0], nums[0]
+	maxSum, currentSum := math.MinInt32, math.MinInt32
 	for _, num := range nums {
 		/* Kadane's Algorithm (Dynamic Programming):
 		   For each element [i], the value of element [i-1] is the best solution of subarray ending at that point.
