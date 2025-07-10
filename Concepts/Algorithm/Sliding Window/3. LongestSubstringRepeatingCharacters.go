@@ -9,7 +9,7 @@ func LengthOfLongestSubstring(s string) int {
 	//for winEnd, r := range sRune {
 	for winEnd, r := range s {
 		// Dynamic-Size Sliding Window: based on the index of repeating character
-		// winStart <= i is necessary in case of winStrat jumping back, like cases s = "abba"
+		// winStart <= anchor is necessary in case of winStrat jumping back, like cases s = "abba"
 		if anchor, ok := note[r]; ok && winStart <= anchor {
 			winStart = anchor + 1
 		}

@@ -50,6 +50,5 @@ func kthSmallestRecursively(root *leetcode.TreeNode, k int) int {
 }
 
 func kthSmallestExercise(root *leetcode.TreeNode, k int) int {
-
 	return 0
 }

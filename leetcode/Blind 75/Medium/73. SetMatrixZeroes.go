@@ -24,6 +24,10 @@ func setZeroes(matrix [][]int) {
 	}
 }
 
+func setZeroesExercise(matrix [][]int) {
+
+}
+
 func setZeroFunc(matrix [][]int, i, j int, direction string, flipped map[string]bool) {
 	if i < 0 || i >= len(matrix) || j < 0 || j >= len(matrix[0]) {
 		return
@@ -45,4 +49,7 @@ func setZeroFunc(matrix [][]int, i, j int, direction string, flipped map[string]
 	case "down":
 		setZeroFunc(matrix, i+1, j, "down", flipped)
 	}
+}
+
+func setZeroFuncExercise(matrix [][]int, i, j int, direction string, flipped map[string]bool) {
 }

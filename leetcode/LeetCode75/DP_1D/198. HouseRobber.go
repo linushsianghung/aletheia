@@ -33,6 +33,25 @@ func Rob(nums []int) int {
 	return nestedFunc(houses - 1)
 }
 
+func robMapNote(nums []int) int {
+
+	var robFunc func(index int, note map[int]int) int
+	robFunc = func(index int, note map[int]int) int {
+		if index < 0 {
+			return 0
+		}
+
+		if val, ok := note[index]; ok {
+			return val
+		}
+
+		note[index] = max(robFunc(index-1, note), nums[index]+robFunc(index-2, note))
+		return note[index]
+	}
+
+	return robFunc(len(nums)-1, make(map[int]int))
+}
+
 func robExercise(nums []int) int {
 	return 0
 }

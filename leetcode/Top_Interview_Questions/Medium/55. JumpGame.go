@@ -12,7 +12,7 @@ func CanJump(nums []int) bool {
 	for i := len(nums) - 2; i >= 0; i-- {
 		// if nums[i] is larger than the gap between current position i and anchor, it means the anchor position can be reached.
 		// Then we move anchor backward to position i and check if this new anchor position can be reached as well
-		if nums[i] >= anchor-i {
+		if nums[i]+i >= anchor {
 			anchor = i
 		}
 	}

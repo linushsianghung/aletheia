@@ -32,9 +32,6 @@ func uniquePathsMemorisation(m, n int, memo map[string]int) int {
 	if m == 1 || n == 1 {
 		return 1
 	}
-	if m == 0 || n == 0 {
-		return 0
-	}
 
 	position := fmt.Sprint(m, '-', n)
 	if value, ok := memo[position]; ok {
@@ -57,6 +54,7 @@ func uniquePathsBacktracking(m, n int) int {
 
 		if m == 1 && n == 1 {
 			result = append(result, processor)
+			return
 		}
 
 		if m > 0 {
@@ -103,7 +101,7 @@ func uniquePathsSmartSlice(m int, n int) int {
 func uniquePaths2Slice(m int, n int) int {
 	pre, cur := make([]int, n), make([]int, n)
 	// Initialise slice
-	for i := 0; i < n; i++ {
+	for i := range n {
 		pre[i] = 1
 	}
 	// As long as we initialise the first element as 1, it doesn't matter what number are for the rest of number in slice

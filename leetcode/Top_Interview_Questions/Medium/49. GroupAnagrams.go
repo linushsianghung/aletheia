@@ -1,6 +1,8 @@
 package Medium
 
-import "sort"
+import (
+	"sort"
+)
 
 // GroupAnagrams https://leetcode.com/problems/group-anagrams/
 /*

@@ -68,42 +68,6 @@ func threeSumSort(nums []int) [][]int {
 }
 
 func threeSumSortExercise(nums []int) [][]int {
-	if len(nums) < 3 {
-		return nil
-	}
-
-	sort.Ints(nums)
-	if nums[0] > 0 {
-		return nil
-	}
-
-	result := make([][]int, 0)
-	for i := range nums {
-		if nums[i] > 0 {
-			break
-		}
-		if nums[i] == nums[i-1] {
-			continue
-		}
-
-		left, right := i+1, len(nums)-1
-		for left < right {
-			if nums[left] == nums[left-1] {
-				left++
-				continue
-			}
-			if nums[right] == nums[right+1] {
-				right--
-				continue
-			}
-
-			if nums[left]+nums[right] == -nums[i] {
-				result = append(result, []int{nums[left], nums[right], nums[i]})
-			}
-		}
-
-	}
-
 	return nil
 }
 
