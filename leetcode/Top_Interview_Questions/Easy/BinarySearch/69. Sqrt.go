@@ -1,6 +1,6 @@
 package BinarySearch
 
-import "github.com/linushung/aletheia/Concepts/Algorithm/Binary Search"
+import "github.com/linushung/aletheia/Concepts/Algorithm/Binary_Search"
 
 // https://leetcode.com/problems/sqrtx/
 func mySqrt(x int) int {

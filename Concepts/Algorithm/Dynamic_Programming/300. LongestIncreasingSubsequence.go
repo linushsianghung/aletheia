@@ -16,6 +16,7 @@ func LengthOfLIS(nums []int) int {
 	}
 
 	var maxLen int
+	// i & j are the tail and head respectively of current subsequence
 	for i := 1; i < len(nums); i++ {
 		for j := 0; j < i; j++ {
 			if nums[i] > nums[j] {

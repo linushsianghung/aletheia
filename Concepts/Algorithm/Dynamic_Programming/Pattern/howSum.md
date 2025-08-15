@@ -40,10 +40,12 @@ func howSumMemoHelper(targetSum, numbers int, memo map[int][]int) []int {
         if result != nil {
             result = append(result, num)
             memo[targetSum] = result
-            return memo[targetSum]
+            return result
         }
     }
 
+	// It would be a little bit tricky here because even nil is assigned to this key, the map will return empty slice rather than nil when fetching the value
+	// TODO It might need another indicator to specify no result (supposed to be nil) for the key
     memo[targetSum] = nil
     return nil
 }

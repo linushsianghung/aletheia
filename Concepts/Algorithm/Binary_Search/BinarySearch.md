@@ -23,7 +23,7 @@ package BinarySearch
 
 import "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
 
-/* It's the basic Binary Search template: 704. Binary Search: https://leetcode.com/problems/binary-search/description/ */
+/* It's the basic Binary_Search template: 704. Binary_Search: https://leetcode.com/problems/binary-search/description/ */
 func search(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 

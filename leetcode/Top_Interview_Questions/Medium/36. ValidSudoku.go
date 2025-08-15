@@ -8,7 +8,7 @@ Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be val
 
 1. Each row must contain the digits 1-9 without repetition.
 2. Each column must contain the digits 1-9 without repetition.
-3.Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+3. Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
 
 Note:
 - A Sudoku board (partially filled) could be valid but is not necessarily solvable.
@@ -24,17 +24,17 @@ func isValidSudoku(board [][]byte) bool {
 			}
 
 			numInRow := fmt.Sprintf("Row %d has %d", i, board[i][j])
-			if ok := note[numInRow]; ok {
+			if note[numInRow] {
 				return false
 			}
 
 			numInColumn := fmt.Sprintf("Column %d has %d", j, board[i][j])
-			if ok := note[numInColumn]; ok {
+			if note[numInColumn] {
 				return false
 			}
 
 			numInSubBox := fmt.Sprintf("SubBox %d-%d has %d", i/3, j/3, board[i][j])
-			if ok := note[numInSubBox]; ok {
+			if note[numInSubBox] {
 				return false
 			}
 

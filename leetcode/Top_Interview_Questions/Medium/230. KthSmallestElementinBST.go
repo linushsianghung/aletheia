@@ -9,8 +9,8 @@ func KthSmallest(root *leetcode.TreeNode, k int) int {
 }
 
 func kthSmallestIteratively(root *leetcode.TreeNode, k int) int {
-	result, stack := make([]int, 0), make([]*leetcode.TreeNode, 0)
-	current := root
+	stack := make([]*leetcode.TreeNode, 0)
+	count, current := 0, root
 
 	for current != nil || len(stack) > 0 {
 		if current != nil {
@@ -19,9 +19,9 @@ func kthSmallestIteratively(root *leetcode.TreeNode, k int) int {
 		} else {
 			current = stack[len(stack)-1]
 			stack = stack[:len(stack)-1]
-			result = append(result, current.Val)
-			if len(result) == k {
-				return result[k-1]
+			count++
+			if count == k {
+				return current.Val
 			}
 
 			current = current.Right

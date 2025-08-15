@@ -45,23 +45,5 @@ func LowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 }
 
 func lowestCommonAncestorExercise(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
-	if root == nil || p == nil || q == nil {
-		return root
-	}
-
-	left := lowestCommonAncestorExercise(root.Left, p, q)
-	right := lowestCommonAncestorExercise(root.Right, p, q)
-
-	if left == nil && right == nil {
-		return nil
-	}
-	if left != nil && right != nil {
-		return root
-	}
-	if left != nil {
-		return right
-	} else {
-		return left
-	}
-
+	return nil
 }

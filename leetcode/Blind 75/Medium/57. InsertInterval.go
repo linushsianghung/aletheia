@@ -20,6 +20,7 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 }
 
 func insertSmartCompare(intervals [][]int, newInterval []int) [][]int {
+	// Use index to control the progress because it requires extra code to handle empty intervals case when using "for range"
 	index, result := 0, make([][]int, 0)
 
 	// Just add each interval into result before meeting the newInterval
@@ -43,6 +44,10 @@ func insertSmartCompare(intervals [][]int, newInterval []int) [][]int {
 	result = append(result, intervals[index:]...)
 
 	return result
+}
+
+func insertSmartCompareExercise(intervals [][]int, newInterval []int) [][]int {
+	return nil
 }
 
 func insertSimple(intervals [][]int, newInterval []int) [][]int {

@@ -53,9 +53,7 @@ func preorderIteratively(root *leetcode.Node) []int {
 
 		// Based on the example, the Left subtree has to be processed first, so reverse the children nodes
 		reverse(current.Children)
-		for _, child := range current.Children {
-			stack = append(stack, child)
-		}
+		stack = append(stack, current.Children...)
 	}
 
 	return result

@@ -19,16 +19,16 @@ func GroupAnagrams(strs []string) [][]string {
 			return sortedRune[i] < sortedRune[j]
 		})
 
-		if group, ok := note[string(sortedRune)]; ok {
-			note[string(sortedRune)] = append(group, str)
+		if anagram, ok := note[string(sortedRune)]; ok {
+			note[string(sortedRune)] = append(anagram, str)
 		} else {
 			note[string(sortedRune)] = []string{str}
 		}
 	}
 
 	result := make([][]string, 0)
-	for _, group := range note {
-		result = append(result, group)
+	for _, anagram := range note {
+		result = append(result, anagram)
 	}
 
 	return result

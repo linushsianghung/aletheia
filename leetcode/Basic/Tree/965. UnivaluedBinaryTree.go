@@ -23,10 +23,28 @@ func isUnivalTree(root *leetcode.TreeNode) bool {
 func isUnivalTreeSequentialOrder(root *leetcode.TreeNode) bool {
 	// Check each node on the left side of the tree
 	left := root.Left == nil || (root.Left.Val == root.Val && isUnivalTreeSequentialOrder(root.Left))
+	if !left {
+		return false
+	}
 	// Then check each node on the right side of the tree
 	right := root.Right == nil || (root.Right.Val == root.Val && isUnivalTreeSequentialOrder(root.Right))
+	if !right {
+		return false
+	}
 
-	return left && right
+	return true
+}
+
+func isUnivalTreeSequentialOrderAlt(root *leetcode.TreeNode) bool {
+	if root == nil {
+		return true
+	}
+
+	if root.Left != nil && root.Left.Val != root.Val || root.Right != nil && root.Right.Val != root.Val {
+		return false
+	}
+
+	return isUnivalTreeSequentialOrderAlt(root.Left) && isUnivalTreeSequentialOrderAlt(root.Right)
 }
 
 func isUnivalTreeSequentialOrderExercise(root *leetcode.TreeNode) bool {

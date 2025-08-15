@@ -8,7 +8,7 @@ If target is not found in the array, return [-1, -1].
 
 You must write an Algorithm with O(log n) runtime complexity.
 
-Analysis: Using Binary Search twice for left most value and right most value
+Analysis: Using Binary_Search twice for left most value and right most value
 */
 func SearchRange(nums []int, target int) []int {
 	result := make([]int, 2)
@@ -35,6 +35,8 @@ func binarySearchLeft(nums []int, target int) int {
 		}
 	}
 
+	// Basically if target can be found, just return "left" (and return "right" in binarySearchRight) would do the job.
+	// The reason to use anchor here is mainly because it's required to return "-1" if target is no found. In that case it's necessary to add another logic which might be confusing
 	return anchor
 }
 

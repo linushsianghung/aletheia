@@ -38,17 +38,5 @@ func increasingTriplet(nums []int) bool {
 }
 
 func increasingTripletExercise(nums []int) bool {
-	triple1, triple2 := math.MaxInt32, math.MaxInt32
-
-	for _, num := range nums {
-		if num <= triple1 {
-			triple1 = num
-		} else if num <= triple2 {
-			triple2 = num
-		} else {
-			return true
-		}
-	}
-
 	return false
 }

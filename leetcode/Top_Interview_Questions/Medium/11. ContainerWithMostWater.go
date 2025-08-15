@@ -28,7 +28,7 @@ func MaxArea(height []int) int {
 	left, right := 0, len(height)-1
 	maxArea := 0
 
-	for left != right {
+	for left < right {
 		currentArea := min(height[right], height[left]) * (right - left)
 		maxArea = max(currentArea, maxArea)
 

@@ -20,8 +20,8 @@ Return true if and only if the two given trees with head nodes root1 and root2 a
  * }
  */
 func leafSimilar(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) bool {
-	result1 := leafSimilarHelper(root1)
-	result2 := leafSimilarHelper(root2)
+	result1 := leafSimilarHelperIteratively(root1)
+	result2 := leafSimilarHelperIteratively(root2)
 
 	if len(result1) != len(result2) {
 		return false
@@ -36,25 +36,50 @@ func leafSimilar(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) bool {
 	return true
 }
 
-func leafSimilarHelper(root *leetcode.TreeNode) []int {
+func leafSimilarHelperRecursively(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
-	// Post-Order Traversal
-	var nestedFunc func(node *leetcode.TreeNode) int
-	nestedFunc = func(node *leetcode.TreeNode) int {
+	var nestedFunc func(node *leetcode.TreeNode) bool
+	nestedFunc = func(node *leetcode.TreeNode) bool {
 		if node == nil {
-			return -1
+			return true
 		}
 
 		left := nestedFunc(node.Left)
 		right := nestedFunc(node.Right)
-		if left == -1 && right == -1 {
+
+		if left && right {
 			result = append(result, node.Val)
 		}
-		return 0
+
+		return false
 	}
 
 	nestedFunc(root)
+	return result
+}
+
+func leafSimilarHelperIteratively(root *leetcode.TreeNode) []int {
+	result := make([]int, 0)
+	stack := []*leetcode.TreeNode{root}
+
+	for len(stack) > 0 {
+		current := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		if current.Left == nil && current.Right == nil {
+			result = append(result, current.Val)
+			continue
+		}
+
+		if current.Left != nil {
+			stack = append(stack, current.Left)
+		}
+		if current.Right != nil {
+			stack = append(stack, current.Right)
+		}
+	}
+
 	return result
 }
 

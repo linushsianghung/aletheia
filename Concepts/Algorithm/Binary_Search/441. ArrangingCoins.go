@@ -21,7 +21,7 @@ func arrangeCoinsBS(n int) int {
 	for left <= right {
 		mid := left + (right-left)/2
 
-		// Binary Search Processor: Formula for counting coins by staircases
+		// Binary_Search Processor: Formula for counting coins by staircases
 		coins := (mid + 1) * mid / 2
 		if coins > n {
 			right = mid - 1

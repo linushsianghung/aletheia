@@ -25,7 +25,6 @@ func setZeroes(matrix [][]int) {
 }
 
 func setZeroesExercise(matrix [][]int) {
-
 }
 
 func setZeroFunc(matrix [][]int, i, j int, direction string, flipped map[string]bool) {

@@ -17,13 +17,16 @@ Sample2: {1, 2, 2, 2, 6, 9}
 Keep slow index to point to the duplicated element
 */
 func RemoveDuplicates(nums []int) int {
+	//slow, fast := 0, 0
 	slow := 0
+	//for range nums {
 	for fast := 1; fast < len(nums); fast++ {
 		if nums[slow] != nums[fast] {
 			slow++
 			nums[slow] = nums[fast]
 		}
 	}
+	//fast++
 
 	// Return k, the number of unique elements of nums, namely index + 1
 	return slow + 1

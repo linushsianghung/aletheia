@@ -33,7 +33,7 @@ func MinEatingSpeed(piles []int, h int) int {
 	return left
 }
 
-// Binary Search Processor: Koko can eat 'k bananas' per hour in 'h' hours or not
+// Binary_Search Processor: Koko can eat 'k bananas' per hour in 'h' hours or not
 // if velocity > h, that indicates k is too small, try to eat faster, so left = mid + 1
 // if velocity < h, that indicates k is too large, try to eat slower, so right = mid - 1
 // if velocity == h, we can try a smaller k further, then right = mid - 1

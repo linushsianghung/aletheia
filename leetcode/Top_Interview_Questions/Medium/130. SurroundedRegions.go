@@ -2,7 +2,8 @@ package Medium
 
 import "fmt"
 
-// https://leetcode.com/problems/surrounded-regions
+// https://leetcode.com/problems/s
+//urrounded-regions
 // Reference: https://leetcode.com/problems/surrounded-regions/solutions/691675/c-beginner-friendly-boundary-dfs-inplace/
 /*
 You are given an m x n matrix board containing letters 'X' and 'O', capture regions that are surrounded:
@@ -23,13 +24,14 @@ After that, go through the board and flip the other 'O' to 'X', since these 'O' 
 */
 func solve(board [][]byte) {
 	// Step1: Move along the boundary of board, and find O's, Every time we find an O, perform DFS from its position to convert all 'O' to '*'
+	note1 := make(map[string]bool)
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
 			if i > 0 && i < len(board)-1 && j > 0 && j < len(board[0])-1 {
 				continue
 			}
 			// It's required to create its own note
-			exploreBorderDFS(board, i, j, '*', make(map[string]bool))
+			exploreBorderDFS(board, i, j, '*', note1)
 		}
 	}
 
@@ -43,28 +45,20 @@ func solve(board [][]byte) {
 	}
 
 	// Step3. '#' are elements which cannot be flipped to 'X', so flip them back to 'O'
+	note2 := make(map[string]bool)
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
 			if i > 0 && i < len(board)-1 && j > 0 && j < len(board[0])-1 {
 				continue
 			}
 			// It's required to create its own note
-			exploreBorderDFS(board, i, j, 'O', make(map[string]bool))
+			exploreBorderDFS(board, i, j, 'O', note2)
 		}
 	}
 
 }
 
 func solveExercise(board [][]byte) {
-	for i := 0; i < len(board); i++ {
-		for j := 0; j < len(board); j++ {
-			if i > 0 && i < len(board)-2 && j > 0 && j < len(board)-2 {
-				continue
-			}
-
-		}
-	}
-
 }
 
 func exploreBorderDFS(board [][]byte, r, c int, marker byte, visited map[string]bool) {

@@ -9,11 +9,9 @@ The final sorted array should not be returned by the function, but instead be st
 where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 */
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	tail1 := m - 1
-	tail2 := n - 1
-	tail := m + n - 1
+	tail1, tail2, tail := m-1, n-1, m+n-1
 
-	for ; tail1 >= 0 && tail2 >= 0; tail-- {
+	for tail1 >= 0 && tail2 >= 0 {
 		if nums1[tail1] > nums2[tail2] {
 			nums1[tail] = nums1[tail1]
 			tail1--
@@ -21,6 +19,7 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 			nums1[tail] = nums2[tail2]
 			tail2--
 		}
+		tail--
 	}
 
 	for tail2 >= 0 {

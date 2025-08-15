@@ -19,7 +19,7 @@ func moveZeroesShift(nums []int) {
 	anchor := 0
 	for i, num := range nums {
 		if num != 0 {
-			// It has to be done first in case of tracer and the i are the same index
+			// It has to be done first in case of anchor and the i are the same index
 			nums[i] = 0
 			nums[anchor] = num
 			anchor++

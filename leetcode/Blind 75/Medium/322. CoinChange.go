@@ -35,10 +35,11 @@ func coinChangeDPMemorisation(coins []int, amount int) int {
 		}
 
 		minCount := math.MaxInt
+		// Find the minimum number of coins in each level (sub-problem) by checking the result of using each coin
 		for _, coin := range coins {
-			result := coinFunc(coins, reminder-coin, note)
-			if result >= 0 {
-				minCount = min(minCount, result+1)
+			count := coinFunc(coins, reminder-coin, note)
+			if count >= 0 {
+				minCount = min(minCount, count+1)
 			}
 		}
 
@@ -47,11 +48,15 @@ func coinChangeDPMemorisation(coins []int, amount int) int {
 			minCount = -1
 		}
 		note[reminder] = minCount
+		// Return the minimum number of coins of this level
 		return note[reminder]
 	}
 
-	result := coinFunc(coins, amount, make(map[int]int))
-	return result
+	return coinFunc(coins, amount, make(map[int]int))
+}
+
+func coinChangeDPMemorisationExercise(coins []int, amount int) int {
+	return 0
 }
 
 func coinChangeDPTabulation(coins []int, amount int) int {
@@ -79,6 +84,10 @@ func coinChangeDPTabulation(coins []int, amount int) int {
 		return -1
 	}
 	return table[amount]
+}
+
+func coinChangeDPTabulationExercise(coins []int, amount int) int {
+	return 0
 }
 
 // It's a straight forward but naive solution because it cannot be easy to apply DP Memorisation afterward.

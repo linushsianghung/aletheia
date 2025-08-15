@@ -36,13 +36,20 @@ func bestSumMemoHelper(targetSum, numbers int, memo map[int][]int) []int {
         remainder := targetSum - num
         result := bestSumMemoHelper(remainder, numbers, memo)
 
-        if result != nil && len(result)+1 < len(bestResult) {
+        if result != nil && (len(bestResult) == 0 || len(result)+1 < len(bestResult)) {
             bestResult = append(result, num)
         }
     }
 
-    memo[targetSum] = bestResult
-    return bestResult
+	if len(bestResult) > 0 {
+		memo[targetSum] = bestResult
+		return bestResult
+	}
+
+	// It would be a little bit tricky here because even nil is assigned to this key, the map will return empty slice rather than nil when fetching the value
+	// TODO It might need another indicator to specify no result (supposed to be nil) for the key
+    memo[targetSum] = nil
+    return nil
 }
 ```
 

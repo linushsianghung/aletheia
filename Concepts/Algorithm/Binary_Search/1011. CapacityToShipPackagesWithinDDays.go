@@ -31,7 +31,7 @@ func shipWithinDays(weights []int, days int) int {
 	return left
 }
 
-// Binary Search Processor: 'ship capacity' is enough to ship all the packages in 'days' or not
+// Binary_Search Processor: 'ship capacity' is enough to ship all the packages in 'days' or not
 func capableToShip(weights []int, days, capacity int) bool {
 	sumWeight, count := 0, 1
 	for _, weight := range weights {

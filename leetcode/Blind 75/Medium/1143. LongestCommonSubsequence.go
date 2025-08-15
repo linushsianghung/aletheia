@@ -1,6 +1,6 @@
 package Medium
 
-import "github.com/linushung/aletheia/Concepts/Algorithm/Dynamic Programming"
+import "github.com/linushung/aletheia/Concepts/Algorithm/Dynamic_Programming"
 
 // https://leetcode.com/problems/longest-common-subsequence/
 func longestCommonSubsequence(text1 string, text2 string) int {

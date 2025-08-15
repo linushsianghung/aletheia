@@ -3,11 +3,14 @@ package Medium
 import "fmt"
 
 // https://leetcode.com/problems/word-search/
+// Reference: https://leetcode.com/problems/word-search/solutions/4965052/96-45-easy-solution-with-explanation/
 /*
 Given an m x n grid of characters board and a string word, return true if word exists in the grid.
 
 The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring.
 The same letter cell may not be used more than once.
+
+***Failed in specific case: Time Limit Exceeded ***
 */
 func exist(board [][]byte, word string) bool {
 	for i := 0; i < len(board); i++ {

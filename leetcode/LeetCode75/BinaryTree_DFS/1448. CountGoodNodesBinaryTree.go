@@ -39,7 +39,7 @@ func goodNodesRecursively(root *leetcode.TreeNode) int {
 		nestedFunc(node.Left, minVal)
 		nestedFunc(node.Right, minVal)
 	}
-	nestedFunc(root, math.MinInt)
+	nestedFunc(root, root.Val)
 
 	return count
 }

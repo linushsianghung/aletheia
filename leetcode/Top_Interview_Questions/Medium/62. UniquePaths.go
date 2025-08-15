@@ -2,7 +2,7 @@ package Medium
 
 import (
 	"fmt"
-	"github.com/linushung/aletheia/Concepts/Algorithm/Dynamic Programming"
+	"github.com/linushung/aletheia/Concepts/Algorithm/Dynamic_Programming"
 )
 
 // UniquePaths https://leetcode.com/problems/unique-paths/description/

@@ -23,7 +23,7 @@ func LowestCommonAncestor(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
 }
 
 func LowestCommonAncestorExercise(root, p, q *leetcode.TreeNode) *leetcode.TreeNode {
-	return nil
+	return root
 }
 
 // Related Problem: 236. Lowest Common Ancestor of a Binary Tree: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/?envId=leetcode-75

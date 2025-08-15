@@ -21,5 +21,6 @@ func CanJump(nums []int) bool {
 }
 
 func canJumpExercise(nums []int) bool {
+
 	return false
 }

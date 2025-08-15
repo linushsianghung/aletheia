@@ -13,7 +13,7 @@ Given the array nums after the possible rotation and an integer target, return t
 
 You must write an Algorithm with O(log n) runtime complexity.
 
-Big Hint: "If nums[mid] and target are "on the same side" of nums[0], just keep going to normal Binary Search".
+Big Hint: "If nums[mid] and target are "on the same side" of nums[0], just keep going to normal Binary_Search".
 */
 func SearchRotate(nums []int, target int) int {
 	left, right := 0, len(nums)-1
@@ -21,7 +21,7 @@ func SearchRotate(nums []int, target int) int {
 	for left <= right {
 		mid := left + (right-left)/2
 
-		// If both target and nums[mid] are on the same side, just using Binary Search as usual
+		// If both target and nums[mid] are on the same side, just using Binary_Search as usual
 		if (target >= nums[0] && nums[mid] >= nums[0]) || (target < nums[0] && nums[mid] < nums[0]) {
 			if nums[mid] > target {
 				right = mid - 1
