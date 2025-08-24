@@ -11,25 +11,22 @@ Return the minimum cost to reach the top of the floor.
 */
 // DP Memorisation
 func minCostClimbingStairs(cost []int) int {
-	note := make([]int, len(cost))
-	for i := range note {
-		note[i] = -1
-	}
+	note := make(map[int]int)
 
-	var nestedFunc func(index int) int
-	nestedFunc = func(index int) int {
+	var costFunc func(index int) int
+	costFunc = func(index int) int {
 		if index < 0 {
 			return 0
 		}
-		if note[index] > -1 {
-			return note[index]
+		if val, ok := note[index]; ok {
+			return val
 		}
 
-		note[index] = cost[index] + min(nestedFunc(index-1), nestedFunc(index-2))
+		note[index] = cost[index] + min(costFunc(index-1), costFunc(index-2))
 		return note[index]
 	}
 
-	return min(nestedFunc(len(cost)-1), nestedFunc(len(cost)-2))
+	return min(costFunc(len(cost)-1), costFunc(len(cost)-2))
 }
 
 func minCostClimbingStairsExercise(cost []int) int {
@@ -42,8 +39,8 @@ func minCostClimbingStairsStraight(cost []int) int {
 		note[i] = -1
 	}
 
-	var nestedFunc func(index int) int
-	nestedFunc = func(index int) int {
+	var costFunc func(index int) int
+	costFunc = func(index int) int {
 		if index >= len(cost) {
 			return 0
 		}
@@ -52,10 +49,10 @@ func minCostClimbingStairsStraight(cost []int) int {
 		}
 
 		// Recursively traverse to the end first, then return current cost with whichever smaller one to get the minimum cost over all
-		note[index] = cost[index] + min(nestedFunc(index+1), nestedFunc(index+2))
+		note[index] = cost[index] + min(costFunc(index+1), costFunc(index+2))
 		return note[index]
 	}
 
 	// As statement, we can either start from the step with index 0, or the step with index 1.
-	return min(nestedFunc(0), nestedFunc(1))
+	return min(costFunc(0), costFunc(1))
 }

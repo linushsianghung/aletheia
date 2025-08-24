@@ -10,8 +10,7 @@ and it will automatically contact the police if two adjacent houses were broken 
 Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
 */
 func Rob(nums []int) int {
-	houses := len(nums)
-	note := make([]int, houses)
+	note := make([]int, len(nums))
 	for i := range note {
 		note[i] = -1
 	}
@@ -30,13 +29,14 @@ func Rob(nums []int) int {
 		return note[index]
 	}
 
-	return nestedFunc(houses - 1)
+	return nestedFunc(len(nums) - 1)
 }
 
 func robMapNote(nums []int) int {
+	note := make(map[int]int)
 
-	var robFunc func(index int, note map[int]int) int
-	robFunc = func(index int, note map[int]int) int {
+	var robFunc func(index int) int
+	robFunc = func(index int) int {
 		if index < 0 {
 			return 0
 		}
@@ -45,11 +45,11 @@ func robMapNote(nums []int) int {
 			return val
 		}
 
-		note[index] = max(robFunc(index-1, note), nums[index]+robFunc(index-2, note))
+		note[index] = max(robFunc(index-1), nums[index]+robFunc(index-2))
 		return note[index]
 	}
 
-	return robFunc(len(nums)-1, make(map[int]int))
+	return robFunc(len(nums) - 1)
 }
 
 func robExercise(nums []int) int {

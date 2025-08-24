@@ -14,7 +14,7 @@ func minSubArrayLen(target int, nums []int) int {
 	for winEnd, num := range nums {
 		sum += num
 
-		// Dynamic-Size Sliding Window: based on whether sum is larger than  target
+		// Dynamic-Size Sliding_Window: based on whether sum is larger than target
 		for sum >= target {
 			minLen = min(minLen, winEnd-winStart+1)
 

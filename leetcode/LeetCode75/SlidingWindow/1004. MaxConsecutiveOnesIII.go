@@ -13,7 +13,7 @@ func longestOnes(nums []int, k int) int {
 		if nums[winEnd] == 0 {
 			zeroCount++
 		}
-		// Dynamic-Size Sliding Window (Double For Loop): Try to find 0 at the most left hand side
+		// Dynamic-Size Sliding_Window (Double For Loop): Try to find 0 at the most left hand side
 		for zeroCount > k {
 			if nums[winStart] == 0 {
 				zeroCount--

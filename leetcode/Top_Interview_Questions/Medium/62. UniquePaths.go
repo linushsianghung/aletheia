@@ -18,7 +18,7 @@ The test cases are generated so that the answer will be less than or equal to 2 
 */
 func UniquePaths(m int, n int) int {
 
-	return uniquePathsMemorisation(m, n, make(map[string]int))
+	return UniquePathsMemorisation(m, n, make(map[string]int))
 	// return uniquePaths2Slice(m, n)
 	// return uniquePathsSmartSlice(m, n)
 }
@@ -27,7 +27,7 @@ func uniquePathsExercise(m int, n int) int {
 	return 0
 }
 
-func uniquePathsMemorisation(m, n int, memo map[string]int) int {
+func UniquePathsMemorisation(m, n int, memo map[string]int) int {
 	// Here the "or" operator can do the job for improvement because whenever reaching the edge, there is definitely one way to arrive the end point
 	if m == 1 || n == 1 {
 		return 1
@@ -38,7 +38,7 @@ func uniquePathsMemorisation(m, n int, memo map[string]int) int {
 		return value
 	}
 
-	memo[position] = uniquePathsMemorisation(m-1, n, memo) + uniquePathsMemorisation(m, n-1, memo)
+	memo[position] = UniquePathsMemorisation(m-1, n, memo) + UniquePathsMemorisation(m, n-1, memo)
 	return memo[position]
 }
 

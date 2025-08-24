@@ -19,24 +19,21 @@ func findDifference(nums1 []int, nums2 []int) [][]int {
 		note2[num] = true
 	}
 
-	answer := make([][]int, 2)
-	answer[0] = make([]int, 0)
-	answer[1] = make([]int, 0)
-
+	answer1, answer2 := make([]int, 0), make([]int, 0)
 	for _, num := range nums1 {
-		if ok := note2[num]; ok || slices.Contains(answer[0], num) {
+		if ok := note2[num]; ok || slices.Contains(answer1, num) {
 			continue
 		}
-		answer[0] = append(answer[0], num)
+		answer1 = append(answer1, num)
 	}
 	for _, num := range nums2 {
-		if ok := note1[num]; ok || slices.Contains(answer[1], num) {
+		if ok := note1[num]; ok || slices.Contains(answer2, num) {
 			continue
 		}
-		answer[1] = append(answer[1], num)
+		answer2 = append(answer2, num)
 	}
 
-	return answer
+	return [][]int{answer1, answer2}
 }
 
 func findDifferenceExercise(nums1 []int, nums2 []int) [][]int {

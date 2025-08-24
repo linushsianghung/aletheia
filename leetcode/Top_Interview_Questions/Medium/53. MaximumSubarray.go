@@ -14,7 +14,7 @@ Analysis:
 Key Word => Contiguous
 
 1. O(n^3) time complexity: computing all possibilities of sub-array and starting from the head everytime
-2. O(n^2) time complexity: using Sliding Window technique when computing all the sub-array
+2. O(n^2) time complexity: using Sliding_Window technique when computing all the sub-array
 3. O(n^1) time complexity: using Kadane's Algorithm (Dynamic_Programming):
 	- Inverse the computation to define the sub-problem: what is the maximum sum of contiguous sub-array that end at the index i (ms(i))
 	- At each end index of the iteration, what are the choices we have for each element to produce the maximum sum

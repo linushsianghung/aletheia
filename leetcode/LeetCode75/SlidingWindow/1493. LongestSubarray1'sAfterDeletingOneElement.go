@@ -16,7 +16,7 @@ func longestSubarray(nums []int) int {
 		if nums[winEnd] == 0 {
 			zeroCount++
 		}
-		// Dynamic-Size Sliding Window (Double For Loop): skip to the next character of the repeating one
+		// Dynamic-Size Sliding_Window (Double For Loop): skip to the next character of the repeating one
 		for zeroCount > 1 {
 			if nums[winStart] == 0 {
 				zeroCount--

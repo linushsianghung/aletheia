@@ -1,6 +1,8 @@
 package HashMap_Set
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // https://leetcode.com/problems/equal-row-and-column-pairs/description/?envId=leetcode-75
 /*
@@ -14,17 +16,17 @@ func equalPairs(grid [][]int) int {
 
 	for _, row := range grid {
 		var rowStr string
-		for _, c := range row {
-			rowStr += fmt.Sprintf("%s,", c)
+		for _, r := range row {
+			rowStr += fmt.Sprintf("%s,", r)
 		}
 
 		note[rowStr]++
 	}
 
-	for col := 0; col < len(grid); col++ {
+	for i := range len(grid) {
 		var colStr string
-		for row := 0; row < len(grid); row++ {
-			colStr += fmt.Sprintf("%s,", grid[row][col])
+		for _, row := range grid {
+			colStr += fmt.Sprintf("%s,", row[i])
 		}
 
 		count += note[colStr]

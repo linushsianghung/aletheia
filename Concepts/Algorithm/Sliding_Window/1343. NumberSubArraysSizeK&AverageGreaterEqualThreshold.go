@@ -10,7 +10,7 @@ func numOfSubarrays(arr []int, k int, threshold int) int {
 	for winEnd, num := range arr {
 		sum += num
 
-		if winEnd-winStart == k-1 {
+		if winEnd >= k-1 {
 			if sum/k >= threshold {
 				count++
 			}
