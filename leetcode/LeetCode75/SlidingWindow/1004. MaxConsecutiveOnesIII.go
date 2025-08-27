@@ -7,23 +7,27 @@ package SlidingWindow
 Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
 */
 func longestOnes(nums []int, k int) int {
-	winStart, zeroCount, maxNum := 0, 0, 0
+	winStart, flip, maxNum := 0, 0, 0
 
-	for winEnd := range nums {
-		if nums[winEnd] == 0 {
-			zeroCount++
-		}
-		// Dynamic-Size Sliding_Window (Double For Loop): Try to find 0 at the most left hand side
-		for zeroCount > k {
-			if nums[winStart] == 0 {
-				zeroCount--
+	for winEnd, num := range nums {
+		if num == 0 {
+			flip++
+
+			for flip > k {
+				if nums[winStart] == 0 {
+					flip--
+				}
+
+				winStart++
 			}
-
-			winStart++
 		}
 
 		maxNum = max(maxNum, winEnd-winStart+1)
 	}
 
 	return maxNum
+}
+
+func longestOnesExercise(nums []int, k int) int {
+	return 0
 }

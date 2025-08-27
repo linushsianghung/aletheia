@@ -28,7 +28,7 @@ func inorderTraversalRecursively(root *leetcode.TreeNode) []int {
 			return
 		}
 
-		// Standard way for Tree Traversal recursively to the subtree
+		// Standard way for Tree_Traversal recursively to the subtree
 		nestedFunc(node.Left)
 		result = append(result, node.Val)
 		nestedFunc(node.Right)

@@ -1,6 +1,6 @@
 package pattern
 
-import "github.com/linushung/aletheia/Concepts/Data Structure/Graph"
+import "github.com/linushung/aletheia/Concepts/Data_Structure/Graph"
 
 /*
 Write a function, undirectedPath, that take in an array of edges for an undirected graph and 2 nodes (nodeA, NodeB).

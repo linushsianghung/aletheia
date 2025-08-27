@@ -16,7 +16,7 @@ Analysis:
 Because of the restriction 2, Sliding_Window is a great candidate of strategy to solve this problem
 */
 func totalFruit(fruits []int) int {
-	winStart, note, maxCount := 0, make(map[int]int), 0
+	winStart, maxCount, note := 0, 0, make(map[int]int)
 
 	for winEnd, fruit := range fruits {
 		note[fruit]++

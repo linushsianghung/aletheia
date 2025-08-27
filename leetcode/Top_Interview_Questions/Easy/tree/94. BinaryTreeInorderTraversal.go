@@ -1,7 +1,7 @@
 package tree
 
 import (
-	"github.com/linushung/aletheia/Concepts/Data Structure/Tree/Tree Traversal"
+	"github.com/linushung/aletheia/Concepts/Data_Structure/Tree/Tree_Traversal"
 	"github.com/linushung/aletheia/leetcode"
 )
 

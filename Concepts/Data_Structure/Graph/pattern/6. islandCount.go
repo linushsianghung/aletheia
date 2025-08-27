@@ -2,7 +2,7 @@ package pattern
 
 import (
 	"fmt"
-	"github.com/linushung/aletheia/Concepts/Data Structure/Graph"
+	"github.com/linushung/aletheia/Concepts/Data_Structure/Graph"
 )
 
 // IslandCount

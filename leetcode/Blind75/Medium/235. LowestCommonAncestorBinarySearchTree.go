@@ -1,7 +1,7 @@
 package Medium
 
 import (
-	"github.com/linushung/aletheia/Concepts/Data Structure/Tree"
+	"github.com/linushung/aletheia/Concepts/Data_Structure/Tree"
 	"github.com/linushung/aletheia/leetcode"
 )
 

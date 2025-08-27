@@ -8,23 +8,32 @@ You are climbing a staircase. It takes n steps to reach the top.
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 */
 func ClimbStairs(n int) int {
-	return climStairsMemoriseDP(n, make(map[int]int))
+	return climStairsMemoriseDP(n)
 }
 
-func climStairsMemoriseDP(n int, memo map[int]int) int {
-	if _, ok := memo[n]; ok {
-		return memo[n]
+func climStairsMemoriseDP(n int) int {
+	var climbFunc func(staircase int, note map[int]int) int
+	climbFunc = func(staircase int, note map[int]int) int {
+		if steps, ok := note[staircase]; ok {
+			return steps
+		}
+
+		switch staircase {
+		case 1:
+			return 1
+		case 2:
+			return 2
+		default:
+			note[staircase] = climbFunc(staircase-1, note) + climbFunc(staircase-2, note)
+			return note[staircase]
+		}
 	}
 
-	switch n {
-	case 1:
-		return 1
-	case 2:
-		return 2
-	default:
-		memo[n] = climStairsMemoriseDP(n-1, memo) + climStairsMemoriseDP(n-2, memo)
-		return memo[n]
-	}
+	return climbFunc(n, make(map[int]int))
+}
+
+func climStairsMemoriseDPExercise(n int, memo map[int]int) int {
+	return 0
 }
 
 func climStairsBottomUpDP(n int) int {
@@ -35,16 +44,20 @@ func climStairsBottomUpDP(n int) int {
 		return 2
 	}
 
-	tabu := make([]int, 0)
-	tabu = append(tabu, 0)
-	tabu = append(tabu, 1)
-	tabu = append(tabu, 2)
+	table := make([]int, n+1)
+	table[0] = 0
+	table[1] = 1
+	table[2] = 2
 
 	for i := 3; i <= n; i++ {
-		tabu = append(tabu, tabu[i-1]+tabu[i-2])
+		table[i] = table[i-1] + table[i-2]
 	}
 
-	return tabu[n]
+	return table[n]
+}
+
+func climStairsBottomUpDPExercise(n int) int {
+	return 0
 }
 
 /*
