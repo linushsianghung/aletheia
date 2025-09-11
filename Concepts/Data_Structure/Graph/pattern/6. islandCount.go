@@ -2,6 +2,7 @@ package pattern
 
 import (
 	"fmt"
+
 	"github.com/linushung/aletheia/Concepts/Data_Structure/Graph"
 )
 
@@ -13,9 +14,32 @@ The function should return the number of islands on the grid. An island is a ver
 func IslandCount(grid [][]string) int {
 	count, visited := 0, make(map[string]bool)
 
+	var exploreIsland func(r, c int) bool
+	exploreIsland = func(r, c int) bool {
+		if r < 0 || r >= len(grid[0]) || c < 0 || c >= len(grid) {
+			return false
+		}
+		if grid[r][c] == "W" {
+			return false
+		}
+
+		position := fmt.Sprint(r, '-', c)
+		if visited[position] {
+			return false
+		}
+		visited[position] = true
+
+		exploreIsland(r+1, c)
+		exploreIsland(r-1, c)
+		exploreIsland(r, c+1)
+		exploreIsland(r, c-1)
+
+		return true
+	}
+
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[0]); j++ {
-			if exploreIsland(grid, i, j, visited) {
+			if exploreIsland(i, j) {
 				count++
 			}
 		}

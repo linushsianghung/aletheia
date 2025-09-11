@@ -35,4 +35,5 @@ func rotate(matrix [][]int) {
 	}
 }
 
-func rotateExercise(matrix [][]int) {}
+func rotateExercise(matrix [][]int) {
+}

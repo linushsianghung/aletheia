@@ -11,14 +11,37 @@ You must do it in place.
 func setZeroes(matrix [][]int) {
 	flipped := make(map[string]bool)
 
+	var setZeroFunc func(i, j int, direction string)
+	setZeroFunc = func(i, j int, direction string) {
+		if i < 0 || i >= len(matrix) || j < 0 || j >= len(matrix[0]) {
+			return
+		}
+
+		// If the element not 0, flip it! And record that it is flipped by purposed
+		if matrix[i][j] != 0 {
+			matrix[i][j] = 0
+			flipped[fmt.Sprint(i, "-", j)] = true
+		}
+
+		switch direction {
+		case "right":
+			setZeroFunc(i, j+1, "right")
+		case "left":
+			setZeroFunc(i, j-1, "left")
+		case "up":
+			setZeroFunc(i-1, j, "up")
+		case "down":
+			setZeroFunc(i+1, j, "down")
+		}
+	}
+
 	for i := 0; i < len(matrix); i++ {
 		for j := 0; j < len(matrix[0]); j++ {
-			// Only deal with 0 and not flipped by purposed
 			if matrix[i][j] == 0 && !flipped[fmt.Sprint(i, "-", j)] {
-				setZeroFunc(matrix, i, j, "right", flipped)
-				setZeroFunc(matrix, i, j, "left", flipped)
-				setZeroFunc(matrix, i, j, "up", flipped)
-				setZeroFunc(matrix, i, j, "down", flipped)
+				setZeroFunc(i, j, "left")
+				setZeroFunc(i, j, "right")
+				setZeroFunc(i, j, "up")
+				setZeroFunc(i, j, "down")
 			}
 		}
 	}
@@ -48,7 +71,4 @@ func setZeroFunc(matrix [][]int, i, j int, direction string, flipped map[string]
 	case "down":
 		setZeroFunc(matrix, i+1, j, "down", flipped)
 	}
-}
-
-func setZeroFuncExercise(matrix [][]int, i, j int, direction string, flipped map[string]bool) {
 }

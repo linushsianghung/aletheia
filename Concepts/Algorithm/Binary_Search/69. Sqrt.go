@@ -41,9 +41,11 @@ func mySqrtBS(x int) int {
 	for left <= right {
 		mid := left + (right-left)/2
 
-		if mid*mid > x {
+		// Binary_Search Processor: Calculating square
+		square := mid * mid
+		if square > x {
 			right = mid - 1
-		} else if mid*mid < x {
+		} else if square < x {
 			left = mid + 1
 		} else {
 			return mid

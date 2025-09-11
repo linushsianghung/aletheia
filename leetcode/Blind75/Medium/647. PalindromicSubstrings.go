@@ -19,11 +19,11 @@ func countSubstrings(s string) int {
 	return count
 }
 
-func countPalindrome(s string, left, right int) int {
-	if left < 0 || right >= len(s) {
-		return 0
-	}
+func countSubstringsExercise(s string) int {
+	return 0
+}
 
+func countPalindrome(s string, left, right int) int {
 	count := 0
 	for left >= 0 && right < len(s) {
 		if s[left] != s[right] {
@@ -36,4 +36,8 @@ func countPalindrome(s string, left, right int) int {
 	}
 
 	return count
+}
+
+func countPalindromeExercise(s string, left, right int) int {
+	return 0
 }

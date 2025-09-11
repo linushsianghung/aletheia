@@ -41,6 +41,7 @@ func capableToShip(weights []int, days, capacity int) bool {
 			if count > days {
 				return false
 			}
+
 			// Reset sumWeight to the first weight of next day
 			sumWeight = weight
 		}
