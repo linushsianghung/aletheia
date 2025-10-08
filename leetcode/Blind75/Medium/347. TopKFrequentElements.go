@@ -1,8 +1,10 @@
 package Medium
 
+import "sort"
+
 // https://leetcode.com/problems/top-k-frequent-elements/
 /* Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order. */
-func topKFrequent(nums []int, k int) []int {
+func topKFrequentElements(nums []int, k int) []int {
 	note := make(map[int]int)
 	for _, num := range nums {
 		note[num]++
@@ -43,6 +45,7 @@ func frequencySort(s string) string {
 			frequency[value] = make([]rune, 0)
 		}
 
+		// Using for loop to put the according amount of character
 		for range value {
 			frequency[value] = append(frequency[value], key)
 		}
@@ -54,4 +57,36 @@ func frequencySort(s string) string {
 	}
 
 	return string(result)
+}
+
+// Related Problem: 692. Top K Frequent Words: https://leetcode.com/problems/top-k-frequent-words/
+func topKFrequentWords(words []string, k int) []string {
+	note := make(map[string]int)
+	for _, word := range words {
+		note[word]++
+	}
+
+	frequency := make([][]string, len(words)+1)
+	for key, value := range note {
+		if frequency[value] == nil {
+			frequency[value] = make([]string, 0)
+		}
+
+		frequency[value] = append(frequency[value], key)
+	}
+
+	count, result := 0, make([]string, 0)
+	for i := len(frequency) - 1; i >= 0; i-- {
+		if count >= k {
+			break
+		}
+
+		sort.Slice(frequency[i], func(x, y int) bool {
+			return frequency[i][x] < frequency[i][y]
+		})
+		result = append(result, frequency[i]...)
+		count += len(frequency[i])
+	}
+
+	return result[:k]
 }

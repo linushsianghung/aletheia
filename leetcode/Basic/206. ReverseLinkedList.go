@@ -46,3 +46,23 @@ func reverseListRecursively(head, previous *leetcode.ListNode) *leetcode.ListNod
 	head.Next = previous
 	return reverseListRecursively(temp, head)
 }
+
+// Related Problem: 92. Reverse Linked List II: https://leetcode.com/problems/reverse-linked-list-ii/
+// Reference: https://leetcode.com/problems/reverse-linked-list-ii/solutions/30709/talk-is-cheap-show-me-the-code-and-drawing/
+func reverseBetween(head *leetcode.ListNode, left int, right int) *leetcode.ListNode {
+	dummy := &leetcode.ListNode{Next: head}
+	runner := dummy
+	for range left - 1 {
+		runner = runner.Next
+	}
+
+	tail := runner.Next
+	for range right - left {
+		temp := runner.Next
+		runner.Next = tail.Next
+		tail.Next = tail.Next.Next
+		runner.Next.Next = temp
+	}
+
+	return dummy.Next
+}

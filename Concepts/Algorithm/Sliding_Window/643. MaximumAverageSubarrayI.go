@@ -8,22 +8,20 @@ Find a contiguous subarray whose length is equal to k that has the maximum avera
 Any answer with a calculation error less than 10-5 will be accepted.
 */
 func FindMaxAverage(nums []int, k int) float64 {
-	maxAve := float64(-10_000)
-	winStart, sum := 0, 0
+	winStart, sum, maxAvg := 0, 0, float64(-10_000)
 
 	for winEnd, num := range nums {
 		sum += num
 
 		if winEnd >= k-1 {
-			currentAve := float64(sum) / float64(k)
-			maxAve = max(maxAve, currentAve)
+			maxAvg = max(maxAvg, float64(sum)/float64(k))
 
 			sum -= nums[winStart]
 			winStart++
 		}
 	}
 
-	return maxAve
+	return maxAvg
 }
 
 func FindMaxAverageExercise(nums []int, k int) float64 {

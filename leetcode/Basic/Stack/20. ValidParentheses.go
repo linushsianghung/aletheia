@@ -33,5 +33,6 @@ func IsValid(s string) bool {
 }
 
 func isValidExercise(s string) bool {
+
 	return false
 }

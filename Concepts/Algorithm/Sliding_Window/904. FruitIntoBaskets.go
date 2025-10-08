@@ -21,7 +21,7 @@ func totalFruit(fruits []int) int {
 	for winEnd, fruit := range fruits {
 		note[fruit]++
 
-		// Dynamic-Size Sliding_Window: based on the number of type of fruit we have
+		// Dynamic-Size Sliding Window: based on the number of type of fruit we have
 		for len(note) > 2 {
 			note[fruits[winStart]]--
 			if note[fruits[winStart]] == 0 {

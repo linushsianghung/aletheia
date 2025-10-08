@@ -28,7 +28,7 @@ func isHappyMath(n int) bool {
 		if n == 1 {
 			return true
 		}
-		if ok := note[n]; ok {
+		if note[n] {
 			return false
 		}
 
@@ -46,8 +46,21 @@ func isHappyMath(n int) bool {
 	//return true
 }
 
+func compute(n int) int {
+	sum := 0
+	for n > 0 {
+		sum += (n % 10) * (n % 10)
+		n /= 10
+	}
+	return sum
+}
+
 func isHappyMathExercise(n int) bool {
 	return false
+}
+
+func computeExercise(n int) int {
+	return 0
 }
 
 /*
@@ -73,16 +86,3 @@ func isHappyFloydCycle(n int) bool {
 }
 
 // </editor-fold>
-
-func compute(n int) int {
-	sum := 0
-	for n != 0 {
-		sum += (n % 10) * (n % 10)
-		n /= 10
-	}
-	return sum
-}
-
-func computeExercise(n int) int {
-	return 0
-}

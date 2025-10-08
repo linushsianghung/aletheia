@@ -38,5 +38,6 @@ func increasingTriplet(nums []int) bool {
 }
 
 func increasingTripletExercise(nums []int) bool {
+
 	return false
 }

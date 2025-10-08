@@ -35,7 +35,7 @@ func isUnivalTreeSequentialOrder(root *leetcode.TreeNode) bool {
 	return true
 }
 
-func isUnivalTreeSequentialOrderAlt(root *leetcode.TreeNode) bool {
+func isUnivalTreeLevelOrderRecursively(root *leetcode.TreeNode) bool {
 	if root == nil {
 		return true
 	}
@@ -44,7 +44,7 @@ func isUnivalTreeSequentialOrderAlt(root *leetcode.TreeNode) bool {
 		return false
 	}
 
-	return isUnivalTreeSequentialOrderAlt(root.Left) && isUnivalTreeSequentialOrderAlt(root.Right)
+	return isUnivalTreeLevelOrderRecursively(root.Left) && isUnivalTreeLevelOrderRecursively(root.Right)
 }
 
 func isUnivalTreeSequentialOrderExercise(root *leetcode.TreeNode) bool {

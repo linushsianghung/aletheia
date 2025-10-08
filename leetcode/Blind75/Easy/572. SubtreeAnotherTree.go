@@ -23,8 +23,6 @@ func isSubtree(root *leetcode.TreeNode, subRoot *leetcode.TreeNode) bool {
 	return isSubtree(root.Left, subRoot) || isSubtree(root.Right, subRoot)
 }
 
-// Related Problem: 100. Same Tree: https://leetcode.com/problems/same-tree
-func isSameTree100(p *leetcode.TreeNode, q *leetcode.TreeNode) bool { return Tree.IsSameTree(p, q) }
 func isSameSubTree(node *leetcode.TreeNode, subNode *leetcode.TreeNode) bool {
 	if node == nil || subNode == nil {
 		return node == subNode
@@ -32,3 +30,14 @@ func isSameSubTree(node *leetcode.TreeNode, subNode *leetcode.TreeNode) bool {
 
 	return node.Val == subNode.Val && isSameSubTree(node.Left, subNode.Left) && isSameSubTree(node.Right, subNode.Right)
 }
+
+func isSubtreeExercise(root *leetcode.TreeNode, subRoot *leetcode.TreeNode) bool {
+	return false
+}
+
+func isSameSubTreeExercise(node *leetcode.TreeNode, subNode *leetcode.TreeNode) bool {
+	return false
+}
+
+// Related Problem: 100. Same Tree: https://leetcode.com/problems/same-tree
+func isSameTree100(p *leetcode.TreeNode, q *leetcode.TreeNode) bool { return Tree.IsSameTree(p, q) }

@@ -7,7 +7,8 @@ Given an unsorted array of integers nums, return the length of the longest conse
 
 You must write an algorithm that runs in O(n) time.
 
-***Failed in specific case: Time Limit Exceeded ***
+***Failed in specific case: Time Limit Exceeded***
+It might be because the limitation of language. The Java implementation of the same algorithm below can do the job
 */
 func longestConsecutive(nums []int) int {
 	note := make(map[int]bool)
@@ -16,11 +17,11 @@ func longestConsecutive(nums []int) int {
 	}
 
 	maxLen := 0
-	for i := range nums {
-		if ok := note[nums[i-1]]; !ok {
-			length := 0
+	for _, num := range nums {
+		if ok := note[num-1]; !ok {
+			length := 1
 
-			for note[nums[i]] {
+			for note[num+length] {
 				length++
 			}
 
@@ -30,3 +31,28 @@ func longestConsecutive(nums []int) int {
 
 	return maxLen
 }
+
+/*
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for(int n : nums) {
+            set.add(n);
+        }
+
+        int maxLen = 0;
+        for(int n : set) {
+            if(!set.contains(n - 1)) {
+                int len = 1;
+
+                while(set.contains(n+len)) {
+                    len++;
+                }
+
+                maxLen = Math.max(maxLen, len);
+            }
+        }
+        return maxLen;
+    }
+}
+*/

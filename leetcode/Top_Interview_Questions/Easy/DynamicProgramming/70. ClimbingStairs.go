@@ -12,27 +12,28 @@ func ClimbStairs(n int) int {
 }
 
 func climStairsMemoriseDP(n int) int {
-	var climbFunc func(staircase int, note map[int]int) int
-	climbFunc = func(staircase int, note map[int]int) int {
-		if steps, ok := note[staircase]; ok {
-			return steps
+	note := make(map[int]int)
+
+	var climbFunc func(stair int) int
+	climbFunc = func(stair int) int {
+		if val, ok := note[stair]; ok {
+			return val
+		}
+		if stair == 1 {
+			return 1
+		}
+		if stair == 2 {
+			return 2
 		}
 
-		switch staircase {
-		case 1:
-			return 1
-		case 2:
-			return 2
-		default:
-			note[staircase] = climbFunc(staircase-1, note) + climbFunc(staircase-2, note)
-			return note[staircase]
-		}
+		note[stair] = climbFunc(stair-1) + climbFunc(stair-2)
+		return note[stair]
 	}
 
-	return climbFunc(n, make(map[int]int))
+	return climbFunc(n)
 }
 
-func climStairsMemoriseDPExercise(n int, memo map[int]int) int {
+func climStairsMemoriseDPExercise(n int) int {
 	return 0
 }
 

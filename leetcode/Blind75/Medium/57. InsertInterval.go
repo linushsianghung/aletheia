@@ -1,8 +1,6 @@
 package Medium
 
-import (
-	"sort"
-)
+import "sort"
 
 // https://leetcode.com/problems/insert-interval/
 /*

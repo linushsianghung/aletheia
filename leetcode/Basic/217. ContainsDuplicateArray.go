@@ -6,7 +6,7 @@ func ContainsDuplicate(nums []int) bool {
 	note := make(map[int]bool)
 
 	for _, num := range nums {
-		if ok := note[num]; ok {
+		if note[num] {
 			return true
 		}
 		note[num] = true

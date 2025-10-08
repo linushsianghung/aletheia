@@ -1,8 +1,9 @@
 package Medium
 
 import (
-	"github.com/linushung/aletheia/leetcode"
 	"math"
+
+	"github.com/linushung/aletheia/leetcode"
 )
 
 // IsValidBST https://leetcode.com/problems/validate-binary-search-tree

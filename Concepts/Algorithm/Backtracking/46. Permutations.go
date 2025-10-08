@@ -16,9 +16,10 @@ func Permute(nums []int) [][]int {
 
 func backtrackPermute(sources []int) [][]int {
 	result := make([][]int, 0)
+	used := make([]bool, len(sources))
 
-	var permuteFunc func(processor []int, used []bool)
-	permuteFunc = func(processor []int, used []bool) {
+	var permuteFunc func(processor []int)
+	permuteFunc = func(processor []int) {
 
 		if len(processor) == len(sources) {
 			result = append(result, processor)
@@ -34,12 +35,12 @@ func backtrackPermute(sources []int) [][]int {
 			processor = append(processor, sources[i])
 			p := make([]int, len(processor))
 			copy(p, processor)
-			permuteFunc(p, used)
+			permuteFunc(p)
 			processor = processor[:len(processor)-1]
 			used[i] = false
 		}
 	}
-	permuteFunc(make([]int, 0), make([]bool, len(sources)))
+	permuteFunc(make([]int, 0))
 
 	// Alternative template
 	{
