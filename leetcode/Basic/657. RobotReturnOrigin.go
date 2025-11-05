@@ -29,7 +29,13 @@ func judgeCircle(moves string) bool {
 }
 
 func judgeCircleExercise(moves string) bool {
-	return false
+	note := make(map[rune]int)
+
+	for _, r := range moves {
+		note[r]++
+	}
+
+	return note['L'] == note['R'] && note['U'] == note['D']
 }
 
 func judgeCircleHashMap(moves string) bool {

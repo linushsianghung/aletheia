@@ -1,16 +1,12 @@
 package CircularQueue
 
-// MyCircularQueue https://leetcode.com/problems/design-circular-queue/
-// Reference: https://www.youtube.com/watch?v=8sjFA-IX-Ww
+// https://leetcode.com/problems/design-circular-queue/
 /*
-Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle,
-and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".
+Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle, and the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".
 
-One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full,
-we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
+One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
 
-Implement the MyCircularQueue class:ƒ
-
+Implement the MyCircularQueue class:
 - MyCircularQueue(k) Initializes the object with the size of the queue to be k.
 - int Front() Gets the front item from the queue. If the queue is empty, return -1.
 - int Rear() Gets the last item from the queue. If the queue is empty, return -1.
@@ -20,83 +16,81 @@ Implement the MyCircularQueue class:ƒ
 - boolean isFull() Checks whether the circular queue is full or not.
 
 You must solve the problem without using the built-in queue data structure in your programming language.
+
+Analysis:
+Below implementation uses one more variable "count" with front and rear to maintain the internal status of the queue. The benefit is that the implementation of the functions, like IsEmpty and IsFull, becomes more intuitive and easier to understand. Also use 0, and 1 for the initial value for front and rear pointers which might not be consistent for both variable, but it exactly describes the current status of the queue:
+- rear == -1 means there is no element in the queue
+- front == 0 means if the queue is not empty, just read the element of current index
 */
-type MyCircularQueue struct {
-	buffer     []int
-	size       int
-	writeIndex int
-	readIndex  int
+
+type CircularQueue struct {
+	buffer []int // A slice to store the queue's elements.
+	front  int   // The index of the front element.
+	rear   int   // The index of the last element.
+	size   int   // The maximum capacity of the queue.
+	count  int   // The current number of elements in the queue.
 }
 
-func Constructor(k int) MyCircularQueue {
-	return MyCircularQueue{
-		buffer:     make([]int, k),
-		size:       k,
-		writeIndex: -1,
-		readIndex:  -1,
+// Construct Initializes the object with the size of the queue to be k.
+func Construct(k int) CircularQueue {
+	return CircularQueue{
+		buffer: make([]int, k),
+		front:  0,
+		rear:   -1, // Initialize rear to -1 to indicate an empty queue
+		size:   k,
+		count:  0,
 	}
 }
 
-func (this *MyCircularQueue) EnQueue(value int) bool {
+// EnQueue Inserts an element into the circular queue. Return true if the operation is successful.
+func (this *CircularQueue) EnQueue(value int) bool {
 	if this.IsFull() {
 		return false
 	}
 
-	if this.IsEmpty() {
-		this.readIndex++
-	}
+	this.rear = (this.rear + 1) % this.size
+	this.buffer[this.rear] = value
+	this.count++
 
-	this.writeIndex = (this.writeIndex + 1) % this.size
-	this.buffer[this.writeIndex] = value
 	return true
 }
 
-func (this *MyCircularQueue) DeQueue() bool {
+// DeQueue Deletes an element from the circular queue. Return true if the operation is successful.
+func (this *CircularQueue) DeQueue() bool {
 	if this.IsEmpty() {
 		return false
 	}
 
-	if this.readIndex == this.writeIndex {
-		this.writeIndex = -1
-		this.readIndex = -1
-	} else {
-		this.readIndex = (this.readIndex + 1) % this.size
-	}
+	this.front = (this.front + 1) % this.size
+	this.count--
 
 	return true
 }
 
-func (this *MyCircularQueue) Front() int {
+// Front Gets the front item from the queue. If the queue is empty, return -1.
+func (this *CircularQueue) Front() int {
 	if this.IsEmpty() {
 		return -1
 	}
 
-	return this.buffer[this.readIndex]
+	return this.buffer[this.front]
 }
 
-func (this *MyCircularQueue) Rear() int {
+// Rear Gets the last item from the queue. If the queue is empty, return -1.
+func (this *CircularQueue) Rear() int {
 	if this.IsEmpty() {
 		return -1
 	}
 
-	return this.buffer[this.writeIndex]
+	return this.buffer[this.rear]
 }
 
-func (this *MyCircularQueue) IsEmpty() bool {
-	return this.writeIndex == -1
+// IsEmpty Checks whether the circular queue is empty or not.
+func (this *CircularQueue) IsEmpty() bool {
+	return this.count == 0
 }
 
-func (this *MyCircularQueue) IsFull() bool {
-	return (this.writeIndex+1)%this.size == this.readIndex
+// IsFull Checks whether the circular queue is full or not.
+func (this *CircularQueue) IsFull() bool {
+	return this.count == this.size
 }
-
-/**
- * Your MyCircularQueue object will be instantiated and called as such:
- * obj := Constructor(k);
- * param_1 := obj.EnQueue(value);
- * param_2 := obj.DeQueue();
- * param_3 := obj.Front();
- * param_4 := obj.Rear();
- * param_5 := obj.IsEmpty();
- * param_6 := obj.IsFull();
- */

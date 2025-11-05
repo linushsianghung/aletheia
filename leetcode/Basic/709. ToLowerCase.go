@@ -24,7 +24,7 @@ func toLowerCase(s string) string {
 
 	for _, r := range s {
 		if unicode.IsUpper(r) {
-			r = r + 32
+			r += 32
 		}
 		result = append(result, r)
 	}

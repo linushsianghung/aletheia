@@ -16,6 +16,11 @@ func IsSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 	if p == nil || q == nil {
 		return false
 	}
+
+	//if p == nil || q == nil {
+	//	return p == q
+	//}
+
 	if p.Val != q.Val {
 		return false
 	}

@@ -39,8 +39,10 @@ func removeDuplicates2Pointers(s string) string {
 	for _, r := range sRune {
 		sRune[anchor] = r
 		if anchor > 0 && sRune[anchor-1] == r {
-			anchor -= 2
+			anchor--
+			continue
 		}
+		
 		anchor++
 	}
 

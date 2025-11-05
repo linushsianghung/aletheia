@@ -8,10 +8,10 @@ You are climbing a staircase. It takes n steps to reach the top.
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 */
 func ClimbStairs(n int) int {
-	return climStairsMemoriseDP(n)
+	return climbStairsMemoriseDP(n)
 }
 
-func climStairsMemoriseDP(n int) int {
+func climbStairsMemoriseDP(n int) int {
 	note := make(map[int]int)
 
 	var climbFunc func(stair int) int
@@ -33,14 +33,15 @@ func climStairsMemoriseDP(n int) int {
 	return climbFunc(n)
 }
 
-func climStairsMemoriseDPExercise(n int) int {
+func climbStairsMemoriseDPExercise(n int) int {
 	return 0
 }
 
-func climStairsBottomUpDP(n int) int {
+func climbStairsBottomUpDP(n int) int {
 	if n <= 1 {
 		return 1
 	}
+	// It's necessary for initial check because of the edge case, like n = 1 which will lead to index out of range [2] with length 2
 	if n == 2 {
 		return 2
 	}
@@ -57,7 +58,7 @@ func climStairsBottomUpDP(n int) int {
 	return table[n]
 }
 
-func climStairsBottomUpDPExercise(n int) int {
+func climbStairsBottomUpDPExercise(n int) int {
 	return 0
 }
 

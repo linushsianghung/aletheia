@@ -17,22 +17,7 @@ func isUnivalTree(root *leetcode.TreeNode) bool {
 		return true
 	}
 
-	return isUnivalTreeSequentialOrder(root)
-}
-
-func isUnivalTreeSequentialOrder(root *leetcode.TreeNode) bool {
-	// Check each node on the left side of the tree
-	left := root.Left == nil || (root.Left.Val == root.Val && isUnivalTreeSequentialOrder(root.Left))
-	if !left {
-		return false
-	}
-	// Then check each node on the right side of the tree
-	right := root.Right == nil || (root.Right.Val == root.Val && isUnivalTreeSequentialOrder(root.Right))
-	if !right {
-		return false
-	}
-
-	return true
+	return isUnivalTreeLevelOrderRecursively(root)
 }
 
 func isUnivalTreeLevelOrderRecursively(root *leetcode.TreeNode) bool {
@@ -47,8 +32,23 @@ func isUnivalTreeLevelOrderRecursively(root *leetcode.TreeNode) bool {
 	return isUnivalTreeLevelOrderRecursively(root.Left) && isUnivalTreeLevelOrderRecursively(root.Right)
 }
 
-func isUnivalTreeSequentialOrderExercise(root *leetcode.TreeNode) bool {
+func isUnivalTreeExercise(root *leetcode.TreeNode) bool {
 	return false
+}
+
+func isUnivalTreeDFS(root *leetcode.TreeNode) bool {
+	// Check each node on the left side of the tree
+	left := root.Left == nil || (root.Left.Val == root.Val && isUnivalTreeDFS(root.Left))
+	if !left {
+		return false
+	}
+	// Then check each node on the right side of the tree
+	right := root.Right == nil || (root.Right.Val == root.Val && isUnivalTreeDFS(root.Right))
+	if !right {
+		return false
+	}
+
+	return true
 }
 
 func isUnivalTreeLevelOrder(root *leetcode.TreeNode) bool {

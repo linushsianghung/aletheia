@@ -21,20 +21,18 @@ func preorder(root *leetcode.Node) []int {
 func preorderRecursively(root *leetcode.Node) []int {
 	result := make([]int, 0)
 
-	var nestedFunc func(root *leetcode.Node)
-	nestedFunc = func(root *leetcode.Node) {
-		if root == nil {
+	var preOrderFunc func(node *leetcode.Node)
+	preOrderFunc = func(node *leetcode.Node) {
+		if node == nil {
 			return
 		}
 
-		result = append(result, root.Val)
-
+		result = append(result, node.Val)
 		for _, child := range root.Children {
-			nestedFunc(child)
+			preOrderFunc(child)
 		}
 	}
-
-	nestedFunc(root)
+	preOrderFunc(root)
 	return result
 }
 
@@ -51,6 +49,9 @@ func preorderIteratively(root *leetcode.Node) []int {
 		stack = stack[:len(stack)-1]
 		result = append(result, current.Val)
 
+		//for i := len(current.Children)-1; i >= 0; i-- {
+		//	stack = append(stack, current.Children[i])
+		//}
 		// Based on the example, the Left subtree has to be processed first, so reverse the children nodes
 		reverse(current.Children)
 		stack = append(stack, current.Children...)

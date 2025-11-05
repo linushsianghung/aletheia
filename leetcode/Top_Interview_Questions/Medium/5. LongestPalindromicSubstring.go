@@ -28,7 +28,7 @@ func LongestPalindrome(s string) string {
 	}
 
 	var result string
-	for i := 0; i < len(s)-1; i++ {
+	for i := range s {
 		palindrome1 := outwardComparison(s, i, i)
 		palindrome2 := outwardComparison(s, i, i+1)
 
@@ -57,6 +57,8 @@ func outwardComparison(s string, left, right int) string {
 			break
 		}
 
+		// Using a variable to store the current longest string here so that we can return directly
+		// Although returning s[left+1, right] can work as well but it might be not that intuitive.
 		result = s[left : right+1]
 		left--
 		right++

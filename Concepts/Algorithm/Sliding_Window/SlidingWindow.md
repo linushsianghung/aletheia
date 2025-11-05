@@ -2,7 +2,6 @@
 Ref:
 - [Sliding window technique](https://www.youtube.com/watch?v=p-ss2JNynmw)
 - [Cracking Common Interview Algorithm Patterns: Sliding Window](https://www.youtube.com/watch?v=BM0mhAlvyQc)
-- [Leetcode Pattern 2 | Sliding Windows for Strings](https://medium.com/leetcode-patterns/leetcode-pattern-2-sliding-windows-for-strings-e19af105316b)
 - [NeetCode: Sliding Window](https://www.youtube.com/playlist?list=PLot-Xpze53leOBgcVsJBEGrHPd_7x_koV)
 
 ## Concepts:

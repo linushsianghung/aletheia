@@ -14,22 +14,26 @@ func backspaceCompare(s string, t string) bool {
 func backspaceCompare2Stack(s string, t string) bool {
 	stackS, stackT := make([]rune, 0), make([]rune, 0)
 
-	for _, c := range s {
-		if len(stackS) > 0 && c == '#' {
-			stackS = stackS[:len(stackS)-1]
+	for _, r := range s {
+		if r == '#' {
+			if len(stackS) > 0 {
+				stackS = stackS[:len(stackS)-1]
+			}
 			continue
-		} else if c != '#' {
-			stackS = append(stackS, c)
 		}
+
+		stackS = append(stackS, r)
 	}
 
-	for _, c := range t {
-		if len(stackT) > 0 && c == '#' {
-			stackT = stackT[:len(stackT)-1]
+	for _, r := range t {
+		if r == '#' {
+			if len(stackT) > 0 {
+				stackT = stackT[:len(stackT)-1]
+			}
 			continue
-		} else if c != '#' {
-			stackT = append(stackT, c)
 		}
+
+		stackT = append(stackT, r)
 	}
 
 	if len(stackS) != len(stackT) {
@@ -46,7 +50,7 @@ func backspaceCompare2Stack(s string, t string) bool {
 }
 
 func backspaceCompare2StackExercise(s string, t string) bool {
-	return true
+	return false
 }
 
 func backspaceCompare2Pointers(s string, t string) bool {

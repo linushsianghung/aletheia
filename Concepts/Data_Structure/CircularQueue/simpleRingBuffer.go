@@ -17,6 +17,7 @@ func constructor(k int) SimpleRingBuffer {
 }
 
 func (s *SimpleRingBuffer) EnQueue(value int) bool {
+	// When the queue is full, move readIndex 1 step forward
 	if s.count == s.size {
 		s.readIndex = (s.readIndex + 1) % s.size
 	} else {

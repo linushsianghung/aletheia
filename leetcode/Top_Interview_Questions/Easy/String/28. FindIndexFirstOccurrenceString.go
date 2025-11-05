@@ -8,17 +8,13 @@ func strStr(haystack string, needle string) int {
 	if len(haystack) < len(needle) {
 		return -1
 	}
-	if len(needle) == 0 {
-		return 0
-	}
 
 	// It has to be cached to prevent the length shrinking during the operation
 	haystackLen := len(haystack)
 	for i := 0; i <= haystackLen-len(needle); i++ {
-		if strings.HasPrefix(haystack, needle) {
+		if strings.HasPrefix(haystack[i:], needle) {
 			return i
 		}
-		haystack = haystack[1:]
 	}
 
 	return -1

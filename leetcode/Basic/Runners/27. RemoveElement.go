@@ -17,9 +17,11 @@ Sample2: {14, 1, 17, 2, 23}  val = 14
 Keep slow index to point to the target val and use later element to overwrite this element
 */
 func removeElement(nums []int, val int) int {
+	// slow is an anchor which locate the index of first target value
 	slow := 0
 	for fast := 0; fast < len(nums); fast++ {
 		if nums[fast] != val {
+			// Because slow is the index of first target value, replace this number first then plus 1
 			nums[slow] = nums[fast]
 			slow++
 		}

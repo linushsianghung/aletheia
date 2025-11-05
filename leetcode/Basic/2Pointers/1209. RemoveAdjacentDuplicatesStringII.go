@@ -15,24 +15,6 @@ func removeDuplicatesII(s string, k int) string {
 	return removeDuplicatesII2Pointers(s, k)
 }
 
-func removeDuplicates(s string, k int) string {
-	count, stack := 0, make([]rune, 0)
-
-	for _, r := range s {
-		if len(stack) > 0 && stack[len(stack)-1] == r {
-			count++
-			if count == k {
-				stack = stack[:len(stack)-k+1]
-				count++
-				continue
-			}
-		}
-
-		stack = append(stack, r)
-	}
-	return string(stack)
-}
-
 func removeDuplicatesII2Pointers(s string, k int) string {
 	anchor := 0
 	// Using a count slice to check if each character is k adjacent letter
@@ -52,10 +34,6 @@ func removeDuplicatesII2Pointers(s string, k int) string {
 	}
 
 	return string(sRune[:anchor])
-}
-
-func removeDuplicatesII2PointersExercise(s string, k int) string {
-	return ""
 }
 
 // Related Problem: 1047. Remove All Adjacent Duplicates In String: https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string

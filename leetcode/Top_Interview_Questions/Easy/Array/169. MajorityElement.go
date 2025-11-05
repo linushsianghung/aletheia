@@ -51,6 +51,7 @@ func majorityElementMooreVoting(nums []int) int {
 }
 
 /*
+“
 Algorithm:
 The intuition behind using a hash map is to count the occurrences of each element in the array and then identify the element that occurs more than n/2 times.
 */
