@@ -8,7 +8,9 @@ Find a contiguous subarray whose length is equal to k that has the maximum avera
 Any answer with a calculation error less than 10-5 will be accepted.
 */
 func FindMaxAverage(nums []int, k int) float64 {
-	winStart, sum, maxAvg := 0, 0, float64(-10_000)
+	winStart, maxAvg := 0, float64(-10_000)
+	// Window State: sum of subarray for calculating average
+	sum := 0
 
 	for winEnd, num := range nums {
 		sum += num

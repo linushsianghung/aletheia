@@ -55,7 +55,7 @@ func breadthFirstTraversal(start string) []string {
 		queue = queue[1:]
 		result = append(result, current)
 
-		for _, neighbor := range graph[start] {
+		for _, neighbor := range graph[current] {
 			queue = append(queue, neighbor)
 		}
 	}

@@ -11,17 +11,21 @@ Analysis:
 - Space Complexity: O(e)
 where n & e is the number of nodes and edges
 */
-func hasPathRecursively(graph map[string][]string, src, dst string) bool {
+func hasPathDFS(graph map[string][]string, src, dst string) bool {
 	if src == dst {
 		return true
 	}
 
 	for _, neighbor := range graph[src] {
-		if hasPathRecursively(graph, neighbor, dst) {
+		if hasPathDFS(graph, neighbor, dst) {
 			return true
 		}
 	}
 
+	return false
+}
+
+func hasPathDFSExercise(graph map[string][]string, src, dst string) bool {
 	return false
 }
 
@@ -31,13 +35,16 @@ func hasPathBFS(graph map[string][]string, src, dst string) bool {
 	for len(queue) > 0 {
 		current := queue[0]
 		queue = queue[1:]
-
 		if current == dst {
 			return true
 		}
-
+		
 		queue = append(queue, graph[current]...)
 	}
 
+	return false
+}
+
+func hasPathBFSExercise(graph map[string][]string, src, dst string) bool {
 	return false
 }

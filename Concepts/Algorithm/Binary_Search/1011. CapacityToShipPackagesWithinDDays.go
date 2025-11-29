@@ -8,6 +8,17 @@ The ith package on the conveyor belt has a weight of weights[i]. Each day, we lo
 We may not load more weight than the maximum weight capacity of the ship.
 
 Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
+
+Analysis:
+- Question: What is the minimum integer k (eating speed) such that Koko can eat all bananas in H hours?
+- Search Space (Possible speeds k):
+    - Minimum speed: 1. Koko must eat at least one banana per hour.
+    - Maximum speed: The size of the largest banana pile. Any speed higher than this is redundant for that pile. A safe upper bound is just a very large number or the max value in the piles array.
+    - Search space: [1, max(piles)].
+- Monotonic "Check" Function: canFinish(speed). "Can Koko finish all bananas in time with speed k?"
+    - Monotonicity: If Koko can finish with a speed of 10, can she also finish with a speed of 11? Yes, she'll finish even faster.
+    - The results look like: [F, F, ..., F, T, T, ..., T].
+- Goal: Find the minimum speed, which is the first T.
 */
 func shipWithinDays(weights []int, days int) int {
 	maxWeight, sumWeight := 0, 0
@@ -16,22 +27,25 @@ func shipWithinDays(weights []int, days int) int {
 		sumWeight += weight
 	}
 
+	// Define Search Space
 	left, right := maxWeight, sumWeight
+	ans := sumWeight // Initialize answer to the maximum possible value
 	for left <= right {
 		mid := left + (right-left)/2
 
-		// If it true,continue to try further to find the least weight capacity of the ship
+		// If a capacity of `mid` is feasible, it's a potential answer. Let's record it and try for an even smaller capacity.
 		if capableToShip(weights, days, mid) {
+			ans = mid
 			right = mid - 1
 		} else {
 			left = mid + 1
 		}
 	}
 
-	return left
+	return ans
 }
 
-// Binary_Search Processor: 'ship capacity' is enough to ship all the packages in 'days' or not
+// Monotonic Function: 'ship capacity' is enough to ship all the packages in 'days' or not
 func capableToShip(weights []int, days, capacity int) bool {
 	sumWeight, count := 0, 1
 	for _, weight := range weights {

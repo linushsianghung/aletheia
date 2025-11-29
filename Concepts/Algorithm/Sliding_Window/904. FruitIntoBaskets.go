@@ -11,17 +11,16 @@ You want to collect as much fruit as possible. However, the owner has some stric
 - Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
 
 Given the integer array fruits, return the maximum number of fruits you can pick.
-
-Analysis:
-Because of the restriction 2, Sliding_Window is a great candidate of strategy to solve this problem
 */
 func totalFruit(fruits []int) int {
-	winStart, maxCount, note := 0, 0, make(map[int]int)
+	winStart, maxCount := 0, 0
+	// Window State: types of fruit with its amount currently we have
+	note := make(map[int]int)
 
 	for winEnd, fruit := range fruits {
 		note[fruit]++
 
-		// Dynamic-Size Sliding Window: based on the number of type of fruit we have
+		// Dynamic-Size Sliding Window: based on the types of fruit we have
 		for len(note) > 2 {
 			note[fruits[winStart]]--
 			if note[fruits[winStart]] == 0 {

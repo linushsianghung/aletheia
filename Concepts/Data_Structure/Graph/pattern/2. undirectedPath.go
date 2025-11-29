@@ -14,7 +14,7 @@ func undirectedPath(edges [][]string, nodeA, nodeB string) bool {
 }
 
 func hasPath(graph map[string][]string, src, dst string, visited map[string]bool) bool {
-	if _, ok := visited[src]; ok {
+	if ok := visited[src]; ok {
 		return false
 	}
 	visited[src] = true
@@ -29,5 +29,9 @@ func hasPath(graph map[string][]string, src, dst string, visited map[string]bool
 		}
 	}
 
+	return false
+}
+
+func hasPathExercise(graph map[string][]string, src, dst string, visited map[string]bool) bool {
 	return false
 }

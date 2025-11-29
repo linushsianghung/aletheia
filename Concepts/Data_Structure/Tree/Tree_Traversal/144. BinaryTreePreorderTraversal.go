@@ -1,6 +1,8 @@
 package Tree_Traversal
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // PreorderTraversal https://leetcode.com/problems/binary-tree-preorder-traversal/description/
 // Ref: https://www.youtube.com/watch?v=afTpieEZXck
@@ -56,7 +58,7 @@ func preorderTraversalIteratively(root *leetcode.TreeNode) []int {
 	return result
 }
 
-func preorderTraversalIterativelyExercise(root *leetcode.TreeNode) []int {
+func preorderTraversalExercise(root *leetcode.TreeNode) []int {
 	return nil
 }
 

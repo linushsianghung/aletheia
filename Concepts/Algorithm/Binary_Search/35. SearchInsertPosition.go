@@ -40,6 +40,7 @@ func SearchInsert(nums []int, target int) int {
 		}
 	}
 
+	// After the loop terminates, left will point to the correct insert position. This is because left will have moved past all elements smaller than the target and will be at the first position where the target could be inserted, either replacing an existing element or fitting into an empty slot.
 	return left
 }
 

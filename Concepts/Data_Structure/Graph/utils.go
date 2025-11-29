@@ -25,3 +25,7 @@ func BuildGraph[T string | int](edges [][]T) map[T][]T {
 
 	return graph
 }
+
+func BuildGraphExercise[T string | int](edges [][]T) map[T][]T {
+	return nil
+}

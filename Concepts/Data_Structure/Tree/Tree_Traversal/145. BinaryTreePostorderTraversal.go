@@ -57,6 +57,6 @@ func postorderTraversalIteratively(root *leetcode.TreeNode) []int {
 	return result
 }
 
-func postorderTraversalIterativelyExercise(root *leetcode.TreeNode) []int {
+func postorderTraversalExercise(root *leetcode.TreeNode) []int {
 	return nil
 }

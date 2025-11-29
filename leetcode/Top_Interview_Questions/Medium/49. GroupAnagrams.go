@@ -12,15 +12,15 @@ func GroupAnagrams(strs []string) [][]string {
 	note := make(map[string][]string)
 
 	for _, str := range strs {
-		sortedRune := []rune(str)
-		sort.Slice(sortedRune, func(i, j int) bool {
-			return sortedRune[i] < sortedRune[j]
+		sortedStr := []rune(str)
+		sort.Slice(sortedStr, func(i, j int) bool {
+			return sortedStr[i] < sortedStr[j]
 		})
 
-		if anagram, ok := note[string(sortedRune)]; ok {
-			note[string(sortedRune)] = append(anagram, str)
+		if anagram, ok := note[string(sortedStr)]; ok {
+			note[string(sortedStr)] = append(anagram, str)
 		} else {
-			note[string(sortedRune)] = []string{str}
+			note[string(sortedStr)] = []string{str}
 		}
 	}
 

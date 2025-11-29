@@ -20,3 +20,7 @@ func hasPathSum(root *leetcode.TreeNode, targetSum int) bool {
 
 	return hasPathSum(root.Left, targetSum-root.Val) || hasPathSum(root.Right, targetSum-root.Val)
 }
+
+func hasPathSumExercise(root *leetcode.TreeNode, targetSum int) bool {
+	return false
+}

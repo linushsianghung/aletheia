@@ -57,33 +57,6 @@ func backtrackCombinationsSum2(sources []int, target int) [][]int {
 }
 
 func backtrackCombinationsSum2Exercise(sources []int, target int) [][]int {
-	result := make([][]int, 0)
-
-	var combinationFunc func(processor []int, start, remain int)
-	combinationFunc = func(processor []int, start, remain int) {
-		if remain < 0 {
-			return
-		}
-
-		if remain == 0 {
-			result = append(result, processor)
-			return
-		}
-
-		for i := start; i < len(sources); i++ {
-			if i > start && sources[i] == sources[i-1] {
-				continue
-			}
-
-			processor = append(processor, sources[i])
-			p := make([]int, len(processor))
-			copy(p, processor)
-			combinationFunc(p, i, remain-sources[i])
-			processor = processor[:len(processor)-1]
-		}
-	}
-	combinationFunc(make([]int, 0), 0, target)
-
 	return nil
 }
 

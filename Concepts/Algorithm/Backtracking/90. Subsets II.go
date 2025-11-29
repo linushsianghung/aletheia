@@ -63,25 +63,7 @@ func backtrackSubsetsWithDup(sources []int) [][]int {
 }
 
 func backtrackSubsetsWithDupExercise(sources []int) [][]int {
-	result := make([][]int, 0)
-
-	var subsetFunc func(processor []int, start int)
-	subsetFunc = func(processor []int, start int) {
-		result = append(result, processor)
-
-		for i := start; i < len(sources); i++ {
-			if i > 0 && sources[i] == sources[i-1] {
-				continue
-			}
-
-			processor = append(processor, sources[i])
-			p := make([]int, len(processor))
-			copy(p, processor)
-			subsetFunc(p, i+1)
-			processor = processor[:len(processor)-1]
-		}
-	}
-
+	e
 	return nil
 }
 

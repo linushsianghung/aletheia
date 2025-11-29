@@ -47,7 +47,7 @@ func UniquePathsMemorisation(m, n int) int {
 		return note[position]
 	}
 
-	return uniqueFunc(m, n)
+	return uniqueFunc(m-1, n-1)
 }
 
 // Using Backtracking strategy as practice and as expect it will get "Memory Limit Exceeded" error message when the grid become larger

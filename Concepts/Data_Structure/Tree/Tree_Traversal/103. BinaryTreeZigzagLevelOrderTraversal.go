@@ -57,7 +57,7 @@ func zigzagLevelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	return result
 }
 
-func zigzagLevelOrderIterativelyExercise(root *leetcode.TreeNode) [][]int {
+func zigzagLevelOrderExercise(root *leetcode.TreeNode) [][]int {
 	return nil
 }
 

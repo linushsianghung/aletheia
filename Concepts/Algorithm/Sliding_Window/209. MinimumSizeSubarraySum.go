@@ -7,7 +7,9 @@ Given an array of positive integers nums and a positive integer target, return t
 If there is no such subarray, return 0 instead.
 */
 func minSubArrayLen(target int, nums []int) int {
-	winStart, sum, minLen := 0, 0, len(nums)+1
+	winStart, minLen := 0, len(nums)+1
+	// Window State: sum of subarray
+	sum := 0
 
 	for winEnd, num := range nums {
 		sum += num
