@@ -27,7 +27,7 @@ func exploreCount(graph map[int][]int, node int, visited map[int]bool) bool {
 	if visited[node] {
 		return false
 	}
-	visited[node] = true
+	visited[node] = true｀
 
 	for _, neighbor := range graph[node] {
 		exploreCount(graph, neighbor, visited)

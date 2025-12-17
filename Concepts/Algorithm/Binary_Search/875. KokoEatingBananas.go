@@ -68,5 +68,5 @@ func canEatPilesInTime(piles []int, h, k int) bool {
 }
 
 func canEatPilesInTimeExercise(piles []int, h int, k int) bool {
-	return true
+	return false
 }

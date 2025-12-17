@@ -41,6 +41,10 @@ func guessNumber(n int) int {
 	}
 }
 
+func guessNumberExercise(n int) int {
+	return 0
+}
+
 func guess(n int) int {
 	result := 0
 	// returns three possible results:

@@ -8,17 +8,6 @@ The ith package on the conveyor belt has a weight of weights[i]. Each day, we lo
 We may not load more weight than the maximum weight capacity of the ship.
 
 Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
-
-Analysis:
-- Question: What is the minimum integer k (eating speed) such that Koko can eat all bananas in H hours?
-- Search Space (Possible speeds k):
-    - Minimum speed: 1. Koko must eat at least one banana per hour.
-    - Maximum speed: The size of the largest banana pile. Any speed higher than this is redundant for that pile. A safe upper bound is just a very large number or the max value in the piles array.
-    - Search space: [1, max(piles)].
-- Monotonic "Check" Function: canFinish(speed). "Can Koko finish all bananas in time with speed k?"
-    - Monotonicity: If Koko can finish with a speed of 10, can she also finish with a speed of 11? Yes, she'll finish even faster.
-    - The results look like: [F, F, ..., F, T, T, ..., T].
-- Goal: Find the minimum speed, which is the first T.
 */
 func shipWithinDays(weights []int, days int) int {
 	maxWeight, sumWeight := 0, 0

@@ -40,7 +40,8 @@ func SearchInsert(nums []int, target int) int {
 		}
 	}
 
-	// After the loop terminates, left will point to the correct insert position. This is because left will have moved past all elements smaller than the target and will be at the first position where the target could be inserted, either replacing an existing element or fitting into an empty slot.
+	// After the loop terminates, left will point to the correct insert position.
+	// This is because left will have moved past all elements smaller than the target and will be at the first position where the target could be inserted, either replacing an existing element or fitting into an empty slot.
 	return left
 }
 
@@ -48,26 +49,21 @@ func searchInsertExercise(nums []int, target int) int {
 	return 0
 }
 
-func searchInsertAlt(nums []int, target int) int {
-	// Set possible index range(inclusive)
+/* Further variation: Sorted array that may contain repeated values */
+func searchVariation(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 
-	for left < right {
+	for left <= right {
 		mid := left + (right-left)/2
 
-		if nums[mid] > target {
-			right = mid
-		} else if nums[mid] < target {
+		// "equal" is for handling repeating numbers
+		if nums[mid] <= target {
 			left = mid + 1
 		} else {
-			return mid
+			right = mid - 1
 		}
 	}
 
-	// 1 element left at the end => post-processing
-	if nums[left] < target {
-		return left + 1
-	} else {
-		return left
-	}
+	// "left" is the insert position no matter if there are any repeating numbers
+	return left
 }

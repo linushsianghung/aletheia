@@ -26,7 +26,6 @@ So for the problem *find value x in collection A*, the sorted property is what c
 - **Classic BS**: The search space is array indices. The sorted nature of the array *provides* the monotonicity. 
 - **BS on the Answer**: The search space is the range of possible answers (e.g., capacity, speed). The inherent logic of the problem ("if speed k works, k+1 must also work") *provides* the monotonicity.
 
-
 ### When can we use Binary Search:
 - When need to search for an index or element in a space and if the space is unordered, we can always sort it first before applying Binary Search.
 > **Use Case 1: Searching in a Sorted Collection.** This is the classic application. The sorted nature of the data is what allows us to create a monotonic check (e.g., `is array[mid] < target?`) that reliably eliminates half of the search space (the indices).
@@ -36,7 +35,6 @@ So for the problem *find value x in collection A*, the sorted property is what c
 
 > **Use Case 3: Other Logical Eliminations.** Some problems don't have a simple monotonic property but still allow you to discard half the search space with each check. A good example is 162. Find Peak Element, where by comparing `nums[mid]` with its neighbor, you can always determine which half is guaranteed to contain a peak.
 
-
 ### How to Spot This Pattern
 Ask yourself these three questions when looking at a problem:
 1. Is the problem asking for an optimal value (min/max) of some variable x? (e.g., minimum capacity, minimum speed, maximum rows)
@@ -44,11 +42,11 @@ Ask yourself these three questions when looking at a problem:
 3. If I pick a random value mid from this range, can I write a function check(mid) that tells me if mid is a "valid" or "too high/low" answer? Does this function have a monotonic property? (e.g., "If capacity C works, will C+1 also work?")
 
 If you can answer "yes" to all three, you can almost certainly apply "Binary Search on the Answer"! You've uncovered a very powerful and common competitive programming pattern. Great job on your analysis
+
 ### Template
+It's the basic Binary Search Template: 704. Binary_Search: https://leetcode.com/problems/binary-search/description/
 ```go
 package BinarySearch
-
-/* It's the basic Binary_Search template: 704. Binary_Search: https://leetcode.com/problems/binary-search/description/ */
 func search(nums []int, target int) int {
 	left, right := 0, len(nums)-1
 
@@ -69,90 +67,3 @@ func search(nums []int, target int) int {
 	return -1
 }
 ```
-
-### Examples
-```go
-package BinarySearch
-
-import "github.com/linushung/aletheia/Concepts/algorithm/BinarySearch"
-
-/*
-35. Search Insert Position: https://leetcode.com/problems/search-insert-position/description/
-Given a sorted array of distinct integers and a target value, return the index if the target is found.If not, return the index where it would be if it were inserted in order.
-
-You must write an Algorithm with O(log n) runtime complexity.
-*/
-func searchInsert(nums []int, target int) int {
-	return BinarySearch.SearchInsert(nums, target)
-}
-
-/* Further variation: Sorted array that may contain repeated values */
-func searchVariation(nums []int, target int) int {
-	left, right := 0, len(nums)-1
-
-	for left <= right {
-		mid := left + (right-left)/2
-
-		// "equal" is for handling repeating numbers
-		if nums[mid] <= target {
-			left = mid + 1
-		} else {
-			right = mid - 1
-		}
-	}
-
-	// "left" is the insert position no matter if there are any repeating numbers
-	return left
-}
-
-/*
-69. Sqrt(x): https://leetcode.com/problems/sqrtx/description/
-Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
-
-You must not use any built-in exponent function or operator.
-*/
-func mySqrt(x int) int {
-	return BinarySearch.MySqrt(x)
-}
-
-/*
-875. Koko Eating Bananas: https://leetcode.com/problems/koko-eating-bananas/description/
-Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
-
-Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile.
-If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
-
-Koko likes to eat slowly but still wants to finish eating all the bananas before the guards return.
-
-Return the minimum integer k such that she can eat all the bananas within h hours.
-*/
-func minEatingSpeed(piles []int, h int) int {
-	return BinarySearch.MinEatingSpeed(piles, h)
-}
-
-/*
-1011. Capacity To Ship Packages Within D Days: https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/
-A conveyor belt has packages that must be shipped from one port to another within days days.
-
-The ith package on the conveyor belt has a weight of weights[i]. Each day, we load the ship with packages on the conveyor belt (in the order given by weights).
-We may not load more weight than the maximum weight capacity of the ship.
-
-Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within days days.
-*/
-func shipWithinDays(weights []int, days int) int {
-	return BinarySearch.ShipWithinDays(weights, days)
-}
-
-/*
-441. ArrangingCoins: https://leetcode.com/problems/arranging-coins/description/
-You have n coins, and you want to build a staircase with these coins. The staircase consists of k rows where the ith row has exactly i coins.
-The last row of the staircase may be incomplete.
-
-Given the integer n, return the number of complete rows of the staircase you will build.
-*/
-func arrangeCoins(n int) int {
-	return BinarySearch.ArrangeCoinsBS(n)
-}
-```
-
-
