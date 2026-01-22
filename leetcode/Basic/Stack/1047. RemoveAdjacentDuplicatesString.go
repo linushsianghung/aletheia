@@ -28,7 +28,7 @@ func removeDuplicatesStack(s string) string {
 	return string(stack)
 }
 
-func removeDuplicatesStackExercise(s string) string {
+func removeDuplicatesExercise(s string) string {
 	return ""
 }
 
@@ -39,12 +39,13 @@ func removeDuplicates2Pointers(s string) string {
 	for _, r := range sRune {
 		sRune[anchor] = r
 		if anchor > 0 && sRune[anchor-1] == r {
-			anchor--
-			continue
+			anchor -= 2
 		}
-		
+
 		anchor++
 	}
 
 	return string(sRune[:anchor])
 }
+
+// Related Problem: 113. Path Sum II: https://leetcode.com/problems/path-sum-ii/

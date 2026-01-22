@@ -1,6 +1,8 @@
 package Basic
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // https://leetcode.com/problems/reverse-string/description/
 /*

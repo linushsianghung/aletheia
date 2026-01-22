@@ -21,10 +21,11 @@ func backtrackSubsets(sources []int) [][]int {
 
 	var subsetsFunc func(processor []int, start int)
 	subsetsFunc = func(processor []int, start int) {
-		//if len(processor) > len(sources) {
+		result = append(result, processor)
+
+		//if len(processor) == len(sources) {
 		//	return
 		//}
-		result = append(result, processor)
 
 		for i := start; i < len(sources); i++ {
 			processor = append(processor, sources[i])

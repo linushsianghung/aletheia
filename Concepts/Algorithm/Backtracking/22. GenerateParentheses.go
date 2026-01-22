@@ -33,7 +33,7 @@ func buildParenthesisRecursively(pair int) []string {
 	return result
 }
 
-func buildParenthesisRecursivelyExercise(pair int) []string {
+func buildParenthesisExercise(pair int) []string {
 	return nil
 }
 

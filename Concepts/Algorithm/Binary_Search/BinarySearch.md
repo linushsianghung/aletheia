@@ -8,7 +8,7 @@
 ### Basic Idea
 Binary Search operates on a `sorted sequence with a specified left and right index`. This is called the **Search Space**. Binary Search maintains the left, right, and middle indices of the search space and compares the *search target* or *applies the search condition* to the middle value of the collection; if the condition is unsatisfied or values unequal, the half in which the target cannot lie is eliminated and the search continues on the remaining half until it is successful. If the search ends with an empty half, the condition cannot be fulfilled and the target is not found.
 
-### The Core Principle: Monotonicity***
+### The Core Principle: Monotonicity
 Binary search doesn't fundamentally require a sorted array. It requires a monotonic function over a sorted search space.
 1. Search Space: This is the range of all possible answers to the problem. For any valid problem, there's a minimum possible answer and a maximum possible answer. This range of answers is our "search space," and it's inherently sorted.
 2. Monotonic Function (The "Check" Function): We need a way to test a potential answer. Let's call this function check(x), where x is a value from our search space. This function must be monotonic. This means it exhibits one of the following properties:

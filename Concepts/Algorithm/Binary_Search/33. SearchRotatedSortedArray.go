@@ -22,11 +22,12 @@ func SearchRotate(nums []int, target int) int {
 		mid := left + (right-left)/2
 
 		// If both target and nums[mid] are on the same side, just using Binary_Search as usual
+		// And for some reason, the equal signs have to be putted on the Larger side
 		if (target >= nums[0] && nums[mid] >= nums[0]) || (target < nums[0] && nums[mid] < nums[0]) {
-			if nums[mid] > target {
-				right = mid - 1
-			} else if nums[mid] < target {
+			if nums[mid] < target {
 				left = mid + 1
+			} else if nums[mid] < target {
+				right = mid - 1
 			} else {
 				return mid
 			}

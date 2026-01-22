@@ -10,27 +10,23 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 		return nil
 	}
 
+	/* By using 2 temp pointers (dummy & head) to change the pointer direction. */
+
+	// Cannot use ListNode literal (dummy := &leetcode.ListNode{}) because it will create redundant node like [5,4,3,2,1,0]
+	var dummy *leetcode.ListNode
+
 	// Depending on the problem which might need to keep the pointer of the original head
-	/*
-		By using 2 temp pointers (previous & next) to change the pointer direction.
-		The basic idea is "Pointer1 = Pointer2" which means that: Make Pointer1 points to the Node of Pointer2
-		var previous *leetcode.ListNode
-	*/
-	var previous *leetcode.ListNode
-	// Cannot use ListNode literal because it will create redundant node like [5,4,3,2,1,0]
-	// dummy := &leetcode.ListNode{}
-	// Depending on the problem which might need to keep the pointer of the original head
-	current := head
-	for current != nil {
-		temp := current.Next
+	runner := head
+	for runner != nil {
+		temp := runner.Next
 		/* Reverse the pointer direction */
-		current.Next = previous
+		runner.Next = dummy
 		/* Shift both 2 pointers to each next node*/
-		previous = current
-		current = temp
+		dummy = runner
+		runner = temp
 	}
 
-	return previous
+	return dummy
 }
 
 func reverseListExercise(head *leetcode.ListNode) *leetcode.ListNode {

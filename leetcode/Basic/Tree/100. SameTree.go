@@ -10,15 +10,14 @@ Two binary trees are considered the same if they are structurally identical, and
 */
 func IsSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 	// Define Base Cases
-	if p == nil && q == nil {
-		return true
-	}
 	if p == nil || q == nil {
-		return false
+		return p == q
 	}
-
+	//if p == nil && q == nil {
+	//	return true
+	//}
 	//if p == nil || q == nil {
-	//	return p == q
+	//	return false
 	//}
 
 	if p.Val != q.Val {
@@ -29,5 +28,9 @@ func IsSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 }
 
 func isSameTreeExercise(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
-	return false
+	if p == nil || q == nil {
+		return p == q
+	}
+
+	return p.Val == q.Val && isSameTreeExercise(p.Left, q.Left) && isSameTreeExercise(p.Right, q.Right)
 }

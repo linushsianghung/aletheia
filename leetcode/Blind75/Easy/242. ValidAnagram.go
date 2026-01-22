@@ -9,8 +9,8 @@ func isAnagram(s string, t string) bool {
 
 	tRune := []rune(t)
 	note := make(map[rune]int)
-	for i, c := range s {
-		note[c]++
+	for i, r := range s {
+		note[r]++
 		note[tRune[i]]--
 	}
 

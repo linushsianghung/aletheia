@@ -45,7 +45,7 @@ func backtrackCombinationsSum(sources []int, target int) [][]int {
 	return result
 }
 
-func backtrackCombinationsSumExercise(source []int, target int) [][]int {
+func backtrackCombinationsSumExercise(sources []int, target int) [][]int {
 	return nil
 }
 

@@ -18,7 +18,7 @@ func insert(intervals [][]int, newInterval []int) [][]int {
 }
 
 func insertSmartCompare(intervals [][]int, newInterval []int) [][]int {
-	// Use index to control the progress because it requires extra code to handle empty intervals case when using "for range"
+	// Use index to control the progress otherwise it requires extra code to handle empty intervals case when using "for range"
 	index, result := 0, make([][]int, 0)
 
 	// Just add each interval into result before meeting the newInterval
@@ -68,10 +68,11 @@ func insertSimple(intervals [][]int, newInterval []int) [][]int {
 		if intervalA[1] < intervalB[0] {
 			stack = append(stack, intervalA)
 			stack = append(stack, intervalB)
-		} else {
-			intervalC := []int{intervalA[0], max(intervalA[1], intervalB[1])}
-			stack = append(stack, intervalC)
+			continue
 		}
+
+		intervalC := []int{intervalA[0], max(intervalA[1], intervalB[1])}
+		stack = append(stack, intervalC)
 	}
 
 	return stack

@@ -36,11 +36,12 @@ func binarySearchLeft(nums []int, target int) int {
 	}
 
 	// Basically if target can be found, just return "left" (and return "right" in binarySearchRight) would do the job.
-	// The reason to use anchor here is mainly because it's required to return "-1" if target is not found. In that case it's necessary to add another logic which might be confusing
+	// The reason to use anchor here is because it's required to return "-1" if target is not found. In that case it's necessary to add another logic which might be confusing
 	return anchor
 }
 
 func binarySearchLeftExercise(nums []int, target int) int {
+
 	return 0
 }
 

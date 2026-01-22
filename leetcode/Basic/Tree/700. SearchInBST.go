@@ -24,10 +24,6 @@ func searchBSTRecursively(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
 	}
 }
 
-func searchBSTRecursivelyExercise(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
-	return nil
-}
-
 func searchBSIteratively(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
 	for root != nil && root.Val != val {
 		if root.Val > val {
@@ -40,7 +36,8 @@ func searchBSIteratively(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
 	return root
 }
 
-func searchBSIterativelyExercise(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
+func searchBSTExercise(root *leetcode.TreeNode, val int) *leetcode.TreeNode {
+
 	return nil
 }
 

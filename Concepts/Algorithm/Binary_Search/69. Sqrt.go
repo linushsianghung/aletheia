@@ -36,17 +36,17 @@ func MySqrt(x int) int {
 
 // This is implemented based on the template and more precise
 func mySqrtBS(x int) int {
-	left, right := 1, x
+	left, right := 1, x // Here it has to be x rather than x-1 in case of x == 0
 
 	for left <= right {
 		mid := left + (right-left)/2
 
 		// Binary_Search Processor: Calculating square
 		square := mid * mid
-		if square > x {
-			right = mid - 1
-		} else if square < x {
+		if square < x {
 			left = mid + 1
+		} else if square > x {
+			right = mid - 1
 		} else {
 			return mid
 		}

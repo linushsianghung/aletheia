@@ -27,19 +27,5 @@ func FindMaxAverage(nums []int, k int) float64 {
 }
 
 func FindMaxAverageExercise(nums []int, k int) float64 {
-	winStart, maxAvg := 0, float64(10_000)
-	sum := 0
-
-	for winEnd, num := range nums {
-		sum += num
-
-		if winEnd >= k-1 {
-			maxAvg = max(maxAvg, float64(sum)/float64(k))
-
-			sum -= nums[winStart]
-			winStart++
-		}
-	}
-
 	return 0
 }

@@ -36,10 +36,6 @@ func postorderRecursively(root *leetcode.Node) []int {
 	return result
 }
 
-func postorderRecursivelyExercise(root *leetcode.Node) []int {
-	return nil
-}
-
 func postorderIteratively(root *leetcode.Node) []int {
 	result := make([]int, 0)
 	stack := []*leetcode.Node{root}
@@ -55,6 +51,6 @@ func postorderIteratively(root *leetcode.Node) []int {
 	return result
 }
 
-func postorderIterativelyExercise(root *leetcode.Node) []int {
+func postorderExercise(root *leetcode.Node) []int {
 	return nil
 }

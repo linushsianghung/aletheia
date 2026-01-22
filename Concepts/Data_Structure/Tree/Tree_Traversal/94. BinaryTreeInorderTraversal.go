@@ -60,6 +60,7 @@ func inorderTraversalIteratively(root *leetcode.TreeNode) []int {
 }
 
 func inorderTraversalExercise(root *leetcode.TreeNode) []int {
+	q
 	return nil
 }
 

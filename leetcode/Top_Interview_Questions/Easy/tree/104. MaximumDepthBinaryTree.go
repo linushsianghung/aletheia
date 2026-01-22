@@ -35,10 +35,6 @@ func maxDepthDFSRecursively(root *leetcode.TreeNode) int {
 	return 1 + max(maxDepthDFSRecursively(root.Left), maxDepthDFSRecursively(root.Right))
 }
 
-func maxDepthDFSRecursivelyExercise(root *leetcode.TreeNode) int {
-	return 0
-}
-
 // Level Order Traversal
 func maxDepthBFSIteratively(root *leetcode.TreeNode) int {
 	level := 0
@@ -63,6 +59,6 @@ func maxDepthBFSIteratively(root *leetcode.TreeNode) int {
 	return level
 }
 
-func maxDepthBFSIterativelyExercise(root *leetcode.TreeNode) int {
+func maxDepthDFSExercise(root *leetcode.TreeNode) int {
 	return 0
 }

@@ -3,19 +3,18 @@ package Runners
 import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/middle-of-the-linked-list/
-/* Ref:
-When traversing the list with a pointer slow, make another pointer fast that traverses twice as fast. When fast
-reaches the end of the list, slow must be in the middle.
-
-Complexity Analysis:
-- Time Complexity: O(N), where N is the number of nodes in the given list.
-- Space Complexity: O(1), the space used by slow and fast.
-*/
 /*
 Given the head of a singly linked list, return the middle node of the linked list.
 If there are two middle nodes, return the second middle node.
 
 Analysis:
+When traversing the list with a pointer slow, make another pointer fast that traverses twice as fast. When fast reaches the end of the list, slow must be in the middle.
+
+Complexity Analysis:
+- Time Complexity: O(N), where N is the number of nodes in the given list.
+- Space Complexity: O(1), the space used by slow and fast.
+
+
 1 middle nodes: __ -> __ -> __ -> _s_ -> __ -> __ -> _f_
 2 middle nodes: __ -> __ -> __ -> __ -> _s_ -> __ -> __ -> __ -> f
 */

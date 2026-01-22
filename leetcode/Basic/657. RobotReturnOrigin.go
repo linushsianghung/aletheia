@@ -12,8 +12,8 @@ Also, assume that the magnitude of the robot's movement is the same for each mov
 func judgeCircle(moves string) bool {
 	x, y := 0, 0
 
-	for _, r := range moves {
-		switch r {
+	for _, move := range moves {
+		switch move {
 		case 'U':
 			y++
 		case 'D':
@@ -29,13 +29,7 @@ func judgeCircle(moves string) bool {
 }
 
 func judgeCircleExercise(moves string) bool {
-	note := make(map[rune]int)
-
-	for _, r := range moves {
-		note[r]++
-	}
-
-	return note['L'] == note['R'] && note['U'] == note['D']
+	return false
 }
 
 func judgeCircleHashMap(moves string) bool {
@@ -44,8 +38,5 @@ func judgeCircleHashMap(moves string) bool {
 		note[c]++
 	}
 
-	if note['U'] != note['D'] || note['R'] != note['L'] {
-		return false
-	}
-	return true
+	return note['U'] == note['D'] && note['R'] == note['L']
 }

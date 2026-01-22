@@ -56,19 +56,7 @@ func compute(n int) int {
 }
 
 func isHappyMathExercise(n int) bool {
-	note := make(map[int]bool)
-
-	for {
-		n = compute(n)
-
-		if n == 1 {
-			return true
-		}
-		if note[n] {
-			return false
-		}
-	}
-	return true
+	return false
 }
 
 func computeExercise(n int) int {

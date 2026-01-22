@@ -20,7 +20,6 @@ func backtrackPermute(sources []int) [][]int {
 
 	var permuteFunc func(processor []int)
 	permuteFunc = func(processor []int) {
-
 		if len(processor) == len(sources) {
 			result = append(result, processor)
 			return

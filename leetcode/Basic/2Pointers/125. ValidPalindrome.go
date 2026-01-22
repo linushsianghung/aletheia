@@ -17,10 +17,10 @@ func IsPalindrome(s string) bool {
 		return true
 	}
 
-	left, right := 0, len(s)-1
 	s = strings.ToLower(s)
 	sRune := []rune(s)
 
+	left, right := 0, len(s)-1
 	for left < right {
 		if !unicode.IsLetter(sRune[left]) && !unicode.IsDigit(sRune[left]) {
 			left++

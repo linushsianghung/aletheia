@@ -13,23 +13,41 @@ The island receives a lot of rain, and the rain water can flow to neighboring ce
 Return a 2D list of grid coordinates result where result[i] = [ri, ci] denotes that rain water can flow from cell (ri, ci) to both the Pacific and Atlantic oceans.
 */
 func pacificAtlantic(heights [][]int) [][]int {
-	note := make(map[string]int)
+	notePacific := make(map[string]bool)
+	noteAtlantic := make(map[string]bool)
 
-	var flowFunc func(r, c int) bool
-	flowFunc = func(r, c int) bool {
-		if r == 0 || c == 0 {
-			return 1
+	var flowFunc func(r, c, height int, visited map[string]bool)
+	flowFunc = func(r, c, height int, visited map[string]bool) {
+		if r < 0 || c < 0 || r >= len(heights) || c >= len(heights[0]) || heights[r][c] < height {
+			return
 		}
-		if r == len(heights)-1 || c == len(heights[0])-1 {
-			return 2
+		point := fmt.Sprint(r, "-", c)
+		if visited[point] {
+			return
 		}
+		visited[point] = true
 
+		flowFunc(r+1, c, heights[r][c], visited)
+		flowFunc(r-1, c, heights[r][c], visited)
+		flowFunc(r, c+1, heights[r][c], visited)
+		flowFunc(r, c-1, heights[r][c], visited)
+	}
+
+	for i := 0; i < len(heights); i++ {
+		flowFunc(i, 0, 0, notePacific)
+		flowFunc(i, len(heights[0])-1, 0, noteAtlantic)
+	}
+
+	for i := 0; i < len(heights[0]); i++ {
+		flowFunc(0, i, 0, notePacific)
+		flowFunc(len(heights)-1, i, 0, noteAtlantic)
 	}
 
 	result := make([][]int, 0)
 	for i := 0; i < len(heights); i++ {
 		for j := 0; j < len(heights[0]); j++ {
-			if flowFunc(i, j) {
+			point := fmt.Sprint(i, "-", j)
+			if notePacific[point] && noteAtlantic[point] {
 				result = append(result, []int{i, j})
 			}
 		}

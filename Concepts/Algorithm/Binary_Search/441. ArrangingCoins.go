@@ -36,16 +36,20 @@ func arrangeCoinsBS(n int) int {
 
 		// Monotonic Function: Formula for counting coins by staircases
 		coins := (mid + 1) * mid / 2
-		if coins > n {
-			right = mid - 1
-		} else if coins < n {
+		if coins < n {
 			left = mid + 1
+		} else if coins > n {
+			right = mid - 1
 		} else {
 			return mid
 		}
 	}
 
 	return right
+}
+
+func arrangeCoinsBSExercise(n int) int {
+	return 0
 }
 
 func arrangeCoinsBF(n int) int {

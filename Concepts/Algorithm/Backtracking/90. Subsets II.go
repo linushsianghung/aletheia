@@ -63,7 +63,6 @@ func backtrackSubsetsWithDup(sources []int) [][]int {
 }
 
 func backtrackSubsetsWithDupExercise(sources []int) [][]int {
-	e
 	return nil
 }
 

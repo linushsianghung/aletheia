@@ -18,37 +18,45 @@ func shipWithinDays(weights []int, days int) int {
 
 	// Define Search Space
 	left, right := maxWeight, sumWeight
-	ans := sumWeight // Initialize answer to the maximum possible value
+	leastWeight := sumWeight // Initialize leastWeightwer to the maximum possible value
 	for left <= right {
 		mid := left + (right-left)/2
 
-		// If a capacity of `mid` is feasible, it's a potential answer. Let's record it and try for an even smaller capacity.
+		// If a capacity of `mid` is feasible, it's a potential leastWeightwer. Let's record it and try for an even smaller capacity.
 		if capableToShip(weights, days, mid) {
-			ans = mid
+			leastWeight = mid
 			right = mid - 1
 		} else {
 			left = mid + 1
 		}
 	}
 
-	return ans
+	return leastWeight
+}
+
+func shipWithinDaysExercise(weights []int, days int) int {
+	return 0
 }
 
 // Monotonic Function: 'ship capacity' is enough to ship all the packages in 'days' or not
 func capableToShip(weights []int, days, capacity int) bool {
-	sumWeight, count := 0, 1
+	sumWeight, totalDays := 0, 1
 	for _, weight := range weights {
 		sumWeight += weight
 		if sumWeight > capacity {
-			count++
-			if count > days {
+			totalDays++
+			if totalDays > days {
 				return false
 			}
 
-			// Reset sumWeight to the first weight of next day
+			// Reset sumWeight to the weight for next day
 			sumWeight = weight
 		}
 	}
 
 	return true
+}
+
+func capableToShipExercise(weights []int, days, capacity int) bool {
+	return false
 }

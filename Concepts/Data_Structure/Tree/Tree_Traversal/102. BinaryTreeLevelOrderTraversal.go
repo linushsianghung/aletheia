@@ -19,10 +19,10 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	queue := []*leetcode.TreeNode{root}
 
 	for len(queue) > 0 {
-		size := len(queue)
-		nodes := make([]int, size)
+		levelSize := len(queue)
+		nodes := make([]int, levelSize)
 
-		for i := range size {
+		for i := range levelSize {
 			current := queue[0]
 			queue = queue[1:]
 			// Rather than using "nodes = append(nodes, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]
@@ -40,7 +40,7 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	return result
 }
 
-func levelOrderIterativelyExercise(root *leetcode.TreeNode) [][]int {
+func levelOrderExercise(root *leetcode.TreeNode) [][]int {
 	return nil
 }
 
@@ -73,6 +73,10 @@ func connect(root *leetcode.TreeNode) *leetcode.TreeNode {
 		}
 	}
 	return root
+}
+
+func connectExercise(root *leetcode.TreeNode) *leetcode.TreeNode {
+	return nil
 }
 
 // Reference: https://leetcode.com/problems/binary-tree-level-order-traversal/solutions/33445/java-solution-using-dfs/

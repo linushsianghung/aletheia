@@ -36,10 +36,6 @@ func preorderRecursively(root *leetcode.Node) []int {
 	return result
 }
 
-func preorderRecursivelyExercise(root *leetcode.Node) []int {
-	return nil
-}
-
 func preorderIteratively(root *leetcode.Node) []int {
 	result := make([]int, 0)
 	stack := []*leetcode.Node{root}
@@ -60,7 +56,7 @@ func preorderIteratively(root *leetcode.Node) []int {
 	return result
 }
 
-func preorderIterativelyExercise(root *leetcode.Node) []int {
+func preorderExercise(root *leetcode.Node) []int {
 	return nil
 }
 

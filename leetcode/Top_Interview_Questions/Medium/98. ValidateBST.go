@@ -32,7 +32,7 @@ func isValidRecursively(node *leetcode.TreeNode, min, max int) bool {
 	return isValidRecursively(node.Left, min, node.Val) && isValidRecursively(node.Right, node.Val, max)
 }
 
-func isValidRecursivelyExercise(node *leetcode.TreeNode, min, max int) bool {
+func isValidBSTExercise(node *leetcode.TreeNode, min, max int) bool {
 	return false
 }
 

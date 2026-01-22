@@ -32,7 +32,7 @@ func backtrackPermuteUnique(sources []int) [][]int {
 				Reference: https://leetcode.com/problems/permutations-ii/solutions/18594/really-easy-java-solution-much-easier-than-the-solutions-with-very-high-vote/comments/250112/
 				2. Both !use[i - 1] and use[i - 1] are valid, but !use[i - 1] is more efficient.
 			*/
-			if used[i] || (i > 0 && sources[i-1] == sources[i] && !used[i-1]) {
+			if used[i] || (i > 0 && !used[i-1] && sources[i-1] == sources[i]) {
 				continue
 			}
 

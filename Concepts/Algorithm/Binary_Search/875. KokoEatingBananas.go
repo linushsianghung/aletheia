@@ -34,6 +34,7 @@ func minEatingSpeed(piles []int, h int) int {
 	}
 	// Define Search Space
 	left, right := 1, maxPile
+	minPile := 0
 
 	//left, right := 1, 1_000_000_000
 	for left <= right {
@@ -41,17 +42,36 @@ func minEatingSpeed(piles []int, h int) int {
 
 		// If it true,continue to try further to find minimum k
 		if canEatPilesInTime(piles, h, mid) {
+			minPile = mid
 			right = mid - 1
 		} else {
 			left = mid + 1
 		}
 	}
 
-	return left
+	return minPile
 }
 
 func MinEatingSpeedExercise(piles []int, h int) int {
-	return 0
+	speed, maxPile := 0, 0
+
+	for _, pile := range piles {
+		maxPile = max(maxPile, pile)
+	}
+
+	left, right := 0, maxPile
+	for left <= right {
+		mid := left + (right-left)/2
+
+		if canEatPilesInTime(piles, h, mid) {
+			speed = mid
+			right = mid - 1
+		} else {
+			left = mid + 1
+		}
+	}
+
+	return speed
 }
 
 // Monotonic Function: Koko can eat 'k bananas' per hour in 'h' hours or not
@@ -68,5 +88,11 @@ func canEatPilesInTime(piles []int, h, k int) bool {
 }
 
 func canEatPilesInTimeExercise(piles []int, h int, k int) bool {
-	return false
+	var hours float64
+
+	for _, pile := range piles {
+		hours += math.Ceil(float64(pile) / float64(k))
+	}
+
+	return hours <= float64(h)
 }

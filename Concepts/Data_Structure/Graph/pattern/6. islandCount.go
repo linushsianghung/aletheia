@@ -16,7 +16,7 @@ func IslandCount(grid [][]string) int {
 
 	var exploreIsland func(r, c int) bool
 	exploreIsland = func(r, c int) bool {
-		if r < 0 || r >= len(grid[0]) || c < 0 || c >= len(grid) {
+		if r < 0 || r >= len(grid) || c < 0 || c >= len(grid[0]) {
 			return false
 		}
 		if grid[r][c] == "W" {
