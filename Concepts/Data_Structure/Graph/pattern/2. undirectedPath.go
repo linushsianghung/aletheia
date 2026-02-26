@@ -10,21 +10,20 @@ Related Problem: 1971. Find if Path Exists in Graph: https://leetcode.com/proble
 */
 func undirectedPath(edges [][]string, nodeA, nodeB string) bool {
 	graph := Graph.BuildGraph(edges)
-	return hasPath(graph, nodeA, nodeB, make(map[string]bool))
+	return undirectedPathDFS(graph, nodeA, nodeB, make(map[string]bool))
 }
 
-func hasPath(graph map[string][]string, src, dst string, visited map[string]bool) bool {
-	if ok := visited[src]; ok {
+func undirectedPathDFS(graph map[string][]string, src, dst string, visited map[string]bool) bool {
+	if src == dst {
+		return true
+	}
+	if visited[src] {
 		return false
 	}
 	visited[src] = true
 
-	if src == dst {
-		return true
-	}
-
 	for _, neighbor := range graph[src] {
-		if hasPath(graph, neighbor, dst, visited) {
+		if undirectedPathDFS(graph, neighbor, dst, visited) {
 			return true
 		}
 	}
@@ -32,6 +31,6 @@ func hasPath(graph map[string][]string, src, dst string, visited map[string]bool
 	return false
 }
 
-func hasPathExercise(graph map[string][]string, src, dst string, visited map[string]bool) bool {
+func undirectedPathExercise(graph map[string][]string, src, dst string, visited map[string]bool) bool {
 	return false
 }

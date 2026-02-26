@@ -1,8 +1,6 @@
 package Medium
 
 import (
-	"fmt"
-
 	"github.com/linushung/aletheia/Concepts/Algorithm/Dynamic_Programming"
 )
 
@@ -20,8 +18,6 @@ The test cases are generated so that the answer will be less than or equal to 2 
 func UniquePaths(m int, n int) int {
 
 	return UniquePathsMemorisation(m, n)
-	// return uniquePaths2Slice(m, n)
-	// return uniquePathsSmartSlice(m, n)
 }
 
 func uniquePathsExercise(m int, n int) int {
@@ -29,7 +25,10 @@ func uniquePathsExercise(m int, n int) int {
 }
 
 func UniquePathsMemorisation(m, n int) int {
-	note := make(map[string]int)
+	memo := make([][]int, m)
+	for i := range memo {
+		memo[i] = make([]int, n)
+	}
 
 	var uniqueFunc func(r, c int) int
 	uniqueFunc = func(r, c int) int {
@@ -38,13 +37,12 @@ func UniquePathsMemorisation(m, n int) int {
 			return 1
 		}
 
-		position := fmt.Sprint(r, "-", c)
-		if count, ok := note[position]; ok {
-			return count
+		if memo[r][c] > 0 {
+			return memo[r][c]
 		}
 
-		note[position] = uniqueFunc(r-1, c) + uniqueFunc(r, c-1)
-		return note[position]
+		memo[r][c] = uniqueFunc(r-1, c) + uniqueFunc(r, c-1)
+		return memo[r][c]
 	}
 
 	return uniqueFunc(m-1, n-1)

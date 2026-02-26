@@ -11,9 +11,9 @@ func rotate(matrix [][]int) {
 	left, right := 0, len(matrix)-1
 
 	for left < right {
-		for i := 0; i < right-left; i++ {
-			top, bottom := left, right
+		top, bottom := left, right
 
+		for i := 0; i < right-left; i++ {
 			// store the Top-Left
 			temp := matrix[top][left+i]
 

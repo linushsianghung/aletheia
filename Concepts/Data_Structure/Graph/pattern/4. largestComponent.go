@@ -6,28 +6,45 @@ The function should return the size of the largest connected component in the gr
 
 Largest Component: file://./pics/LargestComponent.png
 */
+
+// largestComponent finds the size of the largest connected component in a graph.
 func largestComponent(graph map[int][]int) int {
-	maxSize := 0
+	maxCount := 0
+	visited := make(map[int]bool)
+
+	// Iterate through each node of the graph as a potential starting point.
 	for node := range graph {
-		size := exploreSize(graph, node, make(map[int]bool))
-		if maxSize < size {
-			maxSize = size
-		}
+		// exploreSize will find the size of the component containing 'node'.
+		// If 'node' has already been visited, its component has already been counted, and exploreSize will return 0.
+		count := exploreSize(graph, node, visited)
+		maxCount = max(maxCount, count)
 	}
 
-	return maxSize
+	return maxCount
 }
 
+func largestComponentExercise(graph map[int][]int) int {
+	return 0
+}
+
+// exploreSize uses Depth-First Search (DFS) to find the number of nodes in a single connected component starting from a given node.
 func exploreSize(graph map[int][]int, node int, visited map[int]bool) int {
+	// Base case: If the node has already been visited, we don't count it again.
 	if visited[node] {
 		return 0
 	}
+	// Mark the node as visited to prevent infinite loops and recounting.
 	visited[node] = true
 
-	size := 0
+	count := 1 // Start the count for this component at 1 (for the current node).
+	// Recursively visit all neighbors and add their sizes to the count.
 	for _, neighbor := range graph[node] {
-		size += exploreSize(graph, neighbor, visited)
+		count += exploreSize(graph, neighbor, visited)
 	}
 
-	return size
+	return count
+}
+
+func exploreSizeExercise(graph map[int][]int, node int, visited map[int]bool) int {
+	return 0
 }

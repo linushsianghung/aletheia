@@ -1,6 +1,8 @@
 package Medium
 
-import "sort"
+import (
+	"sort"
+)
 
 // ThreeSum https://leetcode.com/problems/3sum/description/
 // Ref:
@@ -10,6 +12,13 @@ import "sort"
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets.
+
+Analysis:
+Time Complexity: O(n^2)
+1. Sorting: sort.Ints(nums) takes $O(n \log n)$.
+2. Outer Loop: The loop for i, num := range nums runs $n$ times.
+3. Inner Loop (Two Pointers): Inside the outer loop, you have left and right pointers moving toward each other. Since they touch each element at most once per outer iteration, this takes $O(n)$.
+4. Total: $O(nlogn) + (n * O(n)) = O(n^2)$.
 */
 func ThreeSum(nums []int) [][]int {
 	return threeSumSort(nums)
@@ -42,24 +51,33 @@ func threeSumSort(nums []int) [][]int {
 		// Implement 2 pointers strategy for a sorted array
 		left, right := i+1, len(nums)-1
 		for left < right {
-			// Skip repeated number after the target number
-			if left > i+1 && nums[left] == nums[left-1] {
-				left++
-				continue
-			}
-			if right < len(nums)-1 && nums[right] == nums[right+1] {
-				right--
-				continue
-			}
+			//if left > i+1 && nums[left] == nums[left-1] {
+			//	left++
+			//	continue
+			//}
+			//if right < len(nums)-1 && nums[right] == nums[right+1] {
+			//	right--
+			//	continue
+			//}
 
-			if nums[left]+nums[right]+num < 0 {
+			// It is cleaner to calculate the sum once
+			sum := num + nums[left] + nums[right]
+			if sum < 0 {
 				left++
-			} else if nums[left]+nums[right]+num > 0 {
+			} else if sum > 0 {
 				right--
 			} else {
-				result = append(result, []int{nums[left], nums[right], num})
+				// Found a match! Append in sorted order: [min, mid, max]
+				result = append(result, []int{num, nums[left], nums[right]})
 				left++
 				right--
+				// Skip duplicates immediately to avoid redundant checks
+				for left < right && nums[left] == nums[left-1] {
+					left++
+				}
+				for left < right && nums[right] == nums[right+1] {
+					right--
+				}
 			}
 		}
 	}
@@ -68,6 +86,45 @@ func threeSumSort(nums []int) [][]int {
 }
 
 func threeSumSortExercise(nums []int) [][]int {
+	sort.Ints(nums)
+
+	if nums[0] > 0 {
+		return nil
+	}
+
+	result := make([][]int, 0)
+	for i, num := range nums {
+		if num > 0 {
+			break
+		}
+
+		if i > 0 && num == nums[i-1] {
+			continue
+		}
+
+		left, right := i+1, len(nums)-1
+		for left < right {
+			sum := nums[left] + nums[right]
+
+			if sum < num {
+				left++
+			} else if sum > num {
+				right++
+			} else {
+				result = append(result, []int{num, nums[left], nums[right]})
+				left++
+				right--
+			}
+
+			for nums[left-1] == nums[left] {
+				left++
+			}
+			for nums[right+1] == nums[right] {
+				right--
+			}
+		}
+	}
+
 	return nil
 }
 

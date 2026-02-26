@@ -16,28 +16,36 @@ func removeDuplicatesII(s string, k int) string {
 }
 
 func removeDuplicatesII2Pointers(s string, k int) string {
-	anchor, sRune := 0, []rune(s)
-	// Using a count slice to check if each character is k adjacent letter
-	note := make([]int, len(s))
+	// Convert to rune slice to handle potential multi-byte characters and allow in-place modification
+	stack := []rune(s)
+	// 'counts' stores the consecutive frequency of the character at the corresponding index in 'stack'
+	counts := make([]int, len(s))
 
-	for _, r := range sRune {
-		sRune[anchor] = r
-		if anchor > 0 && sRune[anchor-1] == r {
-			note[anchor] = note[anchor-1] + 1
+	// 'write' acts as the stack pointer. It points to the index where the next character will be written.
+	write := 0
+
+	for _, r := range stack {
+		// Push character onto the "stack"
+		stack[write] = r
+
+		// Calculate count: If it matches the previous char in our stack, increment count
+		if write > 0 && stack[write-1] == r {
+			counts[write] = counts[write-1] + 1
 		} else {
-			note[anchor] = 1
+			counts[write] = 1
 		}
 
-		if note[anchor] == k {
-			anchor -= k
+		// Check if we reached k duplicates. If so, "pop" them by moving the write pointer back.
+		if counts[write] == k {
+			write -= k
 		}
-		anchor++
+		write++
 	}
 
-	return string(sRune[:anchor])
+	return string(stack[:write])
 }
 
-func removeDuplicatesII2PointersExercise(s string, k int) string {
+func removeDuplicatesIIExercise(s string, k int) string {
 	return ""
 }
 

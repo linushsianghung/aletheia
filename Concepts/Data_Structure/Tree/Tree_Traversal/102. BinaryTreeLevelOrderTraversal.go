@@ -3,7 +3,7 @@ package Tree_Traversal
 import "github.com/linushung/aletheia/leetcode"
 
 // LevelOrder https://leetcode.com/problems/binary-tree-level-order-traversal/description/
-/* Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level). */
+/* Given the root of a binary tree, return the level order traversal of its values' values. (i.e., from left to right, level by level). */
 func LevelOrder(root *leetcode.TreeNode) [][]int {
 	/* Basic init check for LinkedList and Tree */
 	if root == nil {
@@ -19,14 +19,14 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	queue := []*leetcode.TreeNode{root}
 
 	for len(queue) > 0 {
-		levelSize := len(queue)
-		nodes := make([]int, levelSize)
+		nodes := len(queue)
+		values := make([]int, nodes)
 
-		for i := range levelSize {
+		for i := range nodes {
 			current := queue[0]
 			queue = queue[1:]
-			// Rather than using "nodes = append(nodes, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]
-			nodes[i] = current.Val
+			// Because values slice has been specified the length, it cannot use "values = append(values, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]
+			values[i] = current.Val
 			if current.Left != nil {
 				queue = append(queue, current.Left)
 			}
@@ -34,7 +34,8 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 				queue = append(queue, current.Right)
 			}
 		}
-		result = append(result, nodes)
+
+		result = append(result, values)
 	}
 
 	return result

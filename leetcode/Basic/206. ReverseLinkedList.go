@@ -10,23 +10,23 @@ func ReverseList(head *leetcode.ListNode) *leetcode.ListNode {
 		return nil
 	}
 
-	/* By using 2 temp pointers (dummy & head) to change the pointer direction. */
+	/* By using 2 temp pointers (prev & head) to change the pointer direction. */
 
-	// Cannot use ListNode literal (dummy := &leetcode.ListNode{}) because it will create redundant node like [5,4,3,2,1,0]
-	var dummy *leetcode.ListNode
+	// Cannot use ListNode literal (prev := &leetcode.ListNode{}) because it will create redundant node like [5,4,3,2,1,0]
+	var prev *leetcode.ListNode
 
 	// Depending on the problem which might need to keep the pointer of the original head
 	runner := head
 	for runner != nil {
 		temp := runner.Next
 		/* Reverse the pointer direction */
-		runner.Next = dummy
+		runner.Next = prev
 		/* Shift both 2 pointers to each next node*/
-		dummy = runner
+		prev = runner
 		runner = temp
 	}
 
-	return dummy
+	return prev
 }
 
 func reverseListExercise(head *leetcode.ListNode) *leetcode.ListNode {
@@ -46,8 +46,8 @@ func reverseListRecursively(head, previous *leetcode.ListNode) *leetcode.ListNod
 // Related Problem: 92. Reverse Linked List II: https://leetcode.com/problems/reverse-linked-list-ii/
 // Reference: https://leetcode.com/problems/reverse-linked-list-ii/solutions/30709/talk-is-cheap-show-me-the-code-and-drawing/
 func reverseBetween(head *leetcode.ListNode, left int, right int) *leetcode.ListNode {
-	dummy := &leetcode.ListNode{Next: head}
-	runner := dummy
+	prev := &leetcode.ListNode{Next: head}
+	runner := prev
 	for range left - 1 {
 		runner = runner.Next
 	}
@@ -60,5 +60,5 @@ func reverseBetween(head *leetcode.ListNode, left int, right int) *leetcode.List
 		runner.Next.Next = temp
 	}
 
-	return dummy.Next
+	return prev.Next
 }

@@ -1,8 +1,6 @@
 package Medium
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // https://leetcode.com/problems/surrounded-regions/
 // Reference: https://leetcode.com/problems/surrounded-regions/solutions/691675/c-beginner-friendly-boundary-dfs-inplace/
@@ -13,6 +11,8 @@ Connect: A cell is connected to adjacent cells horizontally or vertically.
 Region: To form a region connect every 'O' cell.
 Surround: The region is surrounded with 'X' cells if you can connect the region with 'X' cells and none of the region cells are on the edge of the board.
 A surrounded region is captured by replacing all 'O's with 'X's in the input matrix board.
+
+To capture a surrounded region, replace all 'O's with 'X's in-place within the original board. You do not need to return anything.
 
 Analysis:
 Define when an 'O' cannot be flipped:
@@ -25,14 +25,14 @@ After that, go through the board and flip the other 'O' to 'X', since these 'O' 
 */
 func solve(board [][]byte) {
 	// Step1: Move along the boundary of board, and find O's, Every time we find an O, perform DFS from its position to convert all 'O' to '*'
-	note1 := make(map[string]bool)
+	memo1 := make(map[string]bool)
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
 			if i > 0 && i < len(board)-1 && j > 0 && j < len(board[0])-1 {
 				continue
 			}
 			// It's required to create its own note
-			exploreBorderDFS(board, i, j, '*', note1)
+			exploreBorderDFS(board, i, j, '*', memo1)
 		}
 	}
 

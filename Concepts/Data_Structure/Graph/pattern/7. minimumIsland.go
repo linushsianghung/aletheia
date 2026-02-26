@@ -1,6 +1,6 @@
 package pattern
 
-import "fmt"
+import "math"
 
 /*
 Write a function, minimumIsland, that takes in a grid containing Ws and Ls. W represents water and L represents land.
@@ -9,12 +9,40 @@ The function should return the size of the smallest island. An island is a verti
 You may assume that the grid contains at least one island.
 */
 func minimumIsland(grid [][]string) int {
-	minSize, visited := 0, make(map[string]bool)
+	// Initialize minSize to the largest possible integer. This ensures that the size of the first island found will be smaller.
+	minSize := math.MaxInt
+	rows, cols := len(grid), len(grid[0])
 
-	for i := 0; i < len(grid); i++ {
-		for j := 0; j < len(grid[0]); j++ {
-			size := exploreMinSize(grid, i, j, visited)
-			if size > 0 && minSize > size {
+	// Optimization: Use a flattened 1D slice for the visited set. This improves performance by using a single memory allocation and improving cache locality.
+	visited := make([]bool, rows*cols)
+
+	var exploreMinSize func(r, c int) int
+	exploreMinSize = func(r, c int) int {
+		// 1. Check bounds: Ensure row and column are within the grid.
+		if r < 0 || r >= rows || c < 0 || c >= cols {
+			return 0
+		}
+		// 2. Check for water: We cannot traverse water.
+		if grid[r][c] == "W" {
+			return 0
+		}
+
+		// 3. Check if already visited to prevent infinite loops and recounting.
+		flatIndex := r*cols + c
+		if visited[flatIndex] {
+			return 0
+		}
+		visited[flatIndex] = true
+
+		// The size of the current island component is 1 (for this cell) plus the size of any connected land cells.
+		return 1 + exploreMinSize(r-1, c) + exploreMinSize(r+1, c) + exploreMinSize(r, c-1) + exploreMinSize(r, c+1)
+	}
+
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			size := exploreMinSize(i, j)
+			// Only update minSize if we've found a new island (size > 0) and its size is smaller than the current minimum.
+			if size > 0 && size < minSize {
 				minSize = size
 			}
 		}
@@ -23,24 +51,7 @@ func minimumIsland(grid [][]string) int {
 	return minSize
 }
 
-func exploreMinSize(grid [][]string, r, c int, visited map[string]bool) int {
-	if r < 0 || r > len(grid) || c < 0 || c > len(grid[0]) {
-		return 0
-	}
-	if grid[r][c] == "W" {
-		return 0
-	}
+func minimumIslandExercise(grid [][]string) int {
 
-	position := fmt.Sprint(r, '-', c)
-	if visited[position] {
-		return 0
-	}
-	visited[position] = true
-
-	size := 1
-	size += exploreMinSize(grid, r-1, c, visited)
-	size += exploreMinSize(grid, r+1, c, visited)
-	size += exploreMinSize(grid, r, c-1, visited)
-	size += exploreMinSize(grid, r, c+1, visited)
-	return size
+	return 0
 }

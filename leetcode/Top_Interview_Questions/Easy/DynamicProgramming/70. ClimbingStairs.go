@@ -8,36 +8,55 @@ You are climbing a staircase. It takes n steps to reach the top.
 Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 */
 func ClimbStairs(n int) int {
-	return climbStairsMemoriseDP(n)
+	return climbStairsMemo(n)
 }
 
-func climbStairsMemoriseDP(n int) int {
-	note := make(map[int]int)
+func climbStairsMemo(n int) int {
+	memo := make(map[int]int)
 
 	var climbFunc func(stair int) int
 	climbFunc = func(stair int) int {
-		if val, ok := note[stair]; ok {
-			return val
+		if stair > n {
+			return 0
 		}
-		if stair == 1 {
+		if stair == n {
 			return 1
 		}
-		if stair == 2 {
-			return 2
+
+		if val, ok := memo[stair]; ok {
+			return val
 		}
 
-		note[stair] = climbFunc(stair-1) + climbFunc(stair-2)
-		return note[stair]
+		memo[stair] = climbFunc(stair+1) + climbFunc(stair+2)
+
+		return memo[stair]
+	}
+
+	return climbFunc(0)
+}
+
+func climbStairsMemoAlt(n int) int {
+	memo := make(map[int]int)
+
+	var climbFunc func(stair int) int
+	climbFunc = func(stair int) int {
+		// Base Case: Reach the start of the stair
+		if stair == 1 || stair == 2 {
+			return stair
+		}
+
+		if val, ok := memo[stair]; ok {
+			return val
+		}
+
+		memo[stair] = climbFunc(stair-1) + climbFunc(stair-2)
+		return memo[stair]
 	}
 
 	return climbFunc(n)
 }
 
-func climbStairsMemoriseDPExercise(n int) int {
-	return 0
-}
-
-func climbStairsBottomUpDP(n int) int {
+func climbStairsTable(n int) int {
 	if n <= 1 {
 		return 1
 	}
@@ -46,11 +65,14 @@ func climbStairsBottomUpDP(n int) int {
 		return 2
 	}
 
+	// DP Table is always longer 1 of the target size
 	table := make([]int, n+1)
-	table[0] = 0
+	// Set 1 as standard default of table[0]
+	table[0] = 1
 	table[1] = 1
 	table[2] = 2
 
+	// The cap of the loop is "less than and equal to" rather than just less than
 	for i := 3; i <= n; i++ {
 		table[i] = table[i-1] + table[i-2]
 	}
@@ -58,7 +80,7 @@ func climbStairsBottomUpDP(n int) int {
 	return table[n]
 }
 
-func climbStairsBottomUpDPExercise(n int) int {
+func climbStairsMemoExercise(n int) int {
 	return 0
 }
 

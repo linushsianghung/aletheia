@@ -28,7 +28,7 @@ func insertSmartCompare(intervals [][]int, newInterval []int) [][]int {
 	}
 
 	// Merge overlapping intervals with newInterval
-	for index < len(intervals) && intervals[index][0] <= newInterval[1] {
+	for index < len(intervals) && newInterval[1] >= intervals[index][0] {
 		newInterval = []int{
 			min(intervals[index][0], newInterval[0]),
 			max(intervals[index][1], newInterval[1]),
@@ -44,7 +44,7 @@ func insertSmartCompare(intervals [][]int, newInterval []int) [][]int {
 	return result
 }
 
-func insertSmartCompareExercise(intervals [][]int, newInterval []int) [][]int {
+func insertExercise(intervals [][]int, newInterval []int) [][]int {
 	return nil
 }
 

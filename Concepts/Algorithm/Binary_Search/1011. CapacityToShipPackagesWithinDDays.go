@@ -16,22 +16,24 @@ func shipWithinDays(weights []int, days int) int {
 		sumWeight += weight
 	}
 
+	// For this specific problem when the loop terminates, left will always point to the smallest valid value (the lower bound).
+	// It's unnecessary to use a separate leastWeightwer variable.
+	// leastWeight := sumWeight
+
 	// Define Search Space
 	left, right := maxWeight, sumWeight
-	leastWeight := sumWeight // Initialize leastWeightwer to the maximum possible value
 	for left <= right {
 		mid := left + (right-left)/2
 
 		// If a capacity of `mid` is feasible, it's a potential leastWeightwer. Let's record it and try for an even smaller capacity.
 		if capableToShip(weights, days, mid) {
-			leastWeight = mid
 			right = mid - 1
 		} else {
 			left = mid + 1
 		}
 	}
 
-	return leastWeight
+	return left
 }
 
 func shipWithinDaysExercise(weights []int, days int) int {

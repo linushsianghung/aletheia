@@ -12,14 +12,7 @@ func BuildGraph[T string | int](edges [][]T) map[T][]T {
 	for _, edge := range edges {
 		left, right := edge[0], edge[1]
 
-		if _, ok := graph[left]; !ok {
-			graph[left] = make([]T, 0)
-		}
 		graph[left] = append(graph[left], right)
-
-		if _, ok := graph[right]; !ok {
-			graph[right] = make([]T, 0)
-		}
 		graph[right] = append(graph[right], left)
 	}
 

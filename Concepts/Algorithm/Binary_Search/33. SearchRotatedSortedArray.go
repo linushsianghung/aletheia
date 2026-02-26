@@ -22,11 +22,11 @@ func SearchRotate(nums []int, target int) int {
 		mid := left + (right-left)/2
 
 		// If both target and nums[mid] are on the same side, just using Binary_Search as usual
-		// And for some reason, the equal signs have to be putted on the Larger side
-		if (target >= nums[0] && nums[mid] >= nums[0]) || (target < nums[0] && nums[mid] < nums[0]) {
+		// if (target >= nums[0] && nums[mid] >= nums[0]) || (target < nums[0] && nums[mid] < nums[0]): for some reason, the equal signs have to be putted on the Larger side
+		if (nums[mid] >= nums[0]) == (target >= nums[0]) {
 			if nums[mid] < target {
 				left = mid + 1
-			} else if nums[mid] < target {
+			} else if nums[mid] > target {
 				right = mid - 1
 			} else {
 				return mid
@@ -45,6 +45,35 @@ func SearchRotate(nums []int, target int) int {
 		}
 	}
 
+	return -1
+}
+
+func SearchRotateStandard(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+	
+	for left <= right {
+		mid := left + (right-left)/2
+		if nums[mid] == target {
+			return mid
+		}
+
+		// Standard Approach: Check which half is sorted
+		if nums[left] <= nums[mid] {
+			// Left half is sorted. Is target in this range?
+			if nums[left] <= target && target < nums[mid] {
+				right = mid - 1
+			} else {
+				left = mid + 1
+			}
+		} else {
+			// Right half is sorted. Is target in this range?
+			if nums[mid] < target && target <= nums[right] {
+				left = mid + 1
+			} else {
+				right = mid - 1
+			}
+		}
+	}
 	return -1
 }
 
