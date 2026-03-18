@@ -16,23 +16,23 @@ func shipWithinDays(weights []int, days int) int {
 		sumWeight += weight
 	}
 
-	// For this specific problem when the loop terminates, left will always point to the smallest valid value (the lower bound).
-	// It's unnecessary to use a separate leastWeightwer variable.
-	// leastWeight := sumWeight
-
 	// Define Search Space
 	left, right := maxWeight, sumWeight
 	for left <= right {
 		mid := left + (right-left)/2
 
-		// If a capacity of `mid` is feasible, it's a potential leastWeightwer. Let's record it and try for an even smaller capacity.
+		// If `mid` is a feasible capacity, it's a potential answer. But we want the *least*
+		// capacity, so we try for an even smaller one by setting `right = mid - 1`.
 		if capableToShip(weights, days, mid) {
 			right = mid - 1
 		} else {
+			// If `mid` is not feasible, it's too small. The answer must be larger.
 			left = mid + 1
 		}
 	}
 
+	// The loop terminates when `left > right`. `left` will be the smallest capacity
+	// for which `capableToShip` is true, which is our answer (the lower bound).
 	return left
 }
 
@@ -42,9 +42,11 @@ func shipWithinDaysExercise(weights []int, days int) int {
 
 // Monotonic Function: 'ship capacity' is enough to ship all the packages in 'days' or not
 func capableToShip(weights []int, days, capacity int) bool {
+	// Start with totalDays = 1 because we are currently filling the ship for the first day.
 	sumWeight, totalDays := 0, 1
 	for _, weight := range weights {
 		sumWeight += weight
+		// This action represents "closing the hatch" on the current day and implicitly means it at least requires totalDays + 1 to complete shipment.
 		if sumWeight > capacity {
 			totalDays++
 			if totalDays > days {

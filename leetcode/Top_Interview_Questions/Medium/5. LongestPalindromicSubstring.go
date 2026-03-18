@@ -15,7 +15,7 @@ current i = 4
 
 if length = 5 => (s, i, i)
 start = 2 = 4 - (5-1)/2
-end = 6 = 4 + length/2
+end = 6 = 4 + 5/2
 
 if length = 6 => (s, i, i+1)
 start = 2 = 4 - (6-1)/2
@@ -40,7 +40,7 @@ func LongestPalindrome(s string) string {
 		len2 := outwardComparison(s, i, i+1)
 		maxLen := max(len1, len2)
 
-		if maxLen > end-start {
+		if maxLen > end-start+1 {
 			start = i - (maxLen-1)/2
 			end = i + maxLen/2
 		}
@@ -66,6 +66,10 @@ func outwardComparison(s string, left, right int) int {
 	return right - left - 1
 }
 
+func outwardComparisonExercise(s string, left, right int) int {
+	return 0
+}
+
 func outwardComparisonAlt(s string, left, right int) int {
 	length := 0
 
@@ -80,10 +84,6 @@ func outwardComparisonAlt(s string, left, right int) int {
 	}
 
 	return length
-}
-
-func outwardComparisonExercise(s string, left, right int) int {
-	return 0
 }
 
 // LongestPalindromeInefficient preserves the original implementation for reference.

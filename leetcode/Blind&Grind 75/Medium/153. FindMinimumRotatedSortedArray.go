@@ -21,9 +21,10 @@ func findMin(nums []int) int {
 			return min(anchor, nums[left])
 		}
 
+		// Standard Binary Search Algorithm
 		mid := left + (right-left)/2
 		anchor = min(anchor, nums[mid])
-		if nums[mid] >= nums[left] {
+		if nums[left] <= nums[mid] {
 			left = mid + 1
 		} else {
 			right = mid - 1

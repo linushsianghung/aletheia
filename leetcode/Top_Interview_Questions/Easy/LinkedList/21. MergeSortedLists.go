@@ -21,10 +21,6 @@ func MergeTwoLists(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListN
 	// return mergeTwoListsRecursively(l1, l2)
 }
 
-func mergeTwoListsExercise(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
-	return nil
-}
-
 func mergeTwoListsIteratively(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
 
 	dummy := &leetcode.ListNode{} /* For aggregating 2 lists into this new node, rather than merging to each other */
@@ -53,6 +49,6 @@ func mergeTwoListsIteratively(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *lee
 	return dummy.Next
 }
 
-func mergeTwoListsRecursively(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
+func mergeTwoListsExercise(l1 *leetcode.ListNode, l2 *leetcode.ListNode) *leetcode.ListNode {
 	return nil
 }

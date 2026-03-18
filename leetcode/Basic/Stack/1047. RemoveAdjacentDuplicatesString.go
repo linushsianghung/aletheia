@@ -29,23 +29,35 @@ func removeDuplicatesStack(s string) string {
 }
 
 func removeDuplicatesExercise(s string) string {
-	return ""
-}
+	anchor, stack := 0, []rune(s)
 
-// The idea is the same by using a rune slice as a stack and manipulate it in place
-func removeDuplicates2Pointers(s string) string {
-	anchor, sRune := 0, []rune(s)
+	for _, c := range s {
+		stack[anchor] = c
 
-	for _, r := range sRune {
-		sRune[anchor] = r
-		if anchor > 0 && sRune[anchor-1] == r {
+		if anchor > 0 && stack[anchor-1] == c {
 			anchor -= 2
 		}
 
 		anchor++
 	}
 
-	return string(sRune[:anchor])
+	return ""
+}
+
+// The idea is the same by using a rune slice as a stack and manipulate it in place
+func removeDuplicates2Pointers(s string) string {
+	anchor, stack := 0, []rune(s)
+
+	for _, r := range stack {
+		stack[anchor] = r
+		if anchor > 0 && stack[anchor-1] == r {
+			anchor -= 2
+		}
+
+		anchor++
+	}
+
+	return string(stack[:anchor])
 }
 
 // Related Problem: 113. Path Sum II: https://leetcode.com/problems/path-sum-ii/

@@ -30,7 +30,26 @@ func minCostClimbingStairs(cost []int) int {
 }
 
 func minCostClimbingStairsExercise(cost []int) int {
-	return 0
+	note := make([]int, len(cost))
+	for i := range note {
+		note[i] = -1
+	}
+
+	var minCostFunc func(index int) int
+	minCostFunc = func(index int) int {
+		if index < 0 {
+			return 0
+		}
+
+		if note[index] != -1 {
+			return note[index]
+		}
+
+		note[index] = cost[index] + min(minCostFunc(index-1), minCostFunc(index-2))
+		return note[index]
+	}
+
+	return minCostFunc(len(cost) - 1)
 }
 
 func minCostClimbingStairsStraight(cost []int) int {

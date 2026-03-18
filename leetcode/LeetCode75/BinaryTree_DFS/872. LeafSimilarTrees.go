@@ -39,20 +39,18 @@ func leafSimilar(root1 *leetcode.TreeNode, root2 *leetcode.TreeNode) bool {
 func leafSimilarHelperRecursively(root *leetcode.TreeNode) []int {
 	result := make([]int, 0)
 
-	var nestedFunc func(node *leetcode.TreeNode) bool
-	nestedFunc = func(node *leetcode.TreeNode) bool {
+	var nestedFunc func(node *leetcode.TreeNode)
+	nestedFunc = func(node *leetcode.TreeNode) {
 		if node == nil {
-			return true
+			return
 		}
 
-		left := nestedFunc(node.Left)
-		right := nestedFunc(node.Right)
+		nestedFunc(node.Left)
+		nestedFunc(node.Right)
 
-		if left && right {
+		if node.Left == nil && node.Right == nil {
 			result = append(result, node.Val)
 		}
-
-		return false
 	}
 
 	nestedFunc(root)

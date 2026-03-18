@@ -40,8 +40,7 @@ func postorderTraversalIteratively(root *leetcode.TreeNode) []int {
 	for len(stack) != 0 {
 		current := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		// Because of Post Order Traversal which root node will always be visited last,
-		// so just processed the node now but add new nodes to the head of the result.
+		// Because of Post Order Traversal which root node will always be visited last, so just processed the node now but add new nodes to the head of the result.
 		result = append([]int{current.Val}, result...)
 
 		// Based on the example, the Left subtree has to be put first

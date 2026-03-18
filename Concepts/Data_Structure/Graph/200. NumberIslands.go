@@ -8,11 +8,17 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
 You may assume all four edges of the grid are all surrounded by water.
 */
 func NumIslands(grid [][]byte) int {
-	count, visited := 0, make([][]bool, len(grid))
+	rows, cols := len(grid), len(grid[0])
+	note := make([][]bool, rows)
+	for i := range note {
+		note[i] = make([]bool, cols)
+	}
 
-	for row := 0; row < len(grid); row++ {
-		for col := 0; col < len(grid[0]); col++ {
-			if exploreIsland(grid, row, col, visited) {
+	count := 0
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			// Optimization: Only start to explore if the grid is land
+			if grid[i][j] != '0' && exploreIsland(grid, i, j, note) {
 				count++
 			}
 		}
@@ -21,15 +27,11 @@ func NumIslands(grid [][]byte) int {
 	return count
 }
 
-func numIslandsExercise(grid [][]byte) int {
-	return 0
-}
-
 func exploreIsland(grid [][]byte, r, c int, visited [][]bool) bool {
 	if r < 0 || r >= len(grid) || c < 0 || c >= len(grid[0]) {
 		return false
 	}
-	if grid[r][c] == byte('0') {
+	if grid[r][c] == '0' {
 		return false
 	}
 
@@ -44,4 +46,49 @@ func exploreIsland(grid [][]byte, r, c int, visited [][]bool) bool {
 	exploreIsland(grid, r, c-1, visited)
 
 	return true
+}
+
+func numIslandsExercise(grid [][]byte) int {
+	rows, cols := len(grid), len(grid[0])
+	note := make([][]bool, rows)
+	for i := range rows {
+		note[i] = make([]bool, cols)
+	}
+
+	var exploreFunc func(r, c int) bool
+	exploreFunc = func(r, c int) bool {
+		if r < 0 || r >= rows || c < 0 || c >= cols {
+			return false
+		}
+		if grid[r][c] == '0' {
+			return false
+		}
+
+		if note[r][c] {
+			return false
+		}
+		note[r][c] = true
+
+		exploreFunc(r+1, c)
+		exploreFunc(r-1, c)
+		exploreFunc(r, c+1)
+		exploreFunc(r, c-1)
+
+		return true
+	}
+
+	count := 0
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if exploreFunc(i, j) {
+				count++
+			}
+		}
+	}
+
+	return 0
+}
+
+func exploreIslandExercise(grid [][]byte, r, c int, visited [][]bool) bool {
+	return false
 }

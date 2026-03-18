@@ -16,30 +16,6 @@ func climbStairsMemo(n int) int {
 
 	var climbFunc func(stair int) int
 	climbFunc = func(stair int) int {
-		if stair > n {
-			return 0
-		}
-		if stair == n {
-			return 1
-		}
-
-		if val, ok := memo[stair]; ok {
-			return val
-		}
-
-		memo[stair] = climbFunc(stair+1) + climbFunc(stair+2)
-
-		return memo[stair]
-	}
-
-	return climbFunc(0)
-}
-
-func climbStairsMemoAlt(n int) int {
-	memo := make(map[int]int)
-
-	var climbFunc func(stair int) int
-	climbFunc = func(stair int) int {
 		// Base Case: Reach the start of the stair
 		if stair == 1 || stair == 2 {
 			return stair
@@ -80,7 +56,7 @@ func climbStairsTable(n int) int {
 	return table[n]
 }
 
-func climbStairsMemoExercise(n int) int {
+func climbStairsExercise(n int) int {
 	return 0
 }
 

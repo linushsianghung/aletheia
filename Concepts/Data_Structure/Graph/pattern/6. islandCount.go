@@ -51,6 +51,7 @@ func IslandCount(grid [][]string) int {
 }
 
 func IslandCountExercise(grid [][]string) int {
+
 	return 0
 }
 

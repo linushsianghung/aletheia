@@ -22,3 +22,7 @@ func countNegatives(grid [][]int) int {
 
 	return count
 }
+
+func countNegativesExercise(grid [][]int) int {
+	return 0
+}

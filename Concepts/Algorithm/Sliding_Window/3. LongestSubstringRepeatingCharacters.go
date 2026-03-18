@@ -8,8 +8,8 @@ Analysis:
 Time Complexity: O(n)
 1. The range keyword iterates over the string s. Even though it decodes UTF-8 characters (runes) on the fly, it visits every character exactly once. If the string has n characters, this loop runs n times.
 2. Inside the Loop (Constant Time Operations): Inside the loop, you perform the following operations:
-	- Map Lookup: if anchor, ok := note[r]; — In Go, map lookups are $O(1)$ on average.
-	- Comparison & Assignment: winStart <= anchor and winStart = ... — These are basic arithmetic operations, $O(1)$.
+	- Map Lookup: if lastIdx, ok := note[r]; — In Go, map lookups are $O(1)$ on average.
+	- Comparison & Assignment: winStart <= lastIdx and winStart = ... — These are basic arithmetic operations, $O(1)$.
 	- Math: max(...) — This is a simple comparison, $O(1)$.
 	- Map Update: note[r] = winEnd — Map insertions are $O(1)$ on average.
 3. Total Calculation: Since you perform a constant amount of work ($O(1)$) for each of the $n$ characters, the total time complexity is: $$n \times O(1) = O(n)$$

@@ -43,6 +43,7 @@ func setZeroes(matrix [][]int) {
 }
 
 func setZeroesExercise(matrix [][]int) {
+
 }
 
 func setZeroFunc(matrix [][]int, r, c int, flipped [][]bool) {

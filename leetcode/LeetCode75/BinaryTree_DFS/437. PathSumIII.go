@@ -30,6 +30,23 @@ func pathSumDP(node *leetcode.TreeNode, remain int) int {
 	return count + pathSumDP(node.Left, remain-node.Val) + pathSumDP(node.Right, remain-node.Val)
 }
 
+func pathSumExercise(root *leetcode.TreeNode, targetSum int) int {
+	if root == nil {
+		return 0
+	}
+
+	return pathSumDP(root, targetSum) + pathSum(root.Left, targetSum) + pathSum(root.Right, targetSum)
+}
+
 func pathSumDPExercise(node *leetcode.TreeNode, remain int) int {
-	return 0
+	if node == nil {
+		return 0
+	}
+
+	count := 0
+	if remain == node.Val {
+		count++
+	}
+
+	return count + pathSumDP(node.Left, remain-node.Val) + pathSumDP(node.Right, remain-node.Val)
 }

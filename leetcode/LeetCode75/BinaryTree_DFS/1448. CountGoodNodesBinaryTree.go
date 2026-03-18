@@ -1,8 +1,9 @@
 package BinaryTree_DFS
 
 import (
-	"github.com/linushung/aletheia/leetcode"
 	"math"
+
+	"github.com/linushung/aletheia/leetcode"
 )
 
 // https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/?envId=leetcode-75
@@ -20,31 +21,27 @@ Return the number of good nodes in the binary tree.
  * }
  */
 func goodNodes(root *leetcode.TreeNode) int {
-	return goodNodesRecursively(root)
-}
-
-func goodNodesRecursively(root *leetcode.TreeNode) int {
 	count := 0
 
-	var nestedFunc func(node *leetcode.TreeNode, minVal int)
-	nestedFunc = func(node *leetcode.TreeNode, minVal int) {
+	var nestedFunc func(node *leetcode.TreeNode, maxVal int)
+	nestedFunc = func(node *leetcode.TreeNode, maxVal int) {
 		if node == nil {
 			return
 		}
 
-		if node.Val >= minVal {
+		if node.Val >= maxVal {
 			count++
-			minVal = node.Val
+			maxVal = node.Val
 		}
-		nestedFunc(node.Left, minVal)
-		nestedFunc(node.Right, minVal)
+		nestedFunc(node.Left, maxVal)
+		nestedFunc(node.Right, maxVal)
 	}
 	nestedFunc(root, root.Val)
 
 	return count
 }
 
-func goodNodesRecursivelyExercise(root *leetcode.TreeNode) int {
+func goodNodesExercise(root *leetcode.TreeNode) int {
 	return 0
 }
 

@@ -1,8 +1,9 @@
 package BinaryTree_BFS
 
 import (
-	"github.com/linushung/aletheia/leetcode"
 	"math"
+
+	"github.com/linushung/aletheia/leetcode"
 )
 
 // https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/description/?envId=leetcode-75
@@ -17,9 +18,9 @@ func maxLevelSum(root *leetcode.TreeNode) int {
 
 	for len(queue) > 0 {
 		level++
-		size, sum := len(queue), 0
+		width, sum := len(queue), 0
 
-		for range size {
+		for range width {
 			current := queue[0]
 			queue = queue[1:]
 

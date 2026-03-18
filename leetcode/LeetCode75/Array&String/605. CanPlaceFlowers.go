@@ -26,19 +26,19 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 }
 
 func canPlaceFlowersSmart(flowerbed []int, n int) bool {
-	plot, flowers := 1, 0
+	emptyPlot, flowers := 1, 0
 
-	for _, flower := range flowerbed {
-		if flower == 0 {
-			plot++
+	for _, plot := range flowerbed {
+		if plot == 1 {
+			flowers += (emptyPlot - 1) / 2
+			emptyPlot = 0
 			continue
 		}
 
-		flowers += (plot - 1) / 2
-		plot = 0
+		emptyPlot++
 	}
 
-	flowers += plot / 2
+	flowers += emptyPlot / 2
 	return flowers >= n
 }
 

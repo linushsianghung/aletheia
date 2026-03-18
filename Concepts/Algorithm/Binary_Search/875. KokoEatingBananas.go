@@ -1,6 +1,8 @@
 package Binary_Search
 
-import "math"
+import (
+	"math"
+)
 
 // https://leetcode.com/problems/koko-eating-bananas/description/
 // Reference:
@@ -53,25 +55,7 @@ func minEatingSpeed(piles []int, h int) int {
 }
 
 func MinEatingSpeedExercise(piles []int, h int) int {
-	speed, maxPile := 0, 0
-
-	for _, pile := range piles {
-		maxPile = max(maxPile, pile)
-	}
-
-	left, right := 0, maxPile
-	for left <= right {
-		mid := left + (right-left)/2
-
-		if canEatPilesInTime(piles, h, mid) {
-			speed = mid
-			right = mid - 1
-		} else {
-			left = mid + 1
-		}
-	}
-
-	return speed
+	return 0
 }
 
 // Monotonic Function: Koko can eat 'k bananas' per hour in 'h' hours or not
@@ -88,11 +72,5 @@ func canEatPilesInTime(piles []int, h, k int) bool {
 }
 
 func canEatPilesInTimeExercise(piles []int, h int, k int) bool {
-	var hours float64
-
-	for _, pile := range piles {
-		hours += math.Ceil(float64(pile) / float64(k))
-	}
-
-	return hours <= float64(h)
+	return false
 }

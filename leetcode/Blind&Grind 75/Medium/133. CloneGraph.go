@@ -32,6 +32,7 @@ func cloneGraph(node *leetcode.Node) *leetcode.Node {
 
 // cloneGraphDFS implements the DFS (Depth First Search) approach which might risk a stack overflow on extremely deep graphs
 func cloneGraphDFS(node *leetcode.Node) *leetcode.Node {
+	// Map to store the mapping from Original Node -> Cloned Node
 	visited := make(map[*leetcode.Node]*leetcode.Node)
 
 	// DFS (Depth First Search) approach and use dfs as function name to follow standard graph terminology.

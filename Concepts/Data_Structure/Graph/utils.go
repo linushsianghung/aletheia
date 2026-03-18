@@ -10,15 +10,15 @@ func BuildGraph[T string | int](edges [][]T) map[T][]T {
 	graph := make(map[T][]T)
 
 	for _, edge := range edges {
-		left, right := edge[0], edge[1]
+		key, value := edge[0], edge[1]
 
-		graph[left] = append(graph[left], right)
-		graph[right] = append(graph[right], left)
+		graph[key] = append(graph[key], value)
+		graph[value] = append(graph[value], key)
 	}
 
 	return graph
 }
 
-func BuildGraphExercise[T string | int](edges [][]T) map[T][]T {
+func buildGraphExercise[T string | int](edges [][]T) map[T][]T {
 	return nil
 }

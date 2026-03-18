@@ -39,6 +39,7 @@ func explore(graph map[int][]int, node int, visited map[int]bool) bool {
 }
 
 func exploreExercise(graph map[int][]int, node int, visited map[int]bool) bool {
+	s
 	return false
 }
 

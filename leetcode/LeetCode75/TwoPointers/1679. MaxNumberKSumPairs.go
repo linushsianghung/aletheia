@@ -1,8 +1,6 @@
 package TwoPointers
 
-import (
-	"sort"
-)
+import "sort"
 
 // https://leetcode.com/problems/max-number-of-k-sum-pairs/description/?envId=leetcode-75
 /*

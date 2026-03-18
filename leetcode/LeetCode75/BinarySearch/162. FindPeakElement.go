@@ -58,3 +58,7 @@ func findPeakElement(nums []int) int {
 
 	return -1
 }
+
+func findPeakElementExercise(nums []int) int {
+	return 0
+}

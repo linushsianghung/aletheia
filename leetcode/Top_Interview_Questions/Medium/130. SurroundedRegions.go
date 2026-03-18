@@ -46,20 +46,58 @@ func solve(board [][]byte) {
 	}
 
 	// Step3. '#' are elements which cannot be flipped to 'X', so flip them back to 'O'
-	note2 := make(map[string]bool)
+	memo2 := make(map[string]bool)
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
 			if i > 0 && i < len(board)-1 && j > 0 && j < len(board[0])-1 {
 				continue
 			}
 			// It's required to create its own note
-			exploreBorderDFS(board, i, j, 'O', note2)
+			exploreBorderDFS(board, i, j, 'O', memo2)
 		}
 	}
 
 }
 
 func solveExercise(board [][]byte) {
+	rows, cols := len(board), len(board[0])
+	note1 := make([][]bool, rows)
+	for i := range note1 {
+		note1[i] = make([]bool, cols)
+	}
+
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if i > 0 && i < rows-1 && j > 0 && j < cols-1 {
+				continue
+			}
+
+			exploreBorderDFSExercise(board, i, j, '*', note1)
+		}
+	}
+
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if board[i][j] == 'O' {
+				board[i][j] = 'X'
+			}
+		}
+	}
+
+	note2 := make([][]bool, rows)
+	for i := range note2 {
+		note2[i] = make([]bool, cols)
+	}
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if i > 0 && i < rows-1 && j > 0 && j < cols-1 {
+				continue
+			}
+
+			exploreBorderDFSExercise(board, i, j, 'O', note2)
+		}
+	}
+
 }
 
 func exploreBorderDFS(board [][]byte, r, c int, marker byte, visited map[string]bool) {
@@ -83,5 +121,5 @@ func exploreBorderDFS(board [][]byte, r, c int, marker byte, visited map[string]
 	exploreBorderDFS(board, r, c+1, marker, visited)
 }
 
-func exploreBorderDFSExercise(board [][]byte, r, c int, marker byte, visited map[string]bool) {
+func exploreBorderDFSExercise(board [][]byte, r, c int, marker byte, visited [][]bool) {
 }

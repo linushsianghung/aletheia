@@ -18,7 +18,30 @@ Time Complexity: O(N * KlogK)
 3. Total Complexity: $$N \times O(KlogK) = O(N * KlogK)
 If you assume the string length K is small and constant (e.g., always less than 100), you could argue it approaches O(N), but strictly speaking, it depends on both variables.
 */
+// GroupAnagrams implements the O(N * K) approach using character counts.
+// In Go, arrays (like [26]int) can be used as map keys so instead of sorting (KlogK), we count the frequency of each character (which costs K).
+// "eat" -> [1, 0, 0, 0, 1, ... 1 ...] (1 'a', 1 'e', 1 't')
+// "tea" -> [1, 0, 0, 0, 1, ... 1 ...] (Same array)
 func GroupAnagrams(strs []string) [][]string {
+	// Key is an array of 26 integers (for a-z). Arrays are comparable in Go and can be map keys.
+	groups := make(map[[26]int][]string)
+
+	for _, str := range strs {
+		var count [26]int
+		for _, char := range str {
+			count[char-'a']++
+		}
+		groups[count] = append(groups[count], str)
+	}
+
+	result := make([][]string, 0, len(groups))
+	for _, group := range groups {
+		result = append(result, group)
+	}
+	return result
+}
+
+func GroupAnagramsNaive(strs []string) [][]string {
 	note := make(map[string][]string)
 
 	for _, str := range strs {
@@ -41,29 +64,6 @@ func GroupAnagrams(strs []string) [][]string {
 		result = append(result, anagram)
 	}
 
-	return result
-}
-
-// groupAnagramsCount implements the O(N * K) approach using character counts.
-// In Go, arrays (like [26]int) can be used as map keys so instead of sorting (KlogK), we count the frequency of each character (which costs K).
-// "eat" -> [1, 0, 0, 0, 1, ... 1 ...] (1 'a', 1 'e', 1 't')
-// "tea" -> [1, 0, 0, 0, 1, ... 1 ...] (Same array)
-func groupAnagramsCount(strs []string) [][]string {
-	// Key is an array of 26 integers (for a-z). Arrays are comparable in Go and can be map keys.
-	groups := make(map[[26]int][]string)
-
-	for _, str := range strs {
-		var count [26]int
-		for _, char := range str {
-			count[char-'a']++
-		}
-		groups[count] = append(groups[count], str)
-	}
-
-	result := make([][]string, 0, len(groups))
-	for _, group := range groups {
-		result = append(result, group)
-	}
 	return result
 }
 

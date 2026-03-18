@@ -52,6 +52,5 @@ func minimumIsland(grid [][]string) int {
 }
 
 func minimumIslandExercise(grid [][]string) int {
-
 	return 0
 }

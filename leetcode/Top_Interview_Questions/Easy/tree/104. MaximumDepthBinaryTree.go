@@ -42,9 +42,9 @@ func maxDepthBFSIteratively(root *leetcode.TreeNode) int {
 
 	for len(queue) > 0 {
 		level++
-		size := len(queue) // cache the amount of nodes for this level
+		width := len(queue) // cache the amount of nodes for this level
 
-		for i := 0; i < size; i++ {
+		for range width {
 			current := queue[0]
 			queue = queue[1:]
 			if current.Left != nil {

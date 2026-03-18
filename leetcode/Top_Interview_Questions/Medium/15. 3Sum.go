@@ -51,14 +51,14 @@ func threeSumSort(nums []int) [][]int {
 		// Implement 2 pointers strategy for a sorted array
 		left, right := i+1, len(nums)-1
 		for left < right {
-			//if left > i+1 && nums[left] == nums[left-1] {
-			//	left++
-			//	continue
-			//}
-			//if right < len(nums)-1 && nums[right] == nums[right+1] {
-			//	right--
-			//	continue
-			//}
+			if left > i+1 && nums[left] == nums[left-1] {
+				left++
+				continue
+			}
+			if right < len(nums)-1 && nums[right] == nums[right+1] {
+				right--
+				continue
+			}
 
 			// It is cleaner to calculate the sum once
 			sum := num + nums[left] + nums[right]
@@ -72,12 +72,12 @@ func threeSumSort(nums []int) [][]int {
 				left++
 				right--
 				// Skip duplicates immediately to avoid redundant checks
-				for left < right && nums[left] == nums[left-1] {
-					left++
-				}
-				for left < right && nums[right] == nums[right+1] {
-					right--
-				}
+				//for left < right && nums[left] == nums[left-1] {
+				//	left++
+				//}
+				//for left < right && nums[right] == nums[right+1] {
+				//	right--
+				//}
 			}
 		}
 	}
@@ -86,45 +86,6 @@ func threeSumSort(nums []int) [][]int {
 }
 
 func threeSumSortExercise(nums []int) [][]int {
-	sort.Ints(nums)
-
-	if nums[0] > 0 {
-		return nil
-	}
-
-	result := make([][]int, 0)
-	for i, num := range nums {
-		if num > 0 {
-			break
-		}
-
-		if i > 0 && num == nums[i-1] {
-			continue
-		}
-
-		left, right := i+1, len(nums)-1
-		for left < right {
-			sum := nums[left] + nums[right]
-
-			if sum < num {
-				left++
-			} else if sum > num {
-				right++
-			} else {
-				result = append(result, []int{num, nums[left], nums[right]})
-				left++
-				right--
-			}
-
-			for nums[left-1] == nums[left] {
-				left++
-			}
-			for nums[right+1] == nums[right] {
-				right--
-			}
-		}
-	}
-
 	return nil
 }
 

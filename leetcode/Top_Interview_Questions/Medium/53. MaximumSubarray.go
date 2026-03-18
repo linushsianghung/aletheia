@@ -58,7 +58,7 @@ func MaxSubArray(nums []int) int {
 		return 0
 	}
 
-	maxSum, currentBestSum := math.MinInt32, math.MinInt32
+	maxSum, currentBestSum := math.MinInt32, 0
 	for _, num := range nums {
 		/* Kadane's Algorithm (Dynamic_Programming):
 		   For each element [i], the value of element [i-1] is the best solution of subarray ending at that point.

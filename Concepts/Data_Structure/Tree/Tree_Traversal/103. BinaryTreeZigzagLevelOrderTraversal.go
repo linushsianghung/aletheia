@@ -1,6 +1,8 @@
 package Tree_Traversal
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // ZigzagLevelOrder https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/description/
 /*
@@ -22,26 +24,18 @@ func zigzagLevelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	queue, result := []*leetcode.TreeNode{root}, make([][]int, 0)
 
 	for len(queue) > 0 {
-		levelSize := len(queue)
-		nodes := make([]int, levelSize)
-		//nodes := make([]int, 0)
+		width := len(queue)
+		values := make([]int, width)
 
-		for i := 0; i < levelSize; i++ {
+		for i := range width {
 			current := queue[0]
 			queue = queue[1:]
 
 			if level%2 == 1 {
-				nodes[i] = current.Val
+				values[i] = current.Val
 			} else {
-				// Put value from the end of the slice
-				nodes[len(nodes)-1-i] = current.Val
+				values[width-1-i] = current.Val
 			}
-
-			//if level%2 == 1 {
-			//	nodes = append(nodes, current.Val)
-			//} else {
-			//	nodes = append([]int{current.Val}, nodes...)
-			//}
 
 			if current.Left != nil {
 				queue = append(queue, current.Left)
@@ -50,8 +44,9 @@ func zigzagLevelOrderIteratively(root *leetcode.TreeNode) [][]int {
 				queue = append(queue, current.Right)
 			}
 		}
-		result = append(result, nodes)
+
 		level++
+		result = append(result, values)
 	}
 
 	return result

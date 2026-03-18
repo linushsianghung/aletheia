@@ -12,9 +12,10 @@ func uniqueOccurrences(arr []int) bool {
 
 	result := make(map[int]bool)
 	for _, v := range note {
-		if ok := result[v]; ok {
+		if result[v] {
 			return false
 		}
+
 		result[v] = true
 	}
 

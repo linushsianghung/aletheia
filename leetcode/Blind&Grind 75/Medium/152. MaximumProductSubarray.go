@@ -52,6 +52,10 @@ func maxProduct2Ways(nums []int) int {
 	return maxProd
 }
 
+func MaxProductExercise(nums []int) int {
+	return 0
+}
+
 // Related Problem: 53. Maximum Subarray: https://leetcode.com/problems/maximum-subarray/description/
 func maxProduct(nums []int) int {
 	return Medium.MaxSubArray(nums)

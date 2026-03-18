@@ -1,6 +1,8 @@
 package Tree_Traversal
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // InorderTraversal https://leetcode.com/problems/binary-tree-inorder-traversal/
 // Ref: https://www.youtube.com/watch?v=g_S5WuasWUE

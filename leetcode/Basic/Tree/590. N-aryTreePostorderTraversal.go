@@ -43,7 +43,6 @@ func postorderIteratively(root *leetcode.Node) []int {
 	for len(stack) != 0 {
 		current := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-
 		result = append([]int{current.Val}, result...)
 		stack = append(stack, current.Children...)
 	}

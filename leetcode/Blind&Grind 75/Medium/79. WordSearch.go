@@ -7,8 +7,6 @@ Given an m x n grid of characters board and a string word, return true if word e
 
 The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring.
 The same letter cell may not be used more than once.
-
-***Failed in specific case: Time Limit Exceeded ***
 */
 func exist(board [][]byte, word string) bool {
 	rows, cols := len(board), len(board[0])
@@ -33,7 +31,7 @@ func exist(board [][]byte, word string) bool {
 		temp := board[r][c]
 		board[r][c] = '#'
 
-		// Explore 4 neighbors
+		// Explore neighbors
 		found := dfs(r+1, c, index+1) ||
 			dfs(r-1, c, index+1) ||
 			dfs(r, c+1, index+1) ||
@@ -53,6 +51,10 @@ func exist(board [][]byte, word string) bool {
 		}
 	}
 
+	return false
+}
+
+func existExercise(board [][]byte, word string) bool {
 	return false
 }
 

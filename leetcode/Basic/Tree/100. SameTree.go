@@ -28,9 +28,5 @@ func IsSameTree(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
 }
 
 func isSameTreeExercise(p *leetcode.TreeNode, q *leetcode.TreeNode) bool {
-	if p == nil || q == nil {
-		return p == q
-	}
-
-	return p.Val == q.Val && isSameTreeExercise(p.Left, q.Left) && isSameTreeExercise(p.Right, q.Right)
+	return false
 }

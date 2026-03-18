@@ -10,30 +10,26 @@ Return true if you can finish all courses. Otherwise, return false.
 func canFinish(numCourses int, prerequisites [][]int) bool {
 	graph := buildGraph(prerequisites)
 
-	visited := make(map[int]bool)
-	var hasCycleFunc func(course int) bool
-	hasCycleFunc = func(course int) bool {
-		if len(graph[course]) == 0 {
-			return false
-		}
-
+	var hasCycleFunc func(course int, visited map[int]bool) bool
+	hasCycleFunc = func(course int, visited map[int]bool) bool {
 		if visited[course] {
 			return true
 		}
 		visited[course] = true
 
 		for _, c := range graph[course] {
-			if hasCycleFunc(c) {
+			if hasCycleFunc(c, visited) {
 				return true
 			}
 		}
 		visited[course] = false
+		// It's necessary in order for the edge case of long chain courses
 		graph[course] = make([]int, 0)
 		return false
 	}
 
 	for i := range numCourses {
-		if hasCycleFunc(i) {
+		if hasCycleFunc(i, make(map[int]bool)) {
 			return false
 		}
 	}
@@ -46,12 +42,43 @@ func buildGraph(prerequisites [][]int) map[int][]int {
 
 	for _, prereq := range prerequisites {
 		course, pre := prereq[0], prereq[1]
-
-		if _, ok := graph[course]; !ok {
-			graph[course] = make([]int, 0)
-		}
 		graph[course] = append(graph[course], pre)
 	}
 
 	return graph
+}
+
+func canFinishExercise(numCourses int, prerequisites [][]int) bool {
+	graph := buildGraph(prerequisites)
+	visited := make(map[int]bool)
+
+	var hasCycle func(course int) bool
+	hasCycle = func(course int) bool {
+		if visited[course] {
+			return true
+		}
+		visited[course] = true
+
+		for _, pre := range graph[course] {
+			if hasCycle(pre) {
+				return true
+			}
+		}
+
+		visited[course] = false
+		graph[course] = make([]int, 0)
+
+		return false
+	}
+
+	for course := range graph {
+		if hasCycle(course) {
+			return false
+		}
+	}
+	return false
+}
+
+func buildGraphExercise(prerequisites [][]int) map[int][]int {
+	return nil
 }

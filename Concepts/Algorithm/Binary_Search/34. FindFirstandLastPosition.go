@@ -40,11 +40,6 @@ func binarySearchLeft(nums []int, target int) int {
 	return anchor
 }
 
-func binarySearchLeftExercise(nums []int, target int) int {
-
-	return 0
-}
-
 func binarySearchRight(nums []int, target int) int {
 	left, right, anchor := 0, len(nums)-1, -1
 
@@ -63,6 +58,6 @@ func binarySearchRight(nums []int, target int) int {
 	return anchor
 }
 
-func binarySearchRightExercise(nums []int, target int) int {
+func binarySearchHalf(nums []int, target int) int {
 	return 0
 }

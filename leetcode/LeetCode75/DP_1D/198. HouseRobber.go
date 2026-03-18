@@ -32,6 +32,10 @@ func Rob(nums []int) int {
 	return robFunc(len(nums) - 1)
 }
 
+func robExercise(nums []int) int {
+	return 0
+}
+
 func robMapNote(nums []int) int {
 	note := make(map[int]int)
 
@@ -50,10 +54,6 @@ func robMapNote(nums []int) int {
 	}
 
 	return robFunc(len(nums) - 1)
-}
-
-func robExercise(nums []int) int {
-	return 0
 }
 
 // Related Problem: 213. House Robber II: https://leetcode.com/problems/house-robber-ii

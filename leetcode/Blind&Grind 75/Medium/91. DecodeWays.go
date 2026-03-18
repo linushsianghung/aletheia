@@ -56,7 +56,7 @@ func NumDecodings(s string) int {
 	return numDecodingsMemo(s)
 }
 
-// Improvements of numDecodingsAlternativeddddd:
+// Improvements of numDecodingsAlternative:
 // 1. Uses 'index' (int) as the map key instead of substring to save memory and time.
 // 2. Uses character literals ('0', '1') instead of ASCII codes (48, 49) for readability.
 func numDecodingsMemo(s string) int {
@@ -68,8 +68,8 @@ func numDecodingsMemo(s string) int {
 		memo[i] = -1
 	}
 
-	var dfs func(index int) int
-	dfs = func(index int) int {
+	var decodeFunc func(index int) int
+	decodeFunc = func(index int) int {
 		// Base Case: Reached end of string successfully
 		if index == len(s) {
 			return 1
@@ -85,11 +85,11 @@ func numDecodingsMemo(s string) int {
 		}
 
 		// 1. Decode single digit
-		count := dfs(index + 1)
+		count := decodeFunc(index + 1)
 		// 2. Decode two digits (must be between "10" and "26")
 		if index < len(s)-1 {
 			if s[index] == '1' || (s[index] == '2' && s[index+1] <= '6') {
-				count += dfs(index + 2)
+				count += decodeFunc(index + 2)
 			}
 		}
 
@@ -97,7 +97,7 @@ func numDecodingsMemo(s string) int {
 		return count
 	}
 
-	return dfs(0)
+	return decodeFunc(0)
 }
 
 // numDecodingsTable is the Iterative (Bottom-Up) approach.

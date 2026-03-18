@@ -1,6 +1,8 @@
 package Medium
 
-import "github.com/linushung/aletheia/leetcode"
+import (
+	"github.com/linushung/aletheia/leetcode"
+)
 
 // https://leetcode.com/problems/reorder-list/
 /*

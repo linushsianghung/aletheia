@@ -19,10 +19,10 @@ func levelOrderIteratively(root *leetcode.TreeNode) [][]int {
 	queue := []*leetcode.TreeNode{root}
 
 	for len(queue) > 0 {
-		nodes := len(queue)
-		values := make([]int, nodes)
+		width := len(queue)
+		values := make([]int, width)
 
-		for i := range nodes {
+		for i := range width {
 			current := queue[0]
 			queue = queue[1:]
 			// Because values slice has been specified the length, it cannot use "values = append(values, current.Val)" which result in zero leading slices: [[0 3] [0 0 9 20] [0 0 15 7]]

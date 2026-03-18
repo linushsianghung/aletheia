@@ -35,3 +35,7 @@ func pairSum(head *leetcode.ListNode) int {
 
 	return maxSum
 }
+
+func pairSumExercise(head *leetcode.ListNode) int {
+	return 0
+}

@@ -46,7 +46,7 @@ func hasCycle1(head *leetcode.ListNode) bool {
 	return false
 }
 
-func hasCycle1Exercise(head *leetcode.ListNode) bool {
+func hasCycleExercise(head *leetcode.ListNode) bool {
 	return false
 }
 

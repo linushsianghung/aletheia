@@ -19,10 +19,12 @@ func isSubsequence(s string, t string) bool {
 	for i := range t {
 		if t[i] == s[idx] {
 			idx++
+
+			if idx == len(s) {
+				return true
+			}
 		}
-		if idx == len(s) {
-			return true
-		}
+
 	}
 
 	return idx == len(s)
