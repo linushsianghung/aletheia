@@ -1,3 +1,3 @@
-package BinaryHeap
+package Heap
 
 type PriorityQueue interface{}

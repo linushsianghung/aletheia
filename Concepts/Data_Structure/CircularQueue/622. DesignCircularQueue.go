@@ -18,9 +18,11 @@ Implement the MyCircularQueue class:
 You must solve the problem without using the built-in queue data structure in your programming language.
 
 Analysis:
-Below implementation uses one more variable "count" with front and rear to maintain the internal status of the queue. The benefit is that the implementation of the functions, like IsEmpty and IsFull, becomes more intuitive and easier to understand. Also use 0, and 1 for the initial value for front and rear pointers which might not be consistent for both variable, but it exactly describes the current status of the queue:
-- rear == -1 means there is no element in the queue
+Below implementation uses one more variable "count" with front and rear to maintain the internal status of the queue.
+The benefit is that the implementation of the functions, like IsEmpty and IsFull, becomes more intuitive and easier to understand.
+Also use 0, and -1 for the initial value for front and rear pointers which might not be consistent for both variable, but it exactly describes the current status of the queue:
 - front == 0 means if the queue is not empty, just read the element of current index
+- rear == -1 means there is no element in the queue
 */
 
 type CircularQueue struct {
@@ -43,54 +45,54 @@ func Construct(k int) CircularQueue {
 }
 
 // EnQueue Inserts an element into the circular queue. Return true if the operation is successful.
-func (this *CircularQueue) EnQueue(value int) bool {
-	if this.IsFull() {
+func (q *CircularQueue) EnQueue(value int) bool {
+	if q.IsFull() {
 		return false
 	}
 
-	this.rear = (this.rear + 1) % this.size
-	this.buffer[this.rear] = value
-	this.count++
+	q.rear = (q.rear + 1) % q.size
+	q.buffer[q.rear] = value
+	q.count++
 
 	return true
 }
 
 // DeQueue Deletes an element from the circular queue. Return true if the operation is successful.
-func (this *CircularQueue) DeQueue() bool {
-	if this.IsEmpty() {
+func (q *CircularQueue) DeQueue() bool {
+	if q.IsEmpty() {
 		return false
 	}
 
-	this.front = (this.front + 1) % this.size
-	this.count--
+	q.front = (q.front + 1) % q.size
+	q.count--
 
 	return true
 }
 
 // Front Gets the front item from the queue. If the queue is empty, return -1.
-func (this *CircularQueue) Front() int {
-	if this.IsEmpty() {
+func (q *CircularQueue) Front() int {
+	if q.IsEmpty() {
 		return -1
 	}
 
-	return this.buffer[this.front]
+	return q.buffer[q.front]
 }
 
 // Rear Gets the last item from the queue. If the queue is empty, return -1.
-func (this *CircularQueue) Rear() int {
-	if this.IsEmpty() {
+func (q *CircularQueue) Rear() int {
+	if q.IsEmpty() {
 		return -1
 	}
 
-	return this.buffer[this.rear]
+	return q.buffer[q.rear]
 }
 
 // IsEmpty Checks whether the circular queue is empty or not.
-func (this *CircularQueue) IsEmpty() bool {
-	return this.count == 0
+func (q *CircularQueue) IsEmpty() bool {
+	return q.count == 0
 }
 
 // IsFull Checks whether the circular queue is full or not.
-func (this *CircularQueue) IsFull() bool {
-	return this.count == this.size
+func (q *CircularQueue) IsFull() bool {
+	return q.count == q.size
 }
