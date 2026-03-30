@@ -32,5 +32,19 @@ func undirectedPathDFS(graph map[string][]string, src, dst string, visited map[s
 }
 
 func undirectedPathExercise(graph map[string][]string, src, dst string, visited map[string]bool) bool {
+	if src == dst {
+		return true
+	}
+	if visited[src] {
+		return false
+	}
+	visited[src] = true
+
+	for _, neighbor := range graph[src] {
+		if undirectedPathDFS(graph, neighbor, dst, visited) {
+			return true
+		}
+	}
+
 	return false
 }

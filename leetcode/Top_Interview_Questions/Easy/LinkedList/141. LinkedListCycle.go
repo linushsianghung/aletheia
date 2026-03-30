@@ -27,10 +27,6 @@ func HasCycle(head *leetcode.ListNode) bool {
 		return false
 	}
 
-	return hasCycle1(head)
-}
-
-func hasCycle1(head *leetcode.ListNode) bool {
 	slow, fast := head, head
 
 	// Alternative: fast.Next != nil && fast.Next.Next != nil,

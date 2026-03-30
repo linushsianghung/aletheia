@@ -49,43 +49,6 @@ func exploreIsland(grid [][]byte, r, c int, visited [][]bool) bool {
 }
 
 func numIslandsExercise(grid [][]byte) int {
-	rows, cols := len(grid), len(grid[0])
-	note := make([][]bool, rows)
-	for i := range rows {
-		note[i] = make([]bool, cols)
-	}
-
-	var exploreFunc func(r, c int) bool
-	exploreFunc = func(r, c int) bool {
-		if r < 0 || r >= rows || c < 0 || c >= cols {
-			return false
-		}
-		if grid[r][c] == '0' {
-			return false
-		}
-
-		if note[r][c] {
-			return false
-		}
-		note[r][c] = true
-
-		exploreFunc(r+1, c)
-		exploreFunc(r-1, c)
-		exploreFunc(r, c+1)
-		exploreFunc(r, c-1)
-
-		return true
-	}
-
-	count := 0
-	for i := 0; i < rows; i++ {
-		for j := 0; j < cols; j++ {
-			if exploreFunc(i, j) {
-				count++
-			}
-		}
-	}
-
 	return 0
 }
 

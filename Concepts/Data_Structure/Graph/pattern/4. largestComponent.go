@@ -23,10 +23,6 @@ func largestComponent(graph map[int][]int) int {
 	return maxCount
 }
 
-func largestComponentExercise(graph map[int][]int) int {
-	return 0
-}
-
 // exploreSize uses Depth-First Search (DFS) to find the number of nodes in a single connected component starting from a given node.
 func exploreSize(graph map[int][]int, node int, visited map[int]bool) int {
 	// Base case: If the node has already been visited, we don't count it again.
@@ -43,6 +39,10 @@ func exploreSize(graph map[int][]int, node int, visited map[int]bool) int {
 	}
 
 	return count
+}
+
+func largestComponentExercise(graph map[int][]int) int {
+	return 0
 }
 
 func exploreSizeExercise(graph map[int][]int, node int, visited map[int]bool) int {

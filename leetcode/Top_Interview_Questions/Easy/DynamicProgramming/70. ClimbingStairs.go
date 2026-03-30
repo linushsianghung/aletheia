@@ -33,12 +33,9 @@ func climbStairsMemo(n int) int {
 }
 
 func climbStairsTable(n int) int {
-	if n <= 1 {
-		return 1
-	}
 	// It's necessary for initial check because of the edge case, like n = 1 which will lead to index out of range [2] with length 2
-	if n == 2 {
-		return 2
+	if n == 1 || n == 2 {
+		return n
 	}
 
 	// DP Table is always longer 1 of the target size

@@ -12,20 +12,21 @@ Given edges and the integers n, source, and destination, return true if there is
 */
 func ValidPath(n int, edges [][]int, source int, destination int) bool {
 	graph := BuildGraph(edges)
+	note := make(map[int]struct{})
 
-	var validPathHelper func(src int, note map[int]bool) bool
-	validPathHelper = func(src int, note map[int]bool) bool {
+	var validPathHelper func(src int) bool
+	validPathHelper = func(src int) bool {
 		if src == destination {
 			return true
 		}
 
-		if note[src] {
+		if _, ok := note[src]; ok {
 			return false
 		}
-		note[src] = true
+		note[src] = struct{}{}
 
 		for _, node := range graph[src] {
-			if validPathHelper(node, note) {
+			if validPathHelper(node) {
 				return true
 			}
 		}
@@ -33,5 +34,10 @@ func ValidPath(n int, edges [][]int, source int, destination int) bool {
 		return false
 	}
 
-	return validPathHelper(source, make(map[int]bool))
+	return validPathHelper(source)
+}
+
+func ValidPathExercise(n int, edges [][]int, source int, destination int) bool {
+
+	return false
 }

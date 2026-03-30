@@ -1,7 +1,5 @@
 package pattern
 
-import "math"
-
 /*
 Write a function, minimumIsland, that takes in a grid containing Ws and Ls. W represents water and L represents land.
 The function should return the size of the smallest island. An island is a vertically or horizontally connected region of land.
@@ -9,9 +7,9 @@ The function should return the size of the smallest island. An island is a verti
 You may assume that the grid contains at least one island.
 */
 func minimumIsland(grid [][]string) int {
-	// Initialize minSize to the largest possible integer. This ensures that the size of the first island found will be smaller.
-	minSize := math.MaxInt
 	rows, cols := len(grid), len(grid[0])
+	// Initialize minSize to the largest possible size. This ensures that the size of the first island found will be smaller.
+	minSize := rows * cols
 
 	// Optimization: Use a flattened 1D slice for the visited set. This improves performance by using a single memory allocation and improving cache locality.
 	visited := make([]bool, rows*cols)

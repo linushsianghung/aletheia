@@ -21,10 +21,6 @@ func connectedComponentsCount(graph map[int][]int) int {
 	return count
 }
 
-func connectedComponentsCountExercise(graph map[int][]int) int {
-	return 0
-}
-
 func explore(graph map[int][]int, node int, visited map[int]bool) bool {
 	if visited[node] {
 		return false
@@ -38,8 +34,11 @@ func explore(graph map[int][]int, node int, visited map[int]bool) bool {
 	return true
 }
 
+func connectedComponentsCountExercise(graph map[int][]int) int {
+	return 0
+}
+
 func exploreExercise(graph map[int][]int, node int, visited map[int]bool) bool {
-	s
 	return false
 }
 

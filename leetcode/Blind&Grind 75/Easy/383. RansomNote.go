@@ -28,3 +28,8 @@ func canConstruct(ransomNote string, magazine string) bool {
 
 	return true
 }
+
+func canConstructExercise(ransomNote string, magazine string) bool {
+
+	return true
+}

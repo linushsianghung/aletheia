@@ -32,3 +32,7 @@ func isBalanced(root *leetcode.TreeNode) bool {
 
 	return balanceFunc(root) != -1
 }
+
+func isBalancedExercise(root *leetcode.TreeNode) bool {
+	return false
+}
