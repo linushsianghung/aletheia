@@ -9,7 +9,6 @@ import (
 // https://leetcode.com/problems/balanced-binary-tree/description/
 /* Given a binary tree, determine if it is height-balanced. */
 func isBalanced(root *leetcode.TreeNode) bool {
-
 	var balanceFunc func(node *leetcode.TreeNode) int
 	balanceFunc = func(node *leetcode.TreeNode) int {
 		if node == nil {
@@ -34,5 +33,25 @@ func isBalanced(root *leetcode.TreeNode) bool {
 }
 
 func isBalancedExercise(root *leetcode.TreeNode) bool {
-	return false
+	var isBalancedFunc func(node *leetcode.TreeNode) int
+	isBalancedFunc = func(node *leetcode.TreeNode) int {
+		if node == nil {
+			return 0
+		}
+
+		left := isBalancedFunc(node.Left)
+		right := isBalancedFunc(node.Right)
+
+		if left == -1 || right == -1 {
+			return -1
+		}
+
+		if math.Abs(float64(right-left)) > 1 {
+			return -1
+		}
+
+		return 1 + max(left, right)
+	}
+
+	return isBalancedFunc(root) != -1
 }

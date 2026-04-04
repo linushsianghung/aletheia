@@ -21,31 +21,29 @@ func UniquePaths(m int, n int) int {
 }
 
 func uniquePathsExercise(m int, n int) int {
-	return 0
-}
-
-func UniquePathsMemorisation(m, n int) int {
-	memo := make([][]int, m)
-	for i := range memo {
-		memo[i] = make([]int, n)
+	note := make([][]int, m)
+	for i := range note {
+		note[i] = make([]int, n)
 	}
 
 	var uniqueFunc func(r, c int) int
 	uniqueFunc = func(r, c int) int {
-		// Here the "or" operator can do the job for improvement because whenever reaching the edge, there is definitely one way to arrive the end point
-		if r == 0 || c == 0 {
+		if r == 1 || c == 1 {
 			return 1
 		}
-
-		if memo[r][c] > 0 {
-			return memo[r][c]
+		if note[r][c] > 0 {
+			return note[r][c]
 		}
-
-		memo[r][c] = uniqueFunc(r-1, c) + uniqueFunc(r, c-1)
-		return memo[r][c]
+		note[r][c] = uniqueFunc(r-1, c) + uniqueFunc(r, c-1)
+		return note[r][c]
 	}
 
-	return uniqueFunc(m-1, n-1)
+	uniqueFunc(m, n)
+	return 0
+}
+
+func UniquePathsMemorisation(m, n int) int {
+	return 0
 }
 
 // Using Backtracking strategy as practice and as expect it will get "Memory Limit Exceeded" error message when the grid become larger

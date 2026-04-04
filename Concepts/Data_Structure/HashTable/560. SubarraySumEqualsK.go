@@ -1,4 +1,4 @@
-package Hash_Table
+package HashTable
 
 // https://leetcode.com/problems/subarray-sum-equals-k/description/
 /*

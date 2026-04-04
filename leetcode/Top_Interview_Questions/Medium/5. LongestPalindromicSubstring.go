@@ -70,22 +70,6 @@ func outwardComparisonExercise(s string, left, right int) int {
 	return 0
 }
 
-func outwardComparisonAlt(s string, left, right int) int {
-	length := 0
-
-	for left >= 0 && right < len(s) {
-		if s[left] != s[right] {
-			return length
-		}
-
-		length = right - left - 1
-		left--
-		right++
-	}
-
-	return length
-}
-
 // LongestPalindromeInefficient preserves the original implementation for reference.
 //
 // Time Complexity Analysis:

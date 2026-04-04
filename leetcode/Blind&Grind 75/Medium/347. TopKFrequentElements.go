@@ -1,6 +1,6 @@
 package Medium
 
-import "sort"
+import "github.com/linushung/aletheia/Concepts/Data_Structure/HashTable"
 
 // https://leetcode.com/problems/top-k-frequent-elements/
 /* Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order. */
@@ -34,59 +34,10 @@ func topKFrequentElements(nums []int, k int) []int {
 
 // Related Problem: 451. Sort Characters By Frequency: https://leetcode.com/problems/sort-characters-by-frequency/
 func frequencySort(s string) string {
-	note := make(map[rune]int)
-	for _, r := range s {
-		note[r]++
-	}
-
-	frequency := make([][]rune, len(s)+1)
-	for key, value := range note {
-		if frequency[value] == nil {
-			frequency[value] = make([]rune, 0)
-		}
-
-		// Using for loop to put the according amount of character
-		for range value {
-			frequency[value] = append(frequency[value], key)
-		}
-	}
-
-	result := make([]rune, 0)
-	for i := len(frequency) - 1; i >= 0; i-- {
-		result = append(result, frequency[i]...)
-	}
-
-	return string(result)
+	return HashTable.FrequencySort(s)
 }
 
 // Related Problem: 692. Top K Frequent Words: https://leetcode.com/problems/top-k-frequent-words/
 func topKFrequentWords(words []string, k int) []string {
-	note := make(map[string]int)
-	for _, word := range words {
-		note[word]++
-	}
-
-	frequency := make([][]string, len(words)+1)
-	for key, value := range note {
-		if frequency[value] == nil {
-			frequency[value] = make([]string, 0)
-		}
-
-		frequency[value] = append(frequency[value], key)
-	}
-
-	count, result := 0, make([]string, 0)
-	for i := len(frequency) - 1; i >= 0; i-- {
-		if count >= k {
-			break
-		}
-
-		sort.Slice(frequency[i], func(x, y int) bool {
-			return frequency[i][x] < frequency[i][y]
-		})
-		result = append(result, frequency[i]...)
-		count += len(frequency[i])
-	}
-
-	return result[:k]
+	return HashTable.TopKFrequent(words, k)
 }

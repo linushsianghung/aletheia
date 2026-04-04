@@ -55,14 +55,55 @@ func exist(board [][]byte, word string) bool {
 }
 
 func existExercise(board [][]byte, word string) bool {
+	rows, cols := len(board), len(board[0])
+	visied := make([][]bool, rows)
+	for i := range visied {
+		visied[i] = make([]bool, cols)
+	}
+
+	var existFunc func(r, c, index int) bool
+	existFunc = func(r, c, index int) bool {
+		if r < 0 || r >= rows || c < 0 || c >= cols {
+			return false
+		}
+		if visied[r][c] {
+			return false
+		}
+		visied[r][c] = true
+
+		if board[r][c] != word[index] {
+			return false
+		}
+		if board[r][c] == word[index] && index == len(word)-1 {
+			return true
+		}
+
+		isExist := existFunc(r+1, c, index+1) || existFunc(r-1, c, index+1) || existFunc(r, c+1, index+1) || existFunc(r, c-1, index+1)
+		visied[r][c] = false
+
+		return isExist
+	}
+
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			if existFunc(i, j, 0) {
+				return true
+			}
+		}
+	}
+
 	return false
 }
 
 func existNaive(board [][]byte, word string) bool {
 	rows, cols := len(board), len(board[0])
+	visied := make([][]bool, rows)
+	for i := range visied {
+		visied[i] = make([]bool, cols)
+	}
 
-	var existFunc func(r, c, index int, visited [][]bool) bool
-	existFunc = func(r, c, index int, visited [][]bool) bool {
+	var existFunc func(r, c, index int) bool
+	existFunc = func(r, c, index int) bool {
 		if index == len(word) {
 			return true
 		}
@@ -73,31 +114,21 @@ func existNaive(board [][]byte, word string) bool {
 		if board[r][c] != word[index] {
 			return false
 		}
-		if visited[r][c] {
+		if visied[r][c] {
 			return false
 		}
-		visited[r][c] = true
+		// This line changes the visited state so has to be putted at the last check.
+		visied[r][c] = true
+		
+		isExist := existFunc(r+1, c, index+1) || existFunc(r-1, c, index+1) || existFunc(r, c+1, index+1) || existFunc(r, c-1, index+1)
+		visied[r][c] = false
 
-		isExist := existFunc(r+1, c, index+1, visited) ||
-			existFunc(r-1, c, index+1, visited) ||
-			existFunc(r, c+1, index+1, visited) ||
-			existFunc(r, c-1, index+1, visited)
-		if isExist {
-			return true
-		}
-
-		visited[r][c] = false
-		return false
+		return isExist
 	}
 
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
-			visited := make([][]bool, rows)
-			for i := range visited {
-				visited[i] = make([]bool, cols)
-			}
-
-			if existFunc(i, j, 0, visited) {
+			if board[i][j] == word[0] && existFunc(i, j, 0) {
 				return true
 			}
 		}

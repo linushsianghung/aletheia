@@ -36,11 +36,11 @@ func romanToInt(s string) int {
 	}
 
 	total := symbols[s[len(s)-1]]
-	for i := len(s) - 1; i > 0; i-- {
-		if symbols[s[i-1]] >= symbols[s[i]] {
-			total += symbols[s[i-1]]
+	for i := len(s) - 2; i >= 0; i-- {
+		if symbols[s[i]] < symbols[s[i+1]] {
+			total -= symbols[s[i]]
 		} else {
-			total -= symbols[s[i-1]]
+			total += symbols[s[i]]
 		}
 	}
 

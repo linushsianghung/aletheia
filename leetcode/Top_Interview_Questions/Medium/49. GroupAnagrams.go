@@ -41,6 +41,10 @@ func GroupAnagrams(strs []string) [][]string {
 	return result
 }
 
+func groupAnagramsExercise(strs []string) [][]string {
+	return nil
+}
+
 func GroupAnagramsNaive(strs []string) [][]string {
 	note := make(map[string][]string)
 
@@ -65,8 +69,4 @@ func GroupAnagramsNaive(strs []string) [][]string {
 	}
 
 	return result
-}
-
-func groupAnagramsExercise(strs []string) [][]string {
-	return nil
 }
