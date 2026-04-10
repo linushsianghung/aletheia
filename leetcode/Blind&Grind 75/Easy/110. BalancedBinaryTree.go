@@ -33,25 +33,5 @@ func isBalanced(root *leetcode.TreeNode) bool {
 }
 
 func isBalancedExercise(root *leetcode.TreeNode) bool {
-	var isBalancedFunc func(node *leetcode.TreeNode) int
-	isBalancedFunc = func(node *leetcode.TreeNode) int {
-		if node == nil {
-			return 0
-		}
-
-		left := isBalancedFunc(node.Left)
-		right := isBalancedFunc(node.Right)
-
-		if left == -1 || right == -1 {
-			return -1
-		}
-
-		if math.Abs(float64(right-left)) > 1 {
-			return -1
-		}
-
-		return 1 + max(left, right)
-	}
-
-	return isBalancedFunc(root) != -1
+	return false
 }

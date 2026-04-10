@@ -1,5 +1,24 @@
 package Heap
 
+/*
+Use Heap Package - container/heap
+Implement the heap.Interface to use the heap operations in the heap package.
+type Interface interface {
+	sort.Interface
+	Push(x interface{}) // add x as element Len()
+	Pop() interface{}   // remove and return element Len() - 1.
+}
+
+The heap.Interface embeds sort.Interface into its signature.
+type Interface interface {
+	Len() int
+	Less(i, j int) bool
+	Swap(i, j int)
+}
+
+Therefore, it is required to create a custom type that requires to contain Len, Less, Swap, Push and Pop methods.
+*/
+
 // IntHeap implements heap.Interface and holds ints.
 type IntHeap []int
 

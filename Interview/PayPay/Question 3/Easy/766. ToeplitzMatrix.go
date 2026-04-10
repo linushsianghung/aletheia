@@ -1,4 +1,4 @@
-package Question_3
+package Easy
 
 // https://leetcode.com/problems/toeplitz-matrix/description/
 /*
@@ -9,8 +9,8 @@ A matrix is Toeplitz if every diagonal from top-left to bottom-right has the sam
 func isToeplitzMatrix(matrix [][]int) bool {
 	rows, cols := len(matrix), len(matrix[0])
 
-	for i := 0; i < rows; i++ {
-		for j := 0; j < cols; j++ {
+	for i := range rows {
+		for j := range cols {
 			if i == rows-1 || j == cols-1 {
 				continue
 			}
@@ -22,4 +22,8 @@ func isToeplitzMatrix(matrix [][]int) bool {
 	}
 
 	return true
+}
+
+func isToeplitzMatrixExercise(matrix [][]int) bool {
+	return false
 }

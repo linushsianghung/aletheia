@@ -8,9 +8,10 @@ func generateMatrix(n int) [][]int {
 		grid[i] = make([]int, n)
 	}
 
-	left, right, top, bottom := 0, n-1, 0, n-1
-	count := 1
+	top, bottom := 0, n-1
+	left, right := 0, n-1
 
+	count := 1
 	for left <= right && top <= bottom {
 		for i := left; i <= right; i++ {
 			grid[top][i] = count

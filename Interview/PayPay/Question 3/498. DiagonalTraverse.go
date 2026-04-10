@@ -11,8 +11,8 @@ func findDiagonalOrder(matrix [][]int) []int {
 		result[i] = matrix[row][col]
 
 		// If (row + col) is even → move up-right (row--, col++)
-		// If meet last column, move down (row++); if first row, move right (col++)
 		if (row+col)%2 == 0 {
+			// If meet first row & last column at the same time, it should change the direction to move down (row++)
 			if col == cols-1 {
 				row++
 			} else if row == 0 {
@@ -22,8 +22,8 @@ func findDiagonalOrder(matrix [][]int) []int {
 				col++
 			}
 			// If (row + col) is odd → move down-left (row++, col--)
-			// If meet first column, move down (row++); if meet the last row, move right (col++)
 		} else {
+			// If meet first col & last row at the same time, it should change the direction to move right (col++)
 			if row == rows-1 {
 				col++
 			} else if col == 0 {

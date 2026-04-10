@@ -32,19 +32,21 @@ func letterCombinations(digits string) []string {
 func backtrackLetterCombination(digits string, mapping map[rune]string) []string {
 	result := make([]string, 0)
 
-	var nestedFunc func(curStr string, index int)
-	nestedFunc = func(curStr string, index int) {
-		if len(curStr) == len(digits) {
-			result = append(result, curStr)
+	var nestedFunc func(processor []rune, index int)
+	nestedFunc = func(processor []rune, index int) {
+		if len(processor) == len(digits) {
+			result = append(result, string(processor))
 			return
 		}
 
 		for _, c := range mapping[rune(digits[index])] {
-			nestedFunc(curStr+string(c), index+1)
+			processor = append(processor, c)
+			nestedFunc(processor, index+1)
+			processor = processor[:len(processor)-1]
 		}
 	}
 
-	nestedFunc("", 0)
+	nestedFunc(make([]rune, 0), 0)
 	return result
 }
 

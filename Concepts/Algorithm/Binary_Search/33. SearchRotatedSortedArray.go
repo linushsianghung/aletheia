@@ -78,6 +78,29 @@ func SearchRotateStandard(nums []int, target int) int {
 }
 
 func SearchRotateExercise(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+
+	for left <= right {
+		mid := left + (right-left)/2
+		if (nums[mid] >= nums[0]) == (nums[target] >= nums[0]) {
+			if nums[mid] < target {
+				left = mid + 1
+			} else if nums[mid] > target {
+				right = mid - 1
+			} else {
+				return mid
+			}
+		} else {
+			if nums[mid] > target {
+				left = mid + 1
+			} else if nums[mid] < target {
+				right = mid - 1
+			} else {
+				return mid
+			}
+		}
+	}
+
 	return 0
 }
 

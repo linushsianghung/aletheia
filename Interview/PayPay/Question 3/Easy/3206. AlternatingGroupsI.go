@@ -1,4 +1,4 @@
-package Question_3
+package Easy
 
 // https://leetcode.com/problems/alternating-groups-i/description/
 /*

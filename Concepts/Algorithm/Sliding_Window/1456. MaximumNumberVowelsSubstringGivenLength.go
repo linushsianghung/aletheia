@@ -9,21 +9,21 @@ Given a string s and an integer k, return the maximum number of vowel letters in
 Vowel letters in English are 'a', 'e', 'i', 'o', and 'u'.
 */
 func MaxVowels(s string, k int) int {
-	windowStart, count, maxCount := 0, 0, 0
+	winStart, count, maxCount := 0, 0, 0
 	sRune := []rune(s)
 	vowels := []rune{'a', 'e', 'i', 'o', 'u'}
 
-	for windowEnd := range s {
-		if slices.Contains(vowels, sRune[windowEnd]) {
+	for winEnd := range s {
+		if slices.Contains(vowels, sRune[winEnd]) {
 			count++
 		}
-		if windowEnd >= k-1 {
+		if winEnd >= k-1 {
 			maxCount = max(maxCount, count)
 
-			if slices.Contains(vowels, sRune[windowStart]) {
+			if slices.Contains(vowels, sRune[winStart]) {
 				count--
 			}
-			windowStart++
+			winStart++
 		}
 	}
 

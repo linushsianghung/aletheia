@@ -13,20 +13,18 @@ Return the number of alternating groups.
 Note that since colors represents a circle, the first and the last tiles are considered to be next to each other.
 */
 func numberOfAlternatingGroupsII(colors []int, k int) int {
-	count, length := 0, len(colors)
-	winStart, winEnd := 0, 1
+	winStart, count, size := 0, 0, len(colors)
 
-	for winStart < len(colors) {
-		if colors[winEnd%length] == colors[(winEnd-1)%length] {
+	for winEnd := 1; winStart < size; winEnd++ {
+		if colors[winEnd%size] == colors[(winEnd-1)%size] {
 			winStart = winEnd
 		}
 
+		// Just use winEnd directly (without modulo) as if it's a normal sequence. The overflow will be handled by above condition check
 		if winEnd-winStart+1 >= k {
 			count++
 			winStart++
 		}
-
-		winEnd++
 	}
 
 	return count

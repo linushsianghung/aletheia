@@ -12,20 +12,23 @@ Note also that a translation does not include any kind of rotation. Any 1 bits t
 Return the largest possible overlap.
 
 Analysis:
-https://chatgpt.com/share/69d0bf36-0a0c-8322-86be-2c96d1bb2f0d
+https://chatgpt.com/share/69d1d64e-6f3c-8320-a40b-c6976368b0a9
 
-
+The Key Insight: If multiple pairs produce the same shift, that means
+- That one shift aligns multiple 1s at once
+- That’s exactly what we want: maximum overlap
 */
 func largestOverlap(img1 [][]int, img2 [][]int) int {
-	list1, list2 := make([][]int, 0), make([][]int, 0)
+	size := len(img1)
 
-	for i := 0; i < len(img1); i++ {
-		for j := 0; j < len(img1[0]); j++ {
+	list1, list2 := make([][2]int, 0), make([][2]int, 0)
+	for i := range size {
+		for j := range size {
 			if img1[i][j] == 1 {
-				list1 = append(list1, []int{i, j})
+				list1 = append(list1, [2]int{i, j})
 			}
 			if img2[i][j] == 1 {
-				list2 = append(list2, []int{i, j})
+				list2 = append(list2, [2]int{i, j})
 			}
 		}
 	}
@@ -41,8 +44,8 @@ func largestOverlap(img1 [][]int, img2 [][]int) int {
 	}
 
 	maxCount := 0
-	for _, value := range note {
-		maxCount = max(maxCount, value)
+	for _, val := range note {
+		maxCount = max(maxCount, val)
 	}
 
 	return maxCount

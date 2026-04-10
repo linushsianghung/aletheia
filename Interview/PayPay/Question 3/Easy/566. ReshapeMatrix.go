@@ -1,4 +1,4 @@
-package Question_3
+package Easy
 
 // https://leetcode.com/problems/reshape-the-matrix/description/
 /*
@@ -22,14 +22,18 @@ func matrixReshape(mat [][]int, r int, c int) [][]int {
 	}
 
 	count := 0
-	for i := 0; i < rows; i++ {
-		for j := 0; j < cols; j++ {
+	for i := range rows {
+		for j := range cols {
 			reshape[count/c][count%c] = mat[i][j]
 			count++
 		}
 	}
 
 	return reshape
+}
+
+func matrixReshapeExercise(mat [][]int, r int, c int) [][]int {
+	return nil
 }
 
 func matrixReshapeNaive(mat [][]int, r int, c int) [][]int {
