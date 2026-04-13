@@ -7,20 +7,19 @@ Given a string s, sort it in decreasing order based on the frequency of the char
 Return the sorted string. If there are multiple answers, return any of them.
 */
 func FrequencySort(s string) string {
-	note := make(map[rune]int)
-	for _, r := range s {
-		note[r]++
+	note := make(map[rune]int) //  map { e: 2, r: 1, ...}
+	for _, c := range s {
+		note[c]++
 	}
 
-	frequency := make([][]rune, len(s)+1)
-	for key, value := range note {
-		if frequency[value] == nil {
-			frequency[value] = make([]rune, 0)
+	frequency := make([][]rune, len(s)+1) // [[], [r, t], [e,e,...], ...]
+	for c, count := range note {
+		if frequency[count] == nil {
+			frequency[count] = make([]rune, 0)
 		}
 
-		// Using for loop to put the according amount of character
-		for range value {
-			frequency[value] = append(frequency[value], key)
+		for range count {
+			frequency[count] = append(frequency[count], c)
 		}
 	}
 

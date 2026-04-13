@@ -3,7 +3,7 @@ package Question_4
 import "github.com/linushung/aletheia/Concepts/Algorithm/Sliding_Window"
 
 // https://leetcode.com/problems/count-number-of-nice-subarrays/description/
-// Reference:
+// Reference: https://chatgpt.com/share/69dc3e9e-bfa4-8320-939e-08fe83358f00
 /*
 Given an array of integers nums and an integer k. A continuous subarray is called nice if there are k odd numbers on it.
 

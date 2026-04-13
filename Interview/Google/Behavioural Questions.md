@@ -59,7 +59,7 @@ Usually start with phrases such as:
 > 
 > First, ~~instead of relying on others passively,~~ I studied internal documentation and existing systems to build a baseline understanding. Then, I scheduled focused discussions with experienced colleagues — rather than just asking broad questions, I came prepared with well-researched questions. This made our conversations much more efficient and valuable. At the same time, I documented everything I learned — especially from a beginner’s perspective, including key concepts and common pitfalls.
 > 
-> As a result, I was able to significantly shorten my ramp-up time and start contributing to development with more confidence. My documentation was also adopted by the team and helped to improve onboarding efficiency for new engineers.
+> As a result, I was able to significantly shorten my ramp-up time and start contributing to development with more confidence. My documentation was also adapted by the team and helped to improve onboarding efficiency for new engineers.
 > 
 > This experience taught me how to quickly adapt in an unfamiliar domain and turn a difficult situation into a scalable improvement for the team.
 
@@ -73,14 +73,14 @@ The points are:
   - Acknowledging the other direction or idea has more merit than my own and potentially be a better solution
   - Show how the broader team or business benefited as a result of your actions
 
-> In one project, a teammate and I disagreed on how to implement a new feature in a backend service. He preferred reusing the existing library to minimize the risk and maintain stability, while I was concerned it wouldn’t handle the new requirements well, especially around performance and extensibility.
+> In one project, a teammate and I disagreed on how to implement a new feature for a backend service. He preferred reusing the existing library to minimize the risk and maintain stability, while I was concerned it wouldn’t handle the new requirements well, especially around performance and extensibility.
 > 
-> ~~Instead of pushing back immediately,~~ I first tried to understand his perspective. His main concern was reducing the production risk, which I totally agreed with. So I reframed my suggestion around this shared goal — I proposed using a newer library, but with safeguards. More specifically, I suggested we validate the approach through performance testing and limit the rollout behind a feature toggle. I also walked through a concrete example showing how the new library would simplify the codebase and improve performance and maintainability. My purpose is to shift the discussion from personal opinions to objective trade-offs.
+> ~~Instead of pushing back immediately,~~ I first tried to understand his perspective. His main concern was reducing the production risk, which I totally agreed with. So I reframed my suggestion around that shared goal — I proposed using a newer library, but with safeguards. More specifically, I suggested we vefiry the approach through performance testing and limit the rollout behind a feature toggle. I also walked through a concrete example showing how the new library would simplify the codebase and improve performance and maintainability. My purpose is to shift the discussion from personal opinions to objective trade-offs.
 > 
 > Then, we both agreed to try the new approach with validation which showed no regression issue. We moved forward with it, and it runs well in production while also reducing code complexity.
 > 
-> For me, that experience reinforced the importance of aligning on shared goals when dealing with conflict, discussing based on trade-off to address concerns directly, and using data to guide decisions rather than arguing on who’s right.
-
+> For me, that experience reinforced the importance of aligning on shared goals when dealing with conflict, discussing based on trade-offs ~~to address concerns directly~~, and using data to guide decisions rather than arguing on who’s right 
+> 
 [Follow Up]
 - Java 8 vs Java 17
 - Even using new library is still low risk, that's why I suggestion to run **Performance Testing** to validate.
@@ -94,7 +94,7 @@ The points are:
   - What are the result?
 
 [Google Version]
-> One situation was during a product release I had to take over responsibility to deliver features under a very tight deadline. About a week before release meeting, the engineer responsible for that became unavailable because of COVID, ~~and his development was a release blocker~~. I was asked to step in, even though I hadn’t worked on that area before.
+> One situation was during a product release I had to take over responsibility to deliver features under a very tight deadline. About a week before release meeting, the engineer responsible for that became unavailable due to COVID, ~~and his development was a release blocker~~. I was asked to step in, even though I hadn’t worked on that area before.
 >
 > For me, the pressure came from the tight deadline and uncertainties, so I focused on how I can reduce uncertainties and execute works efficiently. First, I reviewed the requirement scope and prioritized the critical tasks that would impact the release. Then, I parallelized the work by delegating well-defined subtasks to junior engineers, while I handled the more complex scenarios myself. I also set up daily check-ins with my Tech Lead to make sure we stayed aligned and could adjust quickly if required.
 >
@@ -122,9 +122,9 @@ This question is not just about working hard or doing overtime. Interviewers are
 In short: **They want to see if you act like an owner, not just an executor.**
 
 [Google Version]
-> When I first joined Innova, I was asked to step in as a Scrum Master for two sprints to help the team meet a critical deadline. I didn’t have prior experience in that role, and the team was newly formed, so there was a real risk around the delivery.
+> When I first joined Innova, I was asked to be a Scrum Master for two sprints to help the team meet a critical deadline. I didn’t have prior experience in that role, and the team was newly formed, so there was a real risk around the delivery.
 >
-> Instead of just running ceremonies, I focused on what would actually ensure success. I organized regular meetings with architects to validate our implementation early to avoid rework. I also proactively aligned with another team working on the same feature to reduce dependencies and delays. On top of that, I took a hands-on approach to quickly identify and remove any potential blockers.
+> Instead of just running ceremonies, I focused on what would actually ensure success. I organized regular meetings with architects to varify our implementation early to avoid rework. I also proactively aligned with other teams working on the same feature to reduce dependencies and delays. On top of that, I took a hands-on approach to quickly identify and remove any potential blockers.
 > 
 > As a result, we not only delivered on time but also improved our team’s collaboration, especially benefit for a newly formed team.
 >
@@ -142,13 +142,13 @@ In short: **They want to see if you act like an owner, not just an executor.**
 
 
 ### Questions (Stakeholder Focus):
-#### Tell me about a time you had to explain a complex technical concept to non-technical stakeholders. / Tell me about a time stakeholders didn’t understand your solution—what did you do?
+#### Tell me about a time when you had to explain a complex technical concept to non-technical stakeholders. / Tell me about a time stakeholders didn’t understand your solution—what did you do?
 
 [Google Version]
-> One example was when I needed to explain our OTA update system, based on Mender, to non-technical stakeholders including product managers. The challenge was that the system architecture was quite complex — built on microservices, and Kubernetes — and if I explained that directly, it could easily overwhelm or confuse non-technical audiences. However, it was important that they understood the value and workflow clearly to present it to our clients. 
+> One example was when I needed to explain our OTA update system, based on Mender, to non-technical stakeholders including product managers. The challenge was that the system architecture was quite complex — built on microservices, and Kubernetes — and if I explained that directly, it could easily overwhelm or confuse non-technical audiences. However, it was important that they understood the value and workflow clearly to present to our clients. 
 > 
 > So I approached this from three aspects:
-> First, I chose a proper abstraction level to simplify the architecture into a high-level diagram, focus only on key components and the flow of update, instead of internal details.
+> First, I chose a proper abstraction level to simplify the architecture into a high-level diagram, focus only on key components and the update workflow, instead of internal details.
 > Second, I used an analogy, for example I compared the OTA system to a “Pneumatic Tube System,” where carriers are transferred via tube rather than delivered by human, which helped to make the concept more intuitive.
 > Third, I prepared a live demo, so they could see the update process end-to-end, which made the system more tangible.
 >
@@ -165,11 +165,11 @@ In short: **They want to see if you act like an owner, not just an executor.**
 >
 > This taught me that effective communication is about tailoring the level of abstraction to your audience, not just explaining the technology.
 
-#### Tell me about a time requirements were unclear or constantly changing?
+#### Tell me about a time when requirements were unclear or constantly changing?
 [Google Version]
 > One example was when we were asked to handle a technical issue, the requirements were unclear because the problem was highly technical and the product manager didn’t have enough context to define it precisely.
 >
-> To move forward, I first identified the right stakeholder who had direct insight into the issue to clarify the requirement. Before meeting, I reviewed relevant documentation and prepared questions to make the discussion efficient. During the conversation, I clarified the actual problems, key use cases, and success criteria. After the meeting, I built a prototype to validate my understanding and shared it early to get feedback. I also documented the assumptions and investigation process so everyone could stay aligned and reuse the knowledge later.
+> To move forward, I first identified the key stakeholder who had direct insight into the issue to clarify the requirement. Before meeting, I reviewed relevant documentation and prepared questions to make the discussion efficient. During the conversation, I clarified the core issue, key use cases, and success criteria. After the meeting, I built a prototype to validate my understanding and shared it early to get feedback. I also documented the assumptions and investigation process so everyone could stay aligned and reuse the knowledge later.
 >
 > As a result, we were able to quickly converge on the correct requirements to avoid rework, and deliver a solution that addressed the real problem.
 >
@@ -218,13 +218,13 @@ The response is supposed to shows:
 
 > When requirements are unclear, what I would do first is to clarify the problem rather than jumping into implementation.
 > 
-> But how to do that? The first key point is **asking the right person**. I start by identifying the key stakeholder and asking specific questions to understand the goal and criteria. ~~During the communication I would rephrase the response in both positive and negative ways, to understand the problem from different angles.~~
+> The first key point is **asking the right person**. I start by identifying the key stakeholder and asking specific questions to understand the goal and criteria. ~~During the communication I would rephrase the response in both positive and negative ways, to understand the problem from different angles.~~
 >
-> If there are still gaps, I try to propose a few assumptions — this helps us move the conversation forward instead of waiting for 100% clarity. I also like to break the problem into smaller deliverables or prototypes, so we can get early feedback and reduce the risk of building the wrong thing.
+> If there are still gaps, I try to propose a few assumptions — this helps us move the conversation forward instead of waiting for 100% clarity. I'd also break the problem into smaller prototypes, so we can get early feedback and reduce the risk of building the wrong thing.
 > 
 > Throughout the process, I document all the discussion and assumptions, and keep stakeholders aligned with it, so even if requirements evolve later, the team has a shared understanding and can adapt quickly.
 
-#### How Do You Handle Conflict With Teammate? / What would you do if your manager disagrees with your technical decision?
+#### What would you do to handle conflict with teammate? / What would you do if your manager disagrees with your technical decision?
 Both questions are fundamentally about:
 - Communication skills
 - Handling disagreement professionally
@@ -234,14 +234,14 @@ Both questions are fundamentally about:
 
 > When I handle conflict with coworkers, I try to approach it in a structured and collaborative way.
 > 
-> First, I make sure I fully understand their perspective before reacting. In many cases, conflicts come from different priorities, so I focus on clarifying the underlying goals. Second, I reframe the discussion around that shared goal, like what’s best for the user or the system, rather than whose approach is correct. Then, I bring concrete examples to make the discussion more objective — such as trade-offs or performance metrics.
+> First, I make sure I fully understand their perspective before reacting. In many cases, conflicts come from different priorities, so I focus on clarifying the underlying goals. Second, I reframe the discussion around that shared goal, like what’s best for the user or the system, rather than whose approach is right. Then, I bring concrete examples to make the discussion more objective — such as trade-offs or performance metrics.
 >
 > If the decision is still unclear, I’m comfortable involving a tech lead or manager to get additional input. Finally, once a decision is made, I fully support it and focus on execution, even if it wasn’t my initial preference.
 > 
 > Overall, my goal is to resolve conflicts in a way that strengthens collaboration and leads to better technical or business outcomes.
 
 ----------
-#### How would you handle conflicting priorities from stakeholders?**
+#### What would you do to handle conflicting priorities from stakeholders?**
 This question is less about the exact situation and more about how you think and operate under pressure. They want to evaluate:
 - **Prioritization skills**: Can you distinguish urgent vs important, and business impact vs effort?
 - **Stakeholder management**: Do you push back professionally, align people, and avoid just saying “yes” to everyone?
@@ -251,11 +251,11 @@ This question is less about the exact situation and more about how you think and
 
 > When I receive conflicting priorities from stakeholders, I first focus on making the situation transparent and structured rather than trying to solve it in isolation. In my experience, what seems like a conflict is sometimes just a lack of shared context.
 > 
-> I start by clarifying each request — understanding the business goal, urgency, and any constraints. Next, I evaluate the effort and impact of each request. For example, I look at factors like customer impact, system risk, deadlines, and dependencies. This helps me frame the discussion objectively ~~rather than emotionally~~.
+> I start by clarifying each request — understanding the business goal, urgency, and any constraints. Next, I evaluate the effort and impact of each request. For example, I look at factors like customer impact, system risk, deadlines, and dependencies. This helps me make the discussion more objectively ~~rather than emotionally~~.
 >
 > If the conflict remains, I bring the stakeholders together and present a few clear options with trade-offs. For instance, I might coordinate that to say: “We can prioritize Feature A for urgent customer impact, but Feature B will be partially delivered MVP for this release”. I’ve found that stakeholders are much more aligned when they see the trade-offs explicitly.
 >
-> Finally, once a decision is made, I make sure expectations are clearly communicated and documented, so the team can execute with focus and avoid further misalignment. 
+> Finally, once a decision is made, I make sure expectations are clearly communicated and documented, so the team can execute with focus and avoid misalignment. 
 > 
 > Overall, my goal is to act as a bridge — helping stakeholders make informed decisions while keeping delivery realistic and predictable.
 
@@ -284,11 +284,11 @@ This question is less about the exact situation and more about how you think and
 [Google Version]
 > I’d say my biggest strengths are structured problem-solving, ownership, and the ability to quickly ramp up in complex domains.
 > 
-> First, on problem-solving — I am good at breaking down ambiguous or complex problems into smaller, actionable parts. For example, when I was working with unclear or changing requirements, I didn’t just wait for clarification. I proactively aligned with stakeholders, asked targeted questions, and translated ambiguity into concrete technical tasks. That helped the team move forward without unnecessary delays.
+> First, on problem-solving — I am good at breaking down ambiguous or complex problems into smaller, actionable parts. For example, when I was working with unclear or changing requirements, I didn’t just wait for clarification. I proactively aligned with stakeholders, asked targeted questions, and translated ambiguity into concrete ~~technical~~ tasks. That helped the team move forward without unnecessary delays.
 > 
 > Second, I take strong ownership of outcomes. In situations where there are disagreements on technical decision, I focused on understanding different perspectives, validating trade-offs, and driving toward a solution that balances technical and business factors. I care not just about writing code, but also delivering the right solution for the business.
 > 
-> Finally, I’m very good at ramping up in new domains. When I first entered the healthcare industry, I had no prior experience. But I created a structured learning approach and quickly got to a point where I could confidently contribute to complex features. 
+> Finally, I’m very good at ramping up in new domains. When I first entered the healthcare industry, I had no prior experience. But I created a structured learning approach and quickly got to a point where I could contribute to complex features confidently.
 > 
 > Overall, I’d say I bring a balance of analytical thinking, collaboration, and proactive execution.
 
@@ -322,9 +322,9 @@ This question is less about the exact situation and more about how you think and
 
 > I’ve really enjoyed the past five years at Innova Solutions and working with Optum. During that time, I’ve contributed many services in healthcare domain and gained deep experience in that. I also worked with a very collaborative team, where knowledge sharing was strongly encouraged, which helped me grow a lot both technically and professionally.
 >
-> Over time, I realized I’m energized when I’m closer to real-world problem — especially working closely with client side and translate their needs into technology solutions. But in my current role, those opportunities are a bit limited.
+> Over time, I realized I’m more energized when closer to real-world problems — especially working closely with client side and translate their needs into technology solutions. But in my current role, those opportunities are a bit limited.
 >
-> So I feel this is the time to take the next step into a role like Customer Solutions Engineer, where I can combine my backend and system design experience with more customer-facing impact, ~~and help to drive solutions more end-to-end~~.
+> So I feel this is the time to take a step into a role like Customer Solutions Engineer, where I can combine my backend and system design experience with more customer-facing impact, ~~and help to drive solutions more end-to-end~~.
 
 #### What kind of Work environment do you like?
 -  Template
@@ -336,7 +336,7 @@ This question is less about the exact situation and more about how you think and
 
 > I do my best work in environments that are both collaborative and ownership-driven. I enjoy working with cross-functional teams where ideas can be openly discussed, but I am also appreciate having clear ownership so I can take responsibility for delivering results.
 > 
-> In my experience, I often worked on projects where I needed to collaborate closely with architect and product managers, while also independently driving results. That environment kept me stay productive while still aligning with the broader team goals.
+> In my experience, I often worked on projects where I needed to collaborate closely with architect and product managers, while also driving results independently. That environment kept me ~~stay~~ productive but still aligning with the broader team goals.
 > 
 > From what I understand, Google emphasizes both collaboration and individual ownership at scale, which is exactly the kind of environment where I believe I can contribute effectively and continue growing.
 
@@ -359,7 +359,7 @@ Reference: [Why Google](https://www.youtube.com/watch?v=hgFKFu5vNug)
 > 
 > Second, I’m excited about the scale of impact. Google operates at a level where solving technical problems will directly influence millions of users and businesses. That’s really meaningful to me as someone who enjoys bridging technology and real customer needs.
 > 
-> Finally, for the Customer Solutions Engineer role, I believe my experience of working closely with non-technical stakeholder, translating their needs into technology solution, and experience in database technologies make me a strong fit for this position. ~~I’m particularly motivated by roles where I can combine deep technical work with customer-facing problem-solving, which is exactly what this position offers.~~
+> Finally, for the Customer Solutions Engineer role, I believe my experience of working closely with non-technical stakeholder, translating their needs into technology solution, and system design experience ~~in database technologies~~ make me a strong fit for this position. ~~I’m particularly motivated by roles where I can combine deep technical work with customer-facing problem-solving, which is exactly what this position offers.~~
 
 ----------
 #### What project are you most proud of?
@@ -376,13 +376,13 @@ What project are you most proud of?” is not about the project itself. It’s a
 > 
 > As a result, I reduced setup time from hours to just a single command, hugely improving onboarding speed and developer productivity. More importantly, because we used these scripts every day, they stayed up-to-date and became living documentation.
 > 
-> I’m particularly proud of this project because it solved a real pain point of the team and had a huge impact on developer experience and efficiency.
+> I’m proud of this project because it solved a real pain point of the team and had a huge impact on developer experience and efficiency.
 
 ----------
 #### Where do you see yourself in 5 years?
 > In the next 1 to 2 years, my main focus is to ramp up quickly to build strong domain knowledge, especially in GCP, and start contributing to real customer problems. ~~I want to build strong domain knowledge and become someone the team can rely on for both technical depth and execution.~~ 
 > 
-> Around the 3 to 5 year mark, I hope myself taking on more ownership — not just implementing solutions, but helping design scalable architectures and working closely with customers to translate their needs into effective technical solutions. ~~Based on my experience improving complex systems and onboarding processes, I enjoy solving messy, real-world problems, so I’d like to expand that impact at a larger scale.~~
+> Around the 3 to 5 years mark, I hope myself taking on more ownership — not just implementing solutions, but helping design scalable architectures and working closely with customers to translate their needs into effective technical solutions. ~~Based on my experience improving complex systems and onboarding processes, I enjoy solving messy, real-world problems, so I’d like to expand that impact at a larger scale.~~
 > 
 > Longer term, I’d like to grow into a role where I can mentor others and influence technical direction, while still staying hands-on. Ideally, I become a trusted advisor both internally and for customers.
 

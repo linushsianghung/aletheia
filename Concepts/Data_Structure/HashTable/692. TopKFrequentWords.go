@@ -1,6 +1,8 @@
 package HashTable
 
-import "sort"
+import (
+	"sort"
+)
 
 // TopKFrequent https://leetcode.com/problems/top-k-frequent-words/description/
 /*
@@ -9,31 +11,30 @@ Given an array of strings words and an integer k, return the k most frequent str
 Return the answer sorted by the frequency from highest to lowest. Sort the words with the same frequency by their lexicographical order.
 */
 func TopKFrequent(words []string, k int) []string {
-	note := make(map[string]int)
+	note := make(map[string]int) // map: {"i": 2, "love": 2, ...}
 	for _, word := range words {
 		note[word]++
 	}
 
-	frequency := make([][]string, len(words)+1)
-	for key, value := range note {
-		if frequency[value] == nil {
-			frequency[value] = make([]string, 0)
+	frequency := make([][]string, len(words)+1) // slice: [[], ["leetcode", "coding"], ["i", "love"]]
+	for word, count := range note {
+		if frequency[count] == nil {
+			frequency[count] = make([]string, 0)
 		}
 
-		frequency[value] = append(frequency[value], key)
+		frequency[count] = append(frequency[count], word)
 	}
 
-	count, result := 0, make([]string, 0)
+	result := make([]string, 0)
 	for i := len(frequency) - 1; i >= 0; i-- {
-		if count >= k {
-			break
-		}
-
 		sort.Slice(frequency[i], func(x, y int) bool {
 			return frequency[i][x] < frequency[i][y]
 		})
+
 		result = append(result, frequency[i]...)
-		count += len(frequency[i])
+		if len(result) >= k {
+			break
+		}
 	}
 
 	return result[:k]
