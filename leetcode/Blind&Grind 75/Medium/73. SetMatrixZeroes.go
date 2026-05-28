@@ -13,30 +13,22 @@ func setZeroes(matrix [][]int) {
 		flipped[i] = make([]bool, cols)
 	}
 
-	var setZeroFunc func(r, c int)
-	setZeroFunc = func(r, c int) {
-		for i := range matrix[r] {
-			if matrix[r][i] == 0 {
-				continue
-			}
-			matrix[r][i] = 0
-			flipped[r][i] = true
-		}
-
-		for i, row := range matrix {
-			if row[c] == 0 {
-				continue
-			}
-
-			row[c] = 0
-			flipped[i][c] = true
-		}
-	}
-
 	for i := 0; i < rows; i++ {
 		for j := 0; j < cols; j++ {
 			if matrix[i][j] == 0 && !flipped[i][j] {
-				setZeroFunc(i, j)
+				for row := range rows {
+					if matrix[row][j] != 0 {
+						matrix[row][j] = 0
+						flipped[row][j] = true
+					}
+				}
+
+				for col := range cols {
+					if matrix[i][col] != 0 {
+						matrix[i][col] = 0
+						flipped[i][col] = true
+					}
+				}
 			}
 		}
 	}
@@ -44,23 +36,4 @@ func setZeroes(matrix [][]int) {
 
 func setZeroesExercise(matrix [][]int) {
 
-}
-
-func setZeroFunc(matrix [][]int, r, c int, flipped [][]bool) {
-	for i := range matrix[r] {
-		if matrix[r][i] == 0 {
-			continue
-		}
-		matrix[r][i] = 0
-		flipped[r][i] = true
-	}
-
-	for i, row := range matrix {
-		if row[c] == 0 {
-			continue
-		}
-
-		row[c] = 0
-		flipped[i][c] = true
-	}
 }

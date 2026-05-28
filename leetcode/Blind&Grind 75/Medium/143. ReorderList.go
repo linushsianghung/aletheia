@@ -1,8 +1,6 @@
 package Medium
 
-import (
-	"github.com/linushung/aletheia/leetcode"
-)
+import "github.com/linushung/aletheia/leetcode"
 
 // https://leetcode.com/problems/reorder-list/
 /*
@@ -20,7 +18,20 @@ The algorithm is essentially a "Three-Step Recipe":
 2. Reverse the Second Half: Turn the right half backwards so we can iterate it from the end.
 3. Merge (Zip): Weave the two lists together
 */
+/*
+Complexity Analysis:
+Time Complexity: O(N) where N is the number of nodes in the linked list.
+    - Finding the middle takes O(N).
+    - Reversing the second half takes O(N/2).
+    - Merging the two halves takes O(N/2).
+Space Complexity: O(1) because we only use a few pointers regardless of list size.
+*/
 func reorderList(head *leetcode.ListNode) {
+	// Handle edge cases: empty list or list with only one node
+	if head == nil || head.Next == nil {
+		return
+	}
+
 	slow, fast := head, head
 	// Find the middle node of the list
 	for fast != nil && fast.Next != nil {
@@ -29,9 +40,9 @@ func reorderList(head *leetcode.ListNode) {
 	}
 
 	// Reverse the half part after the middle.
-	var prev *leetcode.ListNode
+	var prev *leetcode.ListNode // 'prev' will be the new head of the reversed second half
 	// Instead of reverse from the slow node, using next node as first node based on the fact that the slow node will be the last node after reordering.
-	curr := slow.Next
+	curr := slow.Next // 'curr' starts from the node *after* 'slow', which is the head of the second half.
 	// Break the link between the two halves immediately to avoid confusion later
 	slow.Next = nil
 
@@ -69,15 +80,12 @@ func reorderListExercise(head *leetcode.ListNode) {
 }
 
 func reorderListAlternative(head *leetcode.ListNode) {
-	slow, fast := head, head
-	// Find the middle of the list
-	for fast != nil && fast.Next != nil {
-		slow = slow.Next
-		fast = fast.Next.Next
-	}
+	slow := head
+	/* The same operations as reorderList */
 
-	// Reverse the half part after the middle
-	var dummy *leetcode.ListNode
+	// Reverse the half part after the middle.
+	var dummy *leetcode.ListNode // 'dummy' acts as 'prev' in the reversal
+	// 'runner' acts as 'curr' in the reversal
 	runner := slow.Next
 	for runner != nil {
 		temp := runner.Next
@@ -89,9 +97,12 @@ func reorderListAlternative(head *leetcode.ListNode) {
 
 	runner = head
 	for dummy != nil {
-		temp := runner.Next
-		runner.Next = dummy
-		runner = runner.Next
-		dummy = temp
+		temp := runner.Next // Save L1
+		runner.Next = dummy // L0 -> Ln
+
+		//runner, dummy = runner.Next, temp
+		// Fixed version of the "Single Runner" logic: We must move both pointers to their respective "next" positions but carefully using the saved 'temp'.
+		runner = dummy // Runner is now at Ln
+		dummy = temp   // Dummy is now at L1
 	}
 }

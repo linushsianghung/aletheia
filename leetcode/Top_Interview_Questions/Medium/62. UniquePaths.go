@@ -21,29 +21,30 @@ func UniquePaths(m int, n int) int {
 }
 
 func uniquePathsExercise(m int, n int) int {
-	note := make([][]int, m)
-	for i := range note {
-		note[i] = make([]int, n)
-	}
-
-	var uniqueFunc func(r, c int) int
-	uniqueFunc = func(r, c int) int {
-		if r == 1 || c == 1 {
-			return 1
-		}
-		if note[r][c] > 0 {
-			return note[r][c]
-		}
-		note[r][c] = uniqueFunc(r-1, c) + uniqueFunc(r, c-1)
-		return note[r][c]
-	}
-
-	uniqueFunc(m, n)
 	return 0
 }
 
 func UniquePathsMemorisation(m, n int) int {
-	return 0
+	memo := make([][]int, m)
+	for i := range memo {
+		memo[i] = make([]int, n)
+	}
+
+	var uniqueFunc func(r, c int) int
+	uniqueFunc = func(r, c int) int {
+		if r == 0 || c == 0 {
+			return 1
+		}
+
+		if memo[r][c] > 0 {
+			return memo[r][c]
+		}
+
+		memo[r][c] = uniqueFunc(r-1, c) + uniqueFunc(r, c-1)
+		return memo[r][c]
+	}
+
+	return uniqueFunc(m-1, n-1)
 }
 
 // Using Backtracking strategy as practice and as expect it will get "Memory Limit Exceeded" error message when the grid become larger
@@ -130,11 +131,8 @@ func uniquePathsBF(m int, n int) int {
 	grid := make([][]int, m)
 	for i := range grid {
 		grid[i] = make([]int, n)
-	}
-
-	// Put 1 to the first column
-	for _, row := range grid {
-		row[0] = 1
+		// Put 1 to the first column
+		grid[i][0] = 1
 	}
 
 	// Put 1 to the first row

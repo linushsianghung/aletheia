@@ -17,9 +17,10 @@ func kthSmallestIteratively(root *leetcode.TreeNode, k int) int {
 			stack = append(stack, current)
 			current = current.Left
 		} else {
+			count++
+
 			current = stack[len(stack)-1]
 			stack = stack[:len(stack)-1]
-			count++
 			if count == k {
 				return current.Val
 			}

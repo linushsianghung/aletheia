@@ -22,7 +22,6 @@ Key Word => Contiguous
 		- choice 2: ms(i) is the sum of ms(i-1) + i
 	- Then max(choice 1, choice 2)
 
-
 - O(N^3):
 Brute-Force for calculate every single sub-array to find out the maximum sum
 	  2 -1 -3 4 1 -2 5 1 -3 2
@@ -54,19 +53,15 @@ evaluation:  max(-1, 1)  ~~> 1
 			 ..........
 */
 func MaxSubArray(nums []int) int {
-	if len(nums) == 0 {
-		return 0
-	}
-
 	maxSum, currentBestSum := math.MinInt32, 0
 	for _, num := range nums {
 		/* Kadane's Algorithm (Dynamic_Programming):
 		   For each element [i], the value of element [i-1] is the best solution of subarray ending at that point.
 		   So just consider using the value of element [i] itself or includes the previous best value from element [i-1]
-
-		   currentBestSum = max(nums[i], currentBestSum + nums[i])
 		*/
+		// Decision: Should I extend the previous subarray or start a new one?
 		currentBestSum = max(num, currentBestSum+num)
+		// Track the highest value we've seen across all local decisions.
 		maxSum = max(maxSum, currentBestSum)
 	}
 
@@ -75,4 +70,21 @@ func MaxSubArray(nums []int) int {
 
 func maxSubArrayExercise(nums []int) int {
 	return 0
+}
+
+// MaxSubArrayN2 demonstrates the O(n^2) approach.
+// It eliminates the third loop by keeping a running sum as the 'end' pointer moves.
+func MaxSubArrayN2(nums []int) int {
+
+	maxSum := nums[0]
+	for i := range nums {
+		currentSubarraySum := 0
+
+		for j := i; j < len(nums); j++ {
+			// Instead of a loop from i to j, just add the current element
+			currentSubarraySum += nums[j]
+			maxSum = max(maxSum, currentSubarraySum)
+		}
+	}
+	return maxSum
 }

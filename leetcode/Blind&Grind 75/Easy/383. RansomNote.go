@@ -7,21 +7,18 @@ Given two strings ransomNote and magazine, return true if ransomNote can be cons
 Each letter in magazine can only be used once in ransomNote.
 */
 func canConstruct(ransomNote string, magazine string) bool {
-	if len(ransomNote) > len(magazine) {
-		return false
+	var ransomNoteArray [26]int
+
+	for _, r := range ransomNote {
+		ransomNoteArray[r-'a']++
 	}
 
-	var ransomArray, magazineArray [26]int
-
-	for _, c := range ransomNote {
-		ransomArray[c-'a']++
-	}
-	for _, c := range magazine {
-		magazineArray[c-'a']++
+	for _, r := range magazine {
+		ransomNoteArray[r-'a']--
 	}
 
-	for i, count := range ransomArray {
-		if magazineArray[i] < count {
+	for _, count := range ransomNoteArray {
+		if count > 0 {
 			return false
 		}
 	}

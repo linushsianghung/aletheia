@@ -79,3 +79,76 @@ Complexity Analysis:
 */
 
 // What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+
+/*
+Analysis:
+1. Hash Map Approach:
+   - Concept: We count frequencies of each number in one array (preferably the smaller one) and then iterate through the second array to find commonalities.
+   - Time Complexity: O(N + M) where N and M are the lengths of the two arrays. We traverse each array once.
+   - Space Complexity: O(min(N, M)) because we store the elements of the smaller array in the hash map to minimize memory usage.
+
+2. Two Pointers Approach:
+   - Concept: If the arrays are sorted, we can use two pointers to find intersections in a single linear scan without extra hash table overhead.
+   - Time Complexity: O(N log N + M log M) if sorting is required. If already sorted, it is O(N + M).
+   - Space Complexity: O(log N + log M) to O(N + M) depending on the sorting implementation (e.g., Dual-Pivot Quicksort in Java).
+
+3. Interview Suggestions (Follow-ups):
+   - Small vs Large: If `nums1` is much smaller than `nums2`, use the Map approach on `nums1`. It keeps the space complexity low.
+   - Disk/Limited Memory: If `nums2` is on disk and doesn't fit in memory, but `nums1` does, load `nums1` into a Map. If neither fits, use an external sort on both and then use the two-pointer approach to stream elements.
+
+Java Implementation:
+
+import java.util.*;
+
+class Solution {
+    // Method 1: Hash Map
+    public int[] intersectMap(int[] nums1, int[] nums2) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums1) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> intersection = new ArrayList<>();
+        for (int num : nums2) {
+            int count = map.getOrDefault(num, 0);
+            if (count > 0) {
+                intersection.add(num);
+                map.put(num, count - 1);
+            }
+        }
+
+        // Convert List to primitive array
+        int[] result = new int[intersection.size()];
+        for (int i = 0; i < intersection.size(); i++) {
+            result[i] = intersection.get(i);
+        }
+        return result;
+    }
+
+    // Method 2: Two Pointers (Best if sorted)
+    public int[] intersect2Pointers(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        int i = 0, j = 0, k = 0;
+        // We can reuse nums1 to store the result to save extra space
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] < nums2[j]) {
+                i++;
+            } else if (nums1[i] > nums2[j]) {
+                j++;
+            } else {
+                nums1[k++] = nums1[i++];
+                j++;
+            }
+        }
+        return Arrays.copyOfRange(nums1, 0, k);
+    }
+
+    // Driver method matching LeetCode signature
+    public int[] intersect(int[] nums1, int[] nums2) {
+        // Choose one based on constraints discussed
+        return intersectMap(nums1, nums2);
+    }
+}
+*/

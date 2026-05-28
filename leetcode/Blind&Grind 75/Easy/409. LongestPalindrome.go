@@ -8,22 +8,27 @@ Letters are case sensitive, for example, "Aa" is not considered a palindrome.
 */
 func longestPalindrome(s string) int {
 	note := make(map[rune]int)
-	oddCount := 0
 
-	for _, c := range s {
-		note[c]++
-		if note[c]%2 != 0 {
-			oddCount++
+	for _, r := range s {
+		note[r]++
+	}
+
+	length := 0
+	hasOdd := false
+	for _, count := range note {
+		if count%2 == 0 {
+			length += count
 		} else {
-			oddCount--
+			length += count - 1
+			hasOdd = true
 		}
 	}
 
-	if oddCount > 0 {
-		return len(s) - oddCount + 1
-	} else {
-		return len(s)
+	if hasOdd {
+		length += 1
 	}
+
+	return length
 }
 
 func longestPalindromeExercise(s string) int {

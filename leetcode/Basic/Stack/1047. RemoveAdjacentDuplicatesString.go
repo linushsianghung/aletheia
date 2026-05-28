@@ -29,18 +29,6 @@ func removeDuplicatesStack(s string) string {
 }
 
 func removeDuplicatesExercise(s string) string {
-	anchor, stack := 0, []rune(s)
-
-	for _, c := range s {
-		stack[anchor] = c
-
-		if anchor > 0 && stack[anchor-1] == c {
-			anchor -= 2
-		}
-
-		anchor++
-	}
-
 	return ""
 }
 

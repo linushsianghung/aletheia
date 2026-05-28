@@ -29,6 +29,7 @@ func canConstructHelper(target string, wordBank []string, memo map[string]bool) 
     if len(target) == 0 {
         return true
     }
+	
 
     for _, word := range wordBank {
         if strings.HasPrefix(target, word) {

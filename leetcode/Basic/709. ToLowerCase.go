@@ -9,17 +9,6 @@ func toLowerCase(s string) string {
 		return ""
 	}
 
-	//lower := ""
-	//for _, s := range s {
-	//	if unicode.IsUpper(s) {
-	//		lower += string(s + 32)
-	//	} else {
-	//		lower += string(s)
-	//	}
-	//
-	//}
-	//return lower
-
 	result := make([]rune, 0)
 
 	for _, r := range s {

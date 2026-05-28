@@ -36,12 +36,11 @@ func cloneGraphDFS(node *leetcode.Node) *leetcode.Node {
 	visited := make(map[*leetcode.Node]*leetcode.Node)
 
 	// DFS (Depth First Search) approach and use dfs as function name to follow standard graph terminology.
-	var dfs func(node *leetcode.Node) *leetcode.Node
-	dfs = func(node *leetcode.Node) *leetcode.Node {
+	var cloneFunc func(node *leetcode.Node) *leetcode.Node
+	cloneFunc = func(node *leetcode.Node) *leetcode.Node {
 		if node == nil {
 			return nil
 		}
-
 		if n, ok := visited[node]; ok {
 			return n
 		}
@@ -49,12 +48,13 @@ func cloneGraphDFS(node *leetcode.Node) *leetcode.Node {
 		clone := &leetcode.Node{Val: node.Val}
 		visited[node] = clone
 		for _, child := range node.Children {
-			clone.Children = append(clone.Children, dfs(child))
+			clone.Children = append(clone.Children, cloneFunc(child))
 		}
+
 		return clone
 	}
 
-	return dfs(node)
+	return cloneFunc(node)
 }
 
 // cloneGraphBFS implements the BFS (Breadth First Search) approach.
